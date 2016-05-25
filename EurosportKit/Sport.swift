@@ -1,18 +1,35 @@
-//
-//  Sport.swift
-//  EurosportPlayer
-//
-//  Created by Alexander Edge on 14/05/2016.
-//  Copyright © 2016 Alexander Edge Ltd. All rights reserved.
-//
-
 import Foundation
+import CoreData
 
-public struct Sport {
+@objc(Sport)
+public class Sport: _Sport {
+	// Custom logic goes here.
     
-    public let identifier: Int
-    public let lang: Int
-    public let name: String
-    public let imageURL: NSURL
+    public var imageURL: NSURL? {
+        return NSURL(string: imageURLString)
+    }
     
+    public class func object(withIdentifier identifier: Int, inContext context: NSManagedObjectContext) throws -> Sport? {
+        
+        // check for an existing object with this identifier
+        
+        let predicate = NSPredicate(format: "identifier == %d", identifier)
+        
+        if let existingObject = try singleObjectInContext(context, predicate: predicate, sortedBy: nil, ascending: true) {
+            return existingObject
+        }
+        
+        guard let newObject = Sport(managedObjectContext: context) else {
+            return nil
+        }
+        
+        newObject.identifier = identifier
+        return newObject
+    }
+    
+}
+
+
+extension Sport: Fetchable {
+    public typealias FetchableType = Sport
 }

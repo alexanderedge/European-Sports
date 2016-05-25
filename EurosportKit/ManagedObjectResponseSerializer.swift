@@ -1,6 +1,6 @@
 //
-//  ResponseSerializer.swift
-//  StocksKit
+//  ManagedObjectResponseSerializer.swift
+//  EurosportPlayer
 //
 //  The MIT License (MIT)
 //
@@ -25,42 +25,41 @@
 //  SOFTWARE.
 
 import Foundation
+import CoreData
 
-internal protocol ResponseSerializerType {
+internal protocol ManagedObjectResponseSerializerType {
     associatedtype T
     
-    func serializeResponse(data: NSData?, response: NSURLResponse?, error: NSError?) throws -> T
+    func serializeResponse(context:NSManagedObjectContext, data: NSData?, response: NSURLResponse?, error: NSError?) throws -> T
     
 }
 
-internal struct ResponseSerializer<T>: ResponseSerializerType {
+internal struct ManagedObjectResponseSerializer<T>: ManagedObjectResponseSerializerType {
     
-    typealias SerializationBlock = (NSData?, NSURLResponse?, NSError?) throws -> T
+    typealias ManagedObjectSerializationBlock = (NSManagedObjectContext, NSData?, NSURLResponse?, NSError?) throws -> T
     
-    let serializationBlock: SerializationBlock
+    let serializationBlock: ManagedObjectSerializationBlock
     
-    init(serializationBlock: SerializationBlock) {
+    init(serializationBlock: ManagedObjectSerializationBlock) {
         self.serializationBlock = serializationBlock
     }
     
-    func serializeResponse(data: NSData?, response: NSURLResponse?, error: NSError?) throws -> T {
-        return try serializationBlock(data, response, error)
+    func serializeResponse(context: NSManagedObjectContext, data: NSData?, response: NSURLResponse?, error: NSError?) throws -> T {
+        return try serializationBlock(context, data, response, error)
     }
     
 }
 
 extension NSURLSession {
     
-    internal func dataTaskWithRequest<T>(request: NSURLRequest, responseSerializer: ResponseSerializer<T>,completionHandler: Result<T, NSError> -> Void) -> NSURLSessionDataTask {
+    internal func dataTaskWithRequest<T>(request: NSURLRequest, context: NSManagedObjectContext, responseSerializer: ManagedObjectResponseSerializer<T>, completionHandler: Result<T, NSError> -> Void) -> NSURLSessionDataTask {
         return dataTaskWithRequest(request) { data, response, error in
-            do {
-                let object = try responseSerializer.serializeResponse(data, response: response, error: error)
-                dispatch_async(dispatch_get_main_queue()) {
+            dispatch_async(dispatch_get_main_queue()) {
+                do {
+                    let object = try responseSerializer.serializeResponse(context, data: data, response: response, error: error)
                     completionHandler(.Success(object))
-                }
-            } catch {
-                dispatch_async(dispatch_get_main_queue()) {
-                    completionHandler(.Failure(error as NSError))
+                } catch {
+                 completionHandler(.Failure(error as NSError))
                 }
             }
         }

@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import CoreData
 import EurosportKit
 
 private let reuseIdentifier = "Cell"
@@ -24,38 +25,49 @@ extension UIColor {
     
 }
 
-class SportsCollectionViewController: UICollectionViewController {
+class SportsCollectionViewController: UICollectionViewController, ManagedObjectContextSettable {
 
-    var sports: [Sport] = []
+    var managedObjectContext: NSManagedObjectContext!
+    
+    lazy var fetchedResultsController: NSFetchedResultsController = {
+        let fetchRequest = Sport.fetchRequest(nil, sortedBy: "name", ascending: true)
+        let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        frc.delegate = self
+        
+        do {
+            try frc.performFetch()
+        } catch {
+            print("error fetching: \(error)")
+        }
+        
+        return frc
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
+        
         User.login("alexander.edge@googlemail.com", password: "q6v-BXt-V57-E4r") { result in
             
             switch result {
             case .Success(let user):
-                print("user: \(user)")
+                print("user loggedn in: \(user)")
                 
                 Token.fetch(user.identifier, hkey: user.hkey) { result in
                     
                     switch result {
                     case .Success(let token):
-                        print("received token: \(token)")
                         
-                        // get the listings
-                        
-                        Catchup.fetch { result in
+                        Catchup.fetch(self.managedObjectContext) { result in
                             
                             switch result {
                                 
-                            case .Success(let catchupTuple):
+                            case .Success(let catchups):
                                 
-                                self.sports = catchupTuple.1
-                                self.collectionView?.reloadData()
+                                print("loaded \(catchups.count) catchups");
                                 
                                 
                                 break
@@ -90,62 +102,62 @@ class SportsCollectionViewController: UICollectionViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-
     // MARK: UICollectionViewDataSource
 
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
+        guard let sections = fetchedResultsController.sections else {
+            return 0
+        }
+        return sections.count
     }
 
 
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return sports.count
+        guard let sections = fetchedResultsController.sections where sections.count > section else {
+            return 0
+        }
+        return sections[section].numberOfObjects
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! ImageCollectionViewCell
+        return collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath)
+    }
     
+    override func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
         
+        guard let cell = cell as? SportCollectionViewCell else {
+            return
+        }
         
-        // Configure the cell
-        cell.backgroundColor = UIColor.random
+        let sport = fetchedResultsController.objectAtIndexPath(indexPath) as! Sport
         
-        let sport = sports[indexPath.item]
+        cell.titleLabel.text = sport.name
+        cell.detailLabel.text = NSString.localizedStringWithFormat(NSLocalizedString("%@ videos", comment: ""), NSNumberFormatter.localizedStringFromNumber(sport.catchups.count, numberStyle: .NoStyle)) as String
         
-        //cell.imageView.image =
-        
-        NSURLSession.sharedSession().dataTaskWithURL(sport.imageURL) { data, response, error in
-         
-            guard let data = data, image = UIImage(data: data) else {
-                return
-            }
-            
-            dispatch_async(dispatch_get_main_queue()) {
+        if let url = sport.imageURL {
+            NSURLSession.sharedSession().dataTaskWithURL(url) { data, response, error in
                 
-                cell.imageView?.image = image
+                guard let data = data, image = UIImage(data: data) else {
+                    return
+                }
                 
-            }
-            
-        }.resume()
-        
-        
-        return cell
+                // add a black overlay
+                let adjustedImage = image.imageWithBlackOverlay(0.6)
+                
+                dispatch_async(dispatch_get_main_queue()) {
+                    
+                    cell.imageView?.image = adjustedImage
+                    
+                }
+                
+            }.resume()
+        }
+
     }
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
-        let sport = sports[indexPath.item]
+        let sport = fetchedResultsController.objectAtIndexPath(indexPath) as! Sport
         
         print(sport.name)
         
@@ -182,4 +194,24 @@ class SportsCollectionViewController: UICollectionViewController {
     }
     */
 
+}
+
+extension SportsCollectionViewController: NSFetchedResultsControllerDelegate {
+    
+    func controllerWillChangeContent(controller: NSFetchedResultsController) {
+        
+    }
+    
+    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+        
+    }
+    
+    func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
+        
+    }
+    
+    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        self.collectionView?.reloadData()
+    }
+    
 }

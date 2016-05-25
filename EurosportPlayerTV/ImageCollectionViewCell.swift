@@ -11,12 +11,11 @@ import UIKit
 class ImageCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet var imageView: UIImageView!
-
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        imageView.adjustsImageWhenAncestorFocused = true
+        
         
     }
     

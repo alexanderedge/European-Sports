@@ -7,23 +7,24 @@
 //
 
 import Foundation
+import CoreData
 
-internal struct SportParser: JSONParsingType {
+internal struct SportParser: JSONCoreDataParsingType {
     
     typealias T = Sport
     
-    enum SportError : ErrorType {
-        case InvalidImageURL
-    }
-    
-    static func parse(json: [String : AnyObject]) throws -> T {
+    static func parse(json: [String : AnyObject], context: NSManagedObjectContext) throws -> T {
         let identifier: Int = try json.extract("id")
-        let language: Int = try json.extract("lang")
         let name: String = try json.extract("name")
-        guard let imageURL = NSURL(string: try json.extract("pictureurl")) else {
-            throw SportError.InvalidImageURL
+        let imageURL: String = try json.extract("pictureurl")
+        
+        guard let sport = try Sport.object(withIdentifier: identifier, inContext: context) else {
+            throw JSONCoreDataError.UnableToCreateInstance
         }
-        return Sport(identifier: identifier, lang: language, name: name, imageURL: imageURL)
+        sport.name = name
+        sport.imageURLString = imageURL
+        return sport
+
     }
     
 }

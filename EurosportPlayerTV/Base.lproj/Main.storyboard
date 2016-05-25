@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
@@ -19,7 +19,7 @@
                             <inset key="sectionInset" minX="60" minY="60" maxX="60" maxY="60"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="jBn-oB-urD" customClass="ImageCollectionViewCell" customModule="EurosportPlayerTV" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="jBn-oB-urD" customClass="SportCollectionViewCell" customModule="EurosportPlayerTV" customModuleProvider="target">
                                 <rect key="frame" x="60" y="60" width="560" height="400"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -29,17 +29,52 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageWhenAncestorFocused="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6o1-Ly-Z3l">
                                             <rect key="frame" x="0.0" y="0.0" width="560" height="400"/>
                                         </imageView>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zcX-ne-S5I">
+                                            <rect key="frame" x="20" y="160" width="520" height="81"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0l6-pO-dnc">
+                                                    <rect key="frame" x="0.0" y="0.0" width="520" height="46"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detail" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b6T-yK-3EU">
+                                                    <rect key="frame" x="0.0" y="46" width="520" height="35"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="b6T-yK-3EU" secondAttribute="bottom" id="3EB-YA-1oZ"/>
+                                                <constraint firstItem="0l6-pO-dnc" firstAttribute="top" secondItem="zcX-ne-S5I" secondAttribute="top" id="DDf-Ez-c1C"/>
+                                                <constraint firstItem="0l6-pO-dnc" firstAttribute="leading" secondItem="zcX-ne-S5I" secondAttribute="leading" id="Lfu-15-Gjy"/>
+                                                <constraint firstItem="b6T-yK-3EU" firstAttribute="leading" secondItem="zcX-ne-S5I" secondAttribute="leading" id="Ux0-Se-cxT"/>
+                                                <constraint firstAttribute="trailing" secondItem="0l6-pO-dnc" secondAttribute="trailing" id="XIJ-jO-eOQ"/>
+                                                <constraint firstAttribute="trailing" secondItem="b6T-yK-3EU" secondAttribute="trailing" id="cYh-QE-oAI"/>
+                                                <constraint firstItem="b6T-yK-3EU" firstAttribute="top" secondItem="0l6-pO-dnc" secondAttribute="bottom" id="jU2-hE-wjf"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
                                     <constraint firstItem="6o1-Ly-Z3l" firstAttribute="top" secondItem="jBn-oB-urD" secondAttribute="top" id="0VG-JV-gxq"/>
                                     <constraint firstAttribute="trailing" secondItem="6o1-Ly-Z3l" secondAttribute="trailing" id="1sA-s3-cEb"/>
+                                    <constraint firstItem="zcX-ne-S5I" firstAttribute="centerX" secondItem="jBn-oB-urD" secondAttribute="centerX" id="4R7-RR-7G0"/>
                                     <constraint firstAttribute="bottom" secondItem="6o1-Ly-Z3l" secondAttribute="bottom" id="5gg-u6-0fN"/>
+                                    <constraint firstItem="zcX-ne-S5I" firstAttribute="leading" secondItem="jBn-oB-urD" secondAttribute="leading" constant="20" id="Hkg-jL-9Z8"/>
+                                    <constraint firstItem="zcX-ne-S5I" firstAttribute="centerY" secondItem="jBn-oB-urD" secondAttribute="centerY" id="V1K-Kh-Tsh"/>
+                                    <constraint firstAttribute="trailing" secondItem="zcX-ne-S5I" secondAttribute="trailing" constant="20" id="f8c-Tq-MUZ"/>
                                     <constraint firstItem="6o1-Ly-Z3l" firstAttribute="leading" secondItem="jBn-oB-urD" secondAttribute="leading" id="qxg-hZ-syM"/>
                                 </constraints>
                                 <connections>
+                                    <outlet property="detailLabel" destination="b6T-yK-3EU" id="Osc-hI-Ukp"/>
                                     <outlet property="imageView" destination="6o1-Ly-Z3l" id="jAF-Dz-geq"/>
+                                    <outlet property="titleLabel" destination="0l6-pO-dnc" id="Bga-kj-DhY"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>

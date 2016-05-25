@@ -7,21 +7,27 @@
 //
 
 import Foundation
+import CoreData
 
 struct CatchupResponseSerializer {
     
-    typealias T = ([Catchup],[Sport])
+    typealias T = [Catchup]
     
     enum CatchupError: ErrorType {
         case InvalidJSONStructure
     }
     
-    static func serializer() -> ResponseSerializer <T> {
-        return ResponseSerializer{ data, response, error in
+    static func serializer() -> ManagedObjectResponseSerializer <T> {
+        return ManagedObjectResponseSerializer{ context, data, response, error in
             let json = try VideoshopResponseSerializer.serializer().serializeResponse(data, response: response, error: error)
             let sports: [[String: AnyObject]] = try json.extract("sports")
             let catchups: [[String: AnyObject]] = try json.extract("catchups")
-            return (CatchupParser.parse(catchups),SportParser.parse(sports))
+            
+            // process the sports
+            SportParser.parse(sports, context: context)
+            
+            //process the catchups
+            return(CatchupParser.parse(catchups, context: context))
         }
     }
     

@@ -7,25 +7,26 @@
 //
 
 import Foundation
+import CoreData
 
-internal struct StreamParser: JSONParsingType {
+internal struct StreamParser: JSONCoreDataParsingType {
     
     typealias T = Stream
     
-    enum StreamError : ErrorType {
-        case InvalidURL
-    }
-    
-    static func parse(json: [String : AnyObject]) throws -> T {
+    static func parse(json: [String : AnyObject], context: NSManagedObjectContext) throws -> T {
         let identifier: Int = try json.extract("id")
         let language: Int = try json.extract("lang")
-        guard let securedURL = NSURL(string: try json.extract("securedurl")) else {
-            throw StreamError.InvalidURL
+        let url: String = try json.extract("url")
+        
+        guard let stream = Stream(managedObjectContext: context) else {
+            throw JSONCoreDataError.UnableToCreateInstance
         }
-        guard let URL = NSURL(string: try json.extract("url")) else {
-            throw StreamError.InvalidURL
-        }
-        return Stream(identifier: identifier, language: language, securedURL: securedURL, URL: URL)
+        
+        stream.identifier = identifier
+        stream.urlString = url
+        
+        return stream
+        
     }
     
 }

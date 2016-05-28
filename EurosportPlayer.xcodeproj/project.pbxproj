@@ -43,7 +43,6 @@
 		DE969D7A1CD50B1300A8A313 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE969D791CD50B1300A8A313 /* Assets.xcassets */; };
 		DE969D7D1CD50B1300A8A313 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE969D7B1CD50B1300A8A313 /* LaunchScreen.storyboard */; };
 		DE969D8C1CD51EA300A8A313 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE969D8B1CD51EA300A8A313 /* AppDelegate.swift */; };
-		DE969D8E1CD51EA300A8A313 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE969D8D1CD51EA300A8A313 /* FirstViewController.swift */; };
 		DE969D901CD51EA300A8A313 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE969D8F1CD51EA300A8A313 /* SecondViewController.swift */; };
 		DE969D931CD51EA300A8A313 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE969D911CD51EA300A8A313 /* Main.storyboard */; };
 		DE969D951CD51EA300A8A313 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE969D941CD51EA300A8A313 /* Assets.xcassets */; };
@@ -56,8 +55,10 @@
 		DEB459A81CE8C91D0057259C /* Sport.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB459A21CE8C91C0057259C /* Sport.swift */; };
 		DEB459A91CE8C91D0057259C /* Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB459A31CE8C91C0057259C /* Stream.swift */; };
 		DEB45A031CE8D21C0057259C /* ManagedObjectContextSettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB45A021CE8D21C0057259C /* ManagedObjectContextSettable.swift */; };
-		DED8D18B1CF62EC100B016B9 /* SportCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED8D18A1CF62EC100B016B9 /* SportCollectionViewCell.swift */; };
+		DEC4275A1CF9C04B00AE8C31 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC427591CF9C04B00AE8C31 /* Theme.swift */; };
+		DED8D18B1CF62EC100B016B9 /* DoubleLabelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED8D18A1CF62EC100B016B9 /* DoubleLabelCollectionViewCell.swift */; };
 		DED8D18D1CF6340A00B016B9 /* UIImage+Dimming.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED8D18C1CF6340A00B016B9 /* UIImage+Dimming.swift */; };
+		DED8D18F1CF636BC00B016B9 /* CatchupsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED8D18E1CF636BC00B016B9 /* CatchupsCollectionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -156,7 +157,6 @@
 		DE969D7E1CD50B1300A8A313 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DE969D891CD51EA300A8A313 /* EurosportPlayerTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EurosportPlayerTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE969D8B1CD51EA300A8A313 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DE969D8D1CD51EA300A8A313 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		DE969D8F1CD51EA300A8A313 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		DE969D921CD51EA300A8A313 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DE969D941CD51EA300A8A313 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -170,8 +170,10 @@
 		DEB459A21CE8C91C0057259C /* Sport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sport.swift; sourceTree = "<group>"; };
 		DEB459A31CE8C91C0057259C /* Stream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stream.swift; sourceTree = "<group>"; };
 		DEB45A021CE8D21C0057259C /* ManagedObjectContextSettable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectContextSettable.swift; sourceTree = "<group>"; };
-		DED8D18A1CF62EC100B016B9 /* SportCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SportCollectionViewCell.swift; sourceTree = "<group>"; };
+		DEC427591CF9C04B00AE8C31 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		DED8D18A1CF62EC100B016B9 /* DoubleLabelCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleLabelCollectionViewCell.swift; sourceTree = "<group>"; };
 		DED8D18C1CF6340A00B016B9 /* UIImage+Dimming.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Dimming.swift"; sourceTree = "<group>"; };
+		DED8D18E1CF636BC00B016B9 /* CatchupsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatchupsCollectionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -327,11 +329,10 @@
 		DE969D8A1CD51EA300A8A313 /* EurosportPlayerTV */ = {
 			isa = PBXGroup;
 			children = (
-				DED8D1891CF62E9800B016B9 /* Views */,
+				DEC427581CF9C03700AE8C31 /* Controller */,
+				DEC427571CF9C02500AE8C31 /* Model */,
+				DED8D1891CF62E9800B016B9 /* View */,
 				DE969D8B1CD51EA300A8A313 /* AppDelegate.swift */,
-				DE969D8D1CD51EA300A8A313 /* FirstViewController.swift */,
-				DE39BCBC1CE7CE5400347716 /* SportsCollectionViewController.swift */,
-				DE969D8F1CD51EA300A8A313 /* SecondViewController.swift */,
 				DE969D911CD51EA300A8A313 /* Main.storyboard */,
 				DE969D941CD51EA300A8A313 /* Assets.xcassets */,
 				DE969D961CD51EA300A8A313 /* Info.plist */,
@@ -340,13 +341,31 @@
 			path = EurosportPlayerTV;
 			sourceTree = "<group>";
 		};
-		DED8D1891CF62E9800B016B9 /* Views */ = {
+		DEC427571CF9C02500AE8C31 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DEC427591CF9C04B00AE8C31 /* Theme.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		DEC427581CF9C03700AE8C31 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				DE39BCBC1CE7CE5400347716 /* SportsCollectionViewController.swift */,
+				DED8D18E1CF636BC00B016B9 /* CatchupsCollectionViewController.swift */,
+				DE969D8F1CD51EA300A8A313 /* SecondViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		DED8D1891CF62E9800B016B9 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				DE39BCBE1CE7D35100347716 /* ImageCollectionViewCell.swift */,
-				DED8D18A1CF62EC100B016B9 /* SportCollectionViewCell.swift */,
+				DED8D18A1CF62EC100B016B9 /* DoubleLabelCollectionViewCell.swift */,
 			);
-			name = Views;
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -536,7 +555,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "mogenerator --model \"${TARGET_NAME}/${TARGET_NAME}.xcdatamodeld\" --v2 --swift --template-var frc=true";
+			shellScript = "mogenerator --model \"${TARGET_NAME}/${TARGET_NAME}.xcdatamodeld\"  --swift --template-var arc=true --template-var frc=true --template-var modules=true --output-dir \"${TARGET_NAME}/\"";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -605,9 +624,10 @@
 				DED8D18D1CF6340A00B016B9 /* UIImage+Dimming.swift in Sources */,
 				DE39BCC01CE7D35100347716 /* ImageCollectionViewCell.swift in Sources */,
 				DE39BCBD1CE7CE5400347716 /* SportsCollectionViewController.swift in Sources */,
-				DED8D18B1CF62EC100B016B9 /* SportCollectionViewCell.swift in Sources */,
+				DED8D18B1CF62EC100B016B9 /* DoubleLabelCollectionViewCell.swift in Sources */,
 				DE969D8C1CD51EA300A8A313 /* AppDelegate.swift in Sources */,
-				DE969D8E1CD51EA300A8A313 /* FirstViewController.swift in Sources */,
+				DEC4275A1CF9C04B00AE8C31 /* Theme.swift in Sources */,
+				DED8D18F1CF636BC00B016B9 /* CatchupsCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

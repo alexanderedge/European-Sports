@@ -5,7 +5,11 @@ import Foundation
 import CoreData
 
 public enum CatchupAttributes: String {
+    case catchupDescription = "catchupDescription"
+    case expirationDate = "expirationDate"
     case identifier = "identifier"
+    case imageURL = "imageURL"
+    case startDate = "startDate"
     case title = "title"
 }
 
@@ -40,7 +44,19 @@ public class _Catchup: NSManagedObject {
     // MARK: - Properties
 
     @NSManaged public
-    var identifier: NSNumber
+    var catchupDescription: String
+
+    @NSManaged public
+    var expirationDate: NSDate
+
+    @NSManaged public
+    var identifier: NSNumber?
+
+    @NSManaged public
+    var imageURL: AnyObject
+
+    @NSManaged public
+    var startDate: NSDate
 
     @NSManaged public
     var title: String

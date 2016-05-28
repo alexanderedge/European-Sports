@@ -5,10 +5,6 @@ import CoreData
 public class Sport: _Sport {
 	// Custom logic goes here.
     
-    public var imageURL: NSURL? {
-        return NSURL(string: imageURLString)
-    }
-    
     public class func object(withIdentifier identifier: Int, inContext context: NSManagedObjectContext) throws -> Sport? {
         
         // check for an existing object with this identifier
@@ -28,7 +24,6 @@ public class Sport: _Sport {
     }
     
 }
-
 
 extension Sport: Fetchable {
     public typealias FetchableType = Sport

@@ -39,10 +39,10 @@ public class _Stream: NSManagedObject {
     // MARK: - Properties
 
     @NSManaged public
-    var identifier: NSNumber
+    var identifier: NSNumber?
 
     @NSManaged public
-    var urlString: String
+    var url: AnyObject
 
     // MARK: - Relationships
 

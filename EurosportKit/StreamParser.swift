@@ -13,17 +13,24 @@ internal struct StreamParser: JSONCoreDataParsingType {
     
     typealias T = Stream
     
+    enum StreamError : ErrorType {
+        case InvalidURL
+    }
+    
     static func parse(json: [String : AnyObject], context: NSManagedObjectContext) throws -> T {
         let identifier: Int = try json.extract("id")
         let language: Int = try json.extract("lang")
-        let url: String = try json.extract("url")
         
         guard let stream = Stream(managedObjectContext: context) else {
             throw JSONCoreDataError.UnableToCreateInstance
         }
         
+        guard let url = NSURL(string: try json.extract("url")) else {
+            throw StreamError.InvalidURL
+        }
+        
         stream.identifier = identifier
-        stream.urlString = url
+        stream.url = url
         
         return stream
         

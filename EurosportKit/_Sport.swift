@@ -14,10 +14,6 @@ public enum SportRelationships: String {
     case catchups = "catchups"
 }
 
-public enum SportFetchedProperties: String {
-    case fetchedProperty = "fetchedProperty"
-}
-
 public class _Sport: NSManagedObject {
 
     // MARK: - Class methods
@@ -44,10 +40,10 @@ public class _Sport: NSManagedObject {
     // MARK: - Properties
 
     @NSManaged public
-    var identifier: NSNumber
+    var identifier: NSNumber?
 
     @NSManaged public
-    var imageURLString: String
+    var imageURL: AnyObject
 
     @NSManaged public
     var name: String
@@ -56,9 +52,6 @@ public class _Sport: NSManagedObject {
 
     @NSManaged public
     var catchups: NSSet
-
-    @NSManaged public
-    var fetchedProperty: [Sport]
 
 }
 

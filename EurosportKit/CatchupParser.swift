@@ -15,6 +15,55 @@ internal struct CatchupParser: JSONCoreDataParsingType {
     
     enum CatchupError : ErrorType {
         case InvalidImageURL
+        case InvalidTechnicalDate
+        case InvalidTime
+        case InvalidDate
+    }
+    
+    static let technicalDateFormatter: NSDateFormatter = {
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "y-MM-dd"
+        formatter.calendar = calendar
+        return formatter
+    }()
+    
+    static let timeFormatter: NSDateFormatter = {
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "HH:mm"
+        formatter.calendar = calendar
+        return formatter
+    }()
+    
+    static let calendar: NSCalendar = {
+        let calendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)!
+        calendar.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+        calendar.timeZone = NSTimeZone(abbreviation: "UTC")!
+        return calendar
+    }()
+    
+    static func dateFromJSON(json: [String: AnyObject]) throws -> NSDate? {
+        guard let startDate = technicalDateFormatter.dateFromString(try json.extract("technicaldate")) else {
+            throw CatchupError.InvalidTechnicalDate
+        }
+        
+        guard let startTime = timeFormatter.dateFromString(try json.extract("time")) else {
+            throw CatchupError.InvalidTime
+        }
+        
+        let year = calendar.component(.Year, fromDate: startDate)
+        let month = calendar.component(.Month, fromDate: startDate)
+        let day = calendar.component(.Day, fromDate: startDate)
+        let hour = calendar.component(.Hour, fromDate: startTime)
+        let minute = calendar.component(.Minute, fromDate: startTime)
+        
+        let dateComponents = NSDateComponents()
+        dateComponents.year = year
+        dateComponents.month = month
+        dateComponents.day = day
+        dateComponents.hour = hour
+        dateComponents.minute = minute
+        return calendar.dateFromComponents(dateComponents)
+        
     }
     
     static func parse(json: [String : AnyObject], context: NSManagedObjectContext) throws -> T {
@@ -38,10 +87,22 @@ internal struct CatchupParser: JSONCoreDataParsingType {
             throw JSONCoreDataError.UnableToCreateInstance
         }
         
+        guard let startDate = try dateFromJSON(try json.extract("startdate")) else {
+            throw CatchupError.InvalidDate
+        }
+        catchup.startDate = startDate
+        
+        guard let expirationDate = try dateFromJSON(try json.extract("expirationdate")) else {
+            throw CatchupError.InvalidDate
+        }
+        catchup.expirationDate = expirationDate
+        
         catchup.streams = NSSet(array: streams)
         catchup.sport = sport
         catchup.identifier = identifier
         catchup.title = title
+        catchup.catchupDescription = description
+        catchup.imageURL = imageURL
         return catchup
     
     }

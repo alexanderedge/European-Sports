@@ -1,41 +1,25 @@
 //
-//  SportsCollectionViewController.swift
+//  CatchupsCollectionViewController.swift
 //  EurosportPlayer
 //
-//  Created by Alexander Edge on 14/05/2016.
+//  Created by Alexander Edge on 25/05/2016.
 //  Copyright © 2016 Alexander Edge Ltd. All rights reserved.
 //
 
 import UIKit
-import AVFoundation
 import CoreData
 import EurosportKit
 
 private let reuseIdentifier = "Cell"
 
-extension UIColor {
-    
-    private static var randomComponent: CGFloat {
-        return CGFloat(arc4random_uniform(255)) / 255
-    }
-    
-    public static var random: UIColor {
-        return UIColor(red: randomComponent, green: randomComponent, blue: randomComponent, alpha: 1.0)
-    }
-    
-}
+class CatchupsCollectionViewController: UICollectionViewController, ManagedObjectContextSettable {
 
-class SportsCollectionViewController: UICollectionViewController, ManagedObjectContextSettable {
-
-    enum SegueIdentifiers: String {
-        case ShowCatchups
-    }
-    
     var managedObjectContext: NSManagedObjectContext!
-    var selectedSport: Sport?
+    var sport: Sport!
     
     lazy var fetchedResultsController: NSFetchedResultsController = {
-        let fetchRequest = Sport.fetchRequest(nil, sortedBy: "name", ascending: true)
+        let predicate = NSPredicate(format: "sport == %@", self.sport)
+        let fetchRequest = Catchup.fetchRequest(predicate, sortedBy: "startDate", ascending: false)
         let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
         frc.delegate = self
         
@@ -50,65 +34,20 @@ class SportsCollectionViewController: UICollectionViewController, ManagedObjectC
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        User.login("alexander.edge@googlemail.com", password: "q6v-BXt-V57-E4r") { result in
-            
-            switch result {
-            case .Success(let user):
-                print("user loggedn in: \(user)")
-                
-                Token.fetch(user.identifier, hkey: user.hkey) { result in
-                    
-                    switch result {
-                    case .Success(let token):
-                        
-                        Catchup.fetch(self.managedObjectContext) { result in
-                            
-                            switch result {
-                                
-                            case .Success(let catchups):
-                                
-                                print("loaded \(catchups.count) catchups");
-                                
-                                
-                                break
-                            case .Failure(let error):
-                                print("error: \(error)")
-                                break
-                                
-                            }
-                            
-                            }.resume()
-                        
-                        break
-                    case .Failure(let error):
-                        print("error: \(error)")
-                        break
-                    }
-                    
-                    }.resume()
-                
-                break
-            case .Failure(let error):
-                print("error: \(error)")
-                break
-            }
-            
-            }.resume()
-        
+
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     // MARK: Utility
     
-    private func objectAt(indexPath: NSIndexPath) -> Sport {
-        return fetchedResultsController.objectAtIndexPath(indexPath) as! Sport
+    private func objectAt(indexPath: NSIndexPath) -> Catchup {
+        return fetchedResultsController.objectAtIndexPath(indexPath) as! Catchup
     }
-    
+
     // MARK: UICollectionViewDataSource
 
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -117,8 +56,7 @@ class SportsCollectionViewController: UICollectionViewController, ManagedObjectC
         }
         return sections.count
     }
-
-
+    
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard let sections = fetchedResultsController.sections where sections.count > section else {
             return 0
@@ -136,12 +74,12 @@ class SportsCollectionViewController: UICollectionViewController, ManagedObjectC
             return
         }
         
-        let sport = objectAt(indexPath)
+        let catchup = objectAt(indexPath)
         
-        cell.titleLabel.text = sport.name
-        cell.detailLabel.text = NSString.localizedStringWithFormat(NSLocalizedString("%@ videos", comment: ""), NSNumberFormatter.localizedStringFromNumber(sport.catchups.count, numberStyle: .NoStyle)) as String
+        cell.titleLabel.text = catchup.title
+        cell.detailLabel.text = catchup.catchupDescription
         
-        if let url = sport.imageURL as? NSURL {
+        if let url = catchup.imageURL as? NSURL {
             NSURLSession.sharedSession().dataTaskWithURL(url) { data, response, error in
                 
                 guard let data = data, image = UIImage(data: data) else {
@@ -157,23 +95,11 @@ class SportsCollectionViewController: UICollectionViewController, ManagedObjectC
                     
                 }
                 
-            }.resume()
+                }.resume()
         }
-
-    }
-    
-    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        
-        let sport = objectAt(indexPath)
-
-        selectedSport = sport
-        
-        performSegueWithIdentifier(SegueIdentifiers.ShowCatchups.rawValue, sender: nil)
-        
-        print("selected \(sport.name)")
         
     }
-    
+
     // MARK: UICollectionViewDelegate
 
     /*
@@ -204,10 +130,10 @@ class SportsCollectionViewController: UICollectionViewController, ManagedObjectC
     
     }
     */
-
+    
 }
 
-extension SportsCollectionViewController: NSFetchedResultsControllerDelegate {
+extension CatchupsCollectionViewController: NSFetchedResultsControllerDelegate {
     
     func controllerWillChangeContent(controller: NSFetchedResultsController) {
         
@@ -223,18 +149,6 @@ extension SportsCollectionViewController: NSFetchedResultsControllerDelegate {
     
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         self.collectionView?.reloadData()
-    }
-    
-}
-
-extension SportsCollectionViewController {
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        guard let identifierString = segue.identifier, identifier = SegueIdentifiers(rawValue: identifierString) where identifier == .ShowCatchups, let vc = segue.destinationViewController as? CatchupsCollectionViewController, sport = selectedSport else {
-            return
-        }
-        vc.sport = sport
-        vc.managedObjectContext = managedObjectContext
     }
     
 }

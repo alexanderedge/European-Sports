@@ -20,9 +20,9 @@ struct Router {
     
     private static func standardRequest(url: NSURL) -> NSMutableURLRequest {
         let mutableRequest = NSMutableURLRequest(URL: url)
-        mutableRequest.setValue("EurosportPlayer/5.1.5 (iPad; iOS 9.3.1; Scale/2.00)", forHTTPHeaderField: "User-Agent")
-        mutableRequest.setValue("en-GB;q=1, en;q=0.9", forHTTPHeaderField: "Accept-Language")
-        mutableRequest.setValue("gzip, deflate", forHTTPHeaderField: "Accept-Encoding")
+        mutableRequest.setValue("EurosportPlayer/5.1.5 (iPad; iOS 9.3.1; Scale/3.00)", forHTTPHeaderField: "User-Agent")
+        //mutableRequest.setValue("en-GB;q=1, en;q=0.9", forHTTPHeaderField: "Accept-Language")
+        //mutableRequest.setValue("gzip, deflate", forHTTPHeaderField: "Accept-Encoding")
         return mutableRequest
     }
     
@@ -110,6 +110,31 @@ struct Router {
         
     }
     
+    private enum Language: String {
+        case German = "de"
+        case English = "en"
+        case French = "fr"
+        
+        private var identifier: Int {
+            switch self {
+            case .German:
+                return 1
+            case .English:
+                return 2
+            case .French:
+                return 3
+            }
+        }
+        
+        static var preferredLanguage: Language {
+            guard let preferredLanguage = NSLocale.preferredLanguages().first, language = Language(rawValue: preferredLanguage) else {
+                return .English
+            }
+            return language
+        }
+        
+    }
+    
     enum Catchup: URLRequestConvertible {
         case Fetch
         
@@ -128,11 +153,11 @@ struct Router {
                 
                 do {
                     
-                    let contextData = try NSJSONSerialization.dataWithJSONObject(["g": "GB", "d":2], options: [])
+                    let contextData = try NSJSONSerialization.dataWithJSONObject(["g": "GB", "d": 2], options: [])
                     
                     params["context"] = String(data: contextData, encoding: NSUTF8StringEncoding)
                     
-                    let data = try NSJSONSerialization.dataWithJSONObject(["languageid": 2], options: [])
+                    let data = try NSJSONSerialization.dataWithJSONObject(["languageid": Language.preferredLanguage.identifier], options: [])
                     
                     params["data"] = String(data: data, encoding: NSUTF8StringEncoding)
                     

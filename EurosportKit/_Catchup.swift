@@ -67,34 +67,34 @@ public class _Catchup: NSManagedObject {
     var sport: Sport?
 
     @NSManaged public
-    var streams: NSSet
+    var streams: NSOrderedSet
 
 }
 
 extension _Catchup {
 
-    func addStreams(objects: NSSet) {
-        let mutable = self.streams.mutableCopy() as! NSMutableSet
-        mutable.unionSet(objects as Set<NSObject>)
-        self.streams = mutable.copy() as! NSSet
+    func addStreams(objects: NSOrderedSet) {
+        let mutable = self.streams.mutableCopy() as! NSMutableOrderedSet
+        mutable.unionOrderedSet(objects)
+        self.streams = mutable.copy() as! NSOrderedSet
     }
 
-    func removeStreams(objects: NSSet) {
-        let mutable = self.streams.mutableCopy() as! NSMutableSet
-        mutable.minusSet(objects as Set<NSObject>)
-        self.streams = mutable.copy() as! NSSet
+    func removeStreams(objects: NSOrderedSet) {
+        let mutable = self.streams.mutableCopy() as! NSMutableOrderedSet
+        mutable.minusOrderedSet(objects)
+        self.streams = mutable.copy() as! NSOrderedSet
     }
 
     func addStreamsObject(value: Stream) {
-        let mutable = self.streams.mutableCopy() as! NSMutableSet
+        let mutable = self.streams.mutableCopy() as! NSMutableOrderedSet
         mutable.addObject(value)
-        self.streams = mutable.copy() as! NSSet
+        self.streams = mutable.copy() as! NSOrderedSet
     }
 
     func removeStreamsObject(value: Stream) {
-        let mutable = self.streams.mutableCopy() as! NSMutableSet
+        let mutable = self.streams.mutableCopy() as! NSMutableOrderedSet
         mutable.removeObject(value)
-        self.streams = mutable.copy() as! NSSet
+        self.streams = mutable.copy() as! NSOrderedSet
     }
 
 }

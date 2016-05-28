@@ -56,6 +56,7 @@
 		DEB459A91CE8C91D0057259C /* Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB459A31CE8C91C0057259C /* Stream.swift */; };
 		DEB45A031CE8D21C0057259C /* ManagedObjectContextSettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB45A021CE8D21C0057259C /* ManagedObjectContextSettable.swift */; };
 		DEC4275A1CF9C04B00AE8C31 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC427591CF9C04B00AE8C31 /* Theme.swift */; };
+		DEC4275D1CF9D8C000AE8C31 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DEC4275F1CF9D8C000AE8C31 /* Localizable.strings */; };
 		DED8D18B1CF62EC100B016B9 /* DoubleLabelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED8D18A1CF62EC100B016B9 /* DoubleLabelCollectionViewCell.swift */; };
 		DED8D18D1CF6340A00B016B9 /* UIImage+Dimming.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED8D18C1CF6340A00B016B9 /* UIImage+Dimming.swift */; };
 		DED8D18F1CF636BC00B016B9 /* CatchupsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED8D18E1CF636BC00B016B9 /* CatchupsCollectionViewController.swift */; };
@@ -171,6 +172,9 @@
 		DEB459A31CE8C91C0057259C /* Stream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stream.swift; sourceTree = "<group>"; };
 		DEB45A021CE8D21C0057259C /* ManagedObjectContextSettable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectContextSettable.swift; sourceTree = "<group>"; };
 		DEC427591CF9C04B00AE8C31 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		DEC4275E1CF9D8C000AE8C31 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		DEC427601CF9DA2D00AE8C31 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		DEC427611CF9DE2700AE8C31 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		DED8D18A1CF62EC100B016B9 /* DoubleLabelCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleLabelCollectionViewCell.swift; sourceTree = "<group>"; };
 		DED8D18C1CF6340A00B016B9 /* UIImage+Dimming.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Dimming.swift"; sourceTree = "<group>"; };
 		DED8D18E1CF636BC00B016B9 /* CatchupsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatchupsCollectionViewController.swift; sourceTree = "<group>"; };
@@ -337,6 +341,7 @@
 				DE969D941CD51EA300A8A313 /* Assets.xcassets */,
 				DE969D961CD51EA300A8A313 /* Info.plist */,
 				DED8D18C1CF6340A00B016B9 /* UIImage+Dimming.swift */,
+				DEC4275F1CF9D8C000AE8C31 /* Localizable.strings */,
 			);
 			path = EurosportPlayerTV;
 			sourceTree = "<group>";
@@ -492,6 +497,8 @@
 			knownRegions = (
 				en,
 				Base,
+				de,
+				fr,
 			);
 			mainGroup = DE969D661CD50B1300A8A313;
 			productRefGroup = DE969D701CD50B1300A8A313 /* Products */;
@@ -536,6 +543,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE969D951CD51EA300A8A313 /* Assets.xcassets in Resources */,
+				DEC4275D1CF9D8C000AE8C31 /* Localizable.strings in Resources */,
 				DE969D931CD51EA300A8A313 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -679,6 +687,16 @@
 				DE969D921CD51EA300A8A313 /* Base */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		DEC4275F1CF9D8C000AE8C31 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DEC4275E1CF9D8C000AE8C31 /* Base */,
+				DEC427601CF9DA2D00AE8C31 /* de */,
+				DEC427611CF9DE2700AE8C31 /* fr */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

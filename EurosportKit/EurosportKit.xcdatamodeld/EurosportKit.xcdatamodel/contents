@@ -8,7 +8,7 @@
         <attribute name="startDate" attributeType="Date" syncable="YES"/>
         <attribute name="title" attributeType="String" syncable="YES"/>
         <relationship name="sport" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Sport" inverseName="catchups" inverseEntity="Sport" syncable="YES"/>
-        <relationship name="streams" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Stream" inverseName="catchup" inverseEntity="Stream" syncable="YES"/>
+        <relationship name="streams" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Stream" inverseName="catchup" inverseEntity="Stream" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="identifier"/>

@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import EurosportKit
+import AVKit
 
 private let reuseIdentifier = "Cell"
 
@@ -17,8 +18,12 @@ class CatchupsCollectionViewController: UICollectionViewController, ManagedObjec
     var managedObjectContext: NSManagedObjectContext!
     var sport: Sport!
     
+    
+    // TODO: remove this
+    var token: Token!
+    
     lazy var fetchedResultsController: NSFetchedResultsController = {
-        let predicate = NSPredicate(format: "sport == %@", self.sport)
+        let predicate = NSPredicate(format: "sport == %@ AND expirationDate > %@", self.sport, NSDate())
         let fetchRequest = Catchup.fetchRequest(predicate, sortedBy: "startDate", ascending: false)
         let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
         frc.delegate = self
@@ -35,6 +40,9 @@ class CatchupsCollectionViewController: UICollectionViewController, ManagedObjec
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        title = sport.name
+        view.backgroundColor = Theme.Colours.BackgroundColour
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -86,7 +94,8 @@ class CatchupsCollectionViewController: UICollectionViewController, ManagedObjec
                     return
                 }
                 
-                // add a black overlay
+                // add a black overlay to the image so the 
+                // text is more legible
                 let adjustedImage = image.imageWithBlackOverlay(0.6)
                 
                 dispatch_async(dispatch_get_main_queue()) {
@@ -99,37 +108,24 @@ class CatchupsCollectionViewController: UICollectionViewController, ManagedObjec
         }
         
     }
-
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(collectionView: UICollectionView, shouldHighlightItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(collectionView: UICollectionView, shouldShowMenuForItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(collectionView: UICollectionView, canPerformAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) -> Bool {
-        return false
-    }
-
-    override func collectionView(collectionView: UICollectionView, performAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) {
     
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        
+        let catchup = objectAt(indexPath)
+        
+        print("selected \(catchup.catchupDescription)")
+        
+        
+        if let stream = catchup.streams.firstObject as? Stream {
+            
+            print("stream: \(stream)")
+            
+            self.showVideoForURL(stream.url.URLByAppendingQueryParameters(["token": token.token, "hdnea": token.hdnea]), options: nil)
+            
+        }
+        
+        
     }
-    */
     
 }
 
@@ -152,3 +148,59 @@ extension CatchupsCollectionViewController: NSFetchedResultsControllerDelegate {
     }
     
 }
+
+extension CatchupsCollectionViewController {
+    func showVideoForURL(url: NSURL, options: [String : AnyObject]?) {
+        let playerController = AVPlayerViewController()
+        
+        let asset = AVURLAsset(URL: url, options: options)
+        let player = AVPlayer(playerItem: AVPlayerItem(asset: asset))
+        playerController.player = player
+        
+        self.presentViewController(playerController, animated: true) {
+            player.play()
+        }
+    }
+}
+
+protocol URLQueryParameterStringConvertible {
+    var queryParameters: String {get}
+}
+
+extension Dictionary : URLQueryParameterStringConvertible {
+    /**
+     This computed property returns a query parameters string from the given NSDictionary. For
+     example, if the input is @{@"day":@"Tuesday", @"month":@"January"}, the output
+     string will be @"day=Tuesday&month=January".
+     @return The computed parameters string.
+     */
+    var queryParameters: String {
+        var parts: [String] = []
+        for (key, value) in self {
+            let part = NSString(format: "%@=%@",
+                                String(key).stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!,
+                                String(value).stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!)
+            parts.append(part as String)
+        }
+        return parts.joinWithSeparator("&")
+    }
+    
+}
+
+extension NSURL {
+    /**
+     Creates a new URL by adding the given query parameters.
+     @param parametersDictionary The query parameter dictionary to add.
+     @return A new NSURL.
+     */
+    func URLByAppendingQueryParameters(parametersDictionary: [String: String]) -> NSURL {
+        guard let components = NSURLComponents(URL: self, resolvingAgainstBaseURL: false), let queryItems = components.queryItems where !queryItems.isEmpty else {
+            return NSURL(string:self.absoluteString.stringByAppendingFormat("?%@", parametersDictionary.queryParameters))!
+        }
+        guard let url = components.URL else {
+            return self
+        }
+        return NSURL(string:url.absoluteString.stringByAppendingFormat("&%@", parametersDictionary.queryParameters))!
+    }
+}
+

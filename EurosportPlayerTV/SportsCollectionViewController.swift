@@ -33,6 +33,7 @@ class SportsCollectionViewController: UICollectionViewController, ManagedObjectC
     
     var managedObjectContext: NSManagedObjectContext!
     var selectedSport: Sport?
+    var token: Token!
     
     lazy var fetchedResultsController: NSFetchedResultsController = {
         let fetchRequest = Sport.fetchRequest(nil, sortedBy: "name", ascending: true)
@@ -51,6 +52,10 @@ class SportsCollectionViewController: UICollectionViewController, ManagedObjectC
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = NSLocalizedString("sports-title", comment: "title for the sports screen")
+        
+        view.backgroundColor = Theme.Colours.BackgroundColour
+        
         User.login("alexander.edge@googlemail.com", password: "q6v-BXt-V57-E4r") { result in
             
             switch result {
@@ -61,6 +66,8 @@ class SportsCollectionViewController: UICollectionViewController, ManagedObjectC
                     
                     switch result {
                     case .Success(let token):
+                        
+                        self.token = token
                         
                         Catchup.fetch(self.managedObjectContext) { result in
                             
@@ -139,7 +146,7 @@ class SportsCollectionViewController: UICollectionViewController, ManagedObjectC
         let sport = objectAt(indexPath)
         
         cell.titleLabel.text = sport.name
-        cell.detailLabel.text = NSString.localizedStringWithFormat(NSLocalizedString("%@ videos", comment: ""), NSNumberFormatter.localizedStringFromNumber(sport.catchups.count, numberStyle: .NoStyle)) as String
+        cell.detailLabel.text = NSString.localizedStringWithFormat(sport.catchups.count > 1 ? NSLocalizedString("video-count-plural", comment: "e.g. 1 video") : NSLocalizedString("video-count-singular", comment: "e.g. 2 videos"), NSNumberFormatter.localizedStringFromNumber(sport.catchups.count, numberStyle: .NoStyle)) as String
         
         if let url = sport.imageURL as? NSURL {
             NSURLSession.sharedSession().dataTaskWithURL(url) { data, response, error in
@@ -173,37 +180,6 @@ class SportsCollectionViewController: UICollectionViewController, ManagedObjectC
         print("selected \(sport.name)")
         
     }
-    
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(collectionView: UICollectionView, shouldHighlightItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(collectionView: UICollectionView, shouldShowMenuForItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(collectionView: UICollectionView, canPerformAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) -> Bool {
-        return false
-    }
-
-    override func collectionView(collectionView: UICollectionView, performAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) {
-    
-    }
-    */
 
 }
 
@@ -233,6 +209,7 @@ extension SportsCollectionViewController {
         guard let identifierString = segue.identifier, identifier = SegueIdentifiers(rawValue: identifierString) where identifier == .ShowCatchups, let vc = segue.destinationViewController as? CatchupsCollectionViewController, sport = selectedSport else {
             return
         }
+        vc.token = token
         vc.sport = sport
         vc.managedObjectContext = managedObjectContext
     }

@@ -97,7 +97,7 @@ internal struct CatchupParser: JSONCoreDataParsingType {
         }
         catchup.expirationDate = expirationDate
         
-        catchup.streams = NSSet(array: streams)
+        catchup.streams = NSOrderedSet(array: streams)
         catchup.sport = sport
         catchup.identifier = identifier
         catchup.title = title

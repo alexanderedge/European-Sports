@@ -79,13 +79,11 @@ internal struct CatchupParser: JSONCoreDataParsingType {
         let streamJSON: [[String: AnyObject]] = try json.extract("catchupstreams")
         
         let sportIdentifier: Int = try sportJSON.extract("id")
-        let sport = try Sport.object(withIdentifier: sportIdentifier, inContext: context)
+        let sport = try Sport.newOrExistingObject(sportIdentifier, inContext: context)
         
         let streams = StreamParser.parse(streamJSON, context: context)
         
-        guard let catchup = Catchup(managedObjectContext: context) else {
-            throw JSONCoreDataError.UnableToCreateInstance
-        }
+        let catchup = try Catchup.newOrExistingObject(identifier, inContext: context)
         
         guard let startDate = try dateFromJSON(try json.extract("startdate")) else {
             throw CatchupError.InvalidDate

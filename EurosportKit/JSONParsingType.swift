@@ -26,7 +26,7 @@
 
 import Foundation
 
-protocol JSONParsingType {
+internal protocol JSONParsingType {
     associatedtype T
     static func parse(json : [String : AnyObject]) throws -> T
     static func parse(json : [[String : AnyObject]]) -> [T]

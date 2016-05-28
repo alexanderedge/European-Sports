@@ -9,11 +9,7 @@
 import Foundation
 import CoreData
 
-enum JSONCoreDataError: ErrorType {
-    case UnableToCreateInstance
-}
-
-protocol JSONCoreDataParsingType {
+internal protocol JSONCoreDataParsingType {
     associatedtype T: NSManagedObject
     static func parse(json : [String : AnyObject], context: NSManagedObjectContext) throws -> T
     static func parse(json : [[String : AnyObject]], context: NSManagedObjectContext) -> [T]

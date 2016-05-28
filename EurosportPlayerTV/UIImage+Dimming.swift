@@ -10,7 +10,9 @@ import UIKit
 
 extension UIImage {
     
-    // apply a black layer over the image
+    // add a black overlay to the image so the
+    // text is more legible
+    
     internal func imageWithBlackOverlay(alpha: CGFloat) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(size, true, 0)
         self.drawAtPoint(.zero)

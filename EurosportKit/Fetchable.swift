@@ -13,6 +13,10 @@ public protocol Fetchable  {
     associatedtype FetchableType: NSManagedObject
     
     static func entityName() -> String
+    static func entity(managedObjectContext: NSManagedObjectContext) -> NSEntityDescription?
+    
+    init?(context: NSManagedObjectContext)
+    
     static func objectsInContext(context: NSManagedObjectContext, predicate: NSPredicate?, sortedBy: String?, ascending: Bool) throws -> [FetchableType]
     static func singleObjectInContext(context: NSManagedObjectContext, predicate: NSPredicate?, sortedBy: String?, ascending: Bool) throws -> FetchableType?
     static func objectCountInContext(context: NSManagedObjectContext, predicate: NSPredicate?) -> Int
@@ -20,7 +24,15 @@ public protocol Fetchable  {
     
 }
 
-extension Fetchable where Self : NSManagedObject, FetchableType == Self {
+extension Fetchable where Self: NSManagedObject, FetchableType == Self {
+    
+    public init(context: NSManagedObjectContext) {
+        self.init(entity: Self.entity(context)!, insertIntoManagedObjectContext: context)
+    }
+        
+    public static func entity(managedObjectContext: NSManagedObjectContext) -> NSEntityDescription? {
+        return  NSEntityDescription.entityForName(entityName(), inManagedObjectContext: managedObjectContext)
+    }
     
     public static func singleObjectInContext(context: NSManagedObjectContext, predicate: NSPredicate? = nil, sortedBy: String? = nil, ascending: Bool = false) throws -> FetchableType? {
         let fr = fetchRequest(predicate, sortedBy: sortedBy, ascending: ascending)

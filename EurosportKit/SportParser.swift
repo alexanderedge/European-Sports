@@ -25,9 +25,7 @@ internal struct SportParser: JSONCoreDataParsingType {
             throw SportError.InvalidImageURL
         }
         
-        guard let sport = try Sport.object(withIdentifier: identifier, inContext: context) else {
-            throw JSONCoreDataError.UnableToCreateInstance
-        }
+        let sport = try Sport.newOrExistingObject(identifier, inContext: context)
         sport.name = name
         sport.imageURL = imageURL
         return sport

@@ -61,6 +61,10 @@
 		DEC4276A1CF9E51500AE8C31 /* FetchedResultsControllerBackedType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC427691CF9E51500AE8C31 /* FetchedResultsControllerBackedType.swift */; };
 		DEC4276C1CF9F19F00AE8C31 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC4276B1CF9F19F00AE8C31 /* User.swift */; };
 		DEC4276E1CF9F1B300AE8C31 /* _User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC4276D1CF9F1B300AE8C31 /* _User.swift */; };
+		DEC427701CF9F6A500AE8C31 /* UIImageView+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC4276F1CF9F6A500AE8C31 /* UIImageView+URL.swift */; };
+		DEC427721CF9F89D00AE8C31 /* StringIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC427711CF9F89D00AE8C31 /* StringIdentifiable.swift */; };
+		DEC427741CF9F8D400AE8C31 /* NumberIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC427731CF9F8D400AE8C31 /* NumberIdentifiable.swift */; };
+		DEC4277A1CFA005A00AE8C31 /* CoreDataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC427791CFA005A00AE8C31 /* CoreDataError.swift */; };
 		DED8D18B1CF62EC100B016B9 /* DoubleLabelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED8D18A1CF62EC100B016B9 /* DoubleLabelCollectionViewCell.swift */; };
 		DED8D18D1CF6340A00B016B9 /* UIImage+Dimming.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED8D18C1CF6340A00B016B9 /* UIImage+Dimming.swift */; };
 		DED8D18F1CF636BC00B016B9 /* CatchupsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED8D18E1CF636BC00B016B9 /* CatchupsCollectionViewController.swift */; };
@@ -183,6 +187,10 @@
 		DEC427691CF9E51500AE8C31 /* FetchedResultsControllerBackedType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedResultsControllerBackedType.swift; sourceTree = "<group>"; };
 		DEC4276B1CF9F19F00AE8C31 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = ../../../../../.Trash/User.swift; sourceTree = "<group>"; };
 		DEC4276D1CF9F1B300AE8C31 /* _User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _User.swift; sourceTree = "<group>"; };
+		DEC4276F1CF9F6A500AE8C31 /* UIImageView+URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+URL.swift"; sourceTree = "<group>"; };
+		DEC427711CF9F89D00AE8C31 /* StringIdentifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringIdentifiable.swift; sourceTree = "<group>"; };
+		DEC427731CF9F8D400AE8C31 /* NumberIdentifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberIdentifiable.swift; sourceTree = "<group>"; };
+		DEC427791CFA005A00AE8C31 /* CoreDataError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataError.swift; sourceTree = "<group>"; };
 		DED8D18A1CF62EC100B016B9 /* DoubleLabelCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleLabelCollectionViewCell.swift; sourceTree = "<group>"; };
 		DED8D18C1CF6340A00B016B9 /* UIImage+Dimming.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Dimming.swift"; sourceTree = "<group>"; };
 		DED8D18E1CF636BC00B016B9 /* CatchupsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatchupsCollectionViewController.swift; sourceTree = "<group>"; };
@@ -262,6 +270,7 @@
 				DE39BCA11CE7705300347716 /* Token+Networking.swift */,
 				DE39BC961CE76AAD00347716 /* Result.swift */,
 				DEB459981CE8C6EE0057259C /* EurosportKit.xcdatamodeld */,
+				DEC427791CFA005A00AE8C31 /* CoreDataError.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -286,6 +295,8 @@
 				DE39BC8C1CE76A2A00347716 /* JSONParsingType.swift */,
 				DEB4599B1CE8C7EA0057259C /* JSONCoreDataParsingType.swift */,
 				DE3DC3B71CF4E17100AF5909 /* Fetchable.swift */,
+				DEC427711CF9F89D00AE8C31 /* StringIdentifiable.swift */,
+				DEC427731CF9F8D400AE8C31 /* NumberIdentifiable.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -389,6 +400,7 @@
 			children = (
 				DE39BCBE1CE7D35100347716 /* ImageCollectionViewCell.swift */,
 				DED8D18A1CF62EC100B016B9 /* DoubleLabelCollectionViewCell.swift */,
+				DEC4276F1CF9F6A500AE8C31 /* UIImageView+URL.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -583,7 +595,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "mogenerator --model \"${TARGET_NAME}/${TARGET_NAME}.xcdatamodeld\"  --swift --template-var arc=true --template-var frc=true --template-var modules=true --output-dir \"${TARGET_NAME}/\"";
+			shellScript = "#mogenerator --model \"${TARGET_NAME}/${TARGET_NAME}.xcdatamodeld\"  --swift --template-var arc=true --template-var frc=true --template-var modules=true --output-dir \"${TARGET_NAME}/\"";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -610,6 +622,7 @@
 				DE39BC931CE76A7B00347716 /* ResponseSerializer.swift in Sources */,
 				DE39BCB51CE7847800347716 /* Catchup+Networking.swift in Sources */,
 				DE39BC991CE76BBC00347716 /* User+Networking.swift in Sources */,
+				DEC427721CF9F89D00AE8C31 /* StringIdentifiable.swift in Sources */,
 				DE3DC3B41CF4D61400AF5909 /* ManagedObjectResponseSerializer.swift in Sources */,
 				DE39BCA71CE770D000347716 /* TokenParser.swift in Sources */,
 				DE39BCA01CE76E5000347716 /* Token.swift in Sources */,
@@ -619,7 +632,9 @@
 				DEB4599A1CE8C6EE0057259C /* EurosportKit.xcdatamodeld in Sources */,
 				DE39BC861CE7650A00347716 /* Router.swift in Sources */,
 				DE39BCA41CE770A400347716 /* TokenResponseSerializer.swift in Sources */,
+				DEC427741CF9F8D400AE8C31 /* NumberIdentifiable.swift in Sources */,
 				DEB459A51CE8C91C0057259C /* _Sport.swift in Sources */,
+				DEC4277A1CFA005A00AE8C31 /* CoreDataError.swift in Sources */,
 				DEB459A61CE8C91C0057259C /* _Stream.swift in Sources */,
 				DEC4276E1CF9F1B300AE8C31 /* _User.swift in Sources */,
 				DE39BC9B1CE76C2400347716 /* UserResponseSerializer.swift in Sources */,
@@ -653,6 +668,7 @@
 				DED8D18D1CF6340A00B016B9 /* UIImage+Dimming.swift in Sources */,
 				DEC427681CF9E41200AE8C31 /* DataSourceType.swift in Sources */,
 				DE39BCC01CE7D35100347716 /* ImageCollectionViewCell.swift in Sources */,
+				DEC427701CF9F6A500AE8C31 /* UIImageView+URL.swift in Sources */,
 				DE39BCBD1CE7CE5400347716 /* SportsCollectionViewController.swift in Sources */,
 				DED8D18B1CF62EC100B016B9 /* DoubleLabelCollectionViewCell.swift in Sources */,
 				DE969D8C1CD51EA300A8A313 /* AppDelegate.swift in Sources */,

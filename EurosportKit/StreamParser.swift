@@ -21,17 +21,13 @@ internal struct StreamParser: JSONCoreDataParsingType {
         let identifier: Int = try json.extract("id")
         let language: Int = try json.extract("lang")
         
-        guard let stream = Stream(managedObjectContext: context) else {
-            throw JSONCoreDataError.UnableToCreateInstance
-        }
-        
         guard let url = NSURL(string: try json.extract("url")) else {
             throw StreamError.InvalidURL
         }
         
+        let stream = Stream(managedObjectContext: context)!
         stream.identifier = identifier
         stream.url = url
-        
         return stream
         
     }

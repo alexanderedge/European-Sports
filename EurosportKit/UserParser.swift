@@ -22,11 +22,7 @@ internal struct UserParser : JSONCoreDataParsingType {
         let identifier: String = try json.extract("Id")
         let hkey: String = try json.extract("Hkey")
         let email: String = try json.extract("Email")
-        
-        guard let user = try User.object(withIdentifier: identifier, inContext: context) else {
-            throw JSONCoreDataError.UnableToCreateInstance
-        }
-        
+        let user = try User.newOrExistingObject(identifier, inContext: context)
         user.hkey = hkey
         user.email = email
         return user

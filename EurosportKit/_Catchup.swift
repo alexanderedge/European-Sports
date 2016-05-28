@@ -18,7 +18,7 @@ public enum CatchupRelationships: String {
     case streams = "streams"
 }
 
-public class _Catchup: NSManagedObject {
+public class _Catchup: NSManagedObject, NumberIdentifiable {
 
     // MARK: - Class methods
 

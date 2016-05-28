@@ -14,7 +14,7 @@ public enum SportRelationships: String {
     case catchups = "catchups"
 }
 
-public class _Sport: NSManagedObject {
+public class _Sport: NSManagedObject, NumberIdentifiable {
 
     // MARK: - Class methods
 

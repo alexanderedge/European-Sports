@@ -9,3 +9,7 @@ public class Stream: _Stream {
     }
     
 }
+
+extension Stream: Fetchable {
+    public typealias FetchableType = Stream
+}

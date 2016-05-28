@@ -23,7 +23,10 @@ class SportsCollectionViewController: FetchedResultsCollectionViewController, Da
     var selectedSport: Sport?
     
     override func fetchRequest() -> NSFetchRequest {
-        return Sport.fetchRequest(nil, sortedBy: "name", ascending: true)
+        // ensure we only show sports that contain at least one video that is available to watch
+        let predicate = NSPredicate(format: "SUBQUERY(catchups, $x, $x.expirationDate > %@).@count > 0", NSDate())
+        let fetchRequest = Sport.fetchRequest(predicate, sortedBy: "name", ascending: true)
+        return fetchRequest
     }
     
     override func viewDidLoad() {
@@ -86,25 +89,7 @@ class SportsCollectionViewController: FetchedResultsCollectionViewController, Da
         
         cell.titleLabel.text = sport.name
         cell.detailLabel.text = NSString.localizedStringWithFormat(sport.catchups.count > 1 ? NSLocalizedString("video-count-plural", comment: "e.g. 1 video") : NSLocalizedString("video-count-singular", comment: "e.g. 2 videos"), NSNumberFormatter.localizedStringFromNumber(sport.catchups.count, numberStyle: .NoStyle)) as String
-        
-        if let url = sport.imageURL as? NSURL {
-            NSURLSession.sharedSession().dataTaskWithURL(url) { data, response, error in
-                
-                guard let data = data, image = UIImage(data: data) else {
-                    return
-                }
-                
-                // add a black overlay
-                let adjustedImage = image.imageWithBlackOverlay(0.6)
-                
-                dispatch_async(dispatch_get_main_queue()) {
-                    
-                    cell.imageView?.image = adjustedImage
-                    
-                }
-                
-            }.resume()
-        }
+        cell.imageView.setImage(sport.imageURL as? NSURL, dimmed: true)
 
     }
     

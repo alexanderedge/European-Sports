@@ -8,15 +8,15 @@
 
 import Foundation
 
-public struct Token {
+internal struct Token {
     
-    public let token: String
-    public let hdnea: String
-    public let startDate: NSDate
-    public let expiryDate: NSDate
-    public let duration: NSTimeInterval
+    internal let token: String
+    internal let hdnea: String
+    internal let startDate: NSDate
+    internal let expiryDate: NSDate
+    internal let duration: NSTimeInterval
     
-    public var isExpired: Bool {
+    internal var isExpired: Bool {
         return expiryDate.compare(NSDate()) == .OrderedAscending
     }
     

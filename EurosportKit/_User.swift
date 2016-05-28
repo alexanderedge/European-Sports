@@ -5,11 +5,12 @@ import Foundation
 import CoreData
 
 public enum UserAttributes: String {
+    case email = "email"
     case hkey = "hkey"
     case identifier = "identifier"
 }
 
-public class _User: NSManagedObject {
+public class _User: NSManagedObject, StringIdentifiable {
 
     // MARK: - Class methods
 
@@ -33,6 +34,9 @@ public class _User: NSManagedObject {
     }
 
     // MARK: - Properties
+
+    @NSManaged public
+    var email: String
 
     @NSManaged public
     var hkey: String

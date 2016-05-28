@@ -18,10 +18,7 @@ class CatchupsCollectionViewController: FetchedResultsCollectionViewController, 
     typealias FetchedType = Catchup
     
     var sport: Sport!
-    
-    // TODO: remove this
-    var token: Token!
-    
+        
     override func fetchRequest() -> NSFetchRequest {
         let predicate = NSPredicate(format: "sport == %@ AND expirationDate > %@", sport, NSDate())
         let fetchRequest = Catchup.fetchRequest(predicate, sortedBy: "startDate", ascending: false)
@@ -59,26 +56,7 @@ class CatchupsCollectionViewController: FetchedResultsCollectionViewController, 
         
         cell.titleLabel.text = catchup.title
         cell.detailLabel.text = catchup.catchupDescription
-        
-        if let url = catchup.imageURL as? NSURL {
-            NSURLSession.sharedSession().dataTaskWithURL(url) { data, response, error in
-                
-                guard let data = data, image = UIImage(data: data) else {
-                    return
-                }
-                
-                // add a black overlay to the image so the 
-                // text is more legible
-                let adjustedImage = image.imageWithBlackOverlay(0.6)
-                
-                dispatch_async(dispatch_get_main_queue()) {
-                    
-                    cell.imageView?.image = adjustedImage
-                    
-                }
-                
-                }.resume()
-        }
+        cell.imageView.setImage(catchup.imageURL as? NSURL, dimmed: true)
         
     }
     

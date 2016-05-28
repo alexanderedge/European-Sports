@@ -11,7 +11,7 @@ import Foundation
 extension Token {
     
     public static func fetch(userId: String, hkey: String, completionHandler: Result<Token,NSError> -> Void) -> NSURLSessionDataTask {
-        return NSURLSession.sharedSession().dataTaskWithRequest(Router.Token.Fetch(userId: userId, hkey: hkey).request, responseSerializer: TokenResponseSerializer.serializer(), completionHandler: completionHandler)
+        return NSURLSession.sharedSession().dataTaskWithRequest(Router.AuthToken.Fetch(userId: userId, hkey: hkey).request, responseSerializer: TokenResponseSerializer.serializer(), completionHandler: completionHandler)
     }
     
 }

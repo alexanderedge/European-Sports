@@ -16,12 +16,12 @@ struct UserResponseSerializer {
         case InvalidJSONStructure
     }
     
-    static func serializer() -> ResponseSerializer <T> {
-        return ResponseSerializer { data, response, error in
+    static func serializer() -> ManagedObjectResponseSerializer <T> {
+        return ManagedObjectResponseSerializer { context, data, response, error in
             guard let json = try JSONResponseSerializer.serializer().serializeResponse(data, response: response, error: error) as? [String: AnyObject] else {
                 throw UserError.InvalidJSONStructure
             }
-            return try UserParser.parse(json)
+            return try UserParser.parse(json, context: context)
         }
     }
     

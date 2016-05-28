@@ -13,7 +13,6 @@
 		DE39BC7C1CE764F700347716 /* EurosportKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE39BC671CE764F700347716 /* EurosportKit.framework */; };
 		DE39BC7D1CE764F700347716 /* EurosportKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DE39BC671CE764F700347716 /* EurosportKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DE39BC861CE7650A00347716 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39BC851CE7650A00347716 /* Router.swift */; };
-		DE39BC8B1CE7680000347716 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39BC8A1CE7680000347716 /* User.swift */; };
 		DE39BC8D1CE76A2A00347716 /* JSONParsingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39BC8C1CE76A2A00347716 /* JSONParsingType.swift */; };
 		DE39BC911CE76A6F00347716 /* UserParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39BC901CE76A6F00347716 /* UserParser.swift */; };
 		DE39BC931CE76A7B00347716 /* ResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39BC921CE76A7B00347716 /* ResponseSerializer.swift */; };
@@ -54,9 +53,14 @@
 		DEB459A71CE8C91C0057259C /* Catchup.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB459A11CE8C91C0057259C /* Catchup.swift */; };
 		DEB459A81CE8C91D0057259C /* Sport.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB459A21CE8C91C0057259C /* Sport.swift */; };
 		DEB459A91CE8C91D0057259C /* Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB459A31CE8C91C0057259C /* Stream.swift */; };
-		DEB45A031CE8D21C0057259C /* ManagedObjectContextSettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB45A021CE8D21C0057259C /* ManagedObjectContextSettable.swift */; };
 		DEC4275A1CF9C04B00AE8C31 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC427591CF9C04B00AE8C31 /* Theme.swift */; };
 		DEC4275D1CF9D8C000AE8C31 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DEC4275F1CF9D8C000AE8C31 /* Localizable.strings */; };
+		DEC427631CF9E29D00AE8C31 /* FetchedResultsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC427621CF9E29D00AE8C31 /* FetchedResultsCollectionViewController.swift */; };
+		DEC427651CF9E31000AE8C31 /* ManagedObjectContextSettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC427641CF9E31000AE8C31 /* ManagedObjectContextSettable.swift */; };
+		DEC427681CF9E41200AE8C31 /* DataSourceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC427671CF9E41200AE8C31 /* DataSourceType.swift */; };
+		DEC4276A1CF9E51500AE8C31 /* FetchedResultsControllerBackedType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC427691CF9E51500AE8C31 /* FetchedResultsControllerBackedType.swift */; };
+		DEC4276C1CF9F19F00AE8C31 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC4276B1CF9F19F00AE8C31 /* User.swift */; };
+		DEC4276E1CF9F1B300AE8C31 /* _User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC4276D1CF9F1B300AE8C31 /* _User.swift */; };
 		DED8D18B1CF62EC100B016B9 /* DoubleLabelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED8D18A1CF62EC100B016B9 /* DoubleLabelCollectionViewCell.swift */; };
 		DED8D18D1CF6340A00B016B9 /* UIImage+Dimming.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED8D18C1CF6340A00B016B9 /* UIImage+Dimming.swift */; };
 		DED8D18F1CF636BC00B016B9 /* CatchupsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED8D18E1CF636BC00B016B9 /* CatchupsCollectionViewController.swift */; };
@@ -126,7 +130,6 @@
 		DE39BC771CE764F700347716 /* EurosportKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EurosportKitTests.swift; sourceTree = "<group>"; };
 		DE39BC791CE764F700347716 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DE39BC851CE7650A00347716 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
-		DE39BC8A1CE7680000347716 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DE39BC8C1CE76A2A00347716 /* JSONParsingType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONParsingType.swift; sourceTree = "<group>"; };
 		DE39BC901CE76A6F00347716 /* UserParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserParser.swift; sourceTree = "<group>"; };
 		DE39BC921CE76A7B00347716 /* ResponseSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseSerializer.swift; sourceTree = "<group>"; };
@@ -170,11 +173,16 @@
 		DEB459A11CE8C91C0057259C /* Catchup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Catchup.swift; sourceTree = "<group>"; };
 		DEB459A21CE8C91C0057259C /* Sport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sport.swift; sourceTree = "<group>"; };
 		DEB459A31CE8C91C0057259C /* Stream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stream.swift; sourceTree = "<group>"; };
-		DEB45A021CE8D21C0057259C /* ManagedObjectContextSettable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectContextSettable.swift; sourceTree = "<group>"; };
 		DEC427591CF9C04B00AE8C31 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		DEC4275E1CF9D8C000AE8C31 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		DEC427601CF9DA2D00AE8C31 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		DEC427611CF9DE2700AE8C31 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		DEC427621CF9E29D00AE8C31 /* FetchedResultsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedResultsCollectionViewController.swift; sourceTree = "<group>"; };
+		DEC427641CF9E31000AE8C31 /* ManagedObjectContextSettable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectContextSettable.swift; sourceTree = "<group>"; };
+		DEC427671CF9E41200AE8C31 /* DataSourceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSourceType.swift; sourceTree = "<group>"; };
+		DEC427691CF9E51500AE8C31 /* FetchedResultsControllerBackedType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedResultsControllerBackedType.swift; sourceTree = "<group>"; };
+		DEC4276B1CF9F19F00AE8C31 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = ../../../../../.Trash/User.swift; sourceTree = "<group>"; };
+		DEC4276D1CF9F1B300AE8C31 /* _User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _User.swift; sourceTree = "<group>"; };
 		DED8D18A1CF62EC100B016B9 /* DoubleLabelCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleLabelCollectionViewCell.swift; sourceTree = "<group>"; };
 		DED8D18C1CF6340A00B016B9 /* UIImage+Dimming.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Dimming.swift"; sourceTree = "<group>"; };
 		DED8D18E1CF636BC00B016B9 /* CatchupsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatchupsCollectionViewController.swift; sourceTree = "<group>"; };
@@ -243,15 +251,16 @@
 				DEB4599E1CE8C91C0057259C /* _Catchup.swift */,
 				DEB4599F1CE8C91C0057259C /* _Sport.swift */,
 				DEB459A01CE8C91C0057259C /* _Stream.swift */,
+				DEC4276D1CF9F1B300AE8C31 /* _User.swift */,
 				DEB459A11CE8C91C0057259C /* Catchup.swift */,
+				DE39BCB41CE7847800347716 /* Catchup+Networking.swift */,
 				DEB459A21CE8C91C0057259C /* Sport.swift */,
 				DEB459A31CE8C91C0057259C /* Stream.swift */,
-				DE39BC8A1CE7680000347716 /* User.swift */,
+				DEC4276B1CF9F19F00AE8C31 /* User.swift */,
 				DE39BC981CE76BBC00347716 /* User+Networking.swift */,
 				DE39BC9F1CE76E5000347716 /* Token.swift */,
 				DE39BCA11CE7705300347716 /* Token+Networking.swift */,
 				DE39BC961CE76AAD00347716 /* Result.swift */,
-				DE39BCB41CE7847800347716 /* Catchup+Networking.swift */,
 				DEB459981CE8C6EE0057259C /* EurosportKit.xcdatamodeld */,
 			);
 			name = Model;
@@ -276,7 +285,6 @@
 			children = (
 				DE39BC8C1CE76A2A00347716 /* JSONParsingType.swift */,
 				DEB4599B1CE8C7EA0057259C /* JSONCoreDataParsingType.swift */,
-				DEB45A021CE8D21C0057259C /* ManagedObjectContextSettable.swift */,
 				DE3DC3B71CF4E17100AF5909 /* Fetchable.swift */,
 			);
 			name = Protocols;
@@ -333,6 +341,7 @@
 		DE969D8A1CD51EA300A8A313 /* EurosportPlayerTV */ = {
 			isa = PBXGroup;
 			children = (
+				DEC427661CF9E3D900AE8C31 /* Protocols */,
 				DEC427581CF9C03700AE8C31 /* Controller */,
 				DEC427571CF9C02500AE8C31 /* Model */,
 				DED8D1891CF62E9800B016B9 /* View */,
@@ -359,9 +368,20 @@
 			children = (
 				DE39BCBC1CE7CE5400347716 /* SportsCollectionViewController.swift */,
 				DED8D18E1CF636BC00B016B9 /* CatchupsCollectionViewController.swift */,
+				DEC427621CF9E29D00AE8C31 /* FetchedResultsCollectionViewController.swift */,
 				DE969D8F1CD51EA300A8A313 /* SecondViewController.swift */,
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		DEC427661CF9E3D900AE8C31 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				DEC427641CF9E31000AE8C31 /* ManagedObjectContextSettable.swift */,
+				DEC427691CF9E51500AE8C31 /* FetchedResultsControllerBackedType.swift */,
+				DEC427671CF9E41200AE8C31 /* DataSourceType.swift */,
+			);
+			name = Protocols;
 			sourceTree = "<group>";
 		};
 		DED8D1891CF62E9800B016B9 /* View */ = {
@@ -573,7 +593,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DEB45A031CE8D21C0057259C /* ManagedObjectContextSettable.swift in Sources */,
 				DE39BCAB1CE7777E00347716 /* SportParser.swift in Sources */,
 				DE39BCBB1CE786A400347716 /* StreamParser.swift in Sources */,
 				DEB4599C1CE8C7EA0057259C /* JSONCoreDataParsingType.swift in Sources */,
@@ -582,6 +601,7 @@
 				DE39BC911CE76A6F00347716 /* UserParser.swift in Sources */,
 				DE39BCAF1CE77C1700347716 /* CatchupResponseSerializer.swift in Sources */,
 				DE3DC3B81CF4E17100AF5909 /* Fetchable.swift in Sources */,
+				DEC4276C1CF9F19F00AE8C31 /* User.swift in Sources */,
 				DE39BC951CE76A8F00347716 /* JSONResponseSerializer.swift in Sources */,
 				DEB459A41CE8C91C0057259C /* _Catchup.swift in Sources */,
 				DE39BCB71CE784B500347716 /* CatchupParser.swift in Sources */,
@@ -590,7 +610,6 @@
 				DE39BC931CE76A7B00347716 /* ResponseSerializer.swift in Sources */,
 				DE39BCB51CE7847800347716 /* Catchup+Networking.swift in Sources */,
 				DE39BC991CE76BBC00347716 /* User+Networking.swift in Sources */,
-				DE39BC8B1CE7680000347716 /* User.swift in Sources */,
 				DE3DC3B41CF4D61400AF5909 /* ManagedObjectResponseSerializer.swift in Sources */,
 				DE39BCA71CE770D000347716 /* TokenParser.swift in Sources */,
 				DE39BCA01CE76E5000347716 /* Token.swift in Sources */,
@@ -602,6 +621,7 @@
 				DE39BCA41CE770A400347716 /* TokenResponseSerializer.swift in Sources */,
 				DEB459A51CE8C91C0057259C /* _Sport.swift in Sources */,
 				DEB459A61CE8C91C0057259C /* _Stream.swift in Sources */,
+				DEC4276E1CF9F1B300AE8C31 /* _User.swift in Sources */,
 				DE39BC9B1CE76C2400347716 /* UserResponseSerializer.swift in Sources */,
 				DEB459A91CE8C91D0057259C /* Stream.swift in Sources */,
 			);
@@ -629,11 +649,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE969D901CD51EA300A8A313 /* SecondViewController.swift in Sources */,
+				DEC4276A1CF9E51500AE8C31 /* FetchedResultsControllerBackedType.swift in Sources */,
 				DED8D18D1CF6340A00B016B9 /* UIImage+Dimming.swift in Sources */,
+				DEC427681CF9E41200AE8C31 /* DataSourceType.swift in Sources */,
 				DE39BCC01CE7D35100347716 /* ImageCollectionViewCell.swift in Sources */,
 				DE39BCBD1CE7CE5400347716 /* SportsCollectionViewController.swift in Sources */,
 				DED8D18B1CF62EC100B016B9 /* DoubleLabelCollectionViewCell.swift in Sources */,
 				DE969D8C1CD51EA300A8A313 /* AppDelegate.swift in Sources */,
+				DEC427651CF9E31000AE8C31 /* ManagedObjectContextSettable.swift in Sources */,
+				DEC427631CF9E29D00AE8C31 /* FetchedResultsCollectionViewController.swift in Sources */,
 				DEC4275A1CF9C04B00AE8C31 /* Theme.swift in Sources */,
 				DED8D18F1CF636BC00B016B9 /* CatchupsCollectionViewController.swift in Sources */,
 			);

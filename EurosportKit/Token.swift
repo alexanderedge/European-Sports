@@ -16,4 +16,8 @@ public struct Token {
     public let expiryDate: NSDate
     public let duration: NSTimeInterval
     
+    public var isExpired: Bool {
+        return expiryDate.compare(NSDate()) == .OrderedAscending
+    }
+    
 }

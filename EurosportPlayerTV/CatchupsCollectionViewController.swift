@@ -13,29 +13,20 @@ import AVKit
 
 private let reuseIdentifier = "Cell"
 
-class CatchupsCollectionViewController: UICollectionViewController, ManagedObjectContextSettable {
+class CatchupsCollectionViewController: FetchedResultsCollectionViewController, DataSourceType {
 
-    var managedObjectContext: NSManagedObjectContext!
-    var sport: Sport!
+    typealias FetchedType = Catchup
     
+    var sport: Sport!
     
     // TODO: remove this
     var token: Token!
     
-    lazy var fetchedResultsController: NSFetchedResultsController = {
-        let predicate = NSPredicate(format: "sport == %@ AND expirationDate > %@", self.sport, NSDate())
+    override func fetchRequest() -> NSFetchRequest {
+        let predicate = NSPredicate(format: "sport == %@ AND expirationDate > %@", sport, NSDate())
         let fetchRequest = Catchup.fetchRequest(predicate, sortedBy: "startDate", ascending: false)
-        let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
-        frc.delegate = self
-        
-        do {
-            try frc.performFetch()
-        } catch {
-            print("error fetching: \(error)")
-        }
-        
-        return frc
-    }()
+        return fetchRequest
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,27 +41,9 @@ class CatchupsCollectionViewController: UICollectionViewController, ManagedObjec
         // Dispose of any resources that can be recreated.
     }
     
-    // MARK: Utility
     
-    private func objectAt(indexPath: NSIndexPath) -> Catchup {
-        return fetchedResultsController.objectAtIndexPath(indexPath) as! Catchup
-    }
 
     // MARK: UICollectionViewDataSource
-
-    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        guard let sections = fetchedResultsController.sections else {
-            return 0
-        }
-        return sections.count
-    }
-    
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let sections = fetchedResultsController.sections where sections.count > section else {
-            return 0
-        }
-        return sections[section].numberOfObjects
-    }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         return collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath)
@@ -120,7 +93,7 @@ class CatchupsCollectionViewController: UICollectionViewController, ManagedObjec
             
             print("stream: \(stream)")
             
-            self.showVideoForURL(stream.url.URLByAppendingQueryParameters(["token": token.token, "hdnea": token.hdnea]), options: nil)
+            self.showVideoForURL(stream.authenticatedURL, options: nil)
             
         }
         
@@ -129,25 +102,7 @@ class CatchupsCollectionViewController: UICollectionViewController, ManagedObjec
     
 }
 
-extension CatchupsCollectionViewController: NSFetchedResultsControllerDelegate {
-    
-    func controllerWillChangeContent(controller: NSFetchedResultsController) {
-        
-    }
-    
-    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
-        
-    }
-    
-    func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
-        
-    }
-    
-    func controllerDidChangeContent(controller: NSFetchedResultsController) {
-        self.collectionView?.reloadData()
-    }
-    
-}
+
 
 extension CatchupsCollectionViewController {
     func showVideoForURL(url: NSURL, options: [String : AnyObject]?) {
@@ -163,44 +118,5 @@ extension CatchupsCollectionViewController {
     }
 }
 
-protocol URLQueryParameterStringConvertible {
-    var queryParameters: String {get}
-}
 
-extension Dictionary : URLQueryParameterStringConvertible {
-    /**
-     This computed property returns a query parameters string from the given NSDictionary. For
-     example, if the input is @{@"day":@"Tuesday", @"month":@"January"}, the output
-     string will be @"day=Tuesday&month=January".
-     @return The computed parameters string.
-     */
-    var queryParameters: String {
-        var parts: [String] = []
-        for (key, value) in self {
-            let part = NSString(format: "%@=%@",
-                                String(key).stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!,
-                                String(value).stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!)
-            parts.append(part as String)
-        }
-        return parts.joinWithSeparator("&")
-    }
-    
-}
-
-extension NSURL {
-    /**
-     Creates a new URL by adding the given query parameters.
-     @param parametersDictionary The query parameter dictionary to add.
-     @return A new NSURL.
-     */
-    func URLByAppendingQueryParameters(parametersDictionary: [String: String]) -> NSURL {
-        guard let components = NSURLComponents(URL: self, resolvingAgainstBaseURL: false), let queryItems = components.queryItems where !queryItems.isEmpty else {
-            return NSURL(string:self.absoluteString.stringByAppendingFormat("?%@", parametersDictionary.queryParameters))!
-        }
-        guard let url = components.URL else {
-            return self
-        }
-        return NSURL(string:url.absoluteString.stringByAppendingFormat("&%@", parametersDictionary.queryParameters))!
-    }
-}
 

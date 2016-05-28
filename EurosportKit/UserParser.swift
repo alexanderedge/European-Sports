@@ -7,8 +7,9 @@
 //
 
 import Foundation
+import CoreData
 
-internal struct UserParser : JSONParsingType {
+internal struct UserParser : JSONCoreDataParsingType {
     
     typealias T = User
     
@@ -17,10 +18,19 @@ internal struct UserParser : JSONParsingType {
         case MissingHkey
     }
     
-    static func parse(json: [String : AnyObject]) throws -> T {
+    static func parse(json: [String : AnyObject], context: NSManagedObjectContext) throws -> T {
         let identifier: String = try json.extract("Id")
         let hkey: String = try json.extract("Hkey")
-        return User(identifier: identifier, hkey: hkey)
+        let email: String = try json.extract("Email")
+        
+        guard let user = try User.object(withIdentifier: identifier, inContext: context) else {
+            throw JSONCoreDataError.UnableToCreateInstance
+        }
+        
+        user.hkey = hkey
+        user.email = email
+        return user
+        
     }
         
 }

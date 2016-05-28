@@ -7,47 +7,24 @@
 //
 
 import UIKit
-import AVFoundation
 import CoreData
 import EurosportKit
 
 private let reuseIdentifier = "Cell"
 
-extension UIColor {
-    
-    private static var randomComponent: CGFloat {
-        return CGFloat(arc4random_uniform(255)) / 255
-    }
-    
-    public static var random: UIColor {
-        return UIColor(red: randomComponent, green: randomComponent, blue: randomComponent, alpha: 1.0)
-    }
-    
-}
+class SportsCollectionViewController: FetchedResultsCollectionViewController, DataSourceType {
 
-class SportsCollectionViewController: UICollectionViewController, ManagedObjectContextSettable {
-
+    typealias FetchedType = Sport
+    
     enum SegueIdentifiers: String {
         case ShowCatchups
     }
     
-    var managedObjectContext: NSManagedObjectContext!
     var selectedSport: Sport?
-    var token: Token!
     
-    lazy var fetchedResultsController: NSFetchedResultsController = {
-        let fetchRequest = Sport.fetchRequest(nil, sortedBy: "name", ascending: true)
-        let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
-        frc.delegate = self
-        
-        do {
-            try frc.performFetch()
-        } catch {
-            print("error fetching: \(error)")
-        }
-        
-        return frc
-    }()
+    override func fetchRequest() -> NSFetchRequest {
+        return Sport.fetchRequest(nil, sortedBy: "name", ascending: true)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,41 +33,26 @@ class SportsCollectionViewController: UICollectionViewController, ManagedObjectC
         
         view.backgroundColor = Theme.Colours.BackgroundColour
         
-        User.login("alexander.edge@googlemail.com", password: "q6v-BXt-V57-E4r") { result in
+        User.login("alexander.edge@googlemail.com", password: "q6v-BXt-V57-E4r", context: managedObjectContext) { result in
             
             switch result {
             case .Success(let user):
-                print("user loggedn in: \(user)")
+                print("user logged in: \(user)")
                 
-                Token.fetch(user.identifier, hkey: user.hkey) { result in
+                Catchup.fetch(user, context: self.managedObjectContext) { result in
                     
                     switch result {
-                    case .Success(let token):
                         
-                        self.token = token
+                    case .Success(let catchups):
                         
-                        Catchup.fetch(self.managedObjectContext) { result in
-                            
-                            switch result {
-                                
-                            case .Success(let catchups):
-                                
-                                print("loaded \(catchups.count) catchups");
-                                
-                                
-                                break
-                            case .Failure(let error):
-                                print("error: \(error)")
-                                break
-                                
-                            }
-                            
-                            }.resume()
+                        print("loaded \(catchups.count) catchups");
+                        
                         
                         break
                     case .Failure(let error):
                         print("error: \(error)")
                         break
+                        
                     }
                     
                     }.resume()
@@ -108,29 +70,6 @@ class SportsCollectionViewController: UICollectionViewController, ManagedObjectC
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-
-    // MARK: Utility
-    
-    private func objectAt(indexPath: NSIndexPath) -> Sport {
-        return fetchedResultsController.objectAtIndexPath(indexPath) as! Sport
-    }
-    
-    // MARK: UICollectionViewDataSource
-
-    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        guard let sections = fetchedResultsController.sections else {
-            return 0
-        }
-        return sections.count
-    }
-
-
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let sections = fetchedResultsController.sections where sections.count > section else {
-            return 0
-        }
-        return sections[section].numberOfObjects
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -183,33 +122,12 @@ class SportsCollectionViewController: UICollectionViewController, ManagedObjectC
 
 }
 
-extension SportsCollectionViewController: NSFetchedResultsControllerDelegate {
-    
-    func controllerWillChangeContent(controller: NSFetchedResultsController) {
-        
-    }
-    
-    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
-        
-    }
-    
-    func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
-        
-    }
-    
-    func controllerDidChangeContent(controller: NSFetchedResultsController) {
-        self.collectionView?.reloadData()
-    }
-    
-}
-
 extension SportsCollectionViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         guard let identifierString = segue.identifier, identifier = SegueIdentifiers(rawValue: identifierString) where identifier == .ShowCatchups, let vc = segue.destinationViewController as? CatchupsCollectionViewController, sport = selectedSport else {
             return
         }
-        vc.token = token
         vc.sport = sport
         vc.managedObjectContext = managedObjectContext
     }

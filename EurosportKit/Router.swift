@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 public protocol URLRequestConvertible {
     var request: NSURLRequest { get }
@@ -17,6 +18,8 @@ enum Method: String {
 }
 
 struct Router {
+    
+    static var token: Token?
     
     private static func standardRequest(url: NSURL) -> NSMutableURLRequest {
         let mutableRequest = NSMutableURLRequest(URL: url)
@@ -68,7 +71,7 @@ struct Router {
         
     }
 
-    enum Token: URLRequestConvertible {
+    enum AuthToken: URLRequestConvertible {
         case Fetch(userId: String, hkey: String)
         
         private var baseURL: NSURL {
@@ -175,6 +178,107 @@ struct Router {
             }
         }
         
+        static func authenticatedURL(streamURL: NSURL) -> NSURL {
+            guard let token = token else {
+                return streamURL
+            }
+            return streamURL.URLByAppendingQueryParameters(["token": token.token, "hdnea": token.hdnea])
+        }
+        
     }
     
+}
+
+extension NSURLSession {
+    
+    internal func authenticatedDataTaskForRequest<T>(request: NSURLRequest, user: User, responseSerializer: ResponseSerializer<T>, completionHandler: Result<T, NSError> -> Void) -> NSURLSessionDataTask {
+
+        guard let token = Router.token where !token.isExpired else {
+            print("no token or token has expired, fetching new token")
+            
+            return Token.fetch(user.identifier, hkey: user.hkey) { result in
+                switch result {
+                case .Success(let token):
+                    Router.token = token
+                    self.authenticatedDataTaskForRequest(request, user: user, responseSerializer: responseSerializer, completionHandler: completionHandler).resume()
+                    break
+                case.Failure(let error):
+                    completionHandler(.Failure(error))
+                    break
+                    
+                }
+                
+            }
+            
+        }
+        print("using existing token")
+        return dataTaskWithRequest(request, responseSerializer: responseSerializer, completionHandler: completionHandler)
+        
+    }
+    
+    internal func authenticatedDataTaskForRequest<T>(request: NSURLRequest, user: User, context: NSManagedObjectContext, responseSerializer: ManagedObjectResponseSerializer<T>, completionHandler: Result<T, NSError> -> Void) -> NSURLSessionDataTask {
+        
+        guard let token = Router.token where !token.isExpired else {
+            print("no token or token has expired, fetching new token")
+            
+            return Token.fetch(user.identifier, hkey: user.hkey) { result in
+                switch result {
+                case .Success(let token):
+                    Router.token = token
+                    self.authenticatedDataTaskForRequest(request, user: user, context: context, responseSerializer: responseSerializer, completionHandler: completionHandler).resume()
+                    break
+                case.Failure(let error):
+                    completionHandler(.Failure(error))
+                    break
+                    
+                }
+                
+            }
+            
+        }
+        print("using existing token")
+        return dataTaskWithRequest(request, context: context, responseSerializer: responseSerializer, completionHandler: completionHandler)
+    }
+    
+}
+
+protocol URLQueryParameterStringConvertible {
+    var queryParameters: String {get}
+}
+
+extension Dictionary : URLQueryParameterStringConvertible {
+    /**
+     This computed property returns a query parameters string from the given NSDictionary. For
+     example, if the input is @{@"day":@"Tuesday", @"month":@"January"}, the output
+     string will be @"day=Tuesday&month=January".
+     @return The computed parameters string.
+     */
+    var queryParameters: String {
+        var parts: [String] = []
+        for (key, value) in self {
+            let part = NSString(format: "%@=%@",
+                                String(key).stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!,
+                                String(value).stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!)
+            parts.append(part as String)
+        }
+        return parts.joinWithSeparator("&")
+    }
+    
+}
+
+extension NSURL {
+    /**
+     Creates a new URL by adding the given query parameters.
+     @param parametersDictionary The query parameter dictionary to add.
+     @return A new NSURL.
+     */
+    func URLByAppendingQueryParameters(parametersDictionary: [String: String]) -> NSURL {
+        guard let components = NSURLComponents(URL: self, resolvingAgainstBaseURL: false), let queryItems = components.queryItems where !queryItems.isEmpty else {
+            return NSURL(string:self.absoluteString.stringByAppendingFormat("?%@", parametersDictionary.queryParameters))!
+        }
+        guard let url = components.URL else {
+            return self
+        }
+        return NSURL(string:url.absoluteString.stringByAppendingFormat("&%@", parametersDictionary.queryParameters))!
+    }
 }

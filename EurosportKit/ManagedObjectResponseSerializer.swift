@@ -59,7 +59,7 @@ extension NSURLSession {
                     let object = try responseSerializer.serializeResponse(context, data: data, response: response, error: error)
                     completionHandler(.Success(object))
                 } catch {
-                 completionHandler(.Failure(error as NSError))
+                    completionHandler(.Failure(error as NSError))
                 }
             }
         }

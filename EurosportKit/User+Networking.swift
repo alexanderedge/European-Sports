@@ -7,11 +7,12 @@
 //
 
 import Foundation
+import CoreData
 
 extension User {
     
-    public static func login(email: String, password: String, completionHandler: Result<User,NSError> -> Void) -> NSURLSessionDataTask {
-        return NSURLSession.sharedSession().dataTaskWithRequest(Router.User.Login(email: email, password: password).request, responseSerializer: UserResponseSerializer.serializer(), completionHandler: completionHandler)
+    public static func login(email: String, password: String, context: NSManagedObjectContext, completionHandler: Result<User,NSError> -> Void) -> NSURLSessionDataTask {
+        return NSURLSession.sharedSession().dataTaskWithRequest(Router.User.Login(email: email, password: password).request, context: context, responseSerializer: UserResponseSerializer.serializer(), completionHandler: completionHandler)
     }
     
 }

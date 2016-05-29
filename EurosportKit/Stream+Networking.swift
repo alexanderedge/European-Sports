@@ -7,11 +7,23 @@
 //
 
 import Foundation
+import CoreData
 
 extension Stream {
     
-    public var authenticatedURL: NSURL {
+    private var authenticatedURL: NSURL {
         return Router.Catchup.authenticatedURL(url as! NSURL)
+    }
+    
+    public func generateAuthenticatedURL(user: User, completionHandler: Result<NSURL,NSError> -> Void) {
+        guard let token = Router.token where !token.isExpired else {
+            NSURLSession.sharedSession().refreshTokenTask(user, failure: completionHandler) {
+                completionHandler(.Success(self.authenticatedURL))
+            }.resume()
+            
+            return
+        }
+        completionHandler(.Success(authenticatedURL))
     }
     
 }

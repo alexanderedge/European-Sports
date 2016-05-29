@@ -51,7 +51,9 @@ struct Router {
                     
                     params["context"] = String(data: contextData, encoding: NSUTF8StringEncoding)
                     
-                    let data = try NSJSONSerialization.dataWithJSONObject(["email": email, "password": password, "udid": "D270986F-35B1-43F5-8535-C874C9173B68"], options: [])
+                    let udid = "D270986F-35B1-43F5-8535-C874C9173B68"//UIDevice.currentDevice().identifierForVendor!.UUIDString
+                    
+                    let data = try NSJSONSerialization.dataWithJSONObject(["email": email, "password": password, "udid": udid], options: [])
                     
                     params["data"] = String(data: data, encoding: NSUTF8StringEncoding)
                     
@@ -185,6 +187,48 @@ struct Router {
             return streamURL.URLByAppendingQueryParameters(["token": token.token, "hdnea": token.hdnea])
         }
         
+    }
+    
+    enum LiveStream: URLRequestConvertible {
+        case Fetch
+        
+        private var baseURL: NSURL {
+            return NSURL(string : "http://videoshop.ext.ws.eurosport.com")!
+        }
+        
+        var path: String {
+            return "/JsonProductService.svc/GetAllProductsCache"
+        }
+        
+        var request: NSURLRequest {
+            switch self {
+            case .Fetch:
+                var params = [String : String]()
+                
+                do {
+                    
+                    let contextData = try NSJSONSerialization.dataWithJSONObject(["g":"GB","p":9,"l":"EN","d":2,"mn":"iPad","v":"5.1.5","tt":"Pad","li":2,"s":1,"b":7], options: [])
+                    
+                    params["context"] = String(data: contextData, encoding: NSUTF8StringEncoding)
+                    
+                    let data = try NSJSONSerialization.dataWithJSONObject(["languageid": Language.preferredLanguage.identifier, "isfullaccess":0,"withouttvscheduleliveevents":"true","groupchannels":"true","pictureformatids":"[87]","isbroadcasted":1], options: [])
+                    
+                    params["data"] = String(data: data, encoding: NSUTF8StringEncoding)
+                    
+                    let URLComponents = NSURLComponents(URL: NSURL(string: path, relativeToURL: baseURL)!, resolvingAgainstBaseURL: true)!
+                    URLComponents.queryItems = params.map({NSURLQueryItem(name: $0, value: $1)})
+                    let url = URLComponents.URL!
+                    
+                    return Router.standardRequest(url)
+                } catch {
+                    
+                    return NSURLRequest()
+                    
+                }
+                
+            }
+        }
+
     }
     
 }

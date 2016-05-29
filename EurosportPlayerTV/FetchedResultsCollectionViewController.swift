@@ -29,6 +29,8 @@ class FetchedResultsCollectionViewController: UICollectionViewController, Manage
             print("error fetching: \(error)")
         }
         fetchedResultsController = frc
+        
+        collectionView?.backgroundView = UIImageView(image: UIImage(named:"background"))
     }
     
     override func didReceiveMemoryWarning() {

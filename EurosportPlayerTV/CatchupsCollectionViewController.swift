@@ -29,7 +29,7 @@ class CatchupsCollectionViewController: FetchedResultsCollectionViewController, 
         super.viewDidLoad()
 
         title = sport.name
-        view.backgroundColor = Theme.Colours.BackgroundColour
+        
         
     }
 
@@ -56,7 +56,7 @@ class CatchupsCollectionViewController: FetchedResultsCollectionViewController, 
         
         cell.titleLabel.text = catchup.title
         cell.detailLabel.text = catchup.catchupDescription
-        cell.imageView.setImage(catchup.imageURL as? NSURL, dimmed: true)
+        cell.imageView.setImage(catchup.imageURL as? NSURL, adjustBrightness: true)
         
     }
     
@@ -71,7 +71,8 @@ class CatchupsCollectionViewController: FetchedResultsCollectionViewController, 
             
             print("stream: \(stream)")
             
-            self.showVideoForURL(stream.authenticatedURL, options: nil)
+            //TODO: check for a valid token and fetch a new one, if required
+            showVideoForURL(stream.authenticatedURL, options: nil)
             
         }
         
@@ -83,7 +84,7 @@ class CatchupsCollectionViewController: FetchedResultsCollectionViewController, 
 
 
 extension CatchupsCollectionViewController {
-    func showVideoForURL(url: NSURL, options: [String : AnyObject]?) {
+    private func showVideoForURL(url: NSURL, options: [String : AnyObject]?) {
         let playerController = AVPlayerViewController()
         
         let asset = AVURLAsset(URL: url, options: options)

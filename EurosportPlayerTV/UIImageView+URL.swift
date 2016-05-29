@@ -7,20 +7,22 @@
 //
 
 import UIKit
+import AlamofireImage
+
+public struct DarkenFilter: ImageFilter {
+    
+    public var filter: Image -> Image {
+        return { image in
+            return UIImageEffects.imageByApplyingBlurToImage(image, withRadius: 0, tintColor: UIColor.blackColor().colorWithAlphaComponent(0.4), saturationDeltaFactor: 1, maskImage: nil)
+        }
+    }
+}
 
 extension UIImageView {
     
-    func setImage(url: NSURL?, dimmed: Bool) {
+    func setImage(url: NSURL?, adjustBrightness: Bool) {
         if let url = url {
-            NSURLSession.sharedSession().dataTaskWithURL(url) { data, response, error in
-                guard let data = data, image = UIImage(data: data) else {
-                    return
-                }
-                let finalImage = dimmed ? image.imageWithBlackOverlay(0.6) : image
-                dispatch_async(dispatch_get_main_queue()) {
-                    self.image = finalImage
-                }
-            }.resume()
+            af_setImageWithURL(url, filter: DarkenFilter(), imageTransition: .CrossDissolve(0.2), runImageTransitionIfCached: false)
         }
     }
     

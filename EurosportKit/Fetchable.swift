@@ -9,6 +9,7 @@
 import Foundation
 import CoreData
 
+// https://gist.github.com/capttaco/adb38e0d37fbaf9c004e
 public protocol Fetchable  {
     associatedtype FetchableType: NSManagedObject
     

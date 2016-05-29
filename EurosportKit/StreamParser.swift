@@ -19,13 +19,12 @@ internal struct StreamParser: JSONCoreDataParsingType {
     
     static func parse(json: [String : AnyObject], context: NSManagedObjectContext) throws -> T {
         let identifier: Int = try json.extract("id")
-        let language: Int = try json.extract("lang")
         
         guard let url = NSURL(string: try json.extract("url")) else {
             throw StreamError.InvalidURL
         }
         
-        let stream = Stream(managedObjectContext: context)!
+        let stream = Stream(context: context)
         stream.identifier = identifier
         stream.url = url
         return stream

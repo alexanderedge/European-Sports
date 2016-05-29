@@ -11,9 +11,12 @@ import CoreData
 
 class FetchedResultsCollectionViewController: UICollectionViewController, ManagedObjectContextSettable, FetchedResultsControllerBackedType {
 
+    typealias FetchedType = NSManagedObject
+    
     var managedObjectContext: NSManagedObjectContext!
     var fetchedResultsController: NSFetchedResultsController!
     
+    // subclasses should override
     func fetchRequest() -> NSFetchRequest {
         return NSFetchRequest()
     }
@@ -26,11 +29,12 @@ class FetchedResultsCollectionViewController: UICollectionViewController, Manage
         do {
             try frc.performFetch()
         } catch {
-            print("error fetching: \(error)")
+            fatalError("unable to perform fetch: \(error)")
         }
         fetchedResultsController = frc
         
         collectionView?.backgroundView = UIImageView(image: UIImage(named:"background"))
+        
     }
     
     override func didReceiveMemoryWarning() {

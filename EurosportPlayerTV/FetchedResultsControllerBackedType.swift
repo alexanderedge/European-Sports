@@ -10,6 +10,18 @@ import Foundation
 import CoreData
 
 public protocol FetchedResultsControllerBackedType: class {
+    
+    associatedtype FetchedType
+    
     func fetchRequest() -> NSFetchRequest
     var fetchedResultsController: NSFetchedResultsController! { get }
+    
+}
+
+extension FetchedResultsControllerBackedType {
+    
+    func objectAt(indexPath: NSIndexPath) -> FetchedType {
+        return fetchedResultsController.objectAtIndexPath(indexPath) as! FetchedType
+    }
+    
 }

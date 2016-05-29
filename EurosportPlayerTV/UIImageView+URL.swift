@@ -13,7 +13,7 @@ public struct DarkenFilter: ImageFilter {
     
     public var filter: Image -> Image {
         return { image in
-            return UIImageEffects.imageByApplyingBlurToImage(image, withRadius: 0, tintColor: UIColor.blackColor().colorWithAlphaComponent(0.4), saturationDeltaFactor: 1, maskImage: nil)
+            return UIImageEffects.imageByApplyingBlurToImage(image, withRadius: 0, tintColor: UIColor.blackColor().colorWithAlphaComponent(0.6), saturationDeltaFactor: 1, maskImage: nil)
         }
     }
 }

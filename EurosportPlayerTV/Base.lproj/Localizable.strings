@@ -9,3 +9,5 @@
 "sports-title" = "Sports";
 "video-count-singular" = "%@ video";
 "video-count-plural" = "%@ videos";
+"login-failed" = "Unable to login";
+"catchup-load-failed" = "Unable to load videos";

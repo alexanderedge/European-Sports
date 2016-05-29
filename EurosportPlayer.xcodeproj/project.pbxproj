@@ -39,6 +39,7 @@
 		DE3DC3B41CF4D61400AF5909 /* ManagedObjectResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3DC3B31CF4D61400AF5909 /* ManagedObjectResponseSerializer.swift */; };
 		DE3DC3B81CF4E17100AF5909 /* Fetchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3DC3B71CF4E17100AF5909 /* Fetchable.swift */; };
 		DE8FAA331CFB0C2C00E60A41 /* UIImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = DE8FAA321CFB0C2C00E60A41 /* UIImageEffects.m */; };
+		DE8FAA351CFB25B600E60A41 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8FAA341CFB25B600E60A41 /* UIViewController+Alert.swift */; };
 		DE969D731CD50B1300A8A313 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE969D721CD50B1300A8A313 /* AppDelegate.swift */; };
 		DE969D751CD50B1300A8A313 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE969D741CD50B1300A8A313 /* ViewController.swift */; };
 		DE969D781CD50B1300A8A313 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE969D761CD50B1300A8A313 /* Main.storyboard */; };
@@ -57,7 +58,6 @@
 		DEC4275D1CF9D8C000AE8C31 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DEC4275F1CF9D8C000AE8C31 /* Localizable.strings */; };
 		DEC427631CF9E29D00AE8C31 /* FetchedResultsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC427621CF9E29D00AE8C31 /* FetchedResultsCollectionViewController.swift */; };
 		DEC427651CF9E31000AE8C31 /* ManagedObjectContextSettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC427641CF9E31000AE8C31 /* ManagedObjectContextSettable.swift */; };
-		DEC427681CF9E41200AE8C31 /* DataSourceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC427671CF9E41200AE8C31 /* DataSourceType.swift */; };
 		DEC4276A1CF9E51500AE8C31 /* FetchedResultsControllerBackedType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC427691CF9E51500AE8C31 /* FetchedResultsControllerBackedType.swift */; };
 		DEC4276C1CF9F19F00AE8C31 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC4276B1CF9F19F00AE8C31 /* User.swift */; };
 		DEC427701CF9F6A500AE8C31 /* UIImageView+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC4276F1CF9F6A500AE8C31 /* UIImageView+URL.swift */; };
@@ -161,6 +161,7 @@
 		DE8FAA301CFB0C2B00E60A41 /* EurosportPlayerTV-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EurosportPlayerTV-Bridging-Header.h"; sourceTree = "<group>"; };
 		DE8FAA311CFB0C2C00E60A41 /* UIImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageEffects.h; sourceTree = "<group>"; };
 		DE8FAA321CFB0C2C00E60A41 /* UIImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageEffects.m; sourceTree = "<group>"; };
+		DE8FAA341CFB25B600E60A41 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		DE969D6F1CD50B1300A8A313 /* EurosportPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EurosportPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE969D721CD50B1300A8A313 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE969D741CD50B1300A8A313 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -185,7 +186,6 @@
 		DEC427611CF9DE2700AE8C31 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		DEC427621CF9E29D00AE8C31 /* FetchedResultsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedResultsCollectionViewController.swift; sourceTree = "<group>"; };
 		DEC427641CF9E31000AE8C31 /* ManagedObjectContextSettable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectContextSettable.swift; sourceTree = "<group>"; };
-		DEC427671CF9E41200AE8C31 /* DataSourceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSourceType.swift; sourceTree = "<group>"; };
 		DEC427691CF9E51500AE8C31 /* FetchedResultsControllerBackedType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedResultsControllerBackedType.swift; sourceTree = "<group>"; };
 		DEC4276B1CF9F19F00AE8C31 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = ../../../../../.Trash/User.swift; sourceTree = "<group>"; };
 		DEC4276F1CF9F6A500AE8C31 /* UIImageView+URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+URL.swift"; sourceTree = "<group>"; };
@@ -366,6 +366,7 @@
 				DED8D1891CF62E9800B016B9 /* View */,
 				DE969D8B1CD51EA300A8A313 /* AppDelegate.swift */,
 				DE969D911CD51EA300A8A313 /* Main.storyboard */,
+				DE8FAA301CFB0C2B00E60A41 /* EurosportPlayerTV-Bridging-Header.h */,
 				DE969D941CD51EA300A8A313 /* Assets.xcassets */,
 				DE969D961CD51EA300A8A313 /* Info.plist */,
 				DEC4275F1CF9D8C000AE8C31 /* Localizable.strings */,
@@ -379,7 +380,6 @@
 				DE8FAA311CFB0C2C00E60A41 /* UIImageEffects.h */,
 				DE8FAA321CFB0C2C00E60A41 /* UIImageEffects.m */,
 				DEC427591CF9C04B00AE8C31 /* Theme.swift */,
-				DE8FAA301CFB0C2B00E60A41 /* EurosportPlayerTV-Bridging-Header.h */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -391,6 +391,7 @@
 				DED8D18E1CF636BC00B016B9 /* CatchupsCollectionViewController.swift */,
 				DEC427621CF9E29D00AE8C31 /* FetchedResultsCollectionViewController.swift */,
 				DE969D8F1CD51EA300A8A313 /* SecondViewController.swift */,
+				DE8FAA341CFB25B600E60A41 /* UIViewController+Alert.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -400,7 +401,6 @@
 			children = (
 				DEC427641CF9E31000AE8C31 /* ManagedObjectContextSettable.swift */,
 				DEC427691CF9E51500AE8C31 /* FetchedResultsControllerBackedType.swift */,
-				DEC427671CF9E41200AE8C31 /* DataSourceType.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -713,7 +713,6 @@
 			files = (
 				DE969D901CD51EA300A8A313 /* SecondViewController.swift in Sources */,
 				DEC4276A1CF9E51500AE8C31 /* FetchedResultsControllerBackedType.swift in Sources */,
-				DEC427681CF9E41200AE8C31 /* DataSourceType.swift in Sources */,
 				DE39BCC01CE7D35100347716 /* ImageCollectionViewCell.swift in Sources */,
 				DEC427701CF9F6A500AE8C31 /* UIImageView+URL.swift in Sources */,
 				DE39BCBD1CE7CE5400347716 /* SportsCollectionViewController.swift in Sources */,
@@ -724,6 +723,7 @@
 				DEC427631CF9E29D00AE8C31 /* FetchedResultsCollectionViewController.swift in Sources */,
 				DEC4275A1CF9C04B00AE8C31 /* Theme.swift in Sources */,
 				DED8D18F1CF636BC00B016B9 /* CatchupsCollectionViewController.swift in Sources */,
+				DE8FAA351CFB25B600E60A41 /* UIViewController+Alert.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

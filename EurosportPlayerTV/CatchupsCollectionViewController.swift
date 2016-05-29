@@ -13,7 +13,7 @@ import AVKit
 
 private let reuseIdentifier = "Cell"
 
-class CatchupsCollectionViewController: FetchedResultsCollectionViewController, DataSourceType {
+class CatchupsCollectionViewController: FetchedResultsCollectionViewController {
 
     typealias FetchedType = Catchup
     
@@ -72,10 +72,27 @@ class CatchupsCollectionViewController: FetchedResultsCollectionViewController, 
             print("stream: \(stream)")
             
             //TODO: check for a valid token and fetch a new one, if required
-            showVideoForURL(stream.authenticatedURL, options: nil)
+            
+            guard let user = User.currentUser(managedObjectContext) else {
+                return
+            }
+            
+            stream.generateAuthenticatedURL(user) { result in
+                
+                switch result {
+                case .Success(let url):
+                    self.showVideoForURL(url)
+                    break
+                case .Failure(let error):
+                    
+                    self.showAlert(NSLocalizedString("catchup-failed", comment: "error starting catcup"), error: error)
+                    print("error generating authenticated URL: \(error)")
+                    break
+                }
+                
+            }
             
         }
-        
         
     }
     
@@ -84,7 +101,7 @@ class CatchupsCollectionViewController: FetchedResultsCollectionViewController, 
 
 
 extension CatchupsCollectionViewController {
-    private func showVideoForURL(url: NSURL, options: [String : AnyObject]?) {
+    private func showVideoForURL(url: NSURL, options: [String : AnyObject]? = nil) {
         let playerController = AVPlayerViewController()
         
         let asset = AVURLAsset(URL: url, options: options)

@@ -25,11 +25,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        guard let tabController = window?.rootViewController as? UITabBarController, vc = tabController.viewControllers?.first as? ManagedObjectContextSettable else {
+        guard let tabController = window?.rootViewController as? UITabBarController, viewControllers = tabController.viewControllers else {
             fatalError("wrong view controller type")
         }
         
-        vc.managedObjectContext = managedObjectContext
+        for controller in viewControllers {
+            guard let vc = controller as? ManagedObjectContextSettable else {
+                continue
+            }
+            vc.managedObjectContext = managedObjectContext
+        }
         
         return true
     }

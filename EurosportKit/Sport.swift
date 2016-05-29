@@ -7,7 +7,7 @@ public class Sport: NSManagedObject {
     // MARK: - Properties
     
     @NSManaged public
-    var identifier: NSNumber?
+    var identifier: NSNumber
     
     @NSManaged public
     var imageURL: AnyObject

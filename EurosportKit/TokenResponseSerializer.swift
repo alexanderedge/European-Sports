@@ -10,9 +10,19 @@ import Foundation
 
 struct TokenResponseSerializer {
     typealias T = Token
+    
+    enum TokenError: ErrorType {
+        case InvalidJSONStructure
+    }
+    
     static func serializer() -> ResponseSerializer <T> {
         return ResponseSerializer { data, response, error in
-            return try TokenParser.parse(try VideoshopResponseSerializer.serializer().serializeResponse(data, response: response, error: error))
+            
+            guard let json = try VideoshopResponseSerializer.serializer().serializeResponse(data, response: response, error: error) as? [String: AnyObject] else {
+                throw TokenError.InvalidJSONStructure
+            }
+            
+            return try TokenParser.parse(json)
         }
     }
     

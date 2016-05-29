@@ -10,7 +10,7 @@ import Foundation
 
 struct VideoshopResponseSerializer {
     
-    typealias T = [String: AnyObject]
+    typealias T = AnyObject
     
     enum VideoshopError: ErrorType {
         case InvalidJSONStructure

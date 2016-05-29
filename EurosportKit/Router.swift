@@ -189,7 +189,7 @@ struct Router {
         
     }
     
-    enum LiveStream: URLRequestConvertible {
+    enum Product: URLRequestConvertible {
         case Fetch
         
         private var baseURL: NSURL {

@@ -64,14 +64,9 @@ class CatchupsCollectionViewController: FetchedResultsCollectionViewController {
         
         let catchup = objectAt(indexPath)
         
-        print("selected \(catchup.catchupDescription)")
-        
+        print("selected catchup \(catchup.identifier)")
         
         if let stream = catchup.streams.firstObject as? Stream {
-            
-            print("stream: \(stream)")
-            
-            //TODO: check for a valid token and fetch a new one, if required
             
             guard let user = User.currentUser(managedObjectContext) else {
                 return

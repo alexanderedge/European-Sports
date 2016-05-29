@@ -21,13 +21,6 @@ class SportsCollectionViewController: FetchedResultsCollectionViewController {
     }
     
     private var selectedSport: Sport?
-    private var lastRefresh: NSDate?
-    private let refreshInterval: NSTimeInterval = 300 // 5 minutes
-    lazy private var loadingIndicator: UIActivityIndicatorView = {
-        let activity = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
-        activity.startAnimating()
-        return activity
-    }()
     
     override func fetchRequest() -> NSFetchRequest {
         // ensure we only show sports that contain at least one video that is available to watch
@@ -41,102 +34,13 @@ class SportsCollectionViewController: FetchedResultsCollectionViewController {
         
         title = NSLocalizedString("sports-title", comment: "title for the sports screen")
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(applicationDidBecomeActive(_:)), name: UIApplicationDidBecomeActiveNotification, object: UIApplication.sharedApplication())
-        
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        // check for a user, if not, prompt to login
-        
-        if User.currentUser(managedObjectContext) == nil {
-         
-            showLoadingIndicator()
-            
-            User.login("alexander.edge@googlemail.com", password: "q6v-BXt-V57-E4r", context: managedObjectContext) { result in
-                
-                switch result {
-                case .Success(let user):
-                    print("user logged in: \(user)")
-                    
-                    self.fetchCatchups(user, context: self.managedObjectContext)
-                    
-                    break
-                case .Failure(let error):
-                    print("error logging in: \(error)")
-                    
-                    self.showAlert(NSLocalizedString("login-failed", comment: "error logging in"), error: error)
-                    
-                    self.hideLoadingIndicator()
-                    
-                    break
-                }
-                
-            }.resume()
-            
-        }
-        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    func applicationDidBecomeActive(notification: NSNotification) {
-        
-        guard let user = User.currentUser(managedObjectContext) else {
-            return
-        }
-        
-        if let lastRefresh = lastRefresh where NSDate().timeIntervalSinceDate(lastRefresh) < refreshInterval {
-            return
-        }
-        
-        fetchCatchups(user, context: managedObjectContext)
-        
-    }
-    
-    // MARK: Actions
-    
-    private func fetchCatchups(user: User, context: NSManagedObjectContext) {
-        Catchup.fetch(user, context: context) { result in
-            
-            switch result {
-                
-            case .Success(let catchups):
-                
-                self.hideLoadingIndicator()
-                
-                print("loaded \(catchups.count) catchups");
-                
-                self.lastRefresh = NSDate()
-                
-                break
-            case .Failure(let error):
-                print("error loading catchups: \(error)")
-                
-                self.hideLoadingIndicator()
-                
-                self.showAlert(NSLocalizedString("catchup-load-failed", comment: "error loading catchups"), error: error)
-                
-                break
-                
-            }
-            
-        }.resume()
-    }
 
-    private func hideLoadingIndicator() {
-        loadingIndicator.removeFromSuperview()
-    }
-    
-    private func showLoadingIndicator() {
-        loadingIndicator.center = view.center
-        view.addSubview(loadingIndicator)
-    }
-    
     // MARK: UICollectionViewDataSource
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -167,7 +71,7 @@ class SportsCollectionViewController: FetchedResultsCollectionViewController {
         
         performSegueWithIdentifier(SegueIdentifiers.ShowCatchups.rawValue, sender: nil)
         
-        print("selected \(sport.name)")
+        print("selected sport \(sport.identifier)")
         
     }
 

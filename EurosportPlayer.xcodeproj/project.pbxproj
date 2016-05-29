@@ -38,6 +38,12 @@
 		DE39BCC31CE7D40F00347716 /* EurosportKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DE39BC671CE764F700347716 /* EurosportKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DE3DC3B41CF4D61400AF5909 /* ManagedObjectResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3DC3B31CF4D61400AF5909 /* ManagedObjectResponseSerializer.swift */; };
 		DE3DC3B81CF4E17100AF5909 /* Fetchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3DC3B71CF4E17100AF5909 /* Fetchable.swift */; };
+		DE7D566E1CFB40EE00A2B504 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7D566D1CFB40EE00A2B504 /* Product.swift */; };
+		DE7D56701CFB40FB00A2B504 /* Product+Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7D566F1CFB40FB00A2B504 /* Product+Networking.swift */; };
+		DE7D56721CFB454500A2B504 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7D56711CFB454500A2B504 /* Channel.swift */; };
+		DE7D56761CFB474100A2B504 /* ProductsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7D56751CFB474100A2B504 /* ProductsCollectionViewController.swift */; };
+		DE7D56781CFB49BF00A2B504 /* ProductResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7D56771CFB49BF00A2B504 /* ProductResponseSerializer.swift */; };
+		DE7D567A1CFB49FA00A2B504 /* ProductParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7D56791CFB49FA00A2B504 /* ProductParser.swift */; };
 		DE8FAA331CFB0C2C00E60A41 /* UIImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = DE8FAA321CFB0C2C00E60A41 /* UIImageEffects.m */; };
 		DE8FAA351CFB25B600E60A41 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8FAA341CFB25B600E60A41 /* UIViewController+Alert.swift */; };
 		DE969D731CD50B1300A8A313 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE969D721CD50B1300A8A313 /* AppDelegate.swift */; };
@@ -158,6 +164,12 @@
 		DE39BCBE1CE7D35100347716 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		DE3DC3B31CF4D61400AF5909 /* ManagedObjectResponseSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectResponseSerializer.swift; sourceTree = "<group>"; };
 		DE3DC3B71CF4E17100AF5909 /* Fetchable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fetchable.swift; sourceTree = "<group>"; };
+		DE7D566D1CFB40EE00A2B504 /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		DE7D566F1CFB40FB00A2B504 /* Product+Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Product+Networking.swift"; sourceTree = "<group>"; };
+		DE7D56711CFB454500A2B504 /* Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
+		DE7D56751CFB474100A2B504 /* ProductsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductsCollectionViewController.swift; sourceTree = "<group>"; };
+		DE7D56771CFB49BF00A2B504 /* ProductResponseSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductResponseSerializer.swift; sourceTree = "<group>"; };
+		DE7D56791CFB49FA00A2B504 /* ProductParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductParser.swift; sourceTree = "<group>"; };
 		DE8FAA301CFB0C2B00E60A41 /* EurosportPlayerTV-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EurosportPlayerTV-Bridging-Header.h"; sourceTree = "<group>"; };
 		DE8FAA311CFB0C2C00E60A41 /* UIImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageEffects.h; sourceTree = "<group>"; };
 		DE8FAA321CFB0C2C00E60A41 /* UIImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageEffects.m; sourceTree = "<group>"; };
@@ -272,6 +284,9 @@
 				DE39BC981CE76BBC00347716 /* User+Networking.swift */,
 				DE39BC9F1CE76E5000347716 /* Token.swift */,
 				DE39BCA11CE7705300347716 /* Token+Networking.swift */,
+				DE7D566D1CFB40EE00A2B504 /* Product.swift */,
+				DE7D566F1CFB40FB00A2B504 /* Product+Networking.swift */,
+				DE7D56711CFB454500A2B504 /* Channel.swift */,
 				DE39BC961CE76AAD00347716 /* Result.swift */,
 				DEB459981CE8C6EE0057259C /* EurosportKit.xcdatamodeld */,
 				DEC427791CFA005A00AE8C31 /* CoreDataError.swift */,
@@ -289,6 +304,7 @@
 				DE39BCB01CE77C4C00347716 /* VideoshopResponseSerializer.swift */,
 				DE39BCA31CE770A400347716 /* TokenResponseSerializer.swift */,
 				DE39BCAE1CE77C1700347716 /* CatchupResponseSerializer.swift */,
+				DE7D56771CFB49BF00A2B504 /* ProductResponseSerializer.swift */,
 			);
 			name = Serializers;
 			sourceTree = "<group>";
@@ -314,6 +330,7 @@
 				DE39BCAA1CE7777E00347716 /* SportParser.swift */,
 				DE39BCB61CE784B500347716 /* CatchupParser.swift */,
 				DE39BCBA1CE786A400347716 /* StreamParser.swift */,
+				DE7D56791CFB49FA00A2B504 /* ProductParser.swift */,
 			);
 			name = Parsers;
 			sourceTree = "<group>";
@@ -385,6 +402,7 @@
 		DEC427581CF9C03700AE8C31 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				DE7D56751CFB474100A2B504 /* ProductsCollectionViewController.swift */,
 				DE39BCBC1CE7CE5400347716 /* SportsCollectionViewController.swift */,
 				DED8D18E1CF636BC00B016B9 /* CatchupsCollectionViewController.swift */,
 				DEC427621CF9E29D00AE8C31 /* FetchedResultsCollectionViewController.swift */,
@@ -661,6 +679,9 @@
 				DE39BCAF1CE77C1700347716 /* CatchupResponseSerializer.swift in Sources */,
 				DE3DC3B81CF4E17100AF5909 /* Fetchable.swift in Sources */,
 				DEC4276C1CF9F19F00AE8C31 /* User.swift in Sources */,
+				DE7D56701CFB40FB00A2B504 /* Product+Networking.swift in Sources */,
+				DE7D566E1CFB40EE00A2B504 /* Product.swift in Sources */,
+				DE7D56781CFB49BF00A2B504 /* ProductResponseSerializer.swift in Sources */,
 				DE39BC951CE76A8F00347716 /* JSONResponseSerializer.swift in Sources */,
 				DE39BCB71CE784B500347716 /* CatchupParser.swift in Sources */,
 				DE39BCB11CE77C4C00347716 /* VideoshopResponseSerializer.swift in Sources */,
@@ -671,7 +692,9 @@
 				DEC427721CF9F89D00AE8C31 /* StringIdentifiable.swift in Sources */,
 				DE3DC3B41CF4D61400AF5909 /* ManagedObjectResponseSerializer.swift in Sources */,
 				DE39BCA71CE770D000347716 /* TokenParser.swift in Sources */,
+				DE7D56721CFB454500A2B504 /* Channel.swift in Sources */,
 				DE39BCA01CE76E5000347716 /* Token.swift in Sources */,
+				DE7D567A1CFB49FA00A2B504 /* ProductParser.swift in Sources */,
 				DE39BC971CE76AAD00347716 /* Result.swift in Sources */,
 				DEB459A81CE8C91D0057259C /* Sport.swift in Sources */,
 				DE39BCA21CE7705300347716 /* Token+Networking.swift in Sources */,
@@ -717,6 +740,7 @@
 				DEC427651CF9E31000AE8C31 /* ManagedObjectContextSettable.swift in Sources */,
 				DE8FAA331CFB0C2C00E60A41 /* UIImageEffects.m in Sources */,
 				DEC427631CF9E29D00AE8C31 /* FetchedResultsCollectionViewController.swift in Sources */,
+				DE7D56761CFB474100A2B504 /* ProductsCollectionViewController.swift in Sources */,
 				DEC4275A1CF9C04B00AE8C31 /* Theme.swift in Sources */,
 				DED8D18F1CF636BC00B016B9 /* CatchupsCollectionViewController.swift in Sources */,
 				DE8FAA351CFB25B600E60A41 /* UIViewController+Alert.swift in Sources */,

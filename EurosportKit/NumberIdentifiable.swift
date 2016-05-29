@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 public protocol NumberIdentifiable {
-    var identifier: NSNumber? { get set }
+    var identifier: NSNumber { get set }
 }
 
 extension Fetchable where Self: NSManagedObject, Self: NumberIdentifiable, FetchableType == Self {

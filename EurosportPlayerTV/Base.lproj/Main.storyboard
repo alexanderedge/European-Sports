@@ -185,12 +185,97 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="vnZ-Ic-wYL" kind="relationship" relationship="viewControllers" id="ndl-Ug-fvg"/>
+                        <segue destination="BEP-hu-2OO" kind="relationship" relationship="viewControllers" id="hY1-oG-MUF"/>
+                        <segue destination="vnZ-Ic-wYL" kind="relationship" relationship="viewControllers" id="ZLU-jZ-H95"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="0.0" y="0.0"/>
+        </scene>
+        <!--Live-->
+        <scene sceneID="5mv-IS-gga">
+            <objects>
+                <collectionViewController id="BEP-hu-2OO" customClass="ProductsCollectionViewController" customModule="EurosportPlayerTV" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="AG0-vF-qFE">
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="60" minimumInteritemSpacing="60" id="qyN-1C-WWe">
+                            <size key="itemSize" width="560" height="400"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="60" minY="60" maxX="60" maxY="60"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="0x0-sy-6Pt" customClass="DoubleLabelCollectionViewCell" customModule="EurosportPlayerTV" customModuleProvider="target">
+                                <rect key="frame" x="60" y="60" width="560" height="400"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="560" height="400"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageWhenAncestorFocused="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iE9-ob-aM4">
+                                            <rect key="frame" x="0.0" y="0.0" width="560" height="400"/>
+                                        </imageView>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bEG-rM-Mme">
+                                            <rect key="frame" x="20" y="160" width="520" height="81"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vEC-5I-lRE">
+                                                    <rect key="frame" x="0.0" y="0.0" width="520" height="46"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detail" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Jz-PY-lss">
+                                                    <rect key="frame" x="0.0" y="46" width="520" height="35"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="vEC-5I-lRE" secondAttribute="trailing" id="5W1-we-Xxv"/>
+                                                <constraint firstAttribute="bottom" secondItem="1Jz-PY-lss" secondAttribute="bottom" id="GgW-go-9et"/>
+                                                <constraint firstAttribute="trailing" secondItem="1Jz-PY-lss" secondAttribute="trailing" id="Gid-gP-zVZ"/>
+                                                <constraint firstItem="vEC-5I-lRE" firstAttribute="leading" secondItem="bEG-rM-Mme" secondAttribute="leading" id="OTy-d0-eD5"/>
+                                                <constraint firstItem="vEC-5I-lRE" firstAttribute="top" secondItem="bEG-rM-Mme" secondAttribute="top" id="PRm-QE-ZUm"/>
+                                                <constraint firstItem="1Jz-PY-lss" firstAttribute="leading" secondItem="bEG-rM-Mme" secondAttribute="leading" id="Wqe-qV-gtd"/>
+                                                <constraint firstItem="1Jz-PY-lss" firstAttribute="top" secondItem="vEC-5I-lRE" secondAttribute="bottom" id="cNW-oN-BPQ"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="bEG-rM-Mme" firstAttribute="centerY" secondItem="0x0-sy-6Pt" secondAttribute="centerY" id="AfU-XA-Foa"/>
+                                    <constraint firstItem="iE9-ob-aM4" firstAttribute="top" secondItem="0x0-sy-6Pt" secondAttribute="top" id="F4S-WL-L4f"/>
+                                    <constraint firstAttribute="trailing" secondItem="bEG-rM-Mme" secondAttribute="trailing" constant="20" id="Hbe-d9-IXt"/>
+                                    <constraint firstItem="bEG-rM-Mme" firstAttribute="centerX" secondItem="0x0-sy-6Pt" secondAttribute="centerX" id="S8y-O2-822"/>
+                                    <constraint firstItem="bEG-rM-Mme" firstAttribute="leading" secondItem="0x0-sy-6Pt" secondAttribute="leading" constant="20" id="cWM-K8-eFK"/>
+                                    <constraint firstAttribute="bottom" secondItem="iE9-ob-aM4" secondAttribute="bottom" id="oRQ-uK-t4h"/>
+                                    <constraint firstItem="iE9-ob-aM4" firstAttribute="leading" secondItem="0x0-sy-6Pt" secondAttribute="leading" id="vKf-JV-c42"/>
+                                    <constraint firstAttribute="trailing" secondItem="iE9-ob-aM4" secondAttribute="trailing" id="vqa-U6-B5R"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="detailLabel" destination="1Jz-PY-lss" id="gvI-Wi-G6m"/>
+                                    <outlet property="imageView" destination="iE9-ob-aM4" id="XnZ-Ns-q6Q"/>
+                                    <outlet property="titleLabel" destination="vEC-5I-lRE" id="FnO-1q-FIR"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="BEP-hu-2OO" id="Upx-mz-gtq"/>
+                            <outlet property="delegate" destination="BEP-hu-2OO" id="crr-lu-zmB"/>
+                        </connections>
+                    </collectionView>
+                    <tabBarItem key="tabBarItem" title="Live" id="KXf-my-HkH"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fBY-5R-yhd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2271" y="-2068"/>
         </scene>
     </scenes>
 </document>

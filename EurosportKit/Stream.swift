@@ -15,7 +15,7 @@ public class Stream: NSManagedObject {
     // MARK: - Relationships
     
     @NSManaged public
-    var catchup: Catchup?
+    var catchup: Catchup
     
 }
 

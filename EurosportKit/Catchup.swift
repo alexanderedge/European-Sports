@@ -11,7 +11,7 @@ public class Catchup: NSManagedObject {
     var expirationDate: NSDate
     
     @NSManaged public
-    var identifier: NSNumber?
+    var identifier: NSNumber
     
     @NSManaged public
     var imageURL: AnyObject
@@ -25,7 +25,7 @@ public class Catchup: NSManagedObject {
     // MARK: - Relationships
     
     @NSManaged public
-    var sport: Sport?
+    var sport: Sport
     
     @NSManaged public
     var streams: NSOrderedSet

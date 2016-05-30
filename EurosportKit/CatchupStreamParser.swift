@@ -9,11 +9,11 @@
 import Foundation
 import CoreData
 
-internal struct StreamParser: JSONCoreDataParsingType {
+internal struct CatchupStreamParser: JSONCoreDataParsingType {
     
-    typealias T = Stream
+    typealias T = CatchupStream
     
-    enum StreamError : ErrorType {
+    enum CatchupStreamError : ErrorType {
         case InvalidURL
     }
     
@@ -21,10 +21,10 @@ internal struct StreamParser: JSONCoreDataParsingType {
         let identifier: Int = try json.extract("id")
         
         guard let url = NSURL(string: try json.extract("url")) else {
-            throw StreamError.InvalidURL
+            throw CatchupStreamError.InvalidURL
         }
         
-        let stream = Stream(context: context)
+        let stream = CatchupStream(context: context)
         stream.identifier = identifier
         stream.url = url
         return stream

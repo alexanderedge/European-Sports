@@ -6,8 +6,8 @@
   Copyright © 2016 Alexander Edge Ltd. All rights reserved.
 */
 
-"sports-title" = "Sports";
-"products-title" = "Products";
+"videos-title" = "Videos";
+"live-title" = "Live TV";
 "video-count-singular" = "%@ video";
 "video-count-plural" = "%@ videos";
 "login-failed" = "Unable to login";

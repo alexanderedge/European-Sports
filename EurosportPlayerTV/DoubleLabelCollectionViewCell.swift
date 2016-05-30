@@ -15,7 +15,6 @@ class DoubleLabelCollectionViewCell: ImageCollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        imageView.adjustsImageWhenAncestorFocused = true
         
         titleLabel.textColor = UIColor.whiteColor()
         titleLabel.font = Theme.Fonts.boldFont(ofSize: 38)

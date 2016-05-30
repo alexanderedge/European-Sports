@@ -9,10 +9,10 @@
 import Foundation
 import CoreData
 
-extension Stream {
+extension CatchupStream {
     
     private var authenticatedURL: NSURL {
-        return Router.Catchup.authenticatedURL(url as! NSURL)
+        return Router.Catchup.authenticatedURL(url)
     }
     
     public func generateAuthenticatedURL(user: User, completionHandler: Result<NSURL,NSError> -> Void) {
@@ -20,7 +20,6 @@ extension Stream {
             NSURLSession.sharedSession().refreshTokenTask(user, failure: completionHandler) {
                 completionHandler(.Success(self.authenticatedURL))
             }.resume()
-            
             return
         }
         completionHandler(.Success(authenticatedURL))

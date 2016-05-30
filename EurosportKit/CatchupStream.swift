@@ -1,16 +1,16 @@
 import Foundation
 import CoreData
 
-@objc(Stream)
-public class Stream: NSManagedObject {
+@objc(CatchupStream)
+public class CatchupStream: NSManagedObject {
 	
     // MARK: - Properties
     
     @NSManaged public
-    var identifier: NSNumber?
+    var identifier: NSNumber
     
     @NSManaged public
-    var url: AnyObject
+    var url: NSURL
     
     // MARK: - Relationships
     
@@ -19,12 +19,12 @@ public class Stream: NSManagedObject {
     
 }
 
-extension Stream: Fetchable {
+extension CatchupStream: Fetchable {
     
-    public typealias FetchableType = Stream
+    public typealias FetchableType = CatchupStream
     
     public static func entityName() -> String {
-        return "Stream"
+        return "CatchupStream"
     }
     
 }

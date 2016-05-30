@@ -32,7 +32,7 @@ class ProductsCollectionViewController: FetchedResultsCollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = NSLocalizedString("products-title", comment: "title for the products screen")
+        title = NSLocalizedString("live-title", comment: "title for the products screen")
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(applicationDidBecomeActive(_:)), name: UIApplicationDidBecomeActiveNotification, object: UIApplication.sharedApplication())
     }
@@ -105,15 +105,17 @@ class ProductsCollectionViewController: FetchedResultsCollectionViewController {
             if case let .Failure(error) = result {
                 print("error loading catchups: \(error)")
                 errors.append(error)
-            }
-            dispatch_group_leave(group)
-        }.resume()
-        
-        dispatch_group_enter(group)
-        Product.fetch(user, context: context) { result in
-            if case let .Failure(error) = result {
-                print("error loading products: \(error)")
-                errors.append(error)
+            } else {
+                
+                dispatch_group_enter(group)
+                Product.fetch(user, context: context) { result in
+                    if case let .Failure(error) = result {
+                        print("error loading products: \(error)")
+                        errors.append(error)
+                    }
+                    dispatch_group_leave(group)
+                    }.resume()
+                
             }
             dispatch_group_leave(group)
         }.resume()
@@ -156,15 +158,52 @@ class ProductsCollectionViewController: FetchedResultsCollectionViewController {
     
     override func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
         
-        guard let cell = cell as? DoubleLabelCollectionViewCell else {
+        guard let cell = cell as? LiveStreamCollectionViewCell else {
             return
         }
         
         let product = objectAt(indexPath)
         
-        cell.titleLabel.text = product.channel.livelabel
-        cell.detailLabel.text = product.channel.livesublabel
-        //cell.imageView.setImage(catchup.imageURL as? NSURL, adjustBrightness: true)
+        if let currentProgramme = product.scheduledProgrammes.firstObject as? ScheduledProgramme {
+           
+            cell.titleLabel.text = currentProgramme.name
+            cell.sportLabel.text = currentProgramme.sport.name
+            
+            // instead of displaying the logo in front of the image, it would be
+            // good to assemble an LSR image (front / back) so that parallax
+            // can occur
+            cell.imageView.setImage(currentProgramme.imageURL, darken: false)
+            cell.logoImageView.setImage(product.logoURL, darken: false)
+        }
+        
         
     }
+    
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        
+        let product = objectAt(indexPath)
+        
+        print("selected product \(product)")
+        
+        guard let liveStream = product.liveStreams.firstObject as? LiveStream, user = User.currentUser(managedObjectContext) else {
+            return
+        }
+        
+        liveStream.generateAuthenticatedURL(user) { result in
+            switch result {
+            case .Success(let url):
+                self.showVideoForURL(url)
+                break
+            case .Failure(let error):
+                
+                self.showAlert(NSLocalizedString("catchup-failed", comment: "error starting live stream"), error: error)
+                print("error generating authenticated URL: \(error)")
+                break
+            }
+        }
+    
+    }
+    
 }
+
+

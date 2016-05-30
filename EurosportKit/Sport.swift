@@ -10,7 +10,7 @@ public class Sport: NSManagedObject {
     var identifier: NSNumber
     
     @NSManaged public
-    var imageURL: AnyObject
+    var imageURL: NSURL
     
     @NSManaged public
     var name: String
@@ -31,31 +31,3 @@ extension Sport: Fetchable {
 }
 
 extension Sport: NumberIdentifiable { }
-
-extension Sport {
-    
-    func addCatchups(objects: NSSet) {
-        let mutable = self.catchups.mutableCopy() as! NSMutableSet
-        mutable.unionSet(objects as Set<NSObject>)
-        self.catchups = mutable.copy() as! NSSet
-    }
-    
-    func removeCatchups(objects: NSSet) {
-        let mutable = self.catchups.mutableCopy() as! NSMutableSet
-        mutable.minusSet(objects as Set<NSObject>)
-        self.catchups = mutable.copy() as! NSSet
-    }
-    
-    func addCatchupsObject(value: Catchup) {
-        let mutable = self.catchups.mutableCopy() as! NSMutableSet
-        mutable.addObject(value)
-        self.catchups = mutable.copy() as! NSSet
-    }
-    
-    func removeCatchupsObject(value: Catchup) {
-        let mutable = self.catchups.mutableCopy() as! NSMutableSet
-        mutable.removeObject(value)
-        self.catchups = mutable.copy() as! NSSet
-    }
-    
-}

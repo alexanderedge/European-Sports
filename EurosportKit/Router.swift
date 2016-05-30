@@ -24,8 +24,6 @@ struct Router {
     private static func standardRequest(url: NSURL) -> NSMutableURLRequest {
         let mutableRequest = NSMutableURLRequest(URL: url)
         mutableRequest.setValue("EurosportPlayer/5.1.5 (iPad; iOS 9.3.1; Scale/3.00)", forHTTPHeaderField: "User-Agent")
-        //mutableRequest.setValue("en-GB;q=1, en;q=0.9", forHTTPHeaderField: "Accept-Language")
-        //mutableRequest.setValue("gzip, deflate", forHTTPHeaderField: "Accept-Encoding")
         return mutableRequest
     }
     
@@ -51,9 +49,13 @@ struct Router {
                     
                     params["context"] = String(data: contextData, encoding: NSUTF8StringEncoding)
                     
-                    let udid = "D270986F-35B1-43F5-8535-C874C9173B68"//UIDevice.currentDevice().identifierForVendor!.UUIDString
+                    #if TARGET_OS_SIMULATOR
+                        let identifier = "f5c1fa0c-1507-400f-916e-9793c883cfdd"
+                    #else
+                        let identifier = UIDevice.currentDevice().identifierForVendor!.UUIDString
+                    #endif
                     
-                    let data = try NSJSONSerialization.dataWithJSONObject(["email": email, "password": password, "udid": udid], options: [])
+                    let data = try NSJSONSerialization.dataWithJSONObject(["email": email, "password": password, "udid": identifier], options: [])
                     
                     params["data"] = String(data: data, encoding: NSUTF8StringEncoding)
                     

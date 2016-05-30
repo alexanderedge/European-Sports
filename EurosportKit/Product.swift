@@ -18,10 +18,16 @@ public class Product: NSManagedObject {
     @NSManaged public
     var name: String
     
+    @NSManaged public
+    var logoURL: NSURL
+    
     // MARK: - Relationships
     
     @NSManaged public
-    var channel: Channel
+    var scheduledProgrammes: NSOrderedSet
+    
+    @NSManaged public
+    var liveStreams: NSOrderedSet
     
 }
 

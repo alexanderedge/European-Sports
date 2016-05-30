@@ -14,26 +14,30 @@ internal struct ProductParser: JSONCoreDataParsingType {
     typealias T = Product
     
     enum ProductError : ErrorType {
-        
+        case InvalidLogoURL
     }
+    
+    private static let imageBaseURL = NSURL(string:"http://i.eurosport.fr")
     
     static func parse(json: [String : AnyObject], context: NSManagedObjectContext) throws -> T {
         let identifier: Int = try json.extract("productid")
         let name: String = try json.extract("prdname")
         
+        let logoJSON: [String: AnyObject] = try json.extract("logo")
         
-        let channelIdentifier: Int = try json.extract("channelid")
-        let channelLiveLabel: String = try json.extract("channellivelabel")
-        let channelLiveSubLabel: String = try json.extract("channellivesublabel")
+        guard let logoURL = NSURL(string: try logoJSON.extract("url"), relativeToURL: imageBaseURL) else {
+            throw ProductError.InvalidLogoURL
+        }
         
-        let channel = try Channel.newOrExistingObject(channelIdentifier, inContext: context)
-        channel.livelabel = channelLiveLabel
-        channel.livesublabel = channelLiveSubLabel
+        let scheduleJSON: [[String: AnyObject]] = try json.extract("tvschedules")
+        let liveStreamJSON: [[String: AnyObject]] = try json.extract("livestreams")
         
         let product = try Product.newOrExistingObject(identifier, inContext: context)
         product.identifier = identifier
         product.name = name
-        product.channel = channel
+        product.logoURL = logoURL
+        product.scheduledProgrammes = NSOrderedSet(array: ScheduledProgrammeParser.parse(scheduleJSON, context: context))
+        product.liveStreams = NSOrderedSet(array: LiveStreamParser.parse(liveStreamJSON, context: context))
         return product
         
     }

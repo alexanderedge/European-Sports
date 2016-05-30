@@ -40,7 +40,7 @@ extension JSONParsingType {
                 let obj = try self.parse(jsonDic)
                 array.append(obj)
             } catch {
-                print("parse error: \(error)")
+                print("\(T.self) parse error: \(error)")
             }
         }
         return array

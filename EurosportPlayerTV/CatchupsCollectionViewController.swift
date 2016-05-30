@@ -56,7 +56,7 @@ class CatchupsCollectionViewController: FetchedResultsCollectionViewController {
         
         cell.titleLabel.text = catchup.title
         cell.detailLabel.text = catchup.catchupDescription
-        cell.imageView.setImage(catchup.imageURL as? NSURL, adjustBrightness: true)
+        cell.imageView.setImage(catchup.imageURL, darken: true)
         
     }
     
@@ -66,7 +66,7 @@ class CatchupsCollectionViewController: FetchedResultsCollectionViewController {
         
         print("selected catchup \(catchup.identifier)")
         
-        if let stream = catchup.streams.firstObject as? Stream {
+        if let stream = catchup.streams.firstObject as? CatchupStream {
             
             guard let user = User.currentUser(managedObjectContext) else {
                 return
@@ -92,22 +92,3 @@ class CatchupsCollectionViewController: FetchedResultsCollectionViewController {
     }
     
 }
-
-
-
-extension CatchupsCollectionViewController {
-    private func showVideoForURL(url: NSURL, options: [String : AnyObject]? = nil) {
-        let playerController = AVPlayerViewController()
-        
-        let asset = AVURLAsset(URL: url, options: options)
-        let player = AVPlayer(playerItem: AVPlayerItem(asset: asset))
-        playerController.player = player
-        
-        self.presentViewController(playerController, animated: true) {
-            player.play()
-        }
-    }
-}
-
-
-

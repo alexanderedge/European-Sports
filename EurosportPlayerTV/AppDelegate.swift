@@ -47,6 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        self.saveContext()
     }
     
     func applicationWillEnterForeground(application: UIApplication) {
@@ -60,6 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        self.saveContext()
     }
 
     private lazy var applicationCachesDirectory: NSURL = {
@@ -72,6 +74,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // The managed object model for the application. This property is not optional. It is a fatal error for the application not to be able to find and load its model.
         let modelURL = NSBundle(forClass: Sport.self).URLForResource("EurosportKit", withExtension: "momd")!
         return NSManagedObjectModel(contentsOfURL: modelURL)!
+    }()
+    
+    private lazy var storeURL: NSURL = {
+        return self.applicationCachesDirectory.URLByAppendingPathComponent("EurosportPlayerTV.sqlite")
     }()
     
     private func saveContext () {

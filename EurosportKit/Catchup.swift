@@ -14,7 +14,7 @@ public class Catchup: NSManagedObject {
     var identifier: NSNumber
     
     @NSManaged public
-    var imageURL: AnyObject
+    var imageURL: NSURL
     
     @NSManaged public
     var startDate: NSDate
@@ -30,34 +30,6 @@ public class Catchup: NSManagedObject {
     @NSManaged public
     var streams: NSOrderedSet
 
-}
-
-extension Catchup {
-
-    func addStreams(objects: NSOrderedSet) {
-        let mutable = self.streams.mutableCopy() as! NSMutableOrderedSet
-        mutable.unionOrderedSet(objects)
-        self.streams = mutable.copy() as! NSOrderedSet
-    }
-    
-    func removeStreams(objects: NSOrderedSet) {
-        let mutable = self.streams.mutableCopy() as! NSMutableOrderedSet
-        mutable.minusOrderedSet(objects)
-        self.streams = mutable.copy() as! NSOrderedSet
-    }
-    
-    func addStreamsObject(value: Stream) {
-        let mutable = self.streams.mutableCopy() as! NSMutableOrderedSet
-        mutable.addObject(value)
-        self.streams = mutable.copy() as! NSOrderedSet
-    }
-    
-    func removeStreamsObject(value: Stream) {
-        let mutable = self.streams.mutableCopy() as! NSMutableOrderedSet
-        mutable.removeObject(value)
-        self.streams = mutable.copy() as! NSOrderedSet
-    }
-    
 }
 
 extension Catchup: NumberIdentifiable { }

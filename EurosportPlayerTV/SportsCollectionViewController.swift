@@ -32,7 +32,7 @@ class SportsCollectionViewController: FetchedResultsCollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = NSLocalizedString("sports-title", comment: "title for the sports screen")
+        title = NSLocalizedString("videos-title", comment: "title for the sports screen")
         
     }
     
@@ -59,7 +59,7 @@ class SportsCollectionViewController: FetchedResultsCollectionViewController {
         
         cell.titleLabel.text = sport.name
         cell.detailLabel.text = NSString.localizedStringWithFormat(sport.catchups.count > 1 ? NSLocalizedString("video-count-plural", comment: "e.g. 1 video") : NSLocalizedString("video-count-singular", comment: "e.g. 2 videos"), NSNumberFormatter.localizedStringFromNumber(sport.catchups.count, numberStyle: .NoStyle)) as String
-        cell.imageView.setImage(sport.imageURL as? NSURL, adjustBrightness: true)
+        cell.imageView.setImage(sport.imageURL, darken: true)
 
     }
     

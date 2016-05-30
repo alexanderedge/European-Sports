@@ -9,9 +9,9 @@
 import UIKit
 import AlamofireImage
 
-public struct DarkenFilter: ImageFilter {
+internal struct DarkenFilter: ImageFilter {
     
-    public var filter: Image -> Image {
+    internal var filter: Image -> Image {
         return { image in
             return UIImageEffects.imageByApplyingBlurToImage(image, withRadius: 0, tintColor: UIColor.blackColor().colorWithAlphaComponent(0.6), saturationDeltaFactor: 1, maskImage: nil)
         }
@@ -20,9 +20,9 @@ public struct DarkenFilter: ImageFilter {
 
 extension UIImageView {
     
-    func setImage(url: NSURL?, adjustBrightness: Bool) {
+    func setImage(url: NSURL?, darken: Bool) {
         if let url = url {
-            af_setImageWithURL(url, filter: DarkenFilter(), imageTransition: .CrossDissolve(0.2), runImageTransitionIfCached: false)
+            af_setImageWithURL(url, filter: darken ? DarkenFilter() : nil, imageTransition: .CrossDissolve(0.2))
         }
     }
     

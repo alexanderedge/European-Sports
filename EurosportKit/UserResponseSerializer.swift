@@ -12,14 +12,14 @@ struct UserResponseSerializer {
     
     typealias T = User
     
-    enum UserError: ErrorType {
-        case InvalidJSONStructure
+    enum UserError: Error {
+        case invalidJSONStructure
     }
     
     static func serializer() -> ManagedObjectResponseSerializer <T> {
         return ManagedObjectResponseSerializer { context, data, response, error in
             guard let json = try JSONResponseSerializer.serializer().serializeResponse(data, response: response, error: error) as? [String: AnyObject] else {
-                throw UserError.InvalidJSONStructure
+                throw UserError.invalidJSONStructure
             }
             return try UserParser.parse(json, context: context)
         }

@@ -29,13 +29,13 @@ import Foundation
 internal protocol ResponseSerializerType {
     associatedtype T
     
-    func serializeResponse(data: NSData?, response: NSURLResponse?, error: NSError?) throws -> T
+    func serializeResponse(_ data: Data?, response: URLResponse?, error: NSError?) throws -> T
     
 }
 
 internal struct ResponseSerializer<T>: ResponseSerializerType {
     
-    typealias SerializationBlock = (NSData?, NSURLResponse?, NSError?) throws -> T
+    typealias SerializationBlock = (Data?, URLResponse?, NSError?) throws -> T
     
     let serializationBlock: SerializationBlock
     
@@ -43,24 +43,24 @@ internal struct ResponseSerializer<T>: ResponseSerializerType {
         self.serializationBlock = serializationBlock
     }
     
-    func serializeResponse(data: NSData?, response: NSURLResponse?, error: NSError?) throws -> T {
+    func serializeResponse(_ data: Data?, response: URLResponse?, error: NSError?) throws -> T {
         return try serializationBlock(data, response, error)
     }
     
 }
 
-extension NSURLSession {
+extension URLSession {
     
-    internal func dataTaskWithRequest<T>(request: NSURLRequest, responseSerializer: ResponseSerializer<T>,completionHandler: Result<T, NSError> -> Void) -> NSURLSessionDataTask {
-        return dataTaskWithRequest(request) { data, response, error in
+    internal func dataTaskWithRequest<T>(_ request: URLRequest, responseSerializer: ResponseSerializer<T>,completionHandler: @escaping (Result<T, NSError>) -> Void) -> URLSessionDataTask {
+        return dataTask(with: request) { data, response, error in
             do {
-                let object = try responseSerializer.serializeResponse(data, response: response, error: error)
-                dispatch_async(dispatch_get_main_queue()) {
-                    completionHandler(.Success(object))
+                let object = try responseSerializer.serializeResponse(data, response: response, error: error as NSError?)
+                DispatchQueue.main.async {
+                    completionHandler(.success(object))
                 }
             } catch {
-                dispatch_async(dispatch_get_main_queue()) {
-                    completionHandler(.Failure(error as NSError))
+                DispatchQueue.main.async {
+                    completionHandler(.failure(error as NSError))
                 }
             }
         }

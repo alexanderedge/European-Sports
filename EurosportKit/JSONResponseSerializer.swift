@@ -29,21 +29,21 @@ import Foundation
 
 struct JSONResponseSerializer {
     
-    typealias T = AnyObject
+    typealias T = Any
     
-    enum JSONError: ErrorType {
-        case MissingData
-        case InvalidResponse
+    enum JSONError: Error {
+        case missingData
+        case invalidResponse
     }
     
     static func serializer() -> ResponseSerializer <T> {
         return ResponseSerializer { data, response, error in
             if let data = data {
-                return try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
+                return try JSONSerialization.jsonObject(with: data, options: .allowFragments)
             } else if let error = error {
                 throw error
             } else {
-                throw JSONError.MissingData
+                throw JSONError.missingData
             }
         }
     }

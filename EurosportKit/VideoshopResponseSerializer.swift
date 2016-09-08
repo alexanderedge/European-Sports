@@ -10,16 +10,16 @@ import Foundation
 
 struct VideoshopResponseSerializer {
     
-    typealias T = AnyObject
+    typealias T = Any
     
-    enum VideoshopError: ErrorType {
-        case InvalidJSONStructure
+    enum VideoshopError: Error {
+        case invalidJSONStructure
     }
     
     static func serializer() -> ResponseSerializer <T> {
         return ResponseSerializer { data, response, error in
-            guard let json = try JSONResponseSerializer.serializer().serializeResponse(data, response: response, error: error) as? [String: AnyObject] else {
-                throw VideoshopError.InvalidJSONStructure
+            guard let json = try JSONResponseSerializer.serializer().serializeResponse(data, response: response, error: error) as? [String: Any] else {
+                throw VideoshopError.invalidJSONStructure
             }
             return try json.extract("PlayerObj")
         }

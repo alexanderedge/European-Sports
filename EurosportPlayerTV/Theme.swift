@@ -35,11 +35,11 @@ struct Theme {
     struct Fonts {
     
         internal static func font(ofSize size: CGFloat) -> UIFont {
-            return UIFont.systemFontOfSize(size)
+            return UIFont.systemFont(ofSize: size)
         }
         
         internal static func boldFont(ofSize size: CGFloat) -> UIFont {
-            return UIFont.boldSystemFontOfSize(size)
+            return UIFont.boldSystemFont(ofSize: size)
         }
         
     }

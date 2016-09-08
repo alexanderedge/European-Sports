@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 public protocol URLRequestConvertible {
-    var request: NSURLRequest { get }
+    func request() throws -> URLRequest
 }
 
 enum Method: String {
@@ -21,54 +21,47 @@ struct Router {
     
     static var token: Token?
     
-    private static func standardRequest(url: NSURL) -> NSMutableURLRequest {
-        let mutableRequest = NSMutableURLRequest(URL: url)
-        mutableRequest.setValue("EurosportPlayer/5.1.5 (iPad; iOS 9.3.1; Scale/3.00)", forHTTPHeaderField: "User-Agent")
-        return mutableRequest
+    fileprivate static func standardRequest(_ url: URL) -> URLRequest {
+        var req = URLRequest(url: url)
+        req.setValue("EurosportPlayer/5.1.5 (iPad; iOS 9.3.1; Scale/3.00)", forHTTPHeaderField: "User-Agent")
+        return req
     }
     
     enum User: URLRequestConvertible {
-        case Login(email: String, password: String)
+        case login(email: String, password: String)
         
-        private var baseURL: NSURL {
-            return NSURL(string : "https://playercrm.ssl.eurosport.com")!
+        fileprivate var baseURL: URL {
+            return URL(string : "https://playercrm.ssl.eurosport.com")!
         }
         
         var path: String {
             return "/JsonPlayerCrmApi.svc/login"
         }
         
-        var request: NSURLRequest {
+        func request() throws -> URLRequest {
             switch self {
-            case .Login(let email, let password):
+            case .login(let email, let password):
                 var params = [String : String]()
                 
-                do {
-                    
-                    let contextData = try NSJSONSerialization.dataWithJSONObject(["g": "GB", "p": 9, "l": "EN", "d":2,"mn":"iPad","v":"5.1.5","tt":"Pad","li":2,"s":1,"b":7], options: [])
-                    
-                    params["context"] = String(data: contextData, encoding: NSUTF8StringEncoding)
-                    
-                    #if TARGET_OS_SIMULATOR
-                        let identifier = "f5c1fa0c-1507-400f-916e-9793c883cfdd"
-                    #else
-                        let identifier = UIDevice.currentDevice().identifierForVendor!.UUIDString
-                    #endif
-                    
-                    let data = try NSJSONSerialization.dataWithJSONObject(["email": email, "password": password, "udid": identifier], options: [])
-                    
-                    params["data"] = String(data: data, encoding: NSUTF8StringEncoding)
-                    
-                    let URLComponents = NSURLComponents(URL: NSURL(string: path, relativeToURL: baseURL)!, resolvingAgainstBaseURL: true)!
-                    URLComponents.queryItems = params.map({NSURLQueryItem(name: $0, value: $1)})
-                    let url = URLComponents.URL!
-                    
-                    return Router.standardRequest(url)
-                } catch {
-                    
-                    return NSURLRequest()
-                    
-                }
+                let contextData = try JSONSerialization.data(withJSONObject: ["g": "GB", "p": 9, "l": "EN", "d":2,"mn":"iPad","v":"5.1.5","tt":"Pad","li":2,"s":1,"b":7], options: [])
+                
+                params["context"] = String(data: contextData, encoding: String.Encoding.utf8)
+                
+                #if TARGET_OS_SIMULATOR
+                    let identifier = "f5c1fa0c-1507-400f-916e-9793c883cfdd"
+                #else
+                    let identifier = UIDevice.current.identifierForVendor!.uuidString
+                #endif
+                
+                let data = try JSONSerialization.data(withJSONObject: ["email": email, "password": password, "udid": identifier], options: [])
+                
+                params["data"] = String(data: data, encoding: String.Encoding.utf8)
+                
+                var URLComponents = Foundation.URLComponents(url: URL(string: path, relativeTo: baseURL)!, resolvingAgainstBaseURL: true)!
+                URLComponents.queryItems = params.map({URLQueryItem(name: $0, value: $1)})
+                let url = URLComponents.url!
+                
+                return Router.standardRequest(url)
                 
             }
         }
@@ -76,53 +69,46 @@ struct Router {
     }
 
     enum AuthToken: URLRequestConvertible {
-        case Fetch(userId: String, hkey: String)
+        case fetch(userId: String, hkey: String)
         
-        private var baseURL: NSURL {
-            return NSURL(string : "http://videoshop.ext.ws.eurosport.com")!
+        fileprivate var baseURL: URL {
+            return URL(string : "http://videoshop.ext.ws.eurosport.com")!
         }
         
         var path: String {
             return "/JsonProductService.svc/GetToken"
         }
         
-        var request: NSURLRequest {
+        func request() throws -> URLRequest {
             switch self {
-            case .Fetch(let userId, let hkey):
+            case .fetch(let userId, let hkey):
                 var params = [String : String]()
                 
-                do {
-                    
-                    let contextData = try NSJSONSerialization.dataWithJSONObject(["g": "GB", "d":2], options: [])
-                    
-                    params["context"] = String(data: contextData, encoding: NSUTF8StringEncoding)
-                    
-                    let data = try NSJSONSerialization.dataWithJSONObject(["userid": userId, "hkey": hkey], options: [])
-                    
-                    params["data"] = String(data: data, encoding: NSUTF8StringEncoding)
-                    
-                    let URLComponents = NSURLComponents(URL: NSURL(string: path, relativeToURL: baseURL)!, resolvingAgainstBaseURL: true)!
-                    URLComponents.queryItems = params.map({NSURLQueryItem(name: $0, value: $1)})
-                    let url = URLComponents.URL!
-                    
-                    return Router.standardRequest(url)
-                } catch {
-                    
-                    return NSURLRequest()
-                    
-                }
+                let contextData = try JSONSerialization.data(withJSONObject: ["g": "GB", "d":2], options: [])
+                
+                params["context"] = String(data: contextData, encoding: String.Encoding.utf8)
+                
+                let data = try JSONSerialization.data(withJSONObject: ["userid": userId, "hkey": hkey], options: [])
+                
+                params["data"] = String(data: data, encoding: String.Encoding.utf8)
+                
+                var URLComponents = Foundation.URLComponents(url: URL(string: path, relativeTo: baseURL)!, resolvingAgainstBaseURL: true)!
+                URLComponents.queryItems = params.map({URLQueryItem(name: $0, value: $1)})
+                let url = URLComponents.url!
+                
+                return Router.standardRequest(url)
                 
             }
         }
         
     }
     
-    private enum Language: String {
+    fileprivate enum Language: String {
         case German = "de"
         case English = "en"
         case French = "fr"
         
-        private var identifier: Int {
+        fileprivate var identifier: Int {
             switch self {
             case .German:
                 return 1
@@ -134,7 +120,7 @@ struct Router {
         }
         
         static var preferredLanguage: Language {
-            guard let preferredLanguage = NSLocale.preferredLanguages().first, language = Language(rawValue: preferredLanguage) else {
+            guard let preferredLanguage = NSLocale.preferredLanguages.first, let language = Language(rawValue: preferredLanguage) else {
                 return .English
             }
             return language
@@ -143,46 +129,39 @@ struct Router {
     }
     
     enum Catchup: URLRequestConvertible {
-        case Fetch
+        case fetch
         
-        private var baseURL: NSURL {
-            return NSURL(string : "http://videoshop.ext.ws.eurosport.com")!
+        fileprivate var baseURL: URL {
+            return URL(string : "http://videoshop.ext.ws.eurosport.com")!
         }
         
         var path: String {
             return "/JsonProductService.svc/GetAllCatchupCache"
         }
         
-        var request: NSURLRequest {
+        func request() throws -> URLRequest {
             switch self {
-            case .Fetch:
+            case .fetch:
                 var params = [String : String]()
                 
-                do {
-                    
-                    let contextData = try NSJSONSerialization.dataWithJSONObject(["g": "GB", "d": 2], options: [])
-                    
-                    params["context"] = String(data: contextData, encoding: NSUTF8StringEncoding)
-                    
-                    let data = try NSJSONSerialization.dataWithJSONObject(["languageid": Language.preferredLanguage.identifier], options: [])
-                    
-                    params["data"] = String(data: data, encoding: NSUTF8StringEncoding)
-                    
-                    let URLComponents = NSURLComponents(URL: NSURL(string: path, relativeToURL: baseURL)!, resolvingAgainstBaseURL: true)!
-                    URLComponents.queryItems = params.map({NSURLQueryItem(name: $0, value: $1)})
-                    let url = URLComponents.URL!
-                    
-                    return Router.standardRequest(url)
-                } catch {
-                    
-                    return NSURLRequest()
-                    
-                }
+                let contextData = try JSONSerialization.data(withJSONObject: ["g": "GB", "d": 2], options: [])
+                
+                params["context"] = String(data: contextData, encoding: String.Encoding.utf8)
+                
+                let data = try JSONSerialization.data(withJSONObject: ["languageid": Language.preferredLanguage.identifier], options: [])
+                
+                params["data"] = String(data: data, encoding: String.Encoding.utf8)
+                
+                var URLComponents = Foundation.URLComponents(url: URL(string: path, relativeTo: baseURL)!, resolvingAgainstBaseURL: true)!
+                URLComponents.queryItems = params.map({URLQueryItem(name: $0, value: $1)})
+                let url = URLComponents.url!
+                
+                return Router.standardRequest(url)
                 
             }
         }
         
-        static func authenticatedURL(streamURL: NSURL) -> NSURL {
+        static func authenticatedURL(_ streamURL: URL) -> URL {
             guard let token = token else {
                 return streamURL
             }
@@ -192,41 +171,34 @@ struct Router {
     }
     
     enum Product: URLRequestConvertible {
-        case Fetch
+        case fetch
         
-        private var baseURL: NSURL {
-            return NSURL(string : "http://videoshop.ext.ws.eurosport.com")!
+        fileprivate var baseURL: URL {
+            return URL(string : "http://videoshop.ext.ws.eurosport.com")!
         }
         
         var path: String {
             return "/JsonProductService.svc/GetAllProductsCache"
         }
         
-        var request: NSURLRequest {
+        func request() throws -> URLRequest {
             switch self {
-            case .Fetch:
+            case .fetch:
                 var params = [String : String]()
                 
-                do {
-                    
-                    let contextData = try NSJSONSerialization.dataWithJSONObject(["g":"GB","p":9,"l":"EN","d":2,"mn":"iPad","v":"5.1.5","tt":"Pad","li":2,"s":1,"b":7], options: [])
-                    
-                    params["context"] = String(data: contextData, encoding: NSUTF8StringEncoding)
-                    
-                    let data = try NSJSONSerialization.dataWithJSONObject(["languageid": Language.preferredLanguage.identifier, "isfullaccess":0,"withouttvscheduleliveevents":"true","groupchannels":"true","pictureformatids":"[87]","isbroadcasted":1], options: [])
-                    
-                    params["data"] = String(data: data, encoding: NSUTF8StringEncoding)
-                    
-                    let URLComponents = NSURLComponents(URL: NSURL(string: path, relativeToURL: baseURL)!, resolvingAgainstBaseURL: true)!
-                    URLComponents.queryItems = params.map({NSURLQueryItem(name: $0, value: $1)})
-                    let url = URLComponents.URL!
-                    
-                    return Router.standardRequest(url)
-                } catch {
-                    
-                    return NSURLRequest()
-                    
-                }
+                let contextData = try JSONSerialization.data(withJSONObject: ["g":"GB","p":9,"l":"EN","d":2,"mn":"iPad","v":"5.1.5","tt":"Pad","li":2,"s":1,"b":7], options: [])
+                
+                params["context"] = String(data: contextData, encoding: String.Encoding.utf8)
+                
+                let data = try JSONSerialization.data(withJSONObject: ["languageid": Language.preferredLanguage.identifier, "isfullaccess":0,"withouttvscheduleliveevents":"true","groupchannels":"true","pictureformatids":"[87]","isbroadcasted":1], options: [])
+                
+                params["data"] = String(data: data, encoding: String.Encoding.utf8)
+                
+                var URLComponents = Foundation.URLComponents(url: URL(string: path, relativeTo: baseURL)!, resolvingAgainstBaseURL: true)!
+                URLComponents.queryItems = params.map({URLQueryItem(name: $0, value: $1)})
+                let url = URLComponents.url!
+                
+                return Router.standardRequest(url)
                 
             }
         }
@@ -250,28 +222,28 @@ extension Dictionary : URLQueryParameterStringConvertible {
         var parts: [String] = []
         for (key, value) in self {
             let part = NSString(format: "%@=%@",
-                                String(key).stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!,
-                                String(value).stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!)
+                                (key as! String).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!,
+                                (value as! String).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)
             parts.append(part as String)
         }
-        return parts.joinWithSeparator("&")
+        return parts.joined(separator: "&")
     }
     
 }
 
-extension NSURL {
+extension URL {
     /**
      Creates a new URL by adding the given query parameters.
      @param parametersDictionary The query parameter dictionary to add.
      @return A new NSURL.
      */
-    func URLByAppendingQueryParameters(parametersDictionary: [String: String]) -> NSURL {
-        guard let components = NSURLComponents(URL: self, resolvingAgainstBaseURL: false), let queryItems = components.queryItems where !queryItems.isEmpty else {
-            return NSURL(string:self.absoluteString.stringByAppendingFormat("?%@", parametersDictionary.queryParameters))!
+    func URLByAppendingQueryParameters(_ parametersDictionary: [String: String]) -> URL {
+        guard let components = URLComponents(url: self, resolvingAgainstBaseURL: false), let queryItems = components.queryItems , !queryItems.isEmpty else {
+            return URL(string:self.absoluteString.appendingFormat("?%@", parametersDictionary.queryParameters))!
         }
-        guard let url = components.URL else {
+        guard let url = components.url else {
             return self
         }
-        return NSURL(string:url.absoluteString.stringByAppendingFormat("&%@", parametersDictionary.queryParameters))!
+        return URL(string:url.absoluteString.appendingFormat("&%@", parametersDictionary.queryParameters))!
     }
 }

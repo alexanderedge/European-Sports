@@ -11,19 +11,19 @@ import CoreData
 
 internal protocol JSONCoreDataParsingType {
     associatedtype T: NSManagedObject
-    static func parse(json : [String : AnyObject], context: NSManagedObjectContext) throws -> T
-    static func parse(json : [[String : AnyObject]], context: NSManagedObjectContext) -> [T]
+    static func parse(_ json : [String : Any], context: NSManagedObjectContext) throws -> T
+    static func parse(_ json : [[String : Any]], context: NSManagedObjectContext) -> [T]
 }
 
 extension JSONCoreDataParsingType {
-    static func parse(json : [[String : AnyObject]], context: NSManagedObjectContext) -> [T] {
+    static func parse(_ json : [[String : Any]], context: NSManagedObjectContext) -> [T] {
         var array : [T] = []
         for jsonDic in json {
             do {
                 let obj = try self.parse(jsonDic, context: context)
                 array.append(obj)
             } catch {
-                print("parse error: \(error)")
+                print("\(self) parse error: \(error)")
             }
         }
         return array

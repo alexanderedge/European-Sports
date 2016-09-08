@@ -13,14 +13,14 @@ struct ProductResponseSerializer {
     
     typealias T = [Product]
     
-    enum ProductError: ErrorType {
-        case InvalidJSONStructure
+    enum ProductError: Error {
+        case invalidJSONStructure
     }
     
     static func serializer() -> ManagedObjectResponseSerializer <T> {
         return ManagedObjectResponseSerializer{ context, data, response, error in
-            guard let json = try VideoshopResponseSerializer.serializer().serializeResponse(data, response: response, error: error) as? [[String: AnyObject]] else {
-                throw ProductError.InvalidJSONStructure
+            guard let json = try VideoshopResponseSerializer.serializer().serializeResponse(data, response: response, error: error) as? [[String: Any]] else {
+                throw ProductError.invalidJSONStructure
             }
             return ProductParser.parse(json, context: context)
         }

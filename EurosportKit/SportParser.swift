@@ -13,19 +13,19 @@ internal struct SportParser: JSONCoreDataParsingType {
     
     typealias T = Sport
     
-    enum SportError : ErrorType {
+    enum SportError : Error {
         case InvalidImageURL
     }
     
-    static func parse(json: [String : AnyObject], context: NSManagedObjectContext) throws -> T {
+    static func parse(_ json: [String : Any], context: NSManagedObjectContext) throws -> T {
         let identifier: Int = try json.extract("id")
         let name: String = try json.extract("name")
         
-        guard let imageURL = NSURL(string: try json.extract("pictureurl")) else {
+        guard let imageURL = URL(string: try json.extract("pictureurl")) else {
             throw SportError.InvalidImageURL
         }
         
-        let sport = try Sport.newOrExistingObject(identifier, inContext: context)
+        let sport = try Sport.newOrExistingObject(identifier: identifier as NSNumber, inContext: context)
         sport.name = name
         sport.imageURL = imageURL
         return sport

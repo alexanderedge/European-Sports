@@ -8,8 +8,8 @@
 
 import Foundation
 
-enum JSONError: ErrorType {
-    case MissingKey(StringProtocol)
+enum JSONError: Error {
+    case missingKey(StringProtocol)
 }
 
 protocol StringProtocol {}
@@ -18,9 +18,9 @@ extension String: StringProtocol {}
 
 extension Dictionary where Key: StringProtocol {
     
-    func extract<ReturnType>(key: Key) throws -> ReturnType {
+    func extract<ReturnType>(_ key: Key) throws -> ReturnType {
         guard let value = self[key] as? ReturnType else {
-            throw JSONError.MissingKey(key)
+            throw JSONError.missingKey(key)
         }
         return value
     }

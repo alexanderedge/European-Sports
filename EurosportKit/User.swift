@@ -2,11 +2,11 @@ import Foundation
 import CoreData
 
 @objc(User)
-public class User: NSManagedObject {
+open class User: NSManagedObject {
     
-    @NSManaged public var identifier: String
-    @NSManaged public var hkey: String
-    @NSManaged public var email: String
+    @NSManaged open var identifier: String
+    @NSManaged open var hkey: String
+    @NSManaged open var email: String
     
 }
 
@@ -15,14 +15,14 @@ extension User: Fetchable {
 
     public typealias FetchableType = User
     
-    public static func entityName() -> String {
+    public static var entityName: String {
         return "User"
     }
 }
 
 extension User {
     
-    public static func currentUser(context: NSManagedObjectContext) -> User? {
+    public static func currentUser(_ context: NSManagedObjectContext) -> User? {
         do {
             return try singleObjectInContext(context, predicate: nil, sortedBy: nil, ascending: true)
         } catch {

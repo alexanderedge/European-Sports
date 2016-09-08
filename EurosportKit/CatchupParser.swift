@@ -13,88 +13,88 @@ internal struct CatchupParser: JSONCoreDataParsingType {
     
     typealias T = Catchup
     
-    enum CatchupError : ErrorType {
-        case InvalidImageURL
-        case InvalidTechnicalDate
-        case InvalidTime
-        case InvalidDate
+    enum CatchupError : Error {
+        case invalidImageURL
+        case invalidTechnicalDate
+        case invalidTime
+        case invalidDate
     }
     
-    static let technicalDateFormatter: NSDateFormatter = {
-        let formatter = NSDateFormatter()
+    static let technicalDateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
         formatter.dateFormat = "y-MM-dd"
         formatter.calendar = calendar
         return formatter
     }()
     
-    static let timeFormatter: NSDateFormatter = {
-        let formatter = NSDateFormatter()
+    static let timeFormatter: DateFormatter = {
+        let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm"
         formatter.calendar = calendar
         return formatter
     }()
     
-    static let calendar: NSCalendar = {
-        let calendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)!
-        calendar.locale = NSLocale(localeIdentifier: "en_US_POSIX")
-        calendar.timeZone = NSTimeZone(abbreviation: "UTC")!
+    static let calendar: Calendar = {
+        var calendar = Calendar(identifier: Calendar.Identifier.gregorian)
+        calendar.locale = Locale(identifier: "en_US_POSIX")
+        calendar.timeZone = TimeZone(abbreviation: "UTC")!
         return calendar
     }()
     
-    static func dateFromJSON(json: [String: AnyObject]) throws -> NSDate? {
-        guard let startDate = technicalDateFormatter.dateFromString(try json.extract("technicaldate")) else {
-            throw CatchupError.InvalidTechnicalDate
+    static func dateFromJSON(_ json: [String: Any]) throws -> Date? {
+        guard let startDate = technicalDateFormatter.date(from: try json.extract("technicaldate")) else {
+            throw CatchupError.invalidTechnicalDate
         }
         
-        guard let startTime = timeFormatter.dateFromString(try json.extract("time")) else {
-            throw CatchupError.InvalidTime
+        guard let startTime = timeFormatter.date(from: try json.extract("time")) else {
+            throw CatchupError.invalidTime
         }
         
-        let year = calendar.component(.Year, fromDate: startDate)
-        let month = calendar.component(.Month, fromDate: startDate)
-        let day = calendar.component(.Day, fromDate: startDate)
-        let hour = calendar.component(.Hour, fromDate: startTime)
-        let minute = calendar.component(.Minute, fromDate: startTime)
+        let year = calendar.component(.year, from: startDate)
+        let month = calendar.component(.month, from: startDate)
+        let day = calendar.component(.day, from: startDate)
+        let hour = calendar.component(.hour, from: startTime)
+        let minute = calendar.component(.minute, from: startTime)
         
-        let dateComponents = NSDateComponents()
+        var dateComponents = DateComponents()
         dateComponents.year = year
         dateComponents.month = month
         dateComponents.day = day
         dateComponents.hour = hour
         dateComponents.minute = minute
-        return calendar.dateFromComponents(dateComponents)
+        return calendar.date(from: dateComponents)
         
     }
     
-    static func parse(json: [String : AnyObject], context: NSManagedObjectContext) throws -> T {
+    static func parse(_ json: [String : Any], context: NSManagedObjectContext) throws -> T {
         let identifier: Int = try json.extract("idcatchup")
         let title: String = try json.extract("titlecatchup")
         let description: String = try json.extract("description")
         
-        guard let imageURL = NSURL(string: try json.extract("pictureurl")) else {
-            throw CatchupError.InvalidImageURL
+        guard let imageURL = URL(string: try json.extract("pictureurl")) else {
+            throw CatchupError.invalidImageURL
         }
         
-        let sportJSON: [String: AnyObject] = try json.extract("sport")
-        let streamJSON: [[String: AnyObject]] = try json.extract("catchupstreams")
+        let sportJSON: [String: Any] = try json.extract("sport")
+        let streamJSON: [[String: Any]] = try json.extract("catchupstreams")
         
         let sportIdentifier: Int = try sportJSON.extract("id")
-        let sport = try Sport.newOrExistingObject(sportIdentifier, inContext: context)
+        let sport = try Sport.newOrExistingObject(identifier: sportIdentifier as NSNumber, inContext: context)
         
         guard let startDate = try dateFromJSON(try json.extract("startdate")) else {
-            throw CatchupError.InvalidDate
+            throw CatchupError.invalidDate
         }
         
         guard let expirationDate = try dateFromJSON(try json.extract("expirationdate")) else {
-            throw CatchupError.InvalidDate
+            throw CatchupError.invalidDate
         }
         
-        let catchup = try Catchup.newOrExistingObject(identifier, inContext: context)
+        let catchup = try Catchup.newOrExistingObject(identifier: identifier as NSNumber, inContext: context)
         catchup.startDate = startDate
         catchup.expirationDate = expirationDate
         catchup.streams = NSOrderedSet(array: CatchupStreamParser.parse(streamJSON, context: context))
         catchup.sport = sport
-        catchup.identifier = identifier
+        catchup.identifier = identifier as NSNumber
         catchup.title = title
         catchup.catchupDescription = description
         catchup.imageURL = imageURL

@@ -2,22 +2,22 @@ import Foundation
 import CoreData
 
 @objc(Sport)
-public class Sport: NSManagedObject {
+open class Sport: NSManagedObject {
 	
     // MARK: - Properties
     
-    @NSManaged public
+    @NSManaged open
     var identifier: NSNumber
     
-    @NSManaged public
-    var imageURL: NSURL
+    @NSManaged open
+    var imageURL: URL?
     
-    @NSManaged public
+    @NSManaged open
     var name: String
     
     // MARK: - Relationships
     
-    @NSManaged public
+    @NSManaged open
     var catchups: NSSet
     
 }
@@ -25,7 +25,7 @@ public class Sport: NSManagedObject {
 extension Sport: Fetchable {
     public typealias FetchableType = Sport
     
-    public static func entityName() -> String {
+    public static var entityName: String {
         return "Sport"
     }
 }

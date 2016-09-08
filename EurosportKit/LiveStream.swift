@@ -10,19 +10,19 @@ import Foundation
 import CoreData
 
 @objc(LiveStream)
-public class LiveStream: NSManagedObject {
+open class LiveStream: NSManagedObject {
     
     // MARK: - Properties
     
-    @NSManaged public
+    @NSManaged open
     var identifier: NSNumber
     
-    @NSManaged public
-    var url: NSURL
+    @NSManaged open
+    var url: URL
     
     // MARK: - Relationships
     
-    @NSManaged public
+    @NSManaged open
     var programme: ScheduledProgramme
     
 }
@@ -31,7 +31,7 @@ extension LiveStream: Fetchable {
     
     public typealias FetchableType = LiveStream
     
-    public static func entityName() -> String {
+    public static var entityName: String {
         return "LiveStream"
     }
     

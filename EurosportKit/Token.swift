@@ -12,12 +12,12 @@ internal struct Token {
     
     internal let token: String
     internal let hdnea: String
-    internal let startDate: NSDate
-    internal let expiryDate: NSDate
-    internal let duration: NSTimeInterval
+    internal let startDate: Date
+    internal let expiryDate: Date
+    internal let duration: TimeInterval
     
     internal var isExpired: Bool {
-        return expiryDate.compare(NSDate()) == .OrderedAscending
+        return expiryDate.compare(Date()) == .orderedAscending
     }
     
 }

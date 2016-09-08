@@ -28,12 +28,12 @@ import Foundation
 
 internal protocol JSONParsingType {
     associatedtype T
-    static func parse(json : [String : AnyObject]) throws -> T
-    static func parse(json : [[String : AnyObject]]) -> [T]
+    static func parse(_ json : [String : Any]) throws -> T
+    static func parse(_ json : [[String : Any]]) -> [T]
 }
 
 extension JSONParsingType {
-    static func parse(json : [[String : AnyObject]]) -> [T] {
+    static func parse(_ json : [[String : Any]]) -> [T] {
         var array : [T] = []
         for jsonDic in json {
             do {

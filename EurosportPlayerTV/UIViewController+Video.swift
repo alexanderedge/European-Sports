@@ -10,14 +10,14 @@ import UIKit
 import AVKit
 
 extension UIViewController {
-    internal func showVideoForURL(url: NSURL, options: [String : AnyObject]? = nil) {
+    internal func showVideoForURL(_ url: URL, options: [String : AnyObject]? = nil) {
         let playerController = AVPlayerViewController()
         
-        let asset = AVURLAsset(URL: url, options: options)
+        let asset = AVURLAsset(url: url, options: options)
         let player = AVPlayer(playerItem: AVPlayerItem(asset: asset))
         playerController.player = player
         
-        self.presentViewController(playerController, animated: true) {
+        self.present(playerController, animated: true) {
             player.play()
         }
     }

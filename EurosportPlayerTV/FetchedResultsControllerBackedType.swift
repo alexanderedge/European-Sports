@@ -11,17 +11,17 @@ import CoreData
 
 public protocol FetchedResultsControllerBackedType: class {
     
-    associatedtype FetchedType
+    associatedtype FetchedType: NSFetchRequestResult
     
-    func fetchRequest() -> NSFetchRequest
-    var fetchedResultsController: NSFetchedResultsController! { get }
+    var fetchRequest: NSFetchRequest<FetchedType> { get }
+    var fetchedResultsController: NSFetchedResultsController<FetchedType>! { get }
     
 }
 
 extension FetchedResultsControllerBackedType {
     
-    func objectAt(indexPath: NSIndexPath) -> FetchedType {
-        return fetchedResultsController.objectAtIndexPath(indexPath) as! FetchedType
+    func objectAt(_ indexPath: IndexPath) -> FetchedType {
+        return fetchedResultsController.object(at: indexPath)
     }
     
 }

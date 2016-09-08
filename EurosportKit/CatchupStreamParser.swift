@@ -13,19 +13,19 @@ internal struct CatchupStreamParser: JSONCoreDataParsingType {
     
     typealias T = CatchupStream
     
-    enum CatchupStreamError : ErrorType {
-        case InvalidURL
+    enum CatchupStreamError : Error {
+        case invalidURL
     }
     
-    static func parse(json: [String : AnyObject], context: NSManagedObjectContext) throws -> T {
+    static func parse(_ json: [String : Any], context: NSManagedObjectContext) throws -> T {
         let identifier: Int = try json.extract("id")
         
-        guard let url = NSURL(string: try json.extract("url")) else {
-            throw CatchupStreamError.InvalidURL
+        guard let url = URL(string: try json.extract("url")) else {
+            throw CatchupStreamError.invalidURL
         }
         
         let stream = CatchupStream(context: context)
-        stream.identifier = identifier
+        stream.identifier = identifier as NSNumber
         stream.url = url
         return stream
         

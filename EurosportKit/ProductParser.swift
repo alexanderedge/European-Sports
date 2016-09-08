@@ -13,27 +13,27 @@ internal struct ProductParser: JSONCoreDataParsingType {
     
     typealias T = Product
     
-    enum ProductError : ErrorType {
-        case InvalidLogoURL
+    enum ProductError : Error {
+        case invalidLogoURL
     }
     
-    private static let imageBaseURL = NSURL(string:"http://i.eurosport.fr")
+    fileprivate static let imageBaseURL = URL(string:"http://i.eurosport.fr")
     
-    static func parse(json: [String : AnyObject], context: NSManagedObjectContext) throws -> T {
+    static func parse(_ json: [String : Any], context: NSManagedObjectContext) throws -> T {
         let identifier: Int = try json.extract("productid")
         let name: String = try json.extract("prdname")
         
         let logoJSON: [String: AnyObject] = try json.extract("logo")
         
-        guard let logoURL = NSURL(string: try logoJSON.extract("url"), relativeToURL: imageBaseURL) else {
-            throw ProductError.InvalidLogoURL
+        guard let logoURL = URL(string: try logoJSON.extract("url"), relativeTo: imageBaseURL) else {
+            throw ProductError.invalidLogoURL
         }
         
-        let scheduleJSON: [[String: AnyObject]] = try json.extract("tvschedules")
-        let liveStreamJSON: [[String: AnyObject]] = try json.extract("livestreams")
+        let scheduleJSON: [[String: Any]] = try json.extract("tvschedules")
+        let liveStreamJSON: [[String: Any]] = try json.extract("livestreams")
         
-        let product = try Product.newOrExistingObject(identifier, inContext: context)
-        product.identifier = identifier
+        let product = try Product.newOrExistingObject(identifier: identifier as NSNumber, inContext: context)
+        product.identifier = identifier as NSNumber
         product.name = name
         product.logoURL = logoURL
         product.scheduledProgrammes = NSOrderedSet(array: ScheduledProgrammeParser.parse(scheduleJSON, context: context))

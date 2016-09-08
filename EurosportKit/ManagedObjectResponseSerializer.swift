@@ -30,13 +30,13 @@ import CoreData
 internal protocol ManagedObjectResponseSerializerType {
     associatedtype T
     
-    func serializeResponse(context:NSManagedObjectContext, data: NSData?, response: NSURLResponse?, error: NSError?) throws -> T
+    func serializeResponse(_ context:NSManagedObjectContext, data: Data?, response: URLResponse?, error: NSError?) throws -> T
     
 }
 
 internal struct ManagedObjectResponseSerializer<T>: ManagedObjectResponseSerializerType {
     
-    typealias ManagedObjectSerializationBlock = (NSManagedObjectContext, NSData?, NSURLResponse?, NSError?) throws -> T
+    typealias ManagedObjectSerializationBlock = (NSManagedObjectContext, Data?, URLResponse?, NSError?) throws -> T
     
     let serializationBlock: ManagedObjectSerializationBlock
     
@@ -44,22 +44,22 @@ internal struct ManagedObjectResponseSerializer<T>: ManagedObjectResponseSeriali
         self.serializationBlock = serializationBlock
     }
     
-    func serializeResponse(context: NSManagedObjectContext, data: NSData?, response: NSURLResponse?, error: NSError?) throws -> T {
+    func serializeResponse(_ context: NSManagedObjectContext, data: Data?, response: URLResponse?, error: NSError?) throws -> T {
         return try serializationBlock(context, data, response, error)
     }
     
 }
 
-extension NSURLSession {
+extension URLSession {
     
-    internal func dataTaskWithRequest<T>(request: NSURLRequest, context: NSManagedObjectContext, responseSerializer: ManagedObjectResponseSerializer<T>, completionHandler: Result<T, NSError> -> Void) -> NSURLSessionDataTask {
-        return dataTaskWithRequest(request) { data, response, error in
-            dispatch_async(dispatch_get_main_queue()) {
+    internal func dataTaskWithRequest<T>(_ request: URLRequest, context: NSManagedObjectContext, responseSerializer: ManagedObjectResponseSerializer<T>, completionHandler: @escaping (Result<T, NSError>) -> Void) -> URLSessionDataTask {
+        return dataTask(with: request) { data, response, error in
+            DispatchQueue.main.async {
                 do {
-                    let object = try responseSerializer.serializeResponse(context, data: data, response: response, error: error)
-                    completionHandler(.Success(object))
+                    let object = try responseSerializer.serializeResponse(context, data: data, response: response, error: error as NSError?)
+                    completionHandler(.success(object))
                 } catch {
-                    completionHandler(.Failure(error as NSError))
+                    completionHandler(.failure(error as NSError))
                 }
             }
         }

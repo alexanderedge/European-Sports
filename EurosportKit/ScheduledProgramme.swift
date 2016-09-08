@@ -10,37 +10,37 @@ import Foundation
 import CoreData
 
 @objc(ScheduledProgramme)
-public class ScheduledProgramme: NSManagedObject {
+open class ScheduledProgramme: NSManagedObject {
     
     // MARK: - Properties
     
-    @NSManaged public
+    @NSManaged open
     var identifier: NSNumber
     
-    @NSManaged public
+    @NSManaged open
     var name: String
     
-    @NSManaged public
-    var startDate: NSDate
+    @NSManaged open
+    var startDate: Date
     
-    @NSManaged public
-    var endDate: NSDate
+    @NSManaged open
+    var endDate: Date
     
-    @NSManaged public
-    var imageURL: NSURL
+    @NSManaged open
+    var imageURL: URL
         
-    @NSManaged public
+    @NSManaged open
     var competitionName: NSString?
     
-    @NSManaged public
+    @NSManaged open
     var eventname: NSString?
     
     // MARK: - Relationships
     
-    @NSManaged public
+    @NSManaged open
     var sport: Sport
     
-    @NSManaged public
+    @NSManaged open
     var product: Product
     
 }
@@ -51,7 +51,7 @@ extension ScheduledProgramme: Fetchable {
     
     public typealias FetchableType = ScheduledProgramme
     
-    public static func entityName() -> String {
+    public static var entityName: String {
         return "ScheduledProgramme"
     }
     

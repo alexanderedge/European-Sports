@@ -22,7 +22,7 @@ extension Fetchable where Self: NSManagedObject, Self: NumberIdentifiable, Fetch
     
     public static func newOrExistingObject(identifier: NSNumber, inContext context: NSManagedObjectContext) throws -> FetchableType {
         
-        if let existingObject = try existingObject(identifier, inContext: context) {
+        if let existingObject = try existingObject(identifier: identifier, inContext: context) {
             return existingObject
         }
         

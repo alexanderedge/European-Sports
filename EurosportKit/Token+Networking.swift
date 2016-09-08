@@ -11,42 +11,42 @@ import CoreData
 
 extension Token {
     
-    internal static func fetch(userId: String, hkey: String, completionHandler: Result<Token,NSError> -> Void) -> NSURLSessionDataTask {
-        return NSURLSession.sharedSession().dataTaskWithRequest(Router.AuthToken.Fetch(userId: userId, hkey: hkey).request, responseSerializer: TokenResponseSerializer.serializer(), completionHandler: completionHandler)
+    internal static func fetch(_ userId: String, hkey: String, completionHandler: @escaping (Result<Token,NSError>) -> Void) throws -> URLSessionDataTask {
+        return try URLSession.shared.dataTaskWithRequest(Router.AuthToken.fetch(userId: userId, hkey: hkey).request(), responseSerializer: TokenResponseSerializer.serializer(), completionHandler: completionHandler)
     }
     
 }
 
-extension NSURLSession {
+extension URLSession {
     
-    internal func refreshTokenTask<T>(user: User, failure: Result<T, NSError> -> Void, success: Void -> Void) -> NSURLSessionDataTask {
-        return Token.fetch(user.identifier, hkey: user.hkey) { result in
+    internal func refreshTokenTask<T>(_ user: User, failure: @escaping (Result<T, NSError>) -> Void, success: @escaping (Void) -> Void) throws -> URLSessionDataTask {
+        return try Token.fetch(user.identifier, hkey: user.hkey) { result in
             switch result {
-            case .Success(let token):
+            case .success(let token):
                 Router.token = token
                 success()
                 break
-            case.Failure(let error):
-                failure(.Failure(error))
+            case.failure(let error):
+                failure(.failure(error))
                 break
                 
             }
         }
     }
     
-    internal func authenticatedDataTaskForRequest<T>(request: NSURLRequest, user: User, responseSerializer: ResponseSerializer<T>, completionHandler: Result<T, NSError> -> Void) -> NSURLSessionDataTask {
-        guard let token = Router.token where !token.isExpired else {
-            return refreshTokenTask(user, failure: completionHandler) {
-                self.authenticatedDataTaskForRequest(request, user: user, responseSerializer: responseSerializer, completionHandler: completionHandler).resume()
+    internal func authenticatedDataTaskForRequest<T>(_ request: URLRequest, user: User, responseSerializer: ResponseSerializer<T>, completionHandler: @escaping (Result<T, NSError>) -> Void) throws -> URLSessionDataTask {
+        guard let token = Router.token , !token.isExpired else {
+            return try refreshTokenTask(user, failure: completionHandler) {
+                try! self.authenticatedDataTaskForRequest(request, user: user, responseSerializer: responseSerializer, completionHandler: completionHandler).resume()
             }
         }
         return dataTaskWithRequest(request, responseSerializer: responseSerializer, completionHandler: completionHandler)
     }
     
-    internal func authenticatedDataTaskForRequest<T>(request: NSURLRequest, user: User, context: NSManagedObjectContext, responseSerializer: ManagedObjectResponseSerializer<T>, completionHandler: Result<T, NSError> -> Void) -> NSURLSessionDataTask {
-        guard let token = Router.token where !token.isExpired else {
-            return refreshTokenTask(user, failure: completionHandler) {
-                self.authenticatedDataTaskForRequest(request, user: user, context: context, responseSerializer: responseSerializer, completionHandler: completionHandler).resume()
+    internal func authenticatedDataTaskForRequest<T>(_ request: URLRequest, user: User, context: NSManagedObjectContext, responseSerializer: ManagedObjectResponseSerializer<T>, completionHandler: @escaping (Result<T, NSError>) -> Void) throws -> URLSessionDataTask {
+        guard let token = Router.token , !token.isExpired else {
+            return try refreshTokenTask(user, failure: completionHandler) {
+                try! self.authenticatedDataTaskForRequest(request, user: user, context: context, responseSerializer: responseSerializer, completionHandler: completionHandler).resume()
             }
         }
         return dataTaskWithRequest(request, context: context, responseSerializer: responseSerializer, completionHandler: completionHandler)

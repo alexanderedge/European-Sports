@@ -12,21 +12,21 @@ internal struct TokenParser: JSONParsingType {
     
     typealias T = Token
     
-    enum TokenError : ErrorType {
-        case InvalidToken
-        case InvalidHdnea
-        case InvalidExpiryTimeInSeconds
-        case InvalidExpiryTimestamp
-        case InvalidStartTimestamp
+    enum TokenError : Error {
+        case invalidToken
+        case invalidHdnea
+        case invalidExpiryTimeInSeconds
+        case invalidExpiryTimestamp
+        case invalidStartTimestamp
     }
     
-    static func parse(json: [String : AnyObject]) throws -> T {
+    static func parse(_ json: [String : Any]) throws -> T {
         let query: String = try json.extract("token")
         
         var parsedToken: String?
         var parsedHdnea: String?
         
-        let urlComponents = NSURLComponents()
+        var urlComponents = URLComponents()
         urlComponents.query = query
         
         if let queryItems = urlComponents.queryItems {
@@ -44,19 +44,19 @@ internal struct TokenParser: JSONParsingType {
             }
         }
         
-        let duration: NSTimeInterval = try json.extract("expiretimeinseconds")
-        let expiryTimestamp: NSTimeInterval = try json.extract("expiretimestamp")
-        let startTimestamp: NSTimeInterval = try json.extract("starttimestamp")
+        let duration: TimeInterval = try json.extract("expiretimeinseconds")
+        let expiryTimestamp: TimeInterval = try json.extract("expiretimestamp")
+        let startTimestamp: TimeInterval = try json.extract("starttimestamp")
         
         guard let token = parsedToken else {
-            throw TokenError.InvalidToken
+            throw TokenError.invalidToken
         }
         
         guard let hdnea = parsedHdnea else {
-            throw TokenError.InvalidHdnea
+            throw TokenError.invalidHdnea
         }
         
-        return Token(token: token, hdnea: hdnea, startDate: NSDate(timeIntervalSince1970: startTimestamp), expiryDate: NSDate(timeIntervalSince1970: expiryTimestamp), duration: duration)
+        return Token(token: token, hdnea: hdnea, startDate: Date(timeIntervalSince1970: startTimestamp), expiryDate: Date(timeIntervalSince1970: expiryTimestamp), duration: duration)
     }
     
 }

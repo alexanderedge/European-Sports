@@ -16,10 +16,10 @@ class DoubleLabelCollectionViewCell: ImageCollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        titleLabel.textColor = UIColor.whiteColor()
+        titleLabel.textColor = UIColor.white
         titleLabel.font = Theme.Fonts.boldFont(ofSize: 38)
         
-        detailLabel.textColor = UIColor.lightGrayColor()
+        detailLabel.textColor = UIColor.lightGray
         detailLabel.font = Theme.Fonts.boldFont(ofSize: 26)
         
     }

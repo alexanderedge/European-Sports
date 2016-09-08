@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		80313817D0837D09401EC580 /* Pods_EurosportPlayerTV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4843CED10A9A96D260FC4AC6 /* Pods_EurosportPlayerTV.framework */; };
+		B03D3976FD76A7907B28BF7F /* Pods_EurosportPlayerTV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9180771217A7A824C25F8986 /* Pods_EurosportPlayerTV.framework */; };
 		DE03DB951CFA249D0080FEB3 /* CatchupStream+Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE03DB941CFA249D0080FEB3 /* CatchupStream+Networking.swift */; };
 		DE1753C91CFC6A4D0083DE2E /* ScheduledProgramme.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1753C81CFC6A4D0083DE2E /* ScheduledProgramme.swift */; };
 		DE1753CD1CFC6D090083DE2E /* ScheduledProgrammeParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1753CC1CFC6D090083DE2E /* ScheduledProgrammeParser.swift */; };
@@ -41,7 +41,6 @@
 		DE39BCBB1CE786A400347716 /* CatchupStreamParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39BCBA1CE786A400347716 /* CatchupStreamParser.swift */; };
 		DE39BCBD1CE7CE5400347716 /* SportsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39BCBC1CE7CE5400347716 /* SportsCollectionViewController.swift */; };
 		DE39BCC01CE7D35100347716 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39BCBE1CE7D35100347716 /* ImageCollectionViewCell.swift */; };
-		DE39BCC31CE7D40F00347716 /* EurosportKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DE39BC671CE764F700347716 /* EurosportKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DE3DC3B41CF4D61400AF5909 /* ManagedObjectResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3DC3B31CF4D61400AF5909 /* ManagedObjectResponseSerializer.swift */; };
 		DE3DC3B81CF4E17100AF5909 /* Fetchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3DC3B71CF4E17100AF5909 /* Fetchable.swift */; };
 		DE7D566E1CFB40EE00A2B504 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7D566D1CFB40EE00A2B504 /* Product.swift */; };
@@ -77,6 +76,7 @@
 		DEC427741CF9F8D400AE8C31 /* NumberIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC427731CF9F8D400AE8C31 /* NumberIdentifiable.swift */; };
 		DED8D18B1CF62EC100B016B9 /* DoubleLabelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED8D18A1CF62EC100B016B9 /* DoubleLabelCollectionViewCell.swift */; };
 		DED8D18F1CF636BC00B016B9 /* CatchupsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED8D18E1CF636BC00B016B9 /* CatchupsCollectionViewController.swift */; };
+		DEFC4CAB1D06EE43000C0711 /* EurosportKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DE39BC671CE764F700347716 /* EurosportKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,7 +101,7 @@
 			remoteGlobalIDString = DE39BC661CE764F700347716;
 			remoteInfo = EurosportKit;
 		};
-		DE39BC881CE767DC00347716 /* PBXContainerItemProxy */ = {
+		DEFC4CAC1D06EE43000C0711 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = DE969D671CD50B1300A8A313 /* Project object */;
 			proxyType = 1;
@@ -122,13 +122,13 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DE39BCC21CE7D3F700347716 /* Embed Frameworks */ = {
+		DEFC4CAE1D06EE43000C0711 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				DE39BCC31CE7D40F00347716 /* EurosportKit.framework in Embed Frameworks */,
+				DEFC4CAB1D06EE43000C0711 /* EurosportKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -136,9 +136,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		4843CED10A9A96D260FC4AC6 /* Pods_EurosportPlayerTV.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EurosportPlayerTV.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B853D81791DC865753FC7B1E /* Pods-EurosportPlayerTV.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EurosportPlayerTV.release.xcconfig"; path = "Pods/Target Support Files/Pods-EurosportPlayerTV/Pods-EurosportPlayerTV.release.xcconfig"; sourceTree = "<group>"; };
-		C07BCC9093C501F377BCE7DF /* Pods-EurosportPlayerTV.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EurosportPlayerTV.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EurosportPlayerTV/Pods-EurosportPlayerTV.debug.xcconfig"; sourceTree = "<group>"; };
+		9180771217A7A824C25F8986 /* Pods_EurosportPlayerTV.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EurosportPlayerTV.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		954B2A3EDD809DC74693CFE7 /* Pods-EurosportPlayerTV.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EurosportPlayerTV.release.xcconfig"; path = "Pods/Target Support Files/Pods-EurosportPlayerTV/Pods-EurosportPlayerTV.release.xcconfig"; sourceTree = "<group>"; };
+		D1138CA1CB22588BBEFF17FC /* Pods-EurosportPlayerTV.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EurosportPlayerTV.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EurosportPlayerTV/Pods-EurosportPlayerTV.debug.xcconfig"; sourceTree = "<group>"; };
 		DE03DB941CFA249D0080FEB3 /* CatchupStream+Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CatchupStream+Networking.swift"; sourceTree = "<group>"; };
 		DE1753C81CFC6A4D0083DE2E /* ScheduledProgramme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduledProgramme.swift; sourceTree = "<group>"; };
 		DE1753CC1CFC6D090083DE2E /* ScheduledProgrammeParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduledProgrammeParser.swift; sourceTree = "<group>"; };
@@ -244,17 +244,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				80313817D0837D09401EC580 /* Pods_EurosportPlayerTV.framework in Frameworks */,
+				B03D3976FD76A7907B28BF7F /* Pods_EurosportPlayerTV.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A761C54D8EBBFE09904078EF /* Frameworks */ = {
+		030A5612DDD9A671BAB482F1 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				4843CED10A9A96D260FC4AC6 /* Pods_EurosportPlayerTV.framework */,
+				D1138CA1CB22588BBEFF17FC /* Pods-EurosportPlayerTV.debug.xcconfig */,
+				954B2A3EDD809DC74693CFE7 /* Pods-EurosportPlayerTV.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		A74BCE44BE3DD562DC1B21CF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9180771217A7A824C25F8986 /* Pods_EurosportPlayerTV.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -356,8 +365,8 @@
 				DE39BC681CE764F700347716 /* EurosportKit */,
 				DE39BC761CE764F700347716 /* EurosportKitTests */,
 				DE969D701CD50B1300A8A313 /* Products */,
-				F4F27D24563767C395A44628 /* Pods */,
-				A761C54D8EBBFE09904078EF /* Frameworks */,
+				030A5612DDD9A671BAB482F1 /* Pods */,
+				A74BCE44BE3DD562DC1B21CF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -446,15 +455,6 @@
 			name = View;
 			sourceTree = "<group>";
 		};
-		F4F27D24563767C395A44628 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				C07BCC9093C501F377BCE7DF /* Pods-EurosportPlayerTV.debug.xcconfig */,
-				B853D81791DC865753FC7B1E /* Pods-EurosportPlayerTV.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -529,18 +529,18 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DE969D971CD51EA300A8A313 /* Build configuration list for PBXNativeTarget "EurosportPlayerTV" */;
 			buildPhases = (
-				4DD449440D2BAA291D80064A /* Check Pods Manifest.lock */,
+				2D844BC474F7A560218A0A11 /* [CP] Check Pods Manifest.lock */,
 				DE969D851CD51EA300A8A313 /* Sources */,
 				DE969D861CD51EA300A8A313 /* Frameworks */,
 				DE969D871CD51EA300A8A313 /* Resources */,
-				DE39BCC21CE7D3F700347716 /* Embed Frameworks */,
-				110540CA2034C15BEF8E72BA /* Embed Pods Frameworks */,
-				4BE6B215D6797D564612F824 /* Copy Pods Resources */,
+				DEFC4CAE1D06EE43000C0711 /* Embed Frameworks */,
+				CE551D3809E29E31AD61299A /* [CP] Embed Pods Frameworks */,
+				1BB42D149B26B3B41A321C3D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				DE39BC891CE767DC00347716 /* PBXTargetDependency */,
+				DEFC4CAD1D06EE43000C0711 /* PBXTargetDependency */,
 			);
 			name = EurosportPlayerTV;
 			productName = EurosportPlayerTV;
@@ -554,12 +554,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Alexander Edge Ltd.";
 				TargetAttributes = {
 					DE39BC661CE764F700347716 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = A7GKT46N29;
+						DevelopmentTeam = V8TM8C6P7Y;
+						LastSwiftMigration = 0800;
 					};
 					DE39BC6F1CE764F700347716 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -567,10 +568,12 @@
 					};
 					DE969D6E1CD50B1300A8A313 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = EDH8498X6Y;
 					};
 					DE969D881CD51EA300A8A313 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = V8TM8C6P7Y;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -633,29 +636,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		110540CA2034C15BEF8E72BA /* Embed Pods Frameworks */ = {
+		1BB42D149B26B3B41A321C3D /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EurosportPlayerTV/Pods-EurosportPlayerTV-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4BE6B215D6797D564612F824 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -663,19 +651,34 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EurosportPlayerTV/Pods-EurosportPlayerTV-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		4DD449440D2BAA291D80064A /* Check Pods Manifest.lock */ = {
+		2D844BC474F7A560218A0A11 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		CE551D3809E29E31AD61299A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EurosportPlayerTV/Pods-EurosportPlayerTV-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -785,10 +788,10 @@
 			target = DE39BC661CE764F700347716 /* EurosportKit */;
 			targetProxy = DE39BC7A1CE764F700347716 /* PBXContainerItemProxy */;
 		};
-		DE39BC891CE767DC00347716 /* PBXTargetDependency */ = {
+		DEFC4CAD1D06EE43000C0711 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = DE39BC661CE764F700347716 /* EurosportKit */;
-			targetProxy = DE39BC881CE767DC00347716 /* PBXContainerItemProxy */;
+			targetProxy = DEFC4CAC1D06EE43000C0711 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -833,6 +836,7 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -846,7 +850,8 @@
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TVOS_DEPLOYMENT_TARGET = 9.0;
+				SWIFT_VERSION = 3.0;
+				TVOS_DEPLOYMENT_TARGET = 10.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -857,6 +862,7 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -869,7 +875,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
-				TVOS_DEPLOYMENT_TARGET = 9.0;
+				SWIFT_VERSION = 3.0;
+				TVOS_DEPLOYMENT_TARGET = 10.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -911,8 +918,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -934,7 +943,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -957,8 +966,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -974,9 +985,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -986,7 +998,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				DEVELOPMENT_TEAM = EDH8498X6Y;
 				INFOPLIST_FILE = EurosportPlayer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.alexedge.EurosportPlayer;
@@ -998,7 +1010,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				DEVELOPMENT_TEAM = EDH8498X6Y;
 				INFOPLIST_FILE = EurosportPlayer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.alexedge.EurosportPlayer;
@@ -1008,8 +1020,9 @@
 		};
 		DE969D981CD51EA300A8A313 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C07BCC9093C501F377BCE7DF /* Pods-EurosportPlayerTV.debug.xcconfig */;
+			baseConfigurationReference = D1138CA1CB22588BBEFF17FC /* Pods-EurosportPlayerTV.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
@@ -1023,15 +1036,16 @@
 				SDKROOT = appletvos;
 				SWIFT_OBJC_BRIDGING_HEADER = "EurosportPlayerTV/EurosportPlayerTV-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Debug;
 		};
 		DE969D991CD51EA300A8A313 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B853D81791DC865753FC7B1E /* Pods-EurosportPlayerTV.release.xcconfig */;
+			baseConfigurationReference = 954B2A3EDD809DC74693CFE7 /* Pods-EurosportPlayerTV.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
@@ -1044,8 +1058,8 @@
 				PROVISIONING_PROFILE = "";
 				SDKROOT = appletvos;
 				SWIFT_OBJC_BRIDGING_HEADER = "EurosportPlayerTV/EurosportPlayerTV-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Release;
 		};

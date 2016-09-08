@@ -2,32 +2,32 @@ import Foundation
 import CoreData
 
 @objc(Catchup)
-public class Catchup: NSManagedObject {
+open class Catchup: NSManagedObject {
  
-    @NSManaged public
+    @NSManaged open
     var catchupDescription: String
     
-    @NSManaged public
-    var expirationDate: NSDate
+    @NSManaged open
+    var expirationDate: Date
     
-    @NSManaged public
+    @NSManaged open
     var identifier: NSNumber
     
-    @NSManaged public
-    var imageURL: NSURL
+    @NSManaged open
+    var imageURL: URL
     
-    @NSManaged public
-    var startDate: NSDate
+    @NSManaged open
+    var startDate: Date
     
-    @NSManaged public
+    @NSManaged open
     var title: String
     
     // MARK: - Relationships
     
-    @NSManaged public
+    @NSManaged open
     var sport: Sport
     
-    @NSManaged public
+    @NSManaged open
     var streams: NSOrderedSet
 
 }
@@ -38,7 +38,7 @@ extension Catchup: Fetchable {
     
     public typealias FetchableType = Catchup
     
-    public class func entityName () -> String {
+    public class var entityName: String {
         return "Catchup"
     }
     

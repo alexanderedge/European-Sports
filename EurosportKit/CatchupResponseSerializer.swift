@@ -13,22 +13,22 @@ struct CatchupResponseSerializer {
     
     typealias T = [Catchup]
     
-    enum CatchupError: ErrorType {
-        case InvalidJSONStructure
+    enum CatchupError: Error {
+        case invalidJSONStructure
     }
     
     static func serializer() -> ManagedObjectResponseSerializer <T> {
         return ManagedObjectResponseSerializer{ context, data, response, error in
             
-            guard let json = try VideoshopResponseSerializer.serializer().serializeResponse(data, response: response, error: error) as? [String: AnyObject] else {
-                throw CatchupError.InvalidJSONStructure
+            guard let json = try VideoshopResponseSerializer.serializer().serializeResponse(data, response: response, error: error) as? [String: Any] else {
+                throw CatchupError.invalidJSONStructure
             }
             
-            let sports: [[String: AnyObject]] = try json.extract("sports")
-            let catchups: [[String: AnyObject]] = try json.extract("catchups")
+            let sports: [[String: Any]] = try json.extract("sports")
+            let catchups: [[String: Any]] = try json.extract("catchups")
             
             // process the sports
-            SportParser.parse(sports, context: context)
+            let _ = SportParser.parse(sports, context: context)
             
             //process the catchups
             return(CatchupParser.parse(catchups, context: context))

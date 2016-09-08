@@ -20,13 +20,13 @@ class LiveStreamCollectionViewCell: ImageCollectionViewCell {
         
         logoImageView.adjustsImageWhenAncestorFocused = true
         
-        sportLabel.textColor = UIColor.lightGrayColor()
+        sportLabel.textColor = UIColor.lightGray
         sportLabel.font = Theme.Fonts.boldFont(ofSize: 26)
         
-        titleLabel.textColor = UIColor.whiteColor()
+        titleLabel.textColor = UIColor.white
         titleLabel.font = Theme.Fonts.boldFont(ofSize: 38)
         
-        detailLabel.textColor = UIColor.lightGrayColor()
+        detailLabel.textColor = UIColor.lightGray
         detailLabel.font = Theme.Fonts.boldFont(ofSize: 26)
         
     }

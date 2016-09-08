@@ -13,23 +13,33 @@ import AVKit
 
 private let reuseIdentifier = "Cell"
 
-class CatchupsCollectionViewController: FetchedResultsCollectionViewController {
+class CatchupsCollectionViewController: FetchedResultsCollectionViewController, FetchedResultsControllerBackedType {
 
     typealias FetchedType = Catchup
     
     var sport: Sport!
-        
-    override func fetchRequest() -> NSFetchRequest {
-        let predicate = NSPredicate(format: "sport == %@ AND expirationDate > %@", sport, NSDate())
+    
+    var fetchRequest: NSFetchRequest<FetchedType> {
+        let predicate = NSPredicate(format: "sport == %@ AND expirationDate > %@", sport, Date() as NSDate)
         let fetchRequest = Catchup.fetchRequest(predicate, sortedBy: "startDate", ascending: false)
         return fetchRequest
     }
+
+    var fetchedResultsController: NSFetchedResultsController<FetchedType>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = sport.name
+        let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        frc.delegate = self
+        do {
+            try frc.performFetch()
+        } catch {
+            fatalError("unable to perform fetch: \(error)")
+        }
+        fetchedResultsController = frc
         
+        title = sport.name
         
     }
 
@@ -42,11 +52,25 @@ class CatchupsCollectionViewController: FetchedResultsCollectionViewController {
 
     // MARK: UICollectionViewDataSource
 
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath)
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        guard let sections = fetchedResultsController.sections else {
+            return 0
+        }
+        return sections.count
     }
     
-    override func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        guard let sections = fetchedResultsController.sections , sections.count > section else {
+            return 0
+        }
+        return sections[section].numberOfObjects
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        return collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         
         guard let cell = cell as? DoubleLabelCollectionViewCell else {
             return
@@ -60,7 +84,7 @@ class CatchupsCollectionViewController: FetchedResultsCollectionViewController {
         
     }
     
-    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let catchup = objectAt(indexPath)
         
@@ -72,13 +96,13 @@ class CatchupsCollectionViewController: FetchedResultsCollectionViewController {
                 return
             }
             
-            stream.generateAuthenticatedURL(user) { result in
+            try! stream.generateAuthenticatedURL(user) { result in
                 
                 switch result {
-                case .Success(let url):
+                case .success(let url):
                     self.showVideoForURL(url)
                     break
-                case .Failure(let error):
+                case .failure(let error):
                     
                     self.showAlert(NSLocalizedString("catchup-failed", comment: "error starting catcup"), error: error)
                     print("error generating authenticated URL: \(error)")

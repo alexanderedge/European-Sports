@@ -11,15 +11,15 @@ import Foundation
 struct TokenResponseSerializer {
     typealias T = Token
     
-    enum TokenError: ErrorType {
-        case InvalidJSONStructure
+    enum TokenError: Error {
+        case invalidJSONStructure
     }
     
     static func serializer() -> ResponseSerializer <T> {
         return ResponseSerializer { data, response, error in
             
-            guard let json = try VideoshopResponseSerializer.serializer().serializeResponse(data, response: response, error: error) as? [String: AnyObject] else {
-                throw TokenError.InvalidJSONStructure
+            guard let json = try VideoshopResponseSerializer.serializer().serializeResponse(data, response: response, error: error) as? [String: Any] else {
+                throw TokenError.invalidJSONStructure
             }
             
             return try TokenParser.parse(json)

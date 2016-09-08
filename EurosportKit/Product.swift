@@ -10,23 +10,23 @@ import Foundation
 import CoreData
 
 @objc(Product)
-public class Product: NSManagedObject {
+open class Product: NSManagedObject {
     
-    @NSManaged public
+    @NSManaged open
     var identifier: NSNumber
     
-    @NSManaged public
+    @NSManaged open
     var name: String
     
-    @NSManaged public
-    var logoURL: NSURL
+    @NSManaged open
+    var logoURL: URL
     
     // MARK: - Relationships
     
-    @NSManaged public
+    @NSManaged open
     var scheduledProgrammes: NSOrderedSet
     
-    @NSManaged public
+    @NSManaged open
     var liveStreams: NSOrderedSet
     
 }
@@ -37,7 +37,7 @@ extension Product: Fetchable {
     
     public typealias FetchableType = Product
     
-    public static func entityName() -> String {
+    public static var entityName: String {
         return "Product"
     }
     

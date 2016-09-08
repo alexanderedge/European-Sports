@@ -26,7 +26,7 @@
 
 import Foundation
 
-public enum Result <Value, Error: ErrorType> {
-    case Success(Value)
-    case Failure(Error)
+public enum Result <Value, Error> {
+    case success(Value)
+    case failure(Error)
 }

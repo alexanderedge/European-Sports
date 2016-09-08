@@ -13,12 +13,12 @@ internal struct UserParser : JSONCoreDataParsingType {
     
     typealias T = User
     
-    enum UserError : ErrorType {
-        case MissingIdentifier
-        case MissingHkey
+    enum UserError : Error {
+        case missingIdentifier
+        case missingHkey
     }
     
-    static func parse(json: [String : AnyObject], context: NSManagedObjectContext) throws -> T {
+    static func parse(_ json: [String : Any], context: NSManagedObjectContext) throws -> T {
         let identifier: String = try json.extract("Id")
         let hkey: String = try json.extract("Hkey")
         let email: String = try json.extract("Email")

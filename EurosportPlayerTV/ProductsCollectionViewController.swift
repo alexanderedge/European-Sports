@@ -12,151 +12,62 @@ import EurosportKit
 
 private let reuseIdentifier = "Cell"
 
-class ProductsCollectionViewController: FetchedResultsCollectionViewController {
+class ProductsCollectionViewController: FetchedResultsCollectionViewController, FetchedResultsControllerBackedType {
 
     typealias FetchedType = Product
     
-    private var lastRefresh: NSDate?
-    private let refreshInterval: NSTimeInterval = 300 // 5 minutes
-    lazy private var loadingIndicator: UIActivityIndicatorView = {
-        let activity = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
-        activity.startAnimating()
-        return activity
-    }()
-    
-    override func fetchRequest() -> NSFetchRequest {
+
+    var fetchRequest: NSFetchRequest<FetchedType> {
         let fetchRequest = Product.fetchRequest(nil, sortedBy: "identifier", ascending: true)
         return fetchRequest
     }
     
+    var fetchedResultsController: NSFetchedResultsController<FetchedType>!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = NSLocalizedString("live-title", comment: "title for the products screen")
+        let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        frc.delegate = self
+        do {
+            try frc.performFetch()
+        } catch {
+            fatalError("unable to perform fetch: \(error)")
+        }
+        fetchedResultsController = frc
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(applicationDidBecomeActive(_:)), name: UIApplicationDidBecomeActiveNotification, object: UIApplication.sharedApplication())
+        title = NSLocalizedString("live-title", comment: "title for the products screen")
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        // check for a user, if not, prompt to login
-        
-        if User.currentUser(managedObjectContext) == nil {
-            
-            showLoadingIndicator()
-            
-            User.login("alexander.edge@googlemail.com", password: "q6v-BXt-V57-E4r", context: managedObjectContext) { result in
-                
-                switch result {
-                case .Success(let user):
-                    print("user logged in: \(user)")
-                    
-                    self.fetchContent(user, context: self.managedObjectContext)
-                    
-                    break
-                case .Failure(let error):
-                    print("error logging in: \(error)")
-                    
-                    self.showAlert(NSLocalizedString("login-failed", comment: "error logging in"), error: error)
-                    
-                    self.hideLoadingIndicator()
-                    
-                    break
-                }
-                
-            }.resume()
-            
-        }
-        
-    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    // MARK: Actions
-    
-    func applicationDidBecomeActive(notification: NSNotification) {
-        
-        guard let user = User.currentUser(managedObjectContext) else {
-            return
-        }
-        
-        if let lastRefresh = lastRefresh where NSDate().timeIntervalSinceDate(lastRefresh) < refreshInterval {
-            return
-        }
-        
-        fetchContent(user, context: managedObjectContext)
-        
-    }
-    
-    private func fetchContent(user: User, context: NSManagedObjectContext) {
-        
-        // fetch both catchups and products
-        
-        let group = dispatch_group_create()
-        
-        var errors = [NSError]()
-        
-        dispatch_group_enter(group)
-        Catchup.fetch(user, context: context) { result in
-            if case let .Failure(error) = result {
-                print("error loading catchups: \(error)")
-                errors.append(error)
-            } else {
-                
-                dispatch_group_enter(group)
-                Product.fetch(user, context: context) { result in
-                    if case let .Failure(error) = result {
-                        print("error loading products: \(error)")
-                        errors.append(error)
-                    }
-                    dispatch_group_leave(group)
-                    }.resume()
-                
-            }
-            dispatch_group_leave(group)
-        }.resume()
-        
-        dispatch_group_notify(group, dispatch_get_main_queue()) {
-            
-            self.hideLoadingIndicator()
-            
-            if let error = errors.first {
-                self.showAlert(NSLocalizedString("load-failed", comment: "error loading data"), error: error)
-            } else {
-                print("finished loading data");
-                self.lastRefresh = NSDate()
-            }
-
-        }
-        
-    }
-    
-    private func hideLoadingIndicator() {
-        loadingIndicator.removeFromSuperview()
-    }
-    
-    private func showLoadingIndicator() {
-        
-        guard loadingIndicator.superview == nil else {
-            return
-        }
-        
-        loadingIndicator.center = view.center
-        view.addSubview(loadingIndicator)
-    }
     
     // MARK: UICollectionViewDataSource
     
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath)
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        guard let sections = fetchedResultsController.sections else {
+            return 0
+        }
+        return sections.count
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        guard let sections = fetchedResultsController.sections , sections.count > section else {
+            return 0
+        }
+        return sections[section].numberOfObjects
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        return collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
     }
     
     
-    override func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
+    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         
         guard let cell = cell as? LiveStreamCollectionViewCell else {
             return
@@ -179,22 +90,22 @@ class ProductsCollectionViewController: FetchedResultsCollectionViewController {
         
     }
     
-    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let product = objectAt(indexPath)
         
         print("selected product \(product)")
         
-        guard let liveStream = product.liveStreams.firstObject as? LiveStream, user = User.currentUser(managedObjectContext) else {
+        guard let liveStream = product.liveStreams.firstObject as? LiveStream, let user = User.currentUser(managedObjectContext) else {
             return
         }
         
-        liveStream.generateAuthenticatedURL(user) { result in
+        try! liveStream.generateAuthenticatedURL(user) { result in
             switch result {
-            case .Success(let url):
+            case .success(let url):
                 self.showVideoForURL(url)
                 break
-            case .Failure(let error):
+            case .failure(let error):
                 
                 self.showAlert(NSLocalizedString("catchup-failed", comment: "error starting live stream"), error: error)
                 print("error generating authenticated URL: \(error)")

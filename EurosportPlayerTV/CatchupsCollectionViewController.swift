@@ -80,7 +80,7 @@ class CatchupsCollectionViewController: FetchedResultsCollectionViewController, 
         
         cell.titleLabel.text = catchup.title
         cell.detailLabel.text = catchup.catchupDescription
-        cell.imageView.setImage(catchup.imageURL, darken: true)
+        cell.imageView.setImage(catchup.imageURL, placeholder: UIImage(named: "catchup_placeholder"), darken: true)
         
     }
     

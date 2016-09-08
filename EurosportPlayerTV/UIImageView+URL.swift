@@ -19,7 +19,14 @@ internal struct DarkenFilter {
 
 extension UIImageView {
     
-    func setImage(_ url: URL?, darken: Bool) {
+    func setImage(_ url: URL?, placeholder: UIImage? = nil, darken: Bool) {
+        
+        let filter = DarkenFilter()
+        
+        if let placeholder = placeholder {
+            self.image = darken ? filter.filter(placeholder) : placeholder
+        }
+        
         if let url = url {
             
             let task = URLSession.shared.dataTask(with: url) { data, response, error in
@@ -32,7 +39,6 @@ extension UIImageView {
                     
                     if darken {
                         
-                        let filter = DarkenFilter()
                         let darkenedImage = filter.filter(image)
                         
                         DispatchQueue.main.async {

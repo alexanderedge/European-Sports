@@ -209,7 +209,7 @@ class SportsCollectionViewController: FetchedResultsCollectionViewController, Fe
         
         cell.titleLabel.text = sport.name
         cell.detailLabel.text = String.localizedStringWithFormat(sport.catchups.count > 1 ? NSLocalizedString("video-count-plural", comment: "e.g. 1 video") : NSLocalizedString("video-count-singular", comment: "e.g. 2 videos"), NumberFormatter.localizedString(from: sport.catchups.count as NSNumber, number: .none))
-        cell.imageView.setImage(sport.imageURL, darken: true)
+        cell.imageView.setImage(sport.imageURL, placeholder: UIImage(named: "catchup_placeholder"), darken: true)
 
     }
     

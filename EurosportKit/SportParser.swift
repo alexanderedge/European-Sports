@@ -21,9 +21,7 @@ internal struct SportParser: JSONCoreDataParsingType {
         let identifier: Int = try json.extract("id")
         let name: String = try json.extract("name")
         
-        guard let imageURL = URL(string: try json.extract("pictureurl")) else {
-            throw SportError.InvalidImageURL
-        }
+        let imageURL = URL(string: try json.extract("pictureurl"))
         
         let sport = try Sport.newOrExistingObject(identifier: identifier as NSNumber, inContext: context)
         sport.name = name

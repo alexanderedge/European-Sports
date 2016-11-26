@@ -18,13 +18,13 @@ open class ScheduledProgramme: NSManagedObject {
     var identifier: NSNumber
     
     @NSManaged open
-    var name: String
+    var name: String?
     
     @NSManaged open
-    var startDate: Date
+    var startDate: Date?
     
     @NSManaged open
-    var endDate: Date
+    var endDate: Date?
     
     @NSManaged open
     var imageURL: URL

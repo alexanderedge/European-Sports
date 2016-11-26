@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     lazy var managedObjectContext: NSManagedObjectContext = {
         let psc = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
-        try! psc.addPersistentStore(ofType: NSInMemoryStoreType, configurationName: nil, at: nil, options:nil)
+        try! psc.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: self.storeURL, options:nil)
         let context = NSManagedObjectContext( concurrencyType: .mainQueueConcurrencyType)
         context.persistentStoreCoordinator = psc
         return context
@@ -47,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-        //self.saveContext()
+        self.saveContext()
     }
     
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -61,7 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-        //self.saveContext()
+        self.saveContext()
     }
 
     private lazy var applicationCachesDirectory: URL = {
@@ -72,7 +72,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private lazy var managedObjectModel: NSManagedObjectModel = {
         // The managed object model for the application. This property is not optional. It is a fatal error for the application not to be able to find and load its model.
-        let modelURL = Bundle(for: Sport.self).url(forResource: "EurosportKit", withExtension: "momd")!
+        let modelURL = Bundle(for: Sport.self).url(forResource: "Eurosport", withExtension: "momd")!
         return NSManagedObjectModel(contentsOf: modelURL)!
     }()
     

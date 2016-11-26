@@ -13,7 +13,7 @@ open class Sport: NSManagedObject {
     var imageURL: URL?
     
     @NSManaged open
-    var name: String
+    var name: String?
     
     // MARK: - Relationships
     

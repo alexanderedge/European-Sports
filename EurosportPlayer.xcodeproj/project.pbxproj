@@ -60,7 +60,7 @@
 		DE969D901CD51EA300A8A313 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE969D8F1CD51EA300A8A313 /* SecondViewController.swift */; };
 		DE969D931CD51EA300A8A313 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE969D911CD51EA300A8A313 /* Main.storyboard */; };
 		DE969D951CD51EA300A8A313 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE969D941CD51EA300A8A313 /* Assets.xcassets */; };
-		DEB4599A1CE8C6EE0057259C /* EurosportKit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DEB459981CE8C6EE0057259C /* EurosportKit.xcdatamodeld */; };
+		DEB4599A1CE8C6EE0057259C /* Eurosport.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DEB459981CE8C6EE0057259C /* Eurosport.xcdatamodeld */; };
 		DEB4599C1CE8C7EA0057259C /* JSONCoreDataParsingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB4599B1CE8C7EA0057259C /* JSONCoreDataParsingType.swift */; };
 		DEB459A71CE8C91C0057259C /* Catchup.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB459A11CE8C91C0057259C /* Catchup.swift */; };
 		DEB459A81CE8C91D0057259C /* Sport.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB459A21CE8C91C0057259C /* Sport.swift */; };
@@ -198,7 +198,7 @@
 		DE969D921CD51EA300A8A313 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DE969D941CD51EA300A8A313 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DE969D961CD51EA300A8A313 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DEB459991CE8C6EE0057259C /* EurosportKit.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EurosportKit.xcdatamodel; sourceTree = "<group>"; };
+		DEB459991CE8C6EE0057259C /* Eurosport.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Eurosport.xcdatamodel; sourceTree = "<group>"; };
 		DEB4599B1CE8C7EA0057259C /* JSONCoreDataParsingType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONCoreDataParsingType.swift; sourceTree = "<group>"; };
 		DEB459A11CE8C91C0057259C /* Catchup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Catchup.swift; sourceTree = "<group>"; };
 		DEB459A21CE8C91C0057259C /* Sport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sport.swift; sourceTree = "<group>"; };
@@ -309,7 +309,7 @@
 				DE7D566F1CFB40FB00A2B504 /* Product+Networking.swift */,
 				DE1753C81CFC6A4D0083DE2E /* ScheduledProgramme.swift */,
 				DE39BC961CE76AAD00347716 /* Result.swift */,
-				DEB459981CE8C6EE0057259C /* EurosportKit.xcdatamodeld */,
+				DEB459981CE8C6EE0057259C /* Eurosport.xcdatamodeld */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -719,7 +719,7 @@
 				DE39BC971CE76AAD00347716 /* Result.swift in Sources */,
 				DEB459A81CE8C91D0057259C /* Sport.swift in Sources */,
 				DE39BCA21CE7705300347716 /* Token+Networking.swift in Sources */,
-				DEB4599A1CE8C6EE0057259C /* EurosportKit.xcdatamodeld in Sources */,
+				DEB4599A1CE8C6EE0057259C /* Eurosport.xcdatamodeld in Sources */,
 				DE39BC861CE7650A00347716 /* Router.swift in Sources */,
 				DE39BCA41CE770A400347716 /* TokenResponseSerializer.swift in Sources */,
 				DEC427741CF9F8D400AE8C31 /* NumberIdentifiable.swift in Sources */,
@@ -1114,13 +1114,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		DEB459981CE8C6EE0057259C /* EurosportKit.xcdatamodeld */ = {
+		DEB459981CE8C6EE0057259C /* Eurosport.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				DEB459991CE8C6EE0057259C /* EurosportKit.xcdatamodel */,
+				DEB459991CE8C6EE0057259C /* Eurosport.xcdatamodel */,
 			);
-			currentVersion = DEB459991CE8C6EE0057259C /* EurosportKit.xcdatamodel */;
-			path = EurosportKit.xcdatamodeld;
+			currentVersion = DEB459991CE8C6EE0057259C /* Eurosport.xcdatamodel */;
+			path = Eurosport.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

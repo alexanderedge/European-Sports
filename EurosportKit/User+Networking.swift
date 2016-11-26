@@ -11,8 +11,8 @@ import CoreData
 
 extension User {
     
-    public static func login(_ email: String, password: String, context: NSManagedObjectContext, completionHandler: @escaping (Result<User,NSError>) -> Void) throws -> URLSessionDataTask {
-        return try URLSession.shared.dataTaskWithRequest(Router.User.login(email: email, password: password).request(), context: context, responseSerializer: UserResponseSerializer.serializer(), completionHandler: completionHandler)
+    public static func login(_ email: String, password: String, context: NSManagedObjectContext, completionHandler: @escaping (Result<User,Error>) -> Void) -> URLSessionDataTask {
+        return URLSession.shared.dataTaskWithRequest(Router.User.login(email: email, password: password).request, context: context, responseSerializer: LoginResponseSerializer.serializer(), completionHandler: completionHandler)
     }
     
 }

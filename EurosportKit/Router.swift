@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 public protocol URLRequestConvertible {
-    func request() throws -> URLRequest
+    var request: URLRequest { get }
 }
 
 enum Method: String {
@@ -38,12 +38,12 @@ struct Router {
             return "/JsonPlayerCrmApi.svc/login"
         }
         
-        func request() throws -> URLRequest {
+        var request: URLRequest {
             switch self {
             case .login(let email, let password):
                 var params = [String : String]()
                 
-                let contextData = try JSONSerialization.data(withJSONObject: ["g": "GB", "p": 9, "l": "EN", "d":2,"mn":"iPad","v":"5.1.5","tt":"Pad","li":2,"s":1,"b":7], options: [])
+                let contextData = try! JSONSerialization.data(withJSONObject: ["g": "GB", "p": 9, "l": "EN", "d":2,"mn":"iPad","v":"5.1.5","tt":"Pad","li":2,"s":1,"b":7], options: [])
                 
                 params["context"] = String(data: contextData, encoding: String.Encoding.utf8)
                 
@@ -53,7 +53,7 @@ struct Router {
                     let identifier = UIDevice.current.identifierForVendor!.uuidString
                 #endif
                 
-                let data = try JSONSerialization.data(withJSONObject: ["email": email, "password": password, "udid": identifier], options: [])
+                let data = try! JSONSerialization.data(withJSONObject: ["email": email, "password": password, "udid": identifier], options: [])
                 
                 params["data"] = String(data: data, encoding: String.Encoding.utf8)
                 
@@ -79,16 +79,16 @@ struct Router {
             return "/JsonProductService.svc/GetToken"
         }
         
-        func request() throws -> URLRequest {
+        var request: URLRequest {
             switch self {
             case .fetch(let userId, let hkey):
                 var params = [String : String]()
                 
-                let contextData = try JSONSerialization.data(withJSONObject: ["g": "GB", "d":2], options: [])
+                let contextData = try! JSONSerialization.data(withJSONObject: ["g": "GB", "d":2], options: [])
                 
                 params["context"] = String(data: contextData, encoding: String.Encoding.utf8)
                 
-                let data = try JSONSerialization.data(withJSONObject: ["userid": userId, "hkey": hkey], options: [])
+                let data = try! JSONSerialization.data(withJSONObject: ["userid": userId, "hkey": hkey], options: [])
                 
                 params["data"] = String(data: data, encoding: String.Encoding.utf8)
                 
@@ -139,16 +139,16 @@ struct Router {
             return "/JsonProductService.svc/GetAllCatchupCache"
         }
         
-        func request() throws -> URLRequest {
+        var request: URLRequest {
             switch self {
             case .fetch:
                 var params = [String : String]()
                 
-                let contextData = try JSONSerialization.data(withJSONObject: ["g": "GB", "d": 2], options: [])
+                let contextData = try! JSONSerialization.data(withJSONObject: ["g": "GB", "d": 2], options: [])
                 
                 params["context"] = String(data: contextData, encoding: String.Encoding.utf8)
                 
-                let data = try JSONSerialization.data(withJSONObject: ["languageid": Language.preferredLanguage.identifier], options: [])
+                let data = try! JSONSerialization.data(withJSONObject: ["languageid": Language.preferredLanguage.identifier], options: [])
                 
                 params["data"] = String(data: data, encoding: String.Encoding.utf8)
                 
@@ -181,16 +181,16 @@ struct Router {
             return "/JsonProductService.svc/GetAllProductsCache"
         }
         
-        func request() throws -> URLRequest {
+        var request: URLRequest {
             switch self {
             case .fetch:
                 var params = [String : String]()
                 
-                let contextData = try JSONSerialization.data(withJSONObject: ["g":"GB","p":9,"l":"EN","d":2,"mn":"iPad","v":"5.1.5","tt":"Pad","li":2,"s":1,"b":7], options: [])
+                let contextData = try! JSONSerialization.data(withJSONObject: ["g":"GB","p":9,"l":"EN","d":2,"mn":"iPad","v":"5.1.5","tt":"Pad","li":2,"s":1,"b":7], options: [])
                 
                 params["context"] = String(data: contextData, encoding: String.Encoding.utf8)
                 
-                let data = try JSONSerialization.data(withJSONObject: ["languageid": Language.preferredLanguage.identifier, "isfullaccess":0,"withouttvscheduleliveevents":"true","groupchannels":"true","pictureformatids":"[87]","isbroadcasted":1], options: [])
+                let data = try! JSONSerialization.data(withJSONObject: ["languageid": Language.preferredLanguage.identifier, "isfullaccess":0,"withouttvscheduleliveevents":"true","groupchannels":"true","pictureformatids":"[87]","isbroadcasted":1], options: [])
                 
                 params["data"] = String(data: data, encoding: String.Encoding.utf8)
                 

@@ -15,9 +15,9 @@ extension LiveStream {
         return Router.Catchup.authenticatedURL(url)
     }
     
-    public func generateAuthenticatedURL(_ user: User, completionHandler: @escaping (Result<URL,NSError>) -> Void) throws {
+    public func generateAuthenticatedURL(_ user: User, completionHandler: @escaping (Result<URL,Error>) -> Void) throws {
         guard let token = Router.token , !token.isExpired else {
-            try URLSession.shared.refreshTokenTask(user, failure: completionHandler) {
+            URLSession.shared.refreshTokenTask(user, failure: completionHandler) {
                 completionHandler(.success(self.authenticatedURL))
                 }.resume()
             return

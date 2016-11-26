@@ -11,8 +11,8 @@ import CoreData
 
 extension Product {
     
-    public static func fetch(_ user: User, context: NSManagedObjectContext, completionHandler: @escaping (Result<([Product]),NSError>) -> Void) throws -> URLSessionDataTask {
-        return try URLSession.shared.authenticatedDataTaskForRequest(Router.Product.fetch.request(), user: user, context: context, responseSerializer: ProductResponseSerializer.serializer(), completionHandler: completionHandler)
+    public static func fetch(_ user: User, context: NSManagedObjectContext, completionHandler: @escaping (Result<([Product]),Error>) -> Void) -> URLSessionDataTask {
+        return URLSession.shared.authenticatedDataTaskForRequest(Router.Product.fetch.request, user: user, context: context, responseSerializer: ProductResponseSerializer.serializer(), completionHandler: completionHandler)
     }
     
 }

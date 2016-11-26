@@ -11,8 +11,8 @@ import CoreData
 
 extension Catchup {
     
-    public static func fetch(_ user: User, context: NSManagedObjectContext, completionHandler: @escaping (Result<([Catchup]),NSError>) -> Void) throws -> URLSessionDataTask {
-        return try URLSession.shared.authenticatedDataTaskForRequest(Router.Catchup.fetch.request(), user: user, context: context, responseSerializer: CatchupResponseSerializer.serializer(), completionHandler: completionHandler)
+    public static func fetch(_ user: User, context: NSManagedObjectContext, completionHandler: @escaping (Result<([Catchup]),Error>) -> Void) -> URLSessionDataTask {
+        return URLSession.shared.authenticatedDataTaskForRequest(Router.Catchup.fetch.request, user: user, context: context, responseSerializer: CatchupResponseSerializer.serializer(), completionHandler: completionHandler)
     }
     
 }

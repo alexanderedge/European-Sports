@@ -15,6 +15,12 @@
 		DE1753D11CFC75070083DE2E /* LiveStream+Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1753D01CFC75070083DE2E /* LiveStream+Networking.swift */; };
 		DE1753D31CFC75580083DE2E /* LiveStreamParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1753D21CFC75580083DE2E /* LiveStreamParser.swift */; };
 		DE1753D51CFC785F0083DE2E /* UIViewController+Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1753D41CFC785F0083DE2E /* UIViewController+Video.swift */; };
+		DE3896CD1DE9CBC900860BB9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3896CC1DE9CBC900860BB9 /* LoginViewController.swift */; };
+		DE3896D01DE9CD1A00860BB9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE3896CE1DE9CD1A00860BB9 /* Main.storyboard */; };
+		DE3896D21DE9DEA700860BB9 /* UIViewController+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3896D11DE9DEA700860BB9 /* UIViewController+Loading.swift */; };
+		DE3896D41DE9DF1C00860BB9 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3896D31DE9DF1C00860BB9 /* LoadingViewController.swift */; };
+		DE3896D61DE9E60200860BB9 /* LoginResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3896D51DE9E60200860BB9 /* LoginResponseSerializer.swift */; };
+		DE3896D81DEA041800860BB9 /* NSManagedObjectContext+Save.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3896D71DEA041800860BB9 /* NSManagedObjectContext+Save.swift */; };
 		DE39BC6A1CE764F700347716 /* EurosportKit.h in Headers */ = {isa = PBXBuildFile; fileRef = DE39BC691CE764F700347716 /* EurosportKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DE39BC711CE764F700347716 /* EurosportKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE39BC671CE764F700347716 /* EurosportKit.framework */; };
 		DE39BC781CE764F700347716 /* EurosportKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39BC771CE764F700347716 /* EurosportKitTests.swift */; };
@@ -27,7 +33,6 @@
 		DE39BC951CE76A8F00347716 /* JSONResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39BC941CE76A8F00347716 /* JSONResponseSerializer.swift */; };
 		DE39BC971CE76AAD00347716 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39BC961CE76AAD00347716 /* Result.swift */; };
 		DE39BC991CE76BBC00347716 /* User+Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39BC981CE76BBC00347716 /* User+Networking.swift */; };
-		DE39BC9B1CE76C2400347716 /* UserResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39BC9A1CE76C2400347716 /* UserResponseSerializer.swift */; };
 		DE39BCA01CE76E5000347716 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39BC9F1CE76E5000347716 /* Token.swift */; };
 		DE39BCA21CE7705300347716 /* Token+Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39BCA11CE7705300347716 /* Token+Networking.swift */; };
 		DE39BCA41CE770A400347716 /* TokenResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39BCA31CE770A400347716 /* TokenResponseSerializer.swift */; };
@@ -58,7 +63,6 @@
 		DE969D7D1CD50B1300A8A313 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE969D7B1CD50B1300A8A313 /* LaunchScreen.storyboard */; };
 		DE969D8C1CD51EA300A8A313 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE969D8B1CD51EA300A8A313 /* AppDelegate.swift */; };
 		DE969D901CD51EA300A8A313 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE969D8F1CD51EA300A8A313 /* SecondViewController.swift */; };
-		DE969D931CD51EA300A8A313 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE969D911CD51EA300A8A313 /* Main.storyboard */; };
 		DE969D951CD51EA300A8A313 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE969D941CD51EA300A8A313 /* Assets.xcassets */; };
 		DEB4599A1CE8C6EE0057259C /* Eurosport.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DEB459981CE8C6EE0057259C /* Eurosport.xcdatamodeld */; };
 		DEB4599C1CE8C7EA0057259C /* JSONCoreDataParsingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB4599B1CE8C7EA0057259C /* JSONCoreDataParsingType.swift */; };
@@ -146,6 +150,12 @@
 		DE1753D01CFC75070083DE2E /* LiveStream+Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LiveStream+Networking.swift"; sourceTree = "<group>"; };
 		DE1753D21CFC75580083DE2E /* LiveStreamParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveStreamParser.swift; sourceTree = "<group>"; };
 		DE1753D41CFC785F0083DE2E /* UIViewController+Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Video.swift"; sourceTree = "<group>"; };
+		DE3896CC1DE9CBC900860BB9 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		DE3896CF1DE9CD1A00860BB9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		DE3896D11DE9DEA700860BB9 /* UIViewController+Loading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Loading.swift"; sourceTree = "<group>"; };
+		DE3896D31DE9DF1C00860BB9 /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		DE3896D51DE9E60200860BB9 /* LoginResponseSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginResponseSerializer.swift; sourceTree = "<group>"; };
+		DE3896D71DEA041800860BB9 /* NSManagedObjectContext+Save.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Save.swift"; sourceTree = "<group>"; };
 		DE39BC671CE764F700347716 /* EurosportKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EurosportKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE39BC691CE764F700347716 /* EurosportKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EurosportKit.h; sourceTree = "<group>"; };
 		DE39BC6B1CE764F700347716 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -159,7 +169,6 @@
 		DE39BC941CE76A8F00347716 /* JSONResponseSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONResponseSerializer.swift; sourceTree = "<group>"; };
 		DE39BC961CE76AAD00347716 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		DE39BC981CE76BBC00347716 /* User+Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+Networking.swift"; sourceTree = "<group>"; };
-		DE39BC9A1CE76C2400347716 /* UserResponseSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserResponseSerializer.swift; sourceTree = "<group>"; };
 		DE39BC9F1CE76E5000347716 /* Token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		DE39BCA11CE7705300347716 /* Token+Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Token+Networking.swift"; sourceTree = "<group>"; };
 		DE39BCA31CE770A400347716 /* TokenResponseSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenResponseSerializer.swift; sourceTree = "<group>"; };
@@ -195,7 +204,6 @@
 		DE969D891CD51EA300A8A313 /* EurosportPlayerTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EurosportPlayerTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE969D8B1CD51EA300A8A313 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE969D8F1CD51EA300A8A313 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
-		DE969D921CD51EA300A8A313 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DE969D941CD51EA300A8A313 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DE969D961CD51EA300A8A313 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DEB459991CE8C6EE0057259C /* Eurosport.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Eurosport.xcdatamodel; sourceTree = "<group>"; };
@@ -320,11 +328,11 @@
 				DE39BC921CE76A7B00347716 /* ResponseSerializer.swift */,
 				DE3DC3B31CF4D61400AF5909 /* ManagedObjectResponseSerializer.swift */,
 				DE39BC941CE76A8F00347716 /* JSONResponseSerializer.swift */,
-				DE39BC9A1CE76C2400347716 /* UserResponseSerializer.swift */,
+				DE3896D51DE9E60200860BB9 /* LoginResponseSerializer.swift */,
+				DE7D56771CFB49BF00A2B504 /* ProductResponseSerializer.swift */,
 				DE39BCB01CE77C4C00347716 /* VideoshopResponseSerializer.swift */,
 				DE39BCA31CE770A400347716 /* TokenResponseSerializer.swift */,
 				DE39BCAE1CE77C1700347716 /* CatchupResponseSerializer.swift */,
-				DE7D56771CFB49BF00A2B504 /* ProductResponseSerializer.swift */,
 			);
 			name = Serializers;
 			sourceTree = "<group>";
@@ -402,8 +410,8 @@
 				DEC427571CF9C02500AE8C31 /* Model */,
 				DED8D1891CF62E9800B016B9 /* View */,
 				DE969D8B1CD51EA300A8A313 /* AppDelegate.swift */,
-				DE969D911CD51EA300A8A313 /* Main.storyboard */,
 				DE8FAA301CFB0C2B00E60A41 /* EurosportPlayerTV-Bridging-Header.h */,
+				DE3896CE1DE9CD1A00860BB9 /* Main.storyboard */,
 				DE969D941CD51EA300A8A313 /* Assets.xcassets */,
 				DE969D961CD51EA300A8A313 /* Info.plist */,
 				DEC4275F1CF9D8C000AE8C31 /* Localizable.strings */,
@@ -431,6 +439,10 @@
 				DE969D8F1CD51EA300A8A313 /* SecondViewController.swift */,
 				DE8FAA341CFB25B600E60A41 /* UIViewController+Alert.swift */,
 				DE1753D41CFC785F0083DE2E /* UIViewController+Video.swift */,
+				DE3896D11DE9DEA700860BB9 /* UIViewController+Loading.swift */,
+				DE3896D31DE9DF1C00860BB9 /* LoadingViewController.swift */,
+				DE3896CC1DE9CBC900860BB9 /* LoginViewController.swift */,
+				DE3896D71DEA041800860BB9 /* NSManagedObjectContext+Save.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -627,9 +639,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE3896D01DE9CD1A00860BB9 /* Main.storyboard in Resources */,
 				DE969D951CD51EA300A8A313 /* Assets.xcassets in Resources */,
 				DEC4275D1CF9D8C000AE8C31 /* Localizable.strings in Resources */,
-				DE969D931CD51EA300A8A313 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -706,6 +718,7 @@
 				DE39BCB71CE784B500347716 /* CatchupParser.swift in Sources */,
 				DE1753C91CFC6A4D0083DE2E /* ScheduledProgramme.swift in Sources */,
 				DE39BCB11CE77C4C00347716 /* VideoshopResponseSerializer.swift in Sources */,
+				DE3896D61DE9E60200860BB9 /* LoginResponseSerializer.swift in Sources */,
 				DE39BCAD1CE778B400347716 /* JSON.swift in Sources */,
 				DE39BC931CE76A7B00347716 /* ResponseSerializer.swift in Sources */,
 				DE39BCB51CE7847800347716 /* Catchup+Networking.swift in Sources */,
@@ -724,7 +737,6 @@
 				DE39BCA41CE770A400347716 /* TokenResponseSerializer.swift in Sources */,
 				DEC427741CF9F8D400AE8C31 /* NumberIdentifiable.swift in Sources */,
 				DE03DB951CFA249D0080FEB3 /* CatchupStream+Networking.swift in Sources */,
-				DE39BC9B1CE76C2400347716 /* UserResponseSerializer.swift in Sources */,
 				DEB459A91CE8C91D0057259C /* CatchupStream.swift in Sources */,
 				DE1753D31CFC75580083DE2E /* LiveStreamParser.swift in Sources */,
 			);
@@ -751,6 +763,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE3896D81DEA041800860BB9 /* NSManagedObjectContext+Save.swift in Sources */,
 				DE969D901CD51EA300A8A313 /* SecondViewController.swift in Sources */,
 				DEC4276A1CF9E51500AE8C31 /* FetchedResultsControllerBackedType.swift in Sources */,
 				DE7D567C1CFBA9F900A2B504 /* LiveStreamCollectionViewCell.swift in Sources */,
@@ -758,12 +771,15 @@
 				DEC427701CF9F6A500AE8C31 /* UIImageView+URL.swift in Sources */,
 				DE39BCBD1CE7CE5400347716 /* SportsCollectionViewController.swift in Sources */,
 				DE1753D51CFC785F0083DE2E /* UIViewController+Video.swift in Sources */,
+				DE3896D21DE9DEA700860BB9 /* UIViewController+Loading.swift in Sources */,
 				DED8D18B1CF62EC100B016B9 /* DoubleLabelCollectionViewCell.swift in Sources */,
 				DE969D8C1CD51EA300A8A313 /* AppDelegate.swift in Sources */,
 				DEC427651CF9E31000AE8C31 /* ManagedObjectContextSettable.swift in Sources */,
+				DE3896D41DE9DF1C00860BB9 /* LoadingViewController.swift in Sources */,
 				DE8FAA331CFB0C2C00E60A41 /* UIImageEffects.m in Sources */,
 				DEC427631CF9E29D00AE8C31 /* FetchedResultsCollectionViewController.swift in Sources */,
 				DE7D56761CFB474100A2B504 /* ProductsCollectionViewController.swift in Sources */,
+				DE3896CD1DE9CBC900860BB9 /* LoginViewController.swift in Sources */,
 				DEC4275A1CF9C04B00AE8C31 /* Theme.swift in Sources */,
 				DED8D18F1CF636BC00B016B9 /* CatchupsCollectionViewController.swift in Sources */,
 				DE8FAA351CFB25B600E60A41 /* UIViewController+Alert.swift in Sources */,
@@ -796,6 +812,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		DE3896CE1DE9CD1A00860BB9 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DE3896CF1DE9CD1A00860BB9 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
 		DE969D761CD50B1300A8A313 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -810,14 +834,6 @@
 				DE969D7C1CD50B1300A8A313 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		DE969D911CD51EA300A8A313 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DE969D921CD51EA300A8A313 /* Base */,
-			);
-			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 		DEC4275F1CF9D8C000AE8C31 /* Localizable.strings */ = {

@@ -39,7 +39,7 @@ internal struct ResponseSerializer<T>: ResponseSerializerType {
     
     let serializationBlock: SerializationBlock
     
-    init(serializationBlock: SerializationBlock) {
+    init(serializationBlock: @escaping SerializationBlock) {
         self.serializationBlock = serializationBlock
     }
     

@@ -40,7 +40,7 @@ internal struct ManagedObjectResponseSerializer<T>: ManagedObjectResponseSeriali
     
     let serializationBlock: ManagedObjectSerializationBlock
     
-    init(serializationBlock: ManagedObjectSerializationBlock) {
+    init(serializationBlock: @escaping ManagedObjectSerializationBlock) {
         self.serializationBlock = serializationBlock
     }
     

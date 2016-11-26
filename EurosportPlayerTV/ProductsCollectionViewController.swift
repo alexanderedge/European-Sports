@@ -107,7 +107,7 @@ class ProductsCollectionViewController: FetchedResultsCollectionViewController, 
                 break
             case .failure(let error):
                 
-                self.showAlert(NSLocalizedString("catchup-failed", comment: "error starting live stream"), error: error)
+                self.showAlert(NSLocalizedString("catchup-failed", comment: "error starting live stream"), error: error as NSError)
                 print("error generating authenticated URL: \(error)")
                 break
             }

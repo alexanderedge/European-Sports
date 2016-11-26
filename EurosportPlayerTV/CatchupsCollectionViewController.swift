@@ -95,7 +95,7 @@ class CatchupsCollectionViewController: FetchedResultsCollectionViewController, 
                     break
                 case .failure(let error):
                     
-                    self.showAlert(NSLocalizedString("catchup-failed", comment: "error starting catcup"), error: error)
+                    self.showAlert(NSLocalizedString("catchup-failed", comment: "error starting catcup"), error: error as NSError)
                     print("error generating authenticated URL: \(error)")
                     break
                 }

@@ -15,18 +15,13 @@ private let reuseIdentifier = "Cell"
 class SportsCollectionViewController: FetchedResultsCollectionViewController, FetchedResultsControllerBackedType {
 
     typealias FetchedType = Sport
-    
+
     fileprivate var lastRefresh: Date?
     fileprivate let refreshInterval: TimeInterval = 300 // 5 minutes
-    lazy fileprivate var loadingIndicator: UIActivityIndicatorView = {
-        let activity = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
-        activity.startAnimating()
-        return activity
-    }()
-    
     
     fileprivate enum SegueIdentifiers: String {
-        case ShowCatchups
+        case showCatchups = "ShowCatchups"
+        case showLogin = "ShowLogin"
     }
     
     fileprivate var selectedSport: Sport?
@@ -64,35 +59,8 @@ class SportsCollectionViewController: FetchedResultsCollectionViewController, Fe
         
         if User.currentUser(managedObjectContext) == nil {
             
-            showLoadingIndicator()
-            
-            do {
-                try User.login("alexander.edge@googlemail.com", password: "q6v-BXt-V57-E4r", context: managedObjectContext) { result in
-                    
-                    switch result {
-                    case .success(let user):
-                        print("user logged in: \(user)")
-                        
-                        self.fetchContent(user, context: self.managedObjectContext)
-                        
-                        break
-                    case .failure(let error):
-                        print("error logging in: \(error)")
-                        
-                        self.showAlert(NSLocalizedString("login-failed", comment: "error logging in"), error: error)
-                        
-                        self.hideLoadingIndicator()
-                        
-                        break
-                    }
-                    
-                    }.resume()
-            } catch {
-                fatalError("unable to create request for user: \(error)")
-            }
-            
-            
-            
+            performSegue(withIdentifier: "ShowLogin", sender: nil)
+
         }
         
     }
@@ -121,22 +89,22 @@ class SportsCollectionViewController: FetchedResultsCollectionViewController, Fe
     
     fileprivate func fetchContent(_ user: User, context: NSManagedObjectContext) {
         
-        // fetch both catchups and products
+        showLoadingIndicator()
         
         let group = DispatchGroup()
         
-        var errors = [NSError]()
+        var errors = [Error]()
         
         group.enter()
         
-        try! Catchup.fetch(user, context: context) { result in
+        Catchup.fetch(user, context: context) { result in
             if case let .failure(error) = result {
                 print("error loading catchups: \(error)")
                 errors.append(error)
             } else {
                 
                 group.enter()
-                try! Product.fetch(user, context: context) { result in
+                Product.fetch(user, context: context) { result in
                     if case let .failure(error) = result {
                         print("error loading products: \(error)")
                         errors.append(error)
@@ -146,14 +114,14 @@ class SportsCollectionViewController: FetchedResultsCollectionViewController, Fe
                 
             }
             group.leave()
-            }.resume()
+        }.resume()
         
         group.notify(queue: DispatchQueue.main) {
             
             self.hideLoadingIndicator()
             
             if let error = errors.first {
-                self.showAlert(NSLocalizedString("load-failed", comment: "error loading data"), error: error)
+                self.showAlert(NSLocalizedString("load-failed", comment: "error loading data"), error: error as NSError)
             } else {
                 print("finished loading data");
                 self.lastRefresh = Date()
@@ -161,20 +129,6 @@ class SportsCollectionViewController: FetchedResultsCollectionViewController, Fe
             
         }
         
-    }
-    
-    fileprivate func hideLoadingIndicator() {
-        loadingIndicator.removeFromSuperview()
-    }
-    
-    fileprivate func showLoadingIndicator() {
-        
-        guard loadingIndicator.superview == nil else {
-            return
-        }
-        
-        loadingIndicator.center = view.center
-        view.addSubview(loadingIndicator)
     }
 
     // MARK: UICollectionViewDataSource
@@ -219,7 +173,7 @@ class SportsCollectionViewController: FetchedResultsCollectionViewController, Fe
 
         selectedSport = sport
         
-        performSegue(withIdentifier: SegueIdentifiers.ShowCatchups.rawValue, sender: nil)
+        performSegue(withIdentifier: SegueIdentifiers.showCatchups.rawValue, sender: nil)
         
         print("selected sport \(sport.identifier)")
         
@@ -230,11 +184,44 @@ class SportsCollectionViewController: FetchedResultsCollectionViewController, Fe
 extension SportsCollectionViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let identifierString = segue.identifier, let identifier = SegueIdentifiers(rawValue: identifierString) , identifier == .ShowCatchups, let vc = segue.destination as? CatchupsCollectionViewController, let sport = selectedSport else {
+        guard let identifierString = segue.identifier, let identifier = SegueIdentifiers(rawValue: identifierString) else {
             return
         }
-        vc.sport = sport
-        vc.managedObjectContext = managedObjectContext
+        
+        switch identifier {
+        case .showLogin:
+            
+            guard let vc = segue.destination as? LoginViewController else {
+                return
+            }
+            
+            vc.managedObjectContext = managedObjectContext
+            vc.delegate = self
+            
+            break
+        case .showCatchups:
+            
+            guard let vc = segue.destination as? CatchupsCollectionViewController, let sport = selectedSport else {
+                return
+            }
+            
+            vc.sport = sport
+            vc.managedObjectContext = managedObjectContext
+            
+            break
+        }
+        
+        
+    }
+    
+}
+
+extension SportsCollectionViewController: LoginViewControllerDelegate {
+    
+    func loginViewController(didLogin controller: LoginViewController, user: User) {
+        dismiss(animated: true) {
+            self.fetchContent(user, context: self.managedObjectContext)
+        }
     }
     
 }

@@ -30,13 +30,13 @@ import CoreData
 internal protocol ManagedObjectResponseSerializerType {
     associatedtype T
     
-    func serializeResponse(_ context:NSManagedObjectContext, data: Data?, response: URLResponse?, error: NSError?) throws -> T
+    func serializeResponse(_ context:NSManagedObjectContext, data: Data?, response: URLResponse?, error: Error?) throws -> T
     
 }
 
 internal struct ManagedObjectResponseSerializer<T>: ManagedObjectResponseSerializerType {
     
-    typealias ManagedObjectSerializationBlock = (NSManagedObjectContext, Data?, URLResponse?, NSError?) throws -> T
+    typealias ManagedObjectSerializationBlock = (NSManagedObjectContext, Data?, URLResponse?, Error?) throws -> T
     
     let serializationBlock: ManagedObjectSerializationBlock
     
@@ -44,7 +44,7 @@ internal struct ManagedObjectResponseSerializer<T>: ManagedObjectResponseSeriali
         self.serializationBlock = serializationBlock
     }
     
-    func serializeResponse(_ context: NSManagedObjectContext, data: Data?, response: URLResponse?, error: NSError?) throws -> T {
+    func serializeResponse(_ context: NSManagedObjectContext, data: Data?, response: URLResponse?, error: Error?) throws -> T {
         return try serializationBlock(context, data, response, error)
     }
     
@@ -52,14 +52,17 @@ internal struct ManagedObjectResponseSerializer<T>: ManagedObjectResponseSeriali
 
 extension URLSession {
     
-    internal func dataTaskWithRequest<T>(_ request: URLRequest, context: NSManagedObjectContext, responseSerializer: ManagedObjectResponseSerializer<T>, completionHandler: @escaping (Result<T, NSError>) -> Void) -> URLSessionDataTask {
+    internal func dataTaskWithRequest<T>(_ request: URLRequest, context: NSManagedObjectContext, responseSerializer: ManagedObjectResponseSerializer<T>, completionHandler: @escaping (Result<T, Error>) -> Void) -> URLSessionDataTask {
         return dataTask(with: request) { data, response, error in
+            
+            //TODO: create a child context to perform the mapping in
+            
             DispatchQueue.main.async {
                 do {
-                    let object = try responseSerializer.serializeResponse(context, data: data, response: response, error: error as NSError?)
+                    let object = try responseSerializer.serializeResponse(context, data: data, response: response, error: error)
                     completionHandler(.success(object))
                 } catch {
-                    completionHandler(.failure(error as NSError))
+                    completionHandler(.failure(error))
                 }
             }
         }

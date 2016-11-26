@@ -67,21 +67,12 @@ class CatchupsCollectionViewController: FetchedResultsCollectionViewController, 
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        
-        guard let cell = cell as? DoubleLabelCollectionViewCell else {
-            return
-        }
-        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! DoubleLabelCollectionViewCell
         let catchup = objectAt(indexPath)
-        
         cell.titleLabel.text = catchup.title
         cell.detailLabel.text = catchup.catchupDescription
         cell.imageView.setImage(catchup.imageURL, placeholder: UIImage(named: "catchup_placeholder"), darken: true)
-        
+        return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

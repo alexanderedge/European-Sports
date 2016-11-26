@@ -35,7 +35,7 @@ extension URLSession {
     }
     
     internal func authenticatedDataTaskForRequest<T>(_ request: URLRequest, user: User, responseSerializer: ResponseSerializer<T>, completionHandler: @escaping (Result<T, NSError>) -> Void) throws -> URLSessionDataTask {
-        guard let token = Router.token , !token.isExpired else {
+        guard let token = Router.token, token.isExpired == false else {
             return try refreshTokenTask(user, failure: completionHandler) {
                 try! self.authenticatedDataTaskForRequest(request, user: user, responseSerializer: responseSerializer, completionHandler: completionHandler).resume()
             }
@@ -44,7 +44,7 @@ extension URLSession {
     }
     
     internal func authenticatedDataTaskForRequest<T>(_ request: URLRequest, user: User, context: NSManagedObjectContext, responseSerializer: ManagedObjectResponseSerializer<T>, completionHandler: @escaping (Result<T, NSError>) -> Void) throws -> URLSessionDataTask {
-        guard let token = Router.token , !token.isExpired else {
+        guard let token = Router.token, token.isExpired == false  else {
             return try refreshTokenTask(user, failure: completionHandler) {
                 try! self.authenticatedDataTaskForRequest(request, user: user, context: context, responseSerializer: responseSerializer, completionHandler: completionHandler).resume()
             }

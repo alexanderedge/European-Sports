@@ -23,6 +23,11 @@ extension UIViewController {
     }
     
     func hideLoadingIndicator(completion: (() -> Void)? = nil) {
+        
+        guard (self.presentedViewController as? LoadingViewController) != nil else {
+            return
+        }
+        
         dismiss(animated: true, completion: completion)
     }
     

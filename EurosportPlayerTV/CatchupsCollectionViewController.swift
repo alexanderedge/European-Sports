@@ -91,6 +91,7 @@ class CatchupsCollectionViewController: FetchedResultsCollectionViewController, 
                 
                 switch result {
                 case .success(let url):
+                    print("loading URL: \(url)")
                     self.showVideoForURL(url)
                     break
                 case .failure(let error):

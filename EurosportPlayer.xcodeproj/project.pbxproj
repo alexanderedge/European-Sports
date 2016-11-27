@@ -21,6 +21,10 @@
 		DE3896D41DE9DF1C00860BB9 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3896D31DE9DF1C00860BB9 /* LoadingViewController.swift */; };
 		DE3896D61DE9E60200860BB9 /* LoginResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3896D51DE9E60200860BB9 /* LoginResponseSerializer.swift */; };
 		DE3896D81DEA041800860BB9 /* NSManagedObjectContext+Save.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3896D71DEA041800860BB9 /* NSManagedObjectContext+Save.swift */; };
+		DE3896DA1DEA145900860BB9 /* EurosportAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3896D91DEA145900860BB9 /* EurosportAccount.swift */; };
+		DE3900641DEA33960070C48D /* KeychainPasswordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3900631DEA33960070C48D /* KeychainPasswordItem.swift */; };
+		DE3900661DEA33CF0070C48D /* KeychainConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3900651DEA33CF0070C48D /* KeychainConfiguration.swift */; };
+		DE3900691DEB375C0070C48D /* LogoutFooterCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3900681DEB375C0070C48D /* LogoutFooterCollectionReusableView.swift */; };
 		DE39BC6A1CE764F700347716 /* EurosportKit.h in Headers */ = {isa = PBXBuildFile; fileRef = DE39BC691CE764F700347716 /* EurosportKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DE39BC711CE764F700347716 /* EurosportKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE39BC671CE764F700347716 /* EurosportKit.framework */; };
 		DE39BC781CE764F700347716 /* EurosportKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39BC771CE764F700347716 /* EurosportKitTests.swift */; };
@@ -156,6 +160,11 @@
 		DE3896D31DE9DF1C00860BB9 /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		DE3896D51DE9E60200860BB9 /* LoginResponseSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginResponseSerializer.swift; sourceTree = "<group>"; };
 		DE3896D71DEA041800860BB9 /* NSManagedObjectContext+Save.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Save.swift"; sourceTree = "<group>"; };
+		DE3896D91DEA145900860BB9 /* EurosportAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EurosportAccount.swift; sourceTree = "<group>"; };
+		DE3900631DEA33960070C48D /* KeychainPasswordItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainPasswordItem.swift; sourceTree = "<group>"; };
+		DE3900651DEA33CF0070C48D /* KeychainConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainConfiguration.swift; sourceTree = "<group>"; };
+		DE3900671DEB2AE10070C48D /* EurosportPlayerTV.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EurosportPlayerTV.entitlements; sourceTree = "<group>"; };
+		DE3900681DEB375C0070C48D /* LogoutFooterCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoutFooterCollectionReusableView.swift; sourceTree = "<group>"; };
 		DE39BC671CE764F700347716 /* EurosportKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EurosportKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE39BC691CE764F700347716 /* EurosportKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EurosportKit.h; sourceTree = "<group>"; };
 		DE39BC6B1CE764F700347716 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -405,6 +414,7 @@
 		DE969D8A1CD51EA300A8A313 /* EurosportPlayerTV */ = {
 			isa = PBXGroup;
 			children = (
+				DE3900671DEB2AE10070C48D /* EurosportPlayerTV.entitlements */,
 				DEC427661CF9E3D900AE8C31 /* Protocols */,
 				DEC427581CF9C03700AE8C31 /* Controller */,
 				DEC427571CF9C02500AE8C31 /* Model */,
@@ -422,9 +432,12 @@
 		DEC427571CF9C02500AE8C31 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				DE3900651DEA33CF0070C48D /* KeychainConfiguration.swift */,
+				DE3900631DEA33960070C48D /* KeychainPasswordItem.swift */,
 				DE8FAA311CFB0C2C00E60A41 /* UIImageEffects.h */,
 				DE8FAA321CFB0C2C00E60A41 /* UIImageEffects.m */,
 				DEC427591CF9C04B00AE8C31 /* Theme.swift */,
+				DE3896D91DEA145900860BB9 /* EurosportAccount.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -463,6 +476,7 @@
 				DED8D18A1CF62EC100B016B9 /* DoubleLabelCollectionViewCell.swift */,
 				DE7D567B1CFBA9F900A2B504 /* LiveStreamCollectionViewCell.swift */,
 				DEC4276F1CF9F6A500AE8C31 /* UIImageView+URL.swift */,
+				DE3900681DEB375C0070C48D /* LogoutFooterCollectionReusableView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -586,6 +600,11 @@
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = V8TM8C6P7Y;
 						LastSwiftMigration = 0800;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -675,7 +694,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		CE551D3809E29E31AD61299A /* [CP] Embed Pods Frameworks */ = {
@@ -769,6 +788,7 @@
 				DE7D567C1CFBA9F900A2B504 /* LiveStreamCollectionViewCell.swift in Sources */,
 				DE39BCC01CE7D35100347716 /* ImageCollectionViewCell.swift in Sources */,
 				DEC427701CF9F6A500AE8C31 /* UIImageView+URL.swift in Sources */,
+				DE3896DA1DEA145900860BB9 /* EurosportAccount.swift in Sources */,
 				DE39BCBD1CE7CE5400347716 /* SportsCollectionViewController.swift in Sources */,
 				DE1753D51CFC785F0083DE2E /* UIViewController+Video.swift in Sources */,
 				DE3896D21DE9DEA700860BB9 /* UIViewController+Loading.swift in Sources */,
@@ -776,13 +796,16 @@
 				DE969D8C1CD51EA300A8A313 /* AppDelegate.swift in Sources */,
 				DEC427651CF9E31000AE8C31 /* ManagedObjectContextSettable.swift in Sources */,
 				DE3896D41DE9DF1C00860BB9 /* LoadingViewController.swift in Sources */,
+				DE3900691DEB375C0070C48D /* LogoutFooterCollectionReusableView.swift in Sources */,
 				DE8FAA331CFB0C2C00E60A41 /* UIImageEffects.m in Sources */,
 				DEC427631CF9E29D00AE8C31 /* FetchedResultsCollectionViewController.swift in Sources */,
 				DE7D56761CFB474100A2B504 /* ProductsCollectionViewController.swift in Sources */,
+				DE3900661DEA33CF0070C48D /* KeychainConfiguration.swift in Sources */,
 				DE3896CD1DE9CBC900860BB9 /* LoginViewController.swift in Sources */,
 				DEC4275A1CF9C04B00AE8C31 /* Theme.swift in Sources */,
 				DED8D18F1CF636BC00B016B9 /* CatchupsCollectionViewController.swift in Sources */,
 				DE8FAA351CFB25B600E60A41 /* UIViewController+Alert.swift in Sources */,
+				DE3900641DEA33960070C48D /* KeychainPasswordItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1042,6 +1065,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = EurosportPlayerTV/EurosportPlayerTV.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "iPhone Developer";
 				INFOPLIST_FILE = EurosportPlayerTV/Info.plist;
@@ -1065,6 +1089,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = EurosportPlayerTV/EurosportPlayerTV.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "iPhone Developer";
 				INFOPLIST_FILE = EurosportPlayerTV/Info.plist;

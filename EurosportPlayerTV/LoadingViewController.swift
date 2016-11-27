@@ -21,17 +21,23 @@ class LoadingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let darkView = UIView(frame: view.bounds)
+        darkView.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        darkView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.addSubview(darkView)
+        
+        /*
         let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
         visualEffectView.frame = view.bounds
         visualEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(visualEffectView)
-        
+        */
         // disable menu button while loading
         let menuPressRecognizer = UITapGestureRecognizer()
         menuPressRecognizer.addTarget(self, action: #selector(LoadingViewController.handleMenuButton(gr:)))
         menuPressRecognizer.allowedPressTypes = [NSNumber(value: UIPressType.menu.hashValue)]
         menuPressRecognizer.isEnabled = false
-        self.view.addGestureRecognizer(menuPressRecognizer)
+        view.addGestureRecognizer(menuPressRecognizer)
         self.menuPressRecognizer = menuPressRecognizer
         
         view.addSubview(loadingIndicator)

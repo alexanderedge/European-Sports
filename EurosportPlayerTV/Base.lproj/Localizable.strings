@@ -10,5 +10,9 @@
 "live-title" = "Live TV";
 "video-count-singular" = "%@ video";
 "video-count-plural" = "%@ videos";
-"login-failed" = "Unable to login";
 "catchup-load-failed" = "Unable to load videos";
+"alert-ok" = "OK";
+"alert-cancel" = "Cancel";
+"login-email" = "Email";
+"login-password" = "Password";
+"login-failed" = "Unable to login";

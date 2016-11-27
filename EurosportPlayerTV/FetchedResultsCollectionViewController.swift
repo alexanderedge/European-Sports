@@ -15,9 +15,7 @@ class FetchedResultsCollectionViewController: UICollectionViewController, Manage
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
-        collectionView?.backgroundView = UIImageView(image: UIImage(named:"background"))
-        
+                        
     }
     
     override func didReceiveMemoryWarning() {

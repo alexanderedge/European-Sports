@@ -9,6 +9,7 @@
 import UIKit
 import EurosportKit
 import CoreData
+import Locksmith
 
 protocol LoginViewControllerDelegate {
     
@@ -28,9 +29,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate, ManagedObjectC
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        usernameTextField.attributedPlaceholder =  NSAttributedString(string: NSLocalizedString("Email", comment: ""), attributes: [NSFontAttributeName: UIFont.preferredFont(forTextStyle: .headline)])
-        passwordTextField.attributedPlaceholder =  NSAttributedString(string: NSLocalizedString("Password", comment: ""), attributes: [NSFontAttributeName: UIFont.preferredFont(forTextStyle: .headline)])
+        usernameTextField.attributedPlaceholder =  NSAttributedString(string: NSLocalizedString("login-email", comment: ""), attributes: [NSFontAttributeName: UIFont.preferredFont(forTextStyle: .headline)])
+        passwordTextField.attributedPlaceholder =  NSAttributedString(string: NSLocalizedString("login-password", comment: ""), attributes: [NSFontAttributeName: UIFont.preferredFont(forTextStyle: .headline)])
         signInButton.backgroundColor = Theme.Colours.Red
+        
+        usernameTextField.text = "alexander.edge@googlemail.com"
+        passwordTextField.text = "q6v-BXt-V57-E4r"
         
     }
     
@@ -45,6 +49,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate, ManagedObjectC
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         return textField.hasText
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
+        guard reason == .committed else {
+            return
+        }
+        
+        if textField == passwordTextField {
+            checkFieldsForSignIn()
+        }
     }
     
     fileprivate func checkFieldsForSignIn() {
@@ -70,6 +84,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate, ManagedObjectC
                 
                 switch result {
                 case .success(let user):
+                    
+                    let passwordItem = KeychainPasswordItem(service: KeychainConfiguration.serviceName, account: username, accessGroup: KeychainConfiguration.accessGroup)
+                    
+                    do {
+                        try passwordItem.savePassword(password)
+                    } catch {
+                        print("error saving password: \(error)")
+                    }
+                    
                     print("user logged in: \(user)")
                     self.delegate?.loginViewController(didLogin: self, user: user)
                     break

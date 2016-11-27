@@ -23,7 +23,7 @@ struct Router {
     
     fileprivate static func standardRequest(_ url: URL) -> URLRequest {
         var req = URLRequest(url: url)
-        req.setValue("EurosportPlayer/5.1.5 (iPad; iOS 9.3.1; Scale/3.00)", forHTTPHeaderField: "User-Agent")
+        req.setValue("EurosportPlayer/5.1.5 (iPad; iOS 10.1.0; Scale/3.00)", forHTTPHeaderField: "User-Agent")
         return req
     }
     
@@ -47,11 +47,7 @@ struct Router {
                 
                 params["context"] = String(data: contextData, encoding: String.Encoding.utf8)
                 
-                #if TARGET_OS_SIMULATOR
-                    let identifier = "f5c1fa0c-1507-400f-916e-9793c883cfdd"
-                #else
-                    let identifier = UIDevice.current.identifierForVendor!.uuidString
-                #endif
+                let identifier = UIDevice.current.identifierForVendor!.uuidString
                 
                 let data = try! JSONSerialization.data(withJSONObject: ["email": email, "password": password, "udid": identifier], options: [])
                 

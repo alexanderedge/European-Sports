@@ -16,8 +16,7 @@ class SportsCollectionViewController: FetchedResultsCollectionViewController, Fe
 
     typealias FetchedType = Sport
 
-    fileprivate var lastRefresh: Date?
-    fileprivate let refreshInterval: TimeInterval = 300 // 5 minutes
+    fileprivate var requiresLogin: Bool = false
     
     fileprivate enum SegueIdentifiers: String {
         case showCatchups = "ShowCatchups"
@@ -37,6 +36,17 @@ class SportsCollectionViewController: FetchedResultsCollectionViewController, Fe
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        performFetch()
+        
+        title = NSLocalizedString("videos-title", comment: "title for the sports screen")
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidBecomeActive(_:)), name: NSNotification.Name.UIApplicationDidBecomeActive, object: UIApplication.shared)
+        
+        collectionView?.remembersLastFocusedIndexPath = true
+        
+    }
+    
+    private func performFetch() {
         let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
         frc.delegate = self
         do {
@@ -45,22 +55,13 @@ class SportsCollectionViewController: FetchedResultsCollectionViewController, Fe
             fatalError("unable to perform fetch: \(error)")
         }
         fetchedResultsController = frc
-        
-        title = NSLocalizedString("videos-title", comment: "title for the sports screen")
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidBecomeActive(_:)), name: NSNotification.Name.UIApplicationDidBecomeActive, object: UIApplication.shared)
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        // check for a user, if not, prompt to login
-        
-        if User.currentUser(managedObjectContext) == nil {
-            
+        if self.requiresLogin {
             performSegue(withIdentifier: "ShowLogin", sender: nil)
-
         }
         
     }
@@ -74,22 +75,58 @@ class SportsCollectionViewController: FetchedResultsCollectionViewController, Fe
     // MARK: Actions
     
     func applicationDidBecomeActive(_ notification: Notification) {
+
+        do {
+            
+            let passwordItems = try KeychainPasswordItem.passwordItems(forService: KeychainConfiguration.serviceName, accessGroup: KeychainConfiguration.accessGroup)
+            
+            guard let passwordItem = passwordItems.first else {
+                self.requiresLogin = true
+                return
+            }
+            
+            let password = try passwordItem.readPassword()
+            let email = passwordItem.account
+            
+            User.login(email, password: password, context: managedObjectContext) { result in
+                
+                switch result {
+                case .success:
+                    
+                    self.fetchContent()
+                    
+                    break
+                case .failure:
+                    
+                    do {
+                        try passwordItem.deleteItem()
+                    } catch {
+                        print("error deleting account for \(email)")
+                    }
+                    
+                    self.requiresLogin = true
+                    
+                    break
+                }
+                
+                }.resume()
+            
+        }
+        catch {
+            fatalError("Error fetching password items - \(error)")
+        }
+        
+    }
+    
+    fileprivate func fetchContent() {
         
         guard let user = User.currentUser(managedObjectContext) else {
             return
         }
         
-        if let lastRefresh = lastRefresh , Date().timeIntervalSince(lastRefresh) < refreshInterval {
-            return
-        }
-        
-        fetchContent(user, context: managedObjectContext)
-        
-    }
-    
-    fileprivate func fetchContent(_ user: User, context: NSManagedObjectContext) {
-        
         showLoadingIndicator()
+        
+        let context = managedObjectContext!
         
         let group = DispatchGroup()
         
@@ -118,19 +155,70 @@ class SportsCollectionViewController: FetchedResultsCollectionViewController, Fe
         
         group.notify(queue: DispatchQueue.main) {
             
-            self.hideLoadingIndicator()
-            
-            if let error = errors.first {
-                self.showAlert(NSLocalizedString("load-failed", comment: "error loading data"), error: error as NSError)
-            } else {
-                print("finished loading data");
-                self.lastRefresh = Date()
+            self.hideLoadingIndicator {
+                if let error = errors.first {
+                    self.showAlert(NSLocalizedString("load-failed", comment: "error loading data"), error: error as NSError)
+                } else {
+                    print("finished loading data");
+                    self.performFetch()
+                }
             }
             
         }
         
     }
+    
+    // MARK: Actions
 
+    @IBAction func logoutButtonPressed(button: UIButton) {
+        
+        guard let ctx = managedObjectContext else {
+            return
+        }
+        
+        do {
+            
+            var managedObjects = [NSManagedObject]()
+            
+            let sports = try Sport.objectsInContext(ctx) as [NSManagedObject]
+            managedObjects.append(contentsOf:sports)
+            
+            let products = try Product.objectsInContext(ctx) as [NSManagedObject]
+            managedObjects.append(contentsOf: products)
+            
+            let users = try User.objectsInContext(ctx) as [NSManagedObject]
+            managedObjects.append(contentsOf: users)
+            
+            print("deleting: \(managedObjects.count) objects")
+            
+            for mo in managedObjects {
+                ctx.delete(mo)
+            }
+            
+            ctx.saveToPersistentStore()
+            
+            print("deleted: \(managedObjects.count) objects")
+            
+            // remove password
+            
+            let passwordItems = try KeychainPasswordItem.passwordItems(forService: KeychainConfiguration.serviceName, accessGroup: KeychainConfiguration.accessGroup)
+            for passwordItem in passwordItems {
+                try passwordItem.deleteItem()
+            }
+            
+            performSegue(withIdentifier: SegueIdentifiers.showLogin.rawValue, sender: nil)
+            
+        } catch let error as CocoaError {
+            print ("unable to delete object: \(error)")
+        }  catch let error as KeychainPasswordItem.KeychainError {
+            print ("unable to delete keychain item: \(error)")
+        } catch {
+            print ("error logging out: \(error)")
+        }
+
+        
+    }
+    
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -167,6 +255,11 @@ class SportsCollectionViewController: FetchedResultsCollectionViewController, Fe
 
     }
     
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "footer", for: indexPath) as! LogoutFooterCollectionReusableView
+        return view
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let sport = objectAt(indexPath)
@@ -177,7 +270,7 @@ class SportsCollectionViewController: FetchedResultsCollectionViewController, Fe
         
         print("selected sport \(sport.identifier)")
         
-    }
+    }    
 
 }
 
@@ -219,8 +312,9 @@ extension SportsCollectionViewController {
 extension SportsCollectionViewController: LoginViewControllerDelegate {
     
     func loginViewController(didLogin controller: LoginViewController, user: User) {
+        self.requiresLogin = false
         dismiss(animated: true) {
-            self.fetchContent(user, context: self.managedObjectContext)
+            self.fetchContent()
         }
     }
     

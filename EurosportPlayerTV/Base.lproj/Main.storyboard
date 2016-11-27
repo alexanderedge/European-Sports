@@ -20,9 +20,13 @@
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="60" minimumInteritemSpacing="60" id="ZAZ-dT-ylk">
                             <size key="itemSize" width="560" height="400"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="50" height="200"/>
                             <inset key="sectionInset" minX="60" minY="60" maxX="60" maxY="60"/>
                         </collectionViewFlowLayout>
+                        <imageView key="backgroundView" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" id="4oR-yk-19p">
+                            <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
                         <cells>
                             <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="jBn-oB-urD" customClass="DoubleLabelCollectionViewCell" customModule="EurosportPlayerTV" customModuleProvider="target">
                                 <rect key="frame" x="60" y="60" width="560" height="400"/>
@@ -82,6 +86,31 @@
                                 </connections>
                             </collectionViewCell>
                         </cells>
+                        <collectionReusableView key="sectionFooterView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="footer" id="UzZ-7G-NBS" customClass="LogoutFooterCollectionReusableView" customModule="EurosportPlayerTV" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="520" width="1920" height="200"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3oF-Mr-PfB">
+                                    <rect key="frame" x="710" y="57" width="500" height="86"/>
+                                    <color key="backgroundColor" red="0.87058823529999996" green="0.0" blue="0.21960784310000001" alpha="1" colorSpace="deviceRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="500" id="uzN-uB-1sI"/>
+                                    </constraints>
+                                    <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                    <state key="normal" title="Logout"/>
+                                    <connections>
+                                        <action selector="logoutButtonPressedWithButton:" destination="vnZ-Ic-wYL" eventType="primaryActionTriggered" id="3cT-PY-GDK"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="3oF-Mr-PfB" firstAttribute="centerY" secondItem="UzZ-7G-NBS" secondAttribute="centerY" id="MW8-LF-FqB"/>
+                                <constraint firstItem="3oF-Mr-PfB" firstAttribute="centerX" secondItem="UzZ-7G-NBS" secondAttribute="centerX" id="UU3-rJ-bK7"/>
+                            </constraints>
+                            <connections>
+                                <outlet property="logoutButton" destination="3oF-Mr-PfB" id="60J-Pb-91y"/>
+                            </connections>
+                        </collectionReusableView>
                         <connections>
                             <outlet property="dataSource" destination="vnZ-Ic-wYL" id="QcE-HB-DaR"/>
                             <outlet property="delegate" destination="vnZ-Ic-wYL" id="N2W-nG-orW"/>
@@ -89,8 +118,8 @@
                     </collectionView>
                     <tabBarItem key="tabBarItem" title="Videos" id="y09-zl-Do1"/>
                     <connections>
-                        <segue destination="M6i-kN-9iA" kind="show" identifier="ShowCatchups" id="fAS-mW-NTG"/>
                         <segue destination="SkZ-mx-Kd3" kind="presentation" identifier="ShowLogin" id="vcl-ek-jZK"/>
+                        <segue destination="M6i-kN-9iA" kind="show" identifier="ShowCatchups" id="C0K-3y-jNy"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jOQ-dY-sCB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -109,6 +138,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="qJw-NV-afP">
+                                <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ud7-fv-YgG">
                                 <rect key="frame" x="710" y="430" width="500" height="220"/>
                                 <subviews>
@@ -169,12 +201,16 @@
                         </subviews>
                         <constraints>
                             <constraint firstItem="ud7-fv-YgG" firstAttribute="centerX" secondItem="tB0-As-5qM" secondAttribute="centerX" id="1Xg-JL-jIk"/>
+                            <constraint firstItem="7s6-Yq-x5E" firstAttribute="top" secondItem="qJw-NV-afP" secondAttribute="bottom" id="6mJ-6D-Bk0"/>
                             <constraint firstItem="ud7-fv-YgG" firstAttribute="centerX" secondItem="tB0-As-5qM" secondAttribute="centerX" id="7ow-D5-g6P"/>
                             <constraint firstItem="ud7-fv-YgG" firstAttribute="top" secondItem="7iY-tc-pDZ" secondAttribute="bottom" constant="80" id="BSZ-Vs-46j"/>
+                            <constraint firstAttribute="trailing" secondItem="qJw-NV-afP" secondAttribute="trailing" id="HDM-lB-UQr"/>
                             <constraint firstItem="ud7-fv-YgG" firstAttribute="centerY" secondItem="tB0-As-5qM" secondAttribute="centerY" id="M68-ll-Nak"/>
                             <constraint firstItem="0Rz-hg-UZr" firstAttribute="centerX" secondItem="tB0-As-5qM" secondAttribute="centerX" id="R8U-dY-HFG"/>
                             <constraint firstItem="7iY-tc-pDZ" firstAttribute="centerX" secondItem="tB0-As-5qM" secondAttribute="centerX" id="RLb-YE-5I3"/>
                             <constraint firstItem="0Rz-hg-UZr" firstAttribute="top" secondItem="ud7-fv-YgG" secondAttribute="bottom" constant="20" id="fPT-93-Enb"/>
+                            <constraint firstItem="qJw-NV-afP" firstAttribute="leading" secondItem="tB0-As-5qM" secondAttribute="leading" id="rwT-Zj-VZW"/>
+                            <constraint firstItem="qJw-NV-afP" firstAttribute="top" secondItem="por-vb-fbM" secondAttribute="bottom" id="uqH-GB-luF"/>
                             <constraint firstItem="0Rz-hg-UZr" firstAttribute="width" secondItem="ud7-fv-YgG" secondAttribute="width" id="wUy-QW-n8A"/>
                         </constraints>
                     </view>
@@ -201,6 +237,10 @@
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="60" minY="60" maxX="60" maxY="60"/>
                         </collectionViewFlowLayout>
+                        <imageView key="backgroundView" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" id="yEI-04-QNj">
+                            <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
                         <cells>
                             <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="iHg-z4-Kn7" customClass="DoubleLabelCollectionViewCell" customModule="EurosportPlayerTV" customModuleProvider="target">
                                 <rect key="frame" x="60" y="60" width="560" height="400"/>
@@ -265,10 +305,11 @@
                             <outlet property="delegate" destination="M6i-kN-9iA" id="F3O-O0-mtG"/>
                         </connections>
                     </collectionView>
+                    <navigationItem key="navigationItem" id="fsV-tR-myp"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p5F-6I-eBP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4527" y="-708"/>
+            <point key="canvasLocation" x="4851" y="-708"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -380,4 +421,7 @@
             <point key="canvasLocation" x="2301" y="-2084"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="background" width="1920" height="1080"/>
+    </resources>
 </document>

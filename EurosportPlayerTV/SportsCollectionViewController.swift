@@ -76,6 +76,8 @@ class SportsCollectionViewController: FetchedResultsCollectionViewController, Fe
     
     func applicationDidBecomeActive(_ notification: Notification) {
 
+        performFetch()
+        
         do {
             
             let passwordItems = try KeychainPasswordItem.passwordItems(forService: KeychainConfiguration.serviceName, accessGroup: KeychainConfiguration.accessGroup)
@@ -124,7 +126,9 @@ class SportsCollectionViewController: FetchedResultsCollectionViewController, Fe
             return
         }
         
-        showLoadingIndicator()
+        if fetchedResultsController.fetchedObjects?.count == 0 {
+            showLoadingIndicator()
+        }
         
         let context = managedObjectContext!
         
@@ -160,7 +164,6 @@ class SportsCollectionViewController: FetchedResultsCollectionViewController, Fe
                     self.showAlert(NSLocalizedString("load-failed", comment: "error loading data"), error: error as NSError)
                 } else {
                     print("finished loading data");
-                    self.performFetch()
                 }
             }
             

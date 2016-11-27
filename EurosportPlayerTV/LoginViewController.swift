@@ -9,7 +9,6 @@
 import UIKit
 import EurosportKit
 import CoreData
-import Locksmith
 
 protocol LoginViewControllerDelegate {
     

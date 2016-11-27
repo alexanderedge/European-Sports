@@ -21,7 +21,6 @@
 		DE3896D41DE9DF1C00860BB9 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3896D31DE9DF1C00860BB9 /* LoadingViewController.swift */; };
 		DE3896D61DE9E60200860BB9 /* LoginResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3896D51DE9E60200860BB9 /* LoginResponseSerializer.swift */; };
 		DE3896D81DEA041800860BB9 /* NSManagedObjectContext+Save.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3896D71DEA041800860BB9 /* NSManagedObjectContext+Save.swift */; };
-		DE3896DA1DEA145900860BB9 /* EurosportAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3896D91DEA145900860BB9 /* EurosportAccount.swift */; };
 		DE3900641DEA33960070C48D /* KeychainPasswordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3900631DEA33960070C48D /* KeychainPasswordItem.swift */; };
 		DE3900661DEA33CF0070C48D /* KeychainConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3900651DEA33CF0070C48D /* KeychainConfiguration.swift */; };
 		DE3900691DEB375C0070C48D /* LogoutFooterCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3900681DEB375C0070C48D /* LogoutFooterCollectionReusableView.swift */; };
@@ -160,7 +159,6 @@
 		DE3896D31DE9DF1C00860BB9 /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		DE3896D51DE9E60200860BB9 /* LoginResponseSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginResponseSerializer.swift; sourceTree = "<group>"; };
 		DE3896D71DEA041800860BB9 /* NSManagedObjectContext+Save.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Save.swift"; sourceTree = "<group>"; };
-		DE3896D91DEA145900860BB9 /* EurosportAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EurosportAccount.swift; sourceTree = "<group>"; };
 		DE3900631DEA33960070C48D /* KeychainPasswordItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainPasswordItem.swift; sourceTree = "<group>"; };
 		DE3900651DEA33CF0070C48D /* KeychainConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainConfiguration.swift; sourceTree = "<group>"; };
 		DE3900671DEB2AE10070C48D /* EurosportPlayerTV.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EurosportPlayerTV.entitlements; sourceTree = "<group>"; };
@@ -437,7 +435,6 @@
 				DE8FAA311CFB0C2C00E60A41 /* UIImageEffects.h */,
 				DE8FAA321CFB0C2C00E60A41 /* UIImageEffects.m */,
 				DEC427591CF9C04B00AE8C31 /* Theme.swift */,
-				DE3896D91DEA145900860BB9 /* EurosportAccount.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -788,7 +785,6 @@
 				DE7D567C1CFBA9F900A2B504 /* LiveStreamCollectionViewCell.swift in Sources */,
 				DE39BCC01CE7D35100347716 /* ImageCollectionViewCell.swift in Sources */,
 				DEC427701CF9F6A500AE8C31 /* UIImageView+URL.swift in Sources */,
-				DE3896DA1DEA145900860BB9 /* EurosportAccount.swift in Sources */,
 				DE39BCBD1CE7CE5400347716 /* SportsCollectionViewController.swift in Sources */,
 				DE1753D51CFC785F0083DE2E /* UIViewController+Video.swift in Sources */,
 				DE3896D21DE9DEA700860BB9 /* UIViewController+Loading.swift in Sources */,

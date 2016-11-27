@@ -92,6 +92,12 @@ internal struct CatchupParser: JSONCoreDataParsingType {
         let catchup = try Catchup.newOrExistingObject(identifier: identifier as NSNumber, inContext: context)
         catchup.startDate = startDate
         catchup.expirationDate = expirationDate
+        
+        // delete any existing streams
+        for stream in catchup.streams {
+            context.delete(stream as! CatchupStream)
+        }
+        // assign new streams
         catchup.streams = NSOrderedSet(array: CatchupStreamParser.parse(streamJSON, context: context))
         catchup.sport = sport
         catchup.identifier = identifier as NSNumber

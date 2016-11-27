@@ -31,10 +31,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, ManagedObjectC
         usernameTextField.attributedPlaceholder =  NSAttributedString(string: NSLocalizedString("login-email", comment: ""), attributes: [NSFontAttributeName: UIFont.preferredFont(forTextStyle: .headline)])
         passwordTextField.attributedPlaceholder =  NSAttributedString(string: NSLocalizedString("login-password", comment: ""), attributes: [NSFontAttributeName: UIFont.preferredFont(forTextStyle: .headline)])
         signInButton.backgroundColor = Theme.Colours.Red
-        
-        usernameTextField.text = "alexander.edge@googlemail.com"
-        passwordTextField.text = "q6v-BXt-V57-E4r"
-        
+
     }
     
     override func didReceiveMemoryWarning() {

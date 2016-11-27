@@ -12,6 +12,10 @@ extension UIViewController {
     
     func showLoadingIndicator() {
         
+        guard self.presentedViewController == nil else {
+            return
+        }
+        
         let vc = LoadingViewController()
         vc.modalPresentationStyle = .overFullScreen
         present(vc, animated: true, completion: nil)

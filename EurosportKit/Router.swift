@@ -23,7 +23,7 @@ struct Router {
     
     fileprivate static func standardRequest(_ url: URL) -> URLRequest {
         var req = URLRequest(url: url)
-        req.setValue("EurosportPlayer/5.1.5 (iPad; iOS 10.1.0; Scale/3.00)", forHTTPHeaderField: "User-Agent")
+        req.setValue("EurosportPlayer/5.1.12 (iPad; iOS 10.1.1; Scale/2.00)", forHTTPHeaderField: "User-Agent")
         return req
     }
     

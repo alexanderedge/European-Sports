@@ -161,7 +161,8 @@ struct Router {
             guard let token = token else {
                 return streamURL
             }
-            return streamURL.URLByAppendingQueryParameters(["token": token.token, "hdnea": token.hdnea])
+            // the order of the query parameters is important - videos do not play otherwise
+            return streamURL.URLByAppendingQueryParameters(["token": token.token]).URLByAppendingQueryParameters(["hdnea": token.hdnea])
         }
         
     }

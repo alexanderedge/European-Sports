@@ -22,8 +22,8 @@ class ImageCollectionViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        
-        
+        imageView.sd_cancelCurrentImageLoad()
+        imageView.image = nil
     }
     
 }

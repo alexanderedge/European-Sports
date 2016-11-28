@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage.UIImageView_WebCache
 
 class DoubleLabelCollectionViewCell: ImageCollectionViewCell {
 
@@ -23,6 +24,8 @@ class DoubleLabelCollectionViewCell: ImageCollectionViewCell {
         detailLabel.font = Theme.Fonts.boldFont(ofSize: 26)
         
     }
+    
+    
     
     /*
     override func didUpdateFocusInContext(context: UIFocusUpdateContext, withAnimationCoordinator coordinator: UIFocusAnimationCoordinator) {

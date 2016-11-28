@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage.UIImageView_WebCache
 
 internal struct DarkenFilter {
     
@@ -23,41 +24,41 @@ extension UIImageView {
         
         let filter = DarkenFilter()
         
-        if let placeholder = placeholder {
-            self.image = darken ? filter.filter(placeholder) : placeholder
-        }
-        
         if let url = url {
             
-            let task = URLSession.shared.dataTask(with: url) { data, response, error in
-                
-                if let data = data {
-                 
-                    guard let image = UIImage(data: data) else {
-                        return
+            func completed(image: UIImage?, error: Error?, cacheType: SDImageCacheType, url: URL?) {
+                if let image = image {
+                    
+                    func setImageWithTransition(image: UIImage) {
+                        self.alpha = 0
+                        self.image = image
+                        UIView.transition(with: self, duration: (cacheType == .none ? 0.2 : 0), options: .transitionCrossDissolve, animations: {
+                            self.alpha = 1
+                        }, completion: nil)
                     }
                     
                     if darken {
-                        
-                        let darkenedImage = filter.filter(image)
-                        
-                        DispatchQueue.main.async {
-                            self.image = darkenedImage
+                        DispatchQueue.global(qos: .userInitiated).async {
+                            let filteredImage = filter.filter(image)
+                            DispatchQueue.main.async {
+                                setImageWithTransition(image: filteredImage)
+                            }
                         }
-                        
                         
                     } else {
-                        DispatchQueue.main.async {
-                            self.image = image
-                        }
+                        setImageWithTransition(image: image)
                     }
-                    
                 }
-                
             }
-            task.resume()
             
-            //af_setImageWithURL(url, filter: darken ? DarkenFilter() : nil, imageTransition: .CrossDissolve(0.2))
+            if let placeholder = placeholder {
+                sd_setImage(with: url, placeholderImage: placeholder, options: [.avoidAutoSetImage], completed: completed)
+            } else {
+                sd_setImage(with: url, placeholderImage: nil, options: [.avoidAutoSetImage], completed: completed)
+            }
+
+        } else {
+            image = placeholder
         }
     }
     

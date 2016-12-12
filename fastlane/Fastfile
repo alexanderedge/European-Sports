@@ -13,9 +13,9 @@
 # Update this, if you use features of a newer version
 fastlane_version "1.110.0"
 
-default_platform :ios
+default_platform :tvos
 
-platform :ios do
+platform :tvos do
   before_all do
     # ENV["SLACK_URL"] = "https://hooks.slack.com/services/..."
     #cocoapods

@@ -13,7 +13,7 @@ class LiveStreamCollectionViewCell: ImageCollectionViewCell {
     @IBOutlet var sportLabel: UILabel!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var detailLabel: UILabel!
-    @IBOutlet var logoImageView: UIImageView!
+    @IBOutlet var logoImageView: WebImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

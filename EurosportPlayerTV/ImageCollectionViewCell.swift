@@ -10,7 +10,7 @@ import UIKit
 
 class ImageCollectionViewCell: UICollectionViewCell {
 
-    @IBOutlet var imageView: UIImageView!
+    @IBOutlet var imageView: WebImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,7 +22,7 @@ class ImageCollectionViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        imageView.sd_cancelCurrentImageLoad()
+        imageView.cancelCurrentImageLoad()
         imageView.image = nil
     }
     

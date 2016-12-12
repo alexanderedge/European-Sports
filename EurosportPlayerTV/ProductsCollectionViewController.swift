@@ -27,7 +27,7 @@ class ProductsCollectionViewController: FetchedResultsCollectionViewController, 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
         frc.delegate = self
         do {
             try frc.performFetch()
@@ -96,7 +96,7 @@ class ProductsCollectionViewController: FetchedResultsCollectionViewController, 
         
         print("selected product \(product)")
         
-        guard let liveStream = product.liveStreams.firstObject as? LiveStream, let user = User.currentUser(managedObjectContext) else {
+        guard let liveStream = product.liveStreams.firstObject as? LiveStream, let user = User.currentUser(persistentContainer.viewContext) else {
             return
         }
         

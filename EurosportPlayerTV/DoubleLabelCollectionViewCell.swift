@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SDWebImage.UIImageView_WebCache
 
 class DoubleLabelCollectionViewCell: ImageCollectionViewCell {
 

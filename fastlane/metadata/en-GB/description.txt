@@ -1,5 +1,1 @@
-***Subscription to Eurosport Player required***
-
-Euro Sports Player contains all on-demand content available to view on the Eurosport Player iOS app, in a familiar tvOS context.
-
-Log in using your existing Eurosport Player account and navigate through content using the Apple Siri remote.
+European Sports allows you to access on-demand video content on your Apple TV using your existing subscription to Eurosport Player.

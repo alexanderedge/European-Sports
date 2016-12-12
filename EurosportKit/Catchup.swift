@@ -20,6 +20,9 @@ open class Catchup: NSManagedObject {
     var startDate: Date
     
     @NSManaged open
+    var duration: TimeInterval
+    
+    @NSManaged open
     var title: String
     
     // MARK: - Relationships

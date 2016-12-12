@@ -15,12 +15,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     
     var window: UIWindow?
-    lazy var managedObjectContext: NSManagedObjectContext = {
-        let psc = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
-        try! psc.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: self.storeURL, options:nil)
-        let context = NSManagedObjectContext( concurrencyType: .mainQueueConcurrencyType)
-        context.persistentStoreCoordinator = psc
-        return context
+    
+    lazy var persistentContainer: NSPersistentContainer = {
+        
+        let container = NSPersistentContainer(name: "EuropeanSports", managedObjectModel: self.managedObjectModel)
+        
+        container.loadPersistentStores(completionHandler: { [weak self] (storeDescription, error) in
+            if let error = error {
+                fatalError("core data initialisation error: \(error)")
+            }
+        })
+        
+        return container
     }()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -30,10 +36,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         for controller in viewControllers {
-            guard let vc = controller as? ManagedObjectContextSettable else {
+            guard let vc = controller as? PersistentContainerSettable else {
                 continue
             }
-            vc.managedObjectContext = managedObjectContext
+            vc.persistentContainer = self.persistentContainer
         }
         
         return true
@@ -61,7 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-        saveContext()
+        //saveContext()
     }
 
     private lazy var applicationCachesDirectory: URL = {
@@ -81,7 +87,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }()
     
     private func saveContext () {
-        managedObjectContext.saveToPersistentStore()
+        //managedObjectContext.saveToPersistentStore()
     }
     
 }

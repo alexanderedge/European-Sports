@@ -70,6 +70,7 @@ internal struct CatchupParser: JSONCoreDataParsingType {
         let identifier: Int = try json.extract("idcatchup")
         let title: String = try json.extract("titlecatchup")
         let description: String = try json.extract("description")
+        let duration: Double = try json.extract("durationInSeconds")
         
         guard let imageURL = URL(string: try json.extract("pictureurl")) else {
             throw CatchupError.invalidImageURL
@@ -104,6 +105,7 @@ internal struct CatchupParser: JSONCoreDataParsingType {
         catchup.title = title
         catchup.catchupDescription = description
         catchup.imageURL = imageURL
+        catchup.duration = duration
         return catchup
     
     }

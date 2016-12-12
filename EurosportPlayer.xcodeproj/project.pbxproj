@@ -75,7 +75,7 @@
 		DEC4275A1CF9C04B00AE8C31 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC427591CF9C04B00AE8C31 /* Theme.swift */; };
 		DEC4275D1CF9D8C000AE8C31 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DEC4275F1CF9D8C000AE8C31 /* Localizable.strings */; };
 		DEC427631CF9E29D00AE8C31 /* FetchedResultsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC427621CF9E29D00AE8C31 /* FetchedResultsCollectionViewController.swift */; };
-		DEC427651CF9E31000AE8C31 /* ManagedObjectContextSettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC427641CF9E31000AE8C31 /* ManagedObjectContextSettable.swift */; };
+		DEC427651CF9E31000AE8C31 /* PersistentContainerSettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC427641CF9E31000AE8C31 /* PersistentContainerSettable.swift */; };
 		DEC4276A1CF9E51500AE8C31 /* FetchedResultsControllerBackedType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC427691CF9E51500AE8C31 /* FetchedResultsControllerBackedType.swift */; };
 		DEC4276C1CF9F19F00AE8C31 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC4276B1CF9F19F00AE8C31 /* User.swift */; };
 		DEC427701CF9F6A500AE8C31 /* UIImageView+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC4276F1CF9F6A500AE8C31 /* UIImageView+URL.swift */; };
@@ -221,7 +221,7 @@
 		DEC427591CF9C04B00AE8C31 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		DEC4275E1CF9D8C000AE8C31 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		DEC427621CF9E29D00AE8C31 /* FetchedResultsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedResultsCollectionViewController.swift; sourceTree = "<group>"; };
-		DEC427641CF9E31000AE8C31 /* ManagedObjectContextSettable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectContextSettable.swift; sourceTree = "<group>"; };
+		DEC427641CF9E31000AE8C31 /* PersistentContainerSettable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistentContainerSettable.swift; sourceTree = "<group>"; };
 		DEC427691CF9E51500AE8C31 /* FetchedResultsControllerBackedType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedResultsControllerBackedType.swift; sourceTree = "<group>"; };
 		DEC4276B1CF9F19F00AE8C31 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DEC4276F1CF9F6A500AE8C31 /* UIImageView+URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+URL.swift"; sourceTree = "<group>"; };
@@ -460,7 +460,7 @@
 		DEC427661CF9E3D900AE8C31 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				DEC427641CF9E31000AE8C31 /* ManagedObjectContextSettable.swift */,
+				DEC427641CF9E31000AE8C31 /* PersistentContainerSettable.swift */,
 				DEC427691CF9E51500AE8C31 /* FetchedResultsControllerBackedType.swift */,
 			);
 			name = Protocols;
@@ -592,12 +592,20 @@
 					DE969D6E1CD50B1300A8A313 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = EDH8498X6Y;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+						};
 					};
 					DE969D881CD51EA300A8A313 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = V8TM8C6P7Y;
 						LastSwiftMigration = 0800;
 						SystemCapabilities = {
+							com.apple.BackgroundModes.appletvos = {
+								enabled = 0;
+							};
 							com.apple.Keychain = {
 								enabled = 1;
 							};
@@ -790,7 +798,7 @@
 				DE3896D21DE9DEA700860BB9 /* UIViewController+Loading.swift in Sources */,
 				DED8D18B1CF62EC100B016B9 /* DoubleLabelCollectionViewCell.swift in Sources */,
 				DE969D8C1CD51EA300A8A313 /* AppDelegate.swift in Sources */,
-				DEC427651CF9E31000AE8C31 /* ManagedObjectContextSettable.swift in Sources */,
+				DEC427651CF9E31000AE8C31 /* PersistentContainerSettable.swift in Sources */,
 				DE3896D41DE9DF1C00860BB9 /* LoadingViewController.swift in Sources */,
 				DE3900691DEB375C0070C48D /* LogoutFooterCollectionReusableView.swift in Sources */,
 				DE8FAA331CFB0C2C00E60A41 /* UIImageEffects.m in Sources */,
@@ -872,10 +880,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 17;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 7;
+				DYLIB_CURRENT_VERSION = 17;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = EurosportKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -898,10 +906,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 17;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 7;
+				DYLIB_CURRENT_VERSION = 17;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = EurosportKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -1062,7 +1070,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = EurosportPlayerTV/EurosportPlayerTV.entitlements;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 17;
 				INFOPLIST_FILE = EurosportPlayerTV/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.alexedge.EurosportPlayer;
@@ -1086,7 +1094,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = EurosportPlayerTV/EurosportPlayerTV.entitlements;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 17;
 				INFOPLIST_FILE = EurosportPlayerTV/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.alexedge.EurosportPlayer;

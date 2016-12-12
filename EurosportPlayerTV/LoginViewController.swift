@@ -16,10 +16,10 @@ protocol LoginViewControllerDelegate {
     
 }
 
-class LoginViewController: UIViewController, UITextFieldDelegate, ManagedObjectContextSettable {
+class LoginViewController: UIViewController, UITextFieldDelegate, PersistentContainerSettable {
 
     internal var delegate: LoginViewControllerDelegate?
-    var managedObjectContext: NSManagedObjectContext!
+    var persistentContainer: NSPersistentContainer!
         
     @IBOutlet private var usernameTextField: UITextField!
     @IBOutlet private var passwordTextField: UITextField!
@@ -73,9 +73,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate, ManagedObjectC
         
         showLoadingIndicator()
         
-        User.login(username, password: password, context: managedObjectContext) { result in
+        User.login(username, password: password, context: persistentContainer.viewContext) { result in
             
-            self.managedObjectContext.saveToPersistentStore()
+            //TODO: save the store?
             
             self.hideLoadingIndicator { _ in
                 

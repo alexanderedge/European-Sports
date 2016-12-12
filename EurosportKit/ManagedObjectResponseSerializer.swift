@@ -55,16 +55,16 @@ extension URLSession {
     internal func dataTaskWithRequest<T>(_ request: URLRequest, context: NSManagedObjectContext, responseSerializer: ManagedObjectResponseSerializer<T>, completionHandler: @escaping (Result<T, Error>) -> Void) -> URLSessionDataTask {
         return dataTask(with: request) { data, response, error in
             
-            //TODO: create a child context to perform the mapping in
-            
-            DispatchQueue.main.async {
+            context.perform {
                 do {
                     let object = try responseSerializer.serializeResponse(context, data: data, response: response, error: error)
+                    try context.save()
                     completionHandler(.success(object))
                 } catch {
                     completionHandler(.failure(error))
                 }
             }
+            
         }
     }
     

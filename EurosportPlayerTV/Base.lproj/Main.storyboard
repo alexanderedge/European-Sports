@@ -35,7 +35,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="560" height="400"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageWhenAncestorFocused="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6o1-Ly-Z3l">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageWhenAncestorFocused="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6o1-Ly-Z3l" customClass="WebImageView" customModule="EurosportPlayerTV" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="560" height="400"/>
                                         </imageView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zcX-ne-S5I">
@@ -251,7 +251,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="560" height="400"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageWhenAncestorFocused="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZNB-N1-1lO">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageWhenAncestorFocused="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZNB-N1-1lO" customClass="WebImageView" customModule="EurosportPlayerTV" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="560" height="400"/>
                                         </imageView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="idP-kz-ltr">

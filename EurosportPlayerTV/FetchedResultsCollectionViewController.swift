@@ -9,9 +9,9 @@
 import UIKit
 import CoreData
 
-class FetchedResultsCollectionViewController: UICollectionViewController, ManagedObjectContextSettable {
+class FetchedResultsCollectionViewController: UICollectionViewController, PersistentContainerSettable {
     
-    var managedObjectContext: NSManagedObjectContext!
+    var persistentContainer: NSPersistentContainer!
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -47,7 +47,7 @@ class SportsCollectionViewController: FetchedResultsCollectionViewController, Fe
     }
     
     private func performFetch() {
-        let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
         frc.delegate = self
         do {
             try frc.performFetch()
@@ -90,28 +90,30 @@ class SportsCollectionViewController: FetchedResultsCollectionViewController, Fe
             let password = try passwordItem.readPassword()
             let email = passwordItem.account
             
-            User.login(email, password: password, context: managedObjectContext) { result in
+            User.login(email, password: password, context: persistentContainer.newBackgroundContext()) { result in
                 
-                switch result {
-                case .success:
-                    
-                    self.fetchContent()
-                    
-                    break
-                case .failure:
-                    
-                    do {
-                        try passwordItem.deleteItem()
-                    } catch {
-                        print("error deleting account for \(email)")
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success:
+                        
+                        self.fetchContent()
+                        
+                        break
+                    case .failure:
+                        
+                        do {
+                            try passwordItem.deleteItem()
+                        } catch {
+                            print("error deleting account for \(email)")
+                        }
+                        
+                        self.requiresLogin = true
+                        
+                        break
                     }
-                    
-                    self.requiresLogin = true
-                    
-                    break
                 }
                 
-                }.resume()
+            }.resume()
             
         }
         catch {
@@ -122,7 +124,7 @@ class SportsCollectionViewController: FetchedResultsCollectionViewController, Fe
     
     fileprivate func fetchContent() {
         
-        guard let user = User.currentUser(managedObjectContext) else {
+        guard let user = User.currentUser(persistentContainer.viewContext) else {
             return
         }
         
@@ -130,7 +132,7 @@ class SportsCollectionViewController: FetchedResultsCollectionViewController, Fe
             showLoadingIndicator()
         }
         
-        let context = managedObjectContext!
+        let context = persistentContainer.newBackgroundContext()
         
         let group = DispatchGroup()
         
@@ -151,7 +153,7 @@ class SportsCollectionViewController: FetchedResultsCollectionViewController, Fe
                         errors.append(error)
                     }
                     group.leave()
-                    }.resume()
+                }.resume()
                 
             }
             group.leave()
@@ -175,9 +177,7 @@ class SportsCollectionViewController: FetchedResultsCollectionViewController, Fe
 
     @IBAction func logoutButtonPressed(button: UIButton) {
         
-        guard let ctx = managedObjectContext else {
-            return
-        }
+        let ctx = persistentContainer.viewContext
         
         do {
             
@@ -291,7 +291,7 @@ extension SportsCollectionViewController {
                 return
             }
             
-            vc.managedObjectContext = managedObjectContext
+            vc.persistentContainer = persistentContainer
             vc.delegate = self
             
             break
@@ -302,7 +302,7 @@ extension SportsCollectionViewController {
             }
             
             vc.sport = sport
-            vc.managedObjectContext = managedObjectContext
+            vc.persistentContainer = persistentContainer
             
             break
         }

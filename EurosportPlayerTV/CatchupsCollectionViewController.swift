@@ -30,7 +30,7 @@ class CatchupsCollectionViewController: FetchedResultsCollectionViewController, 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
         frc.delegate = self
         do {
             try frc.performFetch()
@@ -70,7 +70,7 @@ class CatchupsCollectionViewController: FetchedResultsCollectionViewController, 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! DoubleLabelCollectionViewCell
         let catchup = objectAt(indexPath)
         cell.titleLabel.text = catchup.title
-        cell.detailLabel.text = catchup.catchupDescription
+        cell.detailLabel.text = "\(catchup.catchupDescription) (\(DateComponentsFormatter().string(from: catchup.duration)!))"
         cell.imageView.setImage(catchup.imageURL, placeholder: UIImage(named: "catchup_placeholder"), darken: true)
         return cell
     }
@@ -83,7 +83,7 @@ class CatchupsCollectionViewController: FetchedResultsCollectionViewController, 
         
         if let stream = catchup.streams.firstObject as? CatchupStream {
             
-            guard let user = User.currentUser(managedObjectContext) else {
+            guard let user = User.currentUser(persistentContainer.viewContext) else {
                 return
             }
             

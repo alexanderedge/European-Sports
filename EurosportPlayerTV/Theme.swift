@@ -28,7 +28,7 @@ struct Theme {
     
     struct Colours {
         
-        static let Red = UIColor(hex: 0xde0038)
+        static let Yellow = UIColor(hex: 0xFFCC00)
         static let BackgroundColour = UIColor(hex: 0x0)
     }
     

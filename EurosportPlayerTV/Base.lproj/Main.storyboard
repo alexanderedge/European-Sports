@@ -92,12 +92,14 @@
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3oF-Mr-PfB">
                                     <rect key="frame" x="710" y="57" width="500" height="86"/>
-                                    <color key="backgroundColor" red="0.87058823529999996" green="0.0" blue="0.21960784310000001" alpha="1" colorSpace="deviceRGB"/>
+                                    <color key="backgroundColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="500" id="uzN-uB-1sI"/>
                                     </constraints>
                                     <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
-                                    <state key="normal" title="Logout"/>
+                                    <state key="normal" title="Logout">
+                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
                                     <connections>
                                         <action selector="logoutButtonPressedWithButton:" destination="vnZ-Ic-wYL" eventType="primaryActionTriggered" id="3cT-PY-GDK"/>
                                     </connections>

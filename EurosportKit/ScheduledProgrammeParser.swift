@@ -32,11 +32,11 @@ internal struct ScheduledProgrammeParser: JSONCoreDataParsingType {
         let sportJSON: [String: Any] = try json.extract("sport")
         let sportIdentifier: Int = try sportJSON.extract("id")
         
-        let programme = try ScheduledProgramme.newOrExistingObject(identifier: identifier as NSNumber, inContext: context)
+        let programme = try ScheduledProgramme.newOrExistingObject(identifier as NSNumber, inContext: context)
         programme.identifier = identifier as NSNumber
         programme.name = name
         programme.imageURL = imageURL
-        programme.sport = try Sport.newOrExistingObject(identifier: sportIdentifier as NSNumber, inContext: context)
+        programme.sport = try Sport.newOrExistingObject(sportIdentifier as NSNumber, inContext: context)
         return programme
         
     }

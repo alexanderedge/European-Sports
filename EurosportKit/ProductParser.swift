@@ -32,7 +32,7 @@ internal struct ProductParser: JSONCoreDataParsingType {
         let scheduleJSON: [[String: Any]] = try json.extract("tvschedules")
         let liveStreamJSON: [[String: Any]] = try json.extract("livestreams")
         
-        let product = try Product.newOrExistingObject(identifier: identifier as NSNumber, inContext: context)
+        let product = try Product.newOrExistingObject(identifier as NSNumber, inContext: context)
         product.identifier = identifier as NSNumber
         product.name = name
         product.logoURL = logoURL

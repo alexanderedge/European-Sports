@@ -80,7 +80,7 @@ internal struct CatchupParser: JSONCoreDataParsingType {
         let streamJSON: [[String: Any]] = try json.extract("catchupstreams")
         
         let sportIdentifier: Int = try sportJSON.extract("id")
-        let sport = try Sport.newOrExistingObject(identifier: sportIdentifier as NSNumber, inContext: context)
+        let sport = try Sport.newOrExistingObject(sportIdentifier as NSNumber, inContext: context)
         
         guard let startDate = try dateFromJSON(try json.extract("startdate")) else {
             throw CatchupError.invalidDate
@@ -90,7 +90,7 @@ internal struct CatchupParser: JSONCoreDataParsingType {
             throw CatchupError.invalidDate
         }
         
-        let catchup = try Catchup.newOrExistingObject(identifier: identifier as NSNumber, inContext: context)
+        let catchup = try Catchup.newOrExistingObject(identifier as NSNumber, inContext: context)
         catchup.startDate = startDate
         catchup.expirationDate = expirationDate
         

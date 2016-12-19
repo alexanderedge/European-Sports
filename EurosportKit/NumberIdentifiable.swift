@@ -15,14 +15,14 @@ public protocol NumberIdentifiable {
 
 extension Fetchable where Self: NSManagedObject, Self: NumberIdentifiable, FetchableType == Self {
     
-    public static func existingObject(identifier: NSNumber, inContext context: NSManagedObjectContext) throws -> FetchableType? {
+    public static func existingObject(_ identifier: NSNumber, inContext context: NSManagedObjectContext) throws -> FetchableType? {
         let predicate = NSPredicate(format: "identifier == %@", identifier)
         return try singleObjectInContext(context, predicate: predicate, sortedBy: nil, ascending: true)
     }
     
-    public static func newOrExistingObject(identifier: NSNumber, inContext context: NSManagedObjectContext) throws -> FetchableType {
+    public static func newOrExistingObject(_ identifier: NSNumber, inContext context: NSManagedObjectContext) throws -> FetchableType {
         
-        if let existingObject = try existingObject(identifier: identifier, inContext: context) {
+        if let existingObject = try existingObject(identifier, inContext: context) {
             return existingObject
         }
         

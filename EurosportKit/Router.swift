@@ -116,7 +116,7 @@ struct Router {
         }
         
         static var preferredLanguage: Language {
-            guard let preferredLanguage = NSLocale.preferredLanguages.first, let language = Language(rawValue: preferredLanguage) else {
+            guard let preferredLanguage = Locale.preferredLanguages.first, let language = Language(rawValue: preferredLanguage) else {
                 return .English
             }
             return language

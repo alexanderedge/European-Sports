@@ -43,13 +43,13 @@ extension URLSession {
         return dataTaskWithRequest(request, responseSerializer: responseSerializer, completionHandler: completionHandler)
     }
     
-    internal func authenticatedDataTaskForRequest<T>(_ request: URLRequest, user: User, context: NSManagedObjectContext, responseSerializer: ManagedObjectResponseSerializer<T>, completionHandler: @escaping (Result<T, Error>) -> Void) -> URLSessionDataTask {
+    internal func authenticatedDataTaskForRequest<T>(_ request: URLRequest, user: User, persistentContainer: NSPersistentContainer, responseSerializer: ManagedObjectResponseSerializer<T>, completionHandler: @escaping (Result<T, Error>) -> Void) -> URLSessionDataTask {
         guard let token = Router.token, token.isExpired == false  else {
             return refreshTokenTask(user, failure: completionHandler) {
-                self.authenticatedDataTaskForRequest(request, user: user, context: context, responseSerializer: responseSerializer, completionHandler: completionHandler).resume()
+                self.authenticatedDataTaskForRequest(request, user: user, persistentContainer: persistentContainer, responseSerializer: responseSerializer, completionHandler: completionHandler).resume()
             }
         }
-        return dataTaskWithRequest(request, context: context, responseSerializer: responseSerializer, completionHandler: completionHandler)
+        return dataTaskWithRequest(request, persistentContainer: persistentContainer, responseSerializer: responseSerializer, completionHandler: completionHandler)
     }
     
 }

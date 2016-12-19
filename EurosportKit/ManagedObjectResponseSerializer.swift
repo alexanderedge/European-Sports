@@ -52,10 +52,9 @@ internal struct ManagedObjectResponseSerializer<T>: ManagedObjectResponseSeriali
 
 extension URLSession {
     
-    internal func dataTaskWithRequest<T>(_ request: URLRequest, context: NSManagedObjectContext, responseSerializer: ManagedObjectResponseSerializer<T>, completionHandler: @escaping (Result<T, Error>) -> Void) -> URLSessionDataTask {
+    internal func dataTaskWithRequest<T>(_ request: URLRequest, persistentContainer: NSPersistentContainer, responseSerializer: ManagedObjectResponseSerializer<T>, completionHandler: @escaping (Result<T, Error>) -> Void) -> URLSessionDataTask {
         return dataTask(with: request) { data, response, error in
-            
-            context.perform {
+            persistentContainer.performBackgroundTask { context in
                 do {
                     let object = try responseSerializer.serializeResponse(context, data: data, response: response, error: error)
                     try context.save()

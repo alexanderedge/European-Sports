@@ -14,7 +14,7 @@ internal struct SportParser: JSONCoreDataParsingType {
     typealias T = Sport
     
     enum SportError : Error {
-        case InvalidImageURL
+        case invalidImageURL
     }
     
     static func parse(_ json: [String : Any], context: NSManagedObjectContext) throws -> T {
@@ -23,7 +23,7 @@ internal struct SportParser: JSONCoreDataParsingType {
         
         let imageURL = URL(string: try json.extract("pictureurl"))
         
-        let sport = try Sport.newOrExistingObject(identifier: identifier as NSNumber, inContext: context)
+        let sport = try Sport.newOrExistingObject(identifier as NSNumber, inContext: context)
         sport.name = name
         sport.imageURL = imageURL
         return sport

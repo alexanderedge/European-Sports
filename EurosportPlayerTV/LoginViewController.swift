@@ -73,32 +73,38 @@ class LoginViewController: UIViewController, UITextFieldDelegate, PersistentCont
         
         showLoadingIndicator()
         
-        User.login(username, password: password, context: persistentContainer.viewContext) { result in
+        User.login(username, password: password, persistentContainer: persistentContainer) { result in
             
-            //TODO: save the store?
-            
-            self.hideLoadingIndicator { _ in
-                
-                switch result {
-                case .success(let user):
+            DispatchQueue.main.async {
+                self.hideLoadingIndicator { [weak self] _ in
                     
-                    let passwordItem = KeychainPasswordItem(service: KeychainConfiguration.serviceName, account: username, accessGroup: KeychainConfiguration.accessGroup)
-                    
-                    do {
-                        try passwordItem.savePassword(password)
-                    } catch {
-                        print("error saving password: \(error)")
+                    guard let strongSelf = self else {
+                        return
                     }
                     
-                    print("user logged in: \(user)")
-                    self.delegate?.loginViewController(didLogin: self, user: user)
-                    break
-                case .failure(let error):
-                    print("error logging in: \(error)")
-                    self.showAlert(NSLocalizedString("login-failed", comment: "error logging in"), error: error as NSError)
-                    break
+                    switch result {
+                    case .success(let backingUser):
+                        
+                        let user = strongSelf.persistentContainer.viewContext.object(with: backingUser.objectID) as! User
+                        
+                        let passwordItem = KeychainPasswordItem(service: KeychainConfiguration.serviceName, account: username, accessGroup: KeychainConfiguration.accessGroup)
+                        
+                        do {
+                            try passwordItem.savePassword(password)
+                        } catch {
+                            print("error saving password: \(error)")
+                        }
+                        
+                        print("user logged in: \(user)")
+                        strongSelf.delegate?.loginViewController(didLogin: strongSelf, user: user)
+                        break
+                    case .failure(let error):
+                        print("error logging in: \(error)")
+                        strongSelf.showAlert(NSLocalizedString("login-failed", comment: "error logging in"), error: error as NSError)
+                        break
+                    }
+                    
                 }
-                
             }
             
         }.resume()

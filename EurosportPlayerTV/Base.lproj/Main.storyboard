@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="appleTV" orientation="landscape">
         <adaptation id="dark"/>
     </device>
     <dependencies>
         <deployment identifier="tvOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,7 +14,7 @@
         <scene sceneID="ypH-3u-sOd">
             <objects>
                 <collectionViewController id="vnZ-Ic-wYL" customClass="SportsCollectionViewController" customModule="EurosportPlayerTV" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="5KZ-Mj-KfF">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" prefetchingEnabled="YES" id="5KZ-Mj-KfF">
                         <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="60" minimumInteritemSpacing="60" id="ZAZ-dT-ylk">
@@ -116,6 +116,7 @@
                         <connections>
                             <outlet property="dataSource" destination="vnZ-Ic-wYL" id="QcE-HB-DaR"/>
                             <outlet property="delegate" destination="vnZ-Ic-wYL" id="N2W-nG-orW"/>
+                            <outlet property="prefetchDataSource" destination="vnZ-Ic-wYL" id="OEv-l3-R6c"/>
                         </connections>
                     </collectionView>
                     <tabBarItem key="tabBarItem" title="Videos" id="y09-zl-Do1"/>
@@ -230,7 +231,7 @@
         <scene sceneID="luN-Vn-Vi2">
             <objects>
                 <collectionViewController id="M6i-kN-9iA" customClass="CatchupsCollectionViewController" customModule="EurosportPlayerTV" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="2sH-i5-wNb">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" prefetchingEnabled="YES" id="2sH-i5-wNb">
                         <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="60" minimumInteritemSpacing="60" id="hhQ-zD-rCk">
@@ -305,6 +306,7 @@
                         <connections>
                             <outlet property="dataSource" destination="M6i-kN-9iA" id="tQd-ob-xrm"/>
                             <outlet property="delegate" destination="M6i-kN-9iA" id="F3O-O0-mtG"/>
+                            <outlet property="prefetchDataSource" destination="M6i-kN-9iA" id="X3e-IT-BiH"/>
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="fsV-tR-myp"/>

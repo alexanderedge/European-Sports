@@ -12,7 +12,7 @@ import EurosportKit
 
 private let reuseIdentifier = "Cell"
 
-class SportsCollectionViewController: FetchedResultsCollectionViewController, FetchedResultsControllerBackedType {
+class SportsCollectionViewController: FetchedResultsCollectionViewController, FetchedResultsControllerBackedType, UICollectionViewDataSourcePrefetching {
 
     typealias FetchedType = Sport
 
@@ -23,7 +23,7 @@ class SportsCollectionViewController: FetchedResultsCollectionViewController, Fe
         case showLogin = "ShowLogin"
     }
     
-    fileprivate var selectedSport: Sport?
+    fileprivate var prefetchRequests = [IndexPath: URLSessionDataTask]()
     
     var fetchRequest: NSFetchRequest<FetchedType> {
         let predicate = NSPredicate(format: "SUBQUERY(catchups, $x, $x.expirationDate > %@).@count > 0", Date() as NSDate)
@@ -55,6 +55,7 @@ class SportsCollectionViewController: FetchedResultsCollectionViewController, Fe
             fatalError("unable to perform fetch: \(error)")
         }
         fetchedResultsController = frc
+        collectionView?.reloadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -90,7 +91,7 @@ class SportsCollectionViewController: FetchedResultsCollectionViewController, Fe
             let password = try passwordItem.readPassword()
             let email = passwordItem.account
             
-            User.login(email, password: password, context: persistentContainer.newBackgroundContext()) { result in
+            User.login(email, password: password, persistentContainer: persistentContainer) { result in
                 
                 DispatchQueue.main.async {
                     switch result {
@@ -132,22 +133,20 @@ class SportsCollectionViewController: FetchedResultsCollectionViewController, Fe
             showLoadingIndicator()
         }
         
-        let context = persistentContainer.newBackgroundContext()
-        
         let group = DispatchGroup()
         
         var errors = [Error]()
         
         group.enter()
         
-        Catchup.fetch(user, context: context) { result in
+        Catchup.fetch(user, persistentContainer: persistentContainer) { result in
             if case let .failure(error) = result {
                 print("error loading catchups: \(error)")
                 errors.append(error)
             } else {
                 
                 group.enter()
-                Product.fetch(user, context: context) { result in
+                Product.fetch(user, persistentContainer: self.persistentContainer) { result in
                     if case let .failure(error) = result {
                         print("error loading products: \(error)")
                         errors.append(error)
@@ -160,6 +159,8 @@ class SportsCollectionViewController: FetchedResultsCollectionViewController, Fe
         }.resume()
         
         group.notify(queue: DispatchQueue.main) {
+        
+            self.performFetch()
             
             self.hideLoadingIndicator {
                 if let error = errors.first {
@@ -177,48 +178,52 @@ class SportsCollectionViewController: FetchedResultsCollectionViewController, Fe
 
     @IBAction func logoutButtonPressed(button: UIButton) {
         
-        let ctx = persistentContainer.viewContext
-        
-        do {
+        persistentContainer.performBackgroundTask { ctx in
             
-            var managedObjects = [NSManagedObject]()
-            
-            let sports = try Sport.objectsInContext(ctx) as [NSManagedObject]
-            managedObjects.append(contentsOf:sports)
-            
-            let products = try Product.objectsInContext(ctx) as [NSManagedObject]
-            managedObjects.append(contentsOf: products)
-            
-            let users = try User.objectsInContext(ctx) as [NSManagedObject]
-            managedObjects.append(contentsOf: users)
-            
-            print("deleting: \(managedObjects.count) objects")
-            
-            for mo in managedObjects {
-                ctx.delete(mo)
+            do {
+                
+                var managedObjects = [NSManagedObject]()
+                
+                let sports = try Sport.objectsInContext(ctx) as [NSManagedObject]
+                managedObjects.append(contentsOf:sports)
+                
+                let products = try Product.objectsInContext(ctx) as [NSManagedObject]
+                managedObjects.append(contentsOf: products)
+                
+                let users = try User.objectsInContext(ctx) as [NSManagedObject]
+                managedObjects.append(contentsOf: users)
+                
+                print("deleting: \(managedObjects.count) objects")
+                
+                for mo in managedObjects {
+                    ctx.delete(mo)
+                }
+                
+                ctx.saveToPersistentStore()
+                
+                print("deleted: \(managedObjects.count) objects")
+                
+                // remove password
+                
+                let passwordItems = try KeychainPasswordItem.passwordItems(forService: KeychainConfiguration.serviceName, accessGroup: KeychainConfiguration.accessGroup)
+                for passwordItem in passwordItems {
+                    try passwordItem.deleteItem()
+                }
+                
+                DispatchQueue.main.async {
+                    self.performSegue(withIdentifier: SegueIdentifiers.showLogin.rawValue, sender: nil)
+                }
+                
+            } catch let error as CocoaError {
+                print ("unable to delete object: \(error)")
+            }  catch let error as KeychainPasswordItem.KeychainError {
+                print ("unable to delete keychain item: \(error)")
+            } catch {
+                print ("error logging out: \(error)")
             }
             
-            ctx.saveToPersistentStore()
-            
-            print("deleted: \(managedObjects.count) objects")
-            
-            // remove password
-            
-            let passwordItems = try KeychainPasswordItem.passwordItems(forService: KeychainConfiguration.serviceName, accessGroup: KeychainConfiguration.accessGroup)
-            for passwordItem in passwordItems {
-                try passwordItem.deleteItem()
-            }
-            
-            performSegue(withIdentifier: SegueIdentifiers.showLogin.rawValue, sender: nil)
-            
-        } catch let error as CocoaError {
-            print ("unable to delete object: \(error)")
-        }  catch let error as KeychainPasswordItem.KeychainError {
-            print ("unable to delete keychain item: \(error)")
-        } catch {
-            print ("error logging out: \(error)")
         }
-
+        
         
     }
     
@@ -239,23 +244,15 @@ class SportsCollectionViewController: FetchedResultsCollectionViewController, Fe
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-    }
-    
-    // MARK: UICollectionViewDelegate
-    
-    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        
-        guard let cell = cell as? DoubleLabelCollectionViewCell else {
-            return
-        }
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! DoubleLabelCollectionViewCell
         
         let sport = objectAt(indexPath)
         
         cell.titleLabel.text = sport.name
         cell.detailLabel.text = String.localizedStringWithFormat(sport.catchups.count > 1 ? NSLocalizedString("video-count-plural", comment: "e.g. 1 video") : NSLocalizedString("video-count-singular", comment: "e.g. 2 videos"), NumberFormatter.localizedString(from: sport.catchups.count as NSNumber, number: .none))
         cell.imageView.setImage(sport.imageURL, placeholder: UIImage(named: "catchup_placeholder"), darken: true)
-
+        
+        return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -264,17 +261,30 @@ class SportsCollectionViewController: FetchedResultsCollectionViewController, Fe
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        let sport = objectAt(indexPath)
-
-        selectedSport = sport
-        
         performSegue(withIdentifier: SegueIdentifiers.showCatchups.rawValue, sender: nil)
-        
-        print("selected sport \(sport.identifier)")
-        
-    }    
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        for indexPath in indexPaths {
+            let sport = objectAt(indexPath)
+            guard let imageURL = sport.imageURL else {
+                continue
+            }
+            let task = URLSession.shared.dataTask(with: imageURL)
+            prefetchRequests[indexPath] = task
+            task.resume()
+        }
+    }
 
+    func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
+        for indexPath in indexPaths {
+            guard let task = prefetchRequests[indexPath] else {
+                continue
+            }
+            task.cancel()
+        }
+    }
+    
 }
 
 extension SportsCollectionViewController {
@@ -297,11 +307,11 @@ extension SportsCollectionViewController {
             break
         case .showCatchups:
             
-            guard let vc = segue.destination as? CatchupsCollectionViewController, let sport = selectedSport else {
+            guard let vc = segue.destination as? CatchupsCollectionViewController, let selectedIndexPath = collectionView?.indexPathsForSelectedItems?.first else {
                 return
             }
             
-            vc.sport = sport
+            vc.sport = objectAt(selectedIndexPath)
             vc.persistentContainer = persistentContainer
             
             break

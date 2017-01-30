@@ -21,7 +21,7 @@ internal struct ScheduledProgrammeParser: JSONCoreDataParsingType {
     
     static func parse(_ json: [String : Any], context: NSManagedObjectContext) throws -> T {
         let identifier: Int = try json.extract("id")
-        let name: String = try json.extract("tveventname")
+        let name: String = try json.extract("name")
         
         let pictureJSON: [String: Any] = try json.extract("picture")
         

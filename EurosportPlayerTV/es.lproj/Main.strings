@@ -1,6 +1,6 @@
 
 /* Class = "UIButton"; normalTitle = "Sign In"; ObjectID = "0Rz-hg-UZr"; */
-"0Rz-hg-UZr.normalTitle" = "Sign In";
+"0Rz-hg-UZr.normalTitle" = "Iniciar sesión";
 
 /* Class = "UILabel"; text = "Detail"; ObjectID = "0Uw-4Z-idk"; */
 "0Uw-4Z-idk.text" = "Detail";
@@ -12,10 +12,10 @@
 "1Jz-PY-lss.text" = "Detail";
 
 /* Class = "UIButton"; normalTitle = "Logout"; ObjectID = "3oF-Mr-PfB"; */
-"3oF-Mr-PfB.normalTitle" = "Logout";
+"3oF-Mr-PfB.normalTitle" = "Cerrar sesión";
 
 /* Class = "UILabel"; text = "Sign in to your Eurosport Player account:"; ObjectID = "7iY-tc-pDZ"; */
-"7iY-tc-pDZ.text" = "Sign in to your Eurosport Player account:";
+"7iY-tc-pDZ.text" = "Accede a tu cuenta de Eurosport Player:";
 
 /* Class = "UILabel"; text = "Title"; ObjectID = "Hf1-6x-kPd"; */
 "Hf1-6x-kPd.text" = "Title";

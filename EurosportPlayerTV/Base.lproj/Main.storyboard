@@ -116,7 +116,6 @@
                         <connections>
                             <outlet property="dataSource" destination="vnZ-Ic-wYL" id="QcE-HB-DaR"/>
                             <outlet property="delegate" destination="vnZ-Ic-wYL" id="N2W-nG-orW"/>
-                            <outlet property="prefetchDataSource" destination="vnZ-Ic-wYL" id="OEv-l3-R6c"/>
                         </connections>
                     </collectionView>
                     <tabBarItem key="tabBarItem" title="Videos" id="y09-zl-Do1"/>
@@ -306,7 +305,6 @@
                         <connections>
                             <outlet property="dataSource" destination="M6i-kN-9iA" id="tQd-ob-xrm"/>
                             <outlet property="delegate" destination="M6i-kN-9iA" id="F3O-O0-mtG"/>
-                            <outlet property="prefetchDataSource" destination="M6i-kN-9iA" id="X3e-IT-BiH"/>
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="fsV-tR-myp"/>
@@ -331,7 +329,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="0.0" y="0.0"/>
+            <point key="canvasLocation" x="-200" y="-708"/>
         </scene>
         <!--Live TV-->
         <scene sceneID="5mv-IS-gga">
@@ -354,13 +352,13 @@
                                     <rect key="frame" x="0.0" y="0.0" width="1800" height="400"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageWhenAncestorFocused="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iE9-ob-aM4">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageWhenAncestorFocused="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iE9-ob-aM4" customClass="WebImageView" customModule="EurosportPlayerTV" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="560" height="400"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="iE9-ob-aM4" secondAttribute="height" multiplier="7:5" id="RiQ-cA-2Az"/>
                                             </constraints>
                                         </imageView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QVH-c7-v49">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QVH-c7-v49" customClass="WebImageView" customModule="EurosportPlayerTV" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="560" height="400"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detail" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Jz-PY-lss">

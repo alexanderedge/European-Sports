@@ -27,7 +27,7 @@ open class ScheduledProgramme: NSManagedObject {
     var endDate: Date?
     
     @NSManaged open
-    var imageURL: URL
+    var imageURL: URL?
         
     @NSManaged open
     var competitionName: NSString?

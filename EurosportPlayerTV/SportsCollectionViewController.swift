@@ -91,7 +91,7 @@ class SportsCollectionViewController: FetchedResultsCollectionViewController, Fe
             let password = try passwordItem.readPassword()
             let email = passwordItem.account
             
-            User.login(email, password: password, persistentContainer: persistentContainer) { result in
+            let loginTask = User.login(email, password: password, persistentContainer: persistentContainer) { result in
                 
                 DispatchQueue.main.async {
                     switch result {
@@ -114,7 +114,9 @@ class SportsCollectionViewController: FetchedResultsCollectionViewController, Fe
                     }
                 }
                 
-            }.resume()
+            }
+            
+            loginTask.resume()
             
         }
         catch {
@@ -143,17 +145,16 @@ class SportsCollectionViewController: FetchedResultsCollectionViewController, Fe
             if case let .failure(error) = result {
                 print("error loading catchups: \(error)")
                 errors.append(error)
-            } else {
-                
-                group.enter()
-                Product.fetch(user, persistentContainer: self.persistentContainer) { result in
-                    if case let .failure(error) = result {
-                        print("error loading products: \(error)")
-                        errors.append(error)
-                    }
-                    group.leave()
-                }.resume()
-                
+            }
+            group.leave()
+        }.resume()
+        
+        group.enter()
+        
+        Product.fetch(user, persistentContainer: persistentContainer) { result in
+            if case let .failure(error) = result {
+                print("error loading products: \(error)")
+                errors.append(error)
             }
             group.leave()
         }.resume()

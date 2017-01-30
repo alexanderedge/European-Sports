@@ -183,7 +183,7 @@ struct Router {
             case .fetch:
                 var params = [String : String]()
                 
-                let contextData = try! JSONSerialization.data(withJSONObject: ["g":"GB","p":9,"l":"EN","d":2,"mn":"iPad","v":"5.1.5","tt":"Pad","li":2,"s":1,"b":7], options: [])
+                let contextData = try! JSONSerialization.data(withJSONObject: ["g":"GB","p":9,"l":"EN","d":2,"mn":"iPad","v":"5.1.12","tt":"Pad","li":2,"s":1,"b":7], options: [])
                 
                 params["context"] = String(data: contextData, encoding: String.Encoding.utf8)
                 

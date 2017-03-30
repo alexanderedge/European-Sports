@@ -36,8 +36,8 @@ internal struct ScheduledProgrammeParser: JSONCoreDataParsingType {
         programme.programmeDescription = json.optionalExtract("description")
         programme.competitionName = json.optionalExtract("tvcompetitionname")
         programme.imageURL = URL(string: try pictureJSON.extract("url"), relativeTo: imageBaseURL)
-        programme.startDate = try DateParser.dateFromJSON(try json.extract("startdate"))
-        programme.endDate = try DateParser.dateFromJSON(try json.extract("enddate"))
+        programme.startDate = try DateParser.parse(try json.extract("startdate"))
+        programme.endDate = try DateParser.parse(try json.extract("enddate"))
         programme.sport = try Sport.newOrExistingObject(sportIdentifier, inContext: context)
         return programme
 

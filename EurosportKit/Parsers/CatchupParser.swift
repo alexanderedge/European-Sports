@@ -32,8 +32,8 @@ internal struct CatchupParser: JSONCoreDataParsingType {
         let sportIdentifier: Int32 = try sportJSON.extract("id")
         let sport = try Sport.newOrExistingObject(sportIdentifier, inContext: context)
 
-        let startDate = try DateParser.dateFromJSON(try json.extract("startdate"))
-        let expirationDate = try DateParser.dateFromJSON(try json.extract("expirationdate"))
+        let startDate = try DateParser.parse(try json.extract("startdate"))
+        let expirationDate = try DateParser.parse(try json.extract("expirationdate"))
 
         let catchup = try Catchup.newOrExistingObject(identifier, inContext: context)
         catchup.startDate = startDate

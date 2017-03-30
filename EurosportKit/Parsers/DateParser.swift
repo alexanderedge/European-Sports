@@ -7,7 +7,9 @@
 
 import Foundation
 
-struct DateParser {
+struct DateParser: JSONParsingType {
+
+    typealias T = Date?
 
     enum DateError: Error {
         case invalidTechnicalDate
@@ -33,7 +35,7 @@ struct DateParser {
         return calendar
     }()
 
-    static func dateFromJSON(_ json: [String: Any]) throws -> Date? {
+    static func parse(_ json: JSONObject) throws -> Date? {
         guard let startDate = technicalDateFormatter.date(from: try json.extract("technicaldate")) else {
             throw DateError.invalidTechnicalDate
         }
@@ -57,7 +59,6 @@ struct DateParser {
         dateComponents.hour = hour
         dateComponents.minute = minute
         return calendar.date(from: dateComponents)
-
     }
 
 }

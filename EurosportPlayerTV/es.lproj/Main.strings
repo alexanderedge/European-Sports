@@ -1,0 +1,42 @@
+
+/* Class = "UIButton"; normalTitle = "Sign In"; ObjectID = "0Rz-hg-UZr"; */
+"0Rz-hg-UZr.normalTitle" = "Iniciar sesión";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "0Uw-4Z-idk"; */
+"0Uw-4Z-idk.text" = "Detail";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "0l6-pO-dnc"; */
+"0l6-pO-dnc.text" = "Title";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "1Jz-PY-lss"; */
+"1Jz-PY-lss.text" = "Detail";
+
+/* Class = "UIButton"; normalTitle = "Logout"; ObjectID = "3oF-Mr-PfB"; */
+"3oF-Mr-PfB.normalTitle" = "Cerrar sesión";
+
+/* Class = "UILabel"; text = "Sign in to your Eurosport Player account:"; ObjectID = "7iY-tc-pDZ"; */
+"7iY-tc-pDZ.text" = "Accede a tu cuenta de Eurosport Player:";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "Hf1-6x-kPd"; */
+"Hf1-6x-kPd.text" = "Title";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "I2i-sf-0yN"; */
+"I2i-sf-0yN.text" = "Detail";
+
+/* Class = "UITabBarItem"; title = "Live TV"; ObjectID = "KXf-my-HkH"; */
+"KXf-my-HkH.title" = "Live TV";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "b6T-yK-3EU"; */
+"b6T-yK-3EU.text" = "Detail";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "gZL-qd-ODg"; */
+"gZL-qd-ODg.placeholder" = "Password";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "l1z-Ez-ICc"; */
+"l1z-Ez-ICc.placeholder" = "Email";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "vEC-5I-lRE"; */
+"vEC-5I-lRE.text" = "Title";
+
+/* Class = "UITabBarItem"; title = "Videos"; ObjectID = "y09-zl-Do1"; */
+"y09-zl-Do1.title" = "Videos";

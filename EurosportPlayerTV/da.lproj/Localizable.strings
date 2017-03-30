@@ -1,0 +1,18 @@
+/* 
+  Localizable.strings
+  EurosportPlayer
+
+  Created by Alexander Edge on 28/05/2016.
+  Copyright © 2016 Alexander Edge Ltd. All rights reserved.
+*/
+
+"videos-title" = "Sports";
+"live-title" = "Live TV";
+"video-count-singular" = "%@ video";
+"video-count-plural" = "%@ videos";
+"catchup-load-failed" = "Unable to load videos";
+"alert-ok" = "OK";
+"alert-cancel" = "Cancel";
+"login-email" = "Email";
+"login-password" = "Password";
+"login-failed" = "Unable to login";

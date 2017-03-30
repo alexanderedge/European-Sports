@@ -1,0 +1,1044 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		DE1753CD1CFC6D090083DE2E /* ScheduledProgrammeParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1753CC1CFC6D090083DE2E /* ScheduledProgrammeParser.swift */; };
+		DE1753D31CFC75580083DE2E /* LiveStreamParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1753D21CFC75580083DE2E /* LiveStreamParser.swift */; };
+		DE20D3601E3FD5ED009143A3 /* DateParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE20D35F1E3FD5ED009143A3 /* DateParser.swift */; };
+		DE3896D01DE9CD1A00860BB9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE3896CE1DE9CD1A00860BB9 /* Main.storyboard */; };
+		DE3896D61DE9E60200860BB9 /* LoginResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3896D51DE9E60200860BB9 /* LoginResponseSerializer.swift */; };
+		DE39BC6A1CE764F700347716 /* EurosportKit.h in Headers */ = {isa = PBXBuildFile; fileRef = DE39BC691CE764F700347716 /* EurosportKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DE39BC711CE764F700347716 /* EurosportKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE39BC671CE764F700347716 /* EurosportKit.framework */; };
+		DE39BC781CE764F700347716 /* EurosportKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39BC771CE764F700347716 /* EurosportKitTests.swift */; };
+		DE39BC861CE7650A00347716 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39BC851CE7650A00347716 /* Router.swift */; };
+		DE39BC8D1CE76A2A00347716 /* JSONParsingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39BC8C1CE76A2A00347716 /* JSONParsingType.swift */; };
+		DE39BC911CE76A6F00347716 /* UserParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39BC901CE76A6F00347716 /* UserParser.swift */; };
+		DE39BC931CE76A7B00347716 /* ResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39BC921CE76A7B00347716 /* ResponseSerializer.swift */; };
+		DE39BC951CE76A8F00347716 /* JSONResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39BC941CE76A8F00347716 /* JSONResponseSerializer.swift */; };
+		DE39BC971CE76AAD00347716 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39BC961CE76AAD00347716 /* Result.swift */; };
+		DE39BC991CE76BBC00347716 /* User+Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39BC981CE76BBC00347716 /* User+Networking.swift */; };
+		DE39BCA01CE76E5000347716 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39BC9F1CE76E5000347716 /* Token.swift */; };
+		DE39BCA21CE7705300347716 /* Token+Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39BCA11CE7705300347716 /* Token+Networking.swift */; };
+		DE39BCA41CE770A400347716 /* TokenResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39BCA31CE770A400347716 /* TokenResponseSerializer.swift */; };
+		DE39BCA71CE770D000347716 /* TokenParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39BCA61CE770D000347716 /* TokenParser.swift */; };
+		DE39BCAB1CE7777E00347716 /* SportParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39BCAA1CE7777E00347716 /* SportParser.swift */; };
+		DE39BCAD1CE778B400347716 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39BCAC1CE778B400347716 /* JSON.swift */; };
+		DE39BCAF1CE77C1700347716 /* CatchupResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39BCAE1CE77C1700347716 /* CatchupResponseSerializer.swift */; };
+		DE39BCB11CE77C4C00347716 /* VideoshopResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39BCB01CE77C4C00347716 /* VideoshopResponseSerializer.swift */; };
+		DE39BCB51CE7847800347716 /* Catchup+Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39BCB41CE7847800347716 /* Catchup+Networking.swift */; };
+		DE39BCB71CE784B500347716 /* CatchupParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39BCB61CE784B500347716 /* CatchupParser.swift */; };
+		DE39BCBB1CE786A400347716 /* CatchupStreamParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39BCBA1CE786A400347716 /* CatchupStreamParser.swift */; };
+		DE3DC3B41CF4D61400AF5909 /* ManagedObjectResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3DC3B31CF4D61400AF5909 /* ManagedObjectResponseSerializer.swift */; };
+		DE3DC3B81CF4E17100AF5909 /* Fetchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3DC3B71CF4E17100AF5909 /* Fetchable.swift */; };
+		DE7D56701CFB40FB00A2B504 /* Channel+Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7D566F1CFB40FB00A2B504 /* Channel+Networking.swift */; };
+		DE7D56781CFB49BF00A2B504 /* ChannelResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7D56771CFB49BF00A2B504 /* ChannelResponseSerializer.swift */; };
+		DE7D567A1CFB49FA00A2B504 /* ChannelParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7D56791CFB49FA00A2B504 /* ChannelParser.swift */; };
+		DE969D8C1CD51EA300A8A313 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE969D8B1CD51EA300A8A313 /* AppDelegate.swift */; };
+		DE969D951CD51EA300A8A313 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE969D941CD51EA300A8A313 /* Assets.xcassets */; };
+		DE9B25C21E8D19C80009BE1C /* CatchupsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9B25A81E8D19C80009BE1C /* CatchupsCollectionViewController.swift */; };
+		DE9B25C31E8D19C80009BE1C /* ChannelsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9B25A91E8D19C80009BE1C /* ChannelsCollectionViewController.swift */; };
+		DE9B25C41E8D19C80009BE1C /* FetchedResultsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9B25AA1E8D19C80009BE1C /* FetchedResultsCollectionViewController.swift */; };
+		DE9B25C51E8D19C80009BE1C /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9B25AB1E8D19C80009BE1C /* LoadingViewController.swift */; };
+		DE9B25C61E8D19C80009BE1C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9B25AC1E8D19C80009BE1C /* LoginViewController.swift */; };
+		DE9B25C81E8D19C80009BE1C /* SportsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9B25AE1E8D19C80009BE1C /* SportsCollectionViewController.swift */; };
+		DE9B25C91E8D19C80009BE1C /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9B25AF1E8D19C80009BE1C /* UIViewController+Alert.swift */; };
+		DE9B25CA1E8D19C80009BE1C /* UIViewController+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9B25B01E8D19C80009BE1C /* UIViewController+Loading.swift */; };
+		DE9B25CB1E8D19C80009BE1C /* UIViewController+Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9B25B11E8D19C80009BE1C /* UIViewController+Video.swift */; };
+		DE9B25CC1E8D19C80009BE1C /* KeychainConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9B25B31E8D19C80009BE1C /* KeychainConfiguration.swift */; };
+		DE9B25CD1E8D19C80009BE1C /* KeychainPasswordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9B25B41E8D19C80009BE1C /* KeychainPasswordItem.swift */; };
+		DE9B25CE1E8D19C80009BE1C /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9B25B51E8D19C80009BE1C /* Theme.swift */; };
+		DE9B25CF1E8D19C80009BE1C /* UIImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = DE9B25B71E8D19C80009BE1C /* UIImageEffects.m */; };
+		DE9B25D01E8D19C80009BE1C /* FetchedResultsControllerBackedType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9B25B91E8D19C80009BE1C /* FetchedResultsControllerBackedType.swift */; };
+		DE9B25D11E8D19C80009BE1C /* PersistentContainerSettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9B25BA1E8D19C80009BE1C /* PersistentContainerSettable.swift */; };
+		DE9B25D21E8D19C80009BE1C /* DoubleLabelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9B25BC1E8D19C80009BE1C /* DoubleLabelCollectionViewCell.swift */; };
+		DE9B25D31E8D19C80009BE1C /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9B25BD1E8D19C80009BE1C /* ImageCollectionViewCell.swift */; };
+		DE9B25D41E8D19C80009BE1C /* LiveStreamCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9B25BE1E8D19C80009BE1C /* LiveStreamCollectionViewCell.swift */; };
+		DE9B25D51E8D19C80009BE1C /* LogoutFooterCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9B25BF1E8D19C80009BE1C /* LogoutFooterCollectionReusableView.swift */; };
+		DE9B25D61E8D19C80009BE1C /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9B25C01E8D19C80009BE1C /* UICollectionView+Extensions.swift */; };
+		DE9B25D71E8D19C80009BE1C /* WebImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9B25C11E8D19C80009BE1C /* WebImageView.swift */; };
+		DEA051851E3FEACB003A50C3 /* CatchupStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA051841E3FEACB003A50C3 /* CatchupStream.swift */; };
+		DEA051871E3FEAE4003A50C3 /* LiveStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA051861E3FEAE4003A50C3 /* LiveStream.swift */; };
+		DEA051891E3FEAFE003A50C3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA051881E3FEAFE003A50C3 /* User.swift */; };
+		DEA0518B1E3FEB15003A50C3 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA0518A1E3FEB15003A50C3 /* Channel.swift */; };
+		DEA0518D1E3FEB22003A50C3 /* ScheduledProgramme.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA0518C1E3FEB22003A50C3 /* ScheduledProgramme.swift */; };
+		DEA0519C1E3FF5F0003A50C3 /* Catchup+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA0518E1E3FF5F0003A50C3 /* Catchup+CoreDataClass.swift */; };
+		DEA0519D1E3FF5F0003A50C3 /* Catchup+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA0518F1E3FF5F0003A50C3 /* Catchup+CoreDataProperties.swift */; };
+		DEA0519E1E3FF5F0003A50C3 /* LiveStream+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA051901E3FF5F0003A50C3 /* LiveStream+CoreDataClass.swift */; };
+		DEA0519F1E3FF5F0003A50C3 /* LiveStream+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA051911E3FF5F0003A50C3 /* LiveStream+CoreDataProperties.swift */; };
+		DEA051A01E3FF5F0003A50C3 /* CatchupStream+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA051921E3FF5F0003A50C3 /* CatchupStream+CoreDataClass.swift */; };
+		DEA051A11E3FF5F0003A50C3 /* CatchupStream+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA051931E3FF5F0003A50C3 /* CatchupStream+CoreDataProperties.swift */; };
+		DEA051A21E3FF5F0003A50C3 /* Channel+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA051941E3FF5F0003A50C3 /* Channel+CoreDataClass.swift */; };
+		DEA051A31E3FF5F0003A50C3 /* Channel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA051951E3FF5F0003A50C3 /* Channel+CoreDataProperties.swift */; };
+		DEA051A41E3FF5F0003A50C3 /* Sport+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA051961E3FF5F0003A50C3 /* Sport+CoreDataClass.swift */; };
+		DEA051A51E3FF5F1003A50C3 /* Sport+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA051971E3FF5F0003A50C3 /* Sport+CoreDataProperties.swift */; };
+		DEA051A61E3FF5F1003A50C3 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA051981E3FF5F0003A50C3 /* User+CoreDataClass.swift */; };
+		DEA051A71E3FF5F1003A50C3 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA051991E3FF5F0003A50C3 /* User+CoreDataProperties.swift */; };
+		DEA051A81E3FF5F1003A50C3 /* ScheduledProgramme+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA0519A1E3FF5F0003A50C3 /* ScheduledProgramme+CoreDataClass.swift */; };
+		DEA051A91E3FF5F1003A50C3 /* ScheduledProgramme+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA0519B1E3FF5F0003A50C3 /* ScheduledProgramme+CoreDataProperties.swift */; };
+		DEB4599A1CE8C6EE0057259C /* Eurosport.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DEB459981CE8C6EE0057259C /* Eurosport.xcdatamodeld */; };
+		DEB4599C1CE8C7EA0057259C /* JSONCoreDataParsingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB4599B1CE8C7EA0057259C /* JSONCoreDataParsingType.swift */; };
+		DEB459A71CE8C91C0057259C /* Catchup.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB459A11CE8C91C0057259C /* Catchup.swift */; };
+		DEB459A81CE8C91D0057259C /* Sport.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB459A21CE8C91C0057259C /* Sport.swift */; };
+		DEC4275D1CF9D8C000AE8C31 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DEC4275F1CF9D8C000AE8C31 /* Localizable.strings */; };
+		DEC427721CF9F89D00AE8C31 /* StringIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC427711CF9F89D00AE8C31 /* StringIdentifiable.swift */; };
+		DEC427741CF9F8D400AE8C31 /* NumberIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC427731CF9F8D400AE8C31 /* NumberIdentifiable.swift */; };
+		DEC592211E5F6E2A00880C05 /* AuthenticatedResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC592201E5F6E2A00880C05 /* AuthenticatedResource.swift */; };
+		DEFC4CAB1D06EE43000C0711 /* EurosportKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DE39BC671CE764F700347716 /* EurosportKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DE39BC721CE764F700347716 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DE969D671CD50B1300A8A313 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DE39BC661CE764F700347716;
+			remoteInfo = EurosportKit;
+		};
+		DEFC4CAC1D06EE43000C0711 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DE969D671CD50B1300A8A313 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DE39BC661CE764F700347716;
+			remoteInfo = EurosportKit;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		DEFC4CAE1D06EE43000C0711 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				DEFC4CAB1D06EE43000C0711 /* EurosportKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		DE1753CC1CFC6D090083DE2E /* ScheduledProgrammeParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduledProgrammeParser.swift; sourceTree = "<group>"; };
+		DE1753D21CFC75580083DE2E /* LiveStreamParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveStreamParser.swift; sourceTree = "<group>"; };
+		DE20D35F1E3FD5ED009143A3 /* DateParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateParser.swift; sourceTree = "<group>"; };
+		DE3896CF1DE9CD1A00860BB9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		DE3896D51DE9E60200860BB9 /* LoginResponseSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginResponseSerializer.swift; sourceTree = "<group>"; };
+		DE3900671DEB2AE10070C48D /* EurosportPlayerTV.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EurosportPlayerTV.entitlements; sourceTree = "<group>"; };
+		DE39BC671CE764F700347716 /* EurosportKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EurosportKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE39BC691CE764F700347716 /* EurosportKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EurosportKit.h; sourceTree = "<group>"; };
+		DE39BC6B1CE764F700347716 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DE39BC701CE764F700347716 /* EurosportKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EurosportKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE39BC771CE764F700347716 /* EurosportKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EurosportKitTests.swift; sourceTree = "<group>"; };
+		DE39BC791CE764F700347716 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DE39BC851CE7650A00347716 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		DE39BC8C1CE76A2A00347716 /* JSONParsingType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONParsingType.swift; sourceTree = "<group>"; };
+		DE39BC901CE76A6F00347716 /* UserParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserParser.swift; sourceTree = "<group>"; };
+		DE39BC921CE76A7B00347716 /* ResponseSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseSerializer.swift; sourceTree = "<group>"; };
+		DE39BC941CE76A8F00347716 /* JSONResponseSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONResponseSerializer.swift; sourceTree = "<group>"; };
+		DE39BC961CE76AAD00347716 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		DE39BC981CE76BBC00347716 /* User+Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+Networking.swift"; sourceTree = "<group>"; };
+		DE39BC9F1CE76E5000347716 /* Token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
+		DE39BCA11CE7705300347716 /* Token+Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Token+Networking.swift"; sourceTree = "<group>"; };
+		DE39BCA31CE770A400347716 /* TokenResponseSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenResponseSerializer.swift; sourceTree = "<group>"; };
+		DE39BCA61CE770D000347716 /* TokenParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenParser.swift; sourceTree = "<group>"; };
+		DE39BCAA1CE7777E00347716 /* SportParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SportParser.swift; sourceTree = "<group>"; };
+		DE39BCAC1CE778B400347716 /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
+		DE39BCAE1CE77C1700347716 /* CatchupResponseSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatchupResponseSerializer.swift; sourceTree = "<group>"; };
+		DE39BCB01CE77C4C00347716 /* VideoshopResponseSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoshopResponseSerializer.swift; sourceTree = "<group>"; };
+		DE39BCB41CE7847800347716 /* Catchup+Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Catchup+Networking.swift"; sourceTree = "<group>"; };
+		DE39BCB61CE784B500347716 /* CatchupParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatchupParser.swift; sourceTree = "<group>"; };
+		DE39BCBA1CE786A400347716 /* CatchupStreamParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatchupStreamParser.swift; sourceTree = "<group>"; };
+		DE3DC3B31CF4D61400AF5909 /* ManagedObjectResponseSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectResponseSerializer.swift; sourceTree = "<group>"; };
+		DE3DC3B71CF4E17100AF5909 /* Fetchable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fetchable.swift; sourceTree = "<group>"; };
+		DE7D566F1CFB40FB00A2B504 /* Channel+Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Channel+Networking.swift"; sourceTree = "<group>"; };
+		DE7D56771CFB49BF00A2B504 /* ChannelResponseSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelResponseSerializer.swift; sourceTree = "<group>"; };
+		DE7D56791CFB49FA00A2B504 /* ChannelParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelParser.swift; sourceTree = "<group>"; };
+		DE8FAA301CFB0C2B00E60A41 /* EurosportPlayerTV-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EurosportPlayerTV-Bridging-Header.h"; sourceTree = "<group>"; };
+		DE969D891CD51EA300A8A313 /* EurosportPlayerTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EurosportPlayerTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE969D8B1CD51EA300A8A313 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		DE969D941CD51EA300A8A313 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DE969D961CD51EA300A8A313 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DE9B25A81E8D19C80009BE1C /* CatchupsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatchupsCollectionViewController.swift; sourceTree = "<group>"; };
+		DE9B25A91E8D19C80009BE1C /* ChannelsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelsCollectionViewController.swift; sourceTree = "<group>"; };
+		DE9B25AA1E8D19C80009BE1C /* FetchedResultsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedResultsCollectionViewController.swift; sourceTree = "<group>"; };
+		DE9B25AB1E8D19C80009BE1C /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		DE9B25AC1E8D19C80009BE1C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		DE9B25AE1E8D19C80009BE1C /* SportsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SportsCollectionViewController.swift; sourceTree = "<group>"; };
+		DE9B25AF1E8D19C80009BE1C /* UIViewController+Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
+		DE9B25B01E8D19C80009BE1C /* UIViewController+Loading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Loading.swift"; sourceTree = "<group>"; };
+		DE9B25B11E8D19C80009BE1C /* UIViewController+Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Video.swift"; sourceTree = "<group>"; };
+		DE9B25B31E8D19C80009BE1C /* KeychainConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainConfiguration.swift; sourceTree = "<group>"; };
+		DE9B25B41E8D19C80009BE1C /* KeychainPasswordItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainPasswordItem.swift; sourceTree = "<group>"; };
+		DE9B25B51E8D19C80009BE1C /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		DE9B25B61E8D19C80009BE1C /* UIImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageEffects.h; sourceTree = "<group>"; };
+		DE9B25B71E8D19C80009BE1C /* UIImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageEffects.m; sourceTree = "<group>"; };
+		DE9B25B91E8D19C80009BE1C /* FetchedResultsControllerBackedType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedResultsControllerBackedType.swift; sourceTree = "<group>"; };
+		DE9B25BA1E8D19C80009BE1C /* PersistentContainerSettable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistentContainerSettable.swift; sourceTree = "<group>"; };
+		DE9B25BC1E8D19C80009BE1C /* DoubleLabelCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleLabelCollectionViewCell.swift; sourceTree = "<group>"; };
+		DE9B25BD1E8D19C80009BE1C /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		DE9B25BE1E8D19C80009BE1C /* LiveStreamCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveStreamCollectionViewCell.swift; sourceTree = "<group>"; };
+		DE9B25BF1E8D19C80009BE1C /* LogoutFooterCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoutFooterCollectionReusableView.swift; sourceTree = "<group>"; };
+		DE9B25C01E8D19C80009BE1C /* UICollectionView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extensions.swift"; sourceTree = "<group>"; };
+		DE9B25C11E8D19C80009BE1C /* WebImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebImageView.swift; sourceTree = "<group>"; };
+		DEA051841E3FEACB003A50C3 /* CatchupStream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatchupStream.swift; sourceTree = "<group>"; };
+		DEA051861E3FEAE4003A50C3 /* LiveStream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveStream.swift; sourceTree = "<group>"; };
+		DEA051881E3FEAFE003A50C3 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		DEA0518A1E3FEB15003A50C3 /* Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
+		DEA0518C1E3FEB22003A50C3 /* ScheduledProgramme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduledProgramme.swift; sourceTree = "<group>"; };
+		DEA0518E1E3FF5F0003A50C3 /* Catchup+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Catchup+CoreDataClass.swift"; sourceTree = "<group>"; };
+		DEA0518F1E3FF5F0003A50C3 /* Catchup+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Catchup+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		DEA051901E3FF5F0003A50C3 /* LiveStream+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LiveStream+CoreDataClass.swift"; sourceTree = "<group>"; };
+		DEA051911E3FF5F0003A50C3 /* LiveStream+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LiveStream+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		DEA051921E3FF5F0003A50C3 /* CatchupStream+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CatchupStream+CoreDataClass.swift"; sourceTree = "<group>"; };
+		DEA051931E3FF5F0003A50C3 /* CatchupStream+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CatchupStream+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		DEA051941E3FF5F0003A50C3 /* Channel+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Channel+CoreDataClass.swift"; sourceTree = "<group>"; };
+		DEA051951E3FF5F0003A50C3 /* Channel+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Channel+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		DEA051961E3FF5F0003A50C3 /* Sport+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Sport+CoreDataClass.swift"; sourceTree = "<group>"; };
+		DEA051971E3FF5F0003A50C3 /* Sport+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Sport+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		DEA051981E3FF5F0003A50C3 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
+		DEA051991E3FF5F0003A50C3 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		DEA0519A1E3FF5F0003A50C3 /* ScheduledProgramme+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ScheduledProgramme+CoreDataClass.swift"; sourceTree = "<group>"; };
+		DEA0519B1E3FF5F0003A50C3 /* ScheduledProgramme+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ScheduledProgramme+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		DEB459991CE8C6EE0057259C /* Eurosport.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Eurosport.xcdatamodel; sourceTree = "<group>"; };
+		DEB4599B1CE8C7EA0057259C /* JSONCoreDataParsingType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONCoreDataParsingType.swift; sourceTree = "<group>"; };
+		DEB459A11CE8C91C0057259C /* Catchup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Catchup.swift; sourceTree = "<group>"; };
+		DEB459A21CE8C91C0057259C /* Sport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sport.swift; sourceTree = "<group>"; };
+		DEC4275E1CF9D8C000AE8C31 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		DEC427711CF9F89D00AE8C31 /* StringIdentifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringIdentifiable.swift; sourceTree = "<group>"; };
+		DEC427731CF9F8D400AE8C31 /* NumberIdentifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberIdentifiable.swift; sourceTree = "<group>"; };
+		DEC592201E5F6E2A00880C05 /* AuthenticatedResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticatedResource.swift; sourceTree = "<group>"; };
+		DED8A93F1E093D2D00CD47FC /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
+		DED8A9401E093D2D00CD47FC /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		DED8A94E1E09427500CD47FC /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
+		DED8A94F1E09427500CD47FC /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		DED8A9501E0942D500CD47FC /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Main.strings; sourceTree = "<group>"; };
+		DED8A9511E0942D500CD47FC /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
+		DED8A9521E0942DB00CD47FC /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
+		DED8A9531E0942DB00CD47FC /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DE39BC631CE764F700347716 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DE39BC6D1CE764F700347716 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE39BC711CE764F700347716 /* EurosportKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DE969D861CD51EA300A8A313 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DE39BC681CE764F700347716 /* EurosportKit */ = {
+			isa = PBXGroup;
+			children = (
+				DE39BCA51CE770C700347716 /* Parsers */,
+				DE39BC9E1CE76DA100347716 /* Protocols */,
+				DE39BC9D1CE76D9600347716 /* Serializers */,
+				DE39BC9C1CE76D8800347716 /* Model */,
+				DE39BC691CE764F700347716 /* EurosportKit.h */,
+				DE39BC6B1CE764F700347716 /* Info.plist */,
+				DE39BC851CE7650A00347716 /* Router.swift */,
+			);
+			path = EurosportKit;
+			sourceTree = "<group>";
+		};
+		DE39BC761CE764F700347716 /* EurosportKitTests */ = {
+			isa = PBXGroup;
+			children = (
+				DE39BC771CE764F700347716 /* EurosportKitTests.swift */,
+				DE39BC791CE764F700347716 /* Info.plist */,
+			);
+			path = EurosportKitTests;
+			sourceTree = "<group>";
+		};
+		DE39BC9C1CE76D8800347716 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DEA051AA1E3FF65B003A50C3 /* Generated */,
+				DEB459A11CE8C91C0057259C /* Catchup.swift */,
+				DE39BCB41CE7847800347716 /* Catchup+Networking.swift */,
+				DEB459A21CE8C91C0057259C /* Sport.swift */,
+				DEA051841E3FEACB003A50C3 /* CatchupStream.swift */,
+				DEA051861E3FEAE4003A50C3 /* LiveStream.swift */,
+				DEA051881E3FEAFE003A50C3 /* User.swift */,
+				DE39BC981CE76BBC00347716 /* User+Networking.swift */,
+				DE39BC9F1CE76E5000347716 /* Token.swift */,
+				DE39BCA11CE7705300347716 /* Token+Networking.swift */,
+				DEA0518A1E3FEB15003A50C3 /* Channel.swift */,
+				DE7D566F1CFB40FB00A2B504 /* Channel+Networking.swift */,
+				DEA0518C1E3FEB22003A50C3 /* ScheduledProgramme.swift */,
+				DE39BC961CE76AAD00347716 /* Result.swift */,
+				DEB459981CE8C6EE0057259C /* Eurosport.xcdatamodeld */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		DE39BC9D1CE76D9600347716 /* Serializers */ = {
+			isa = PBXGroup;
+			children = (
+				DE39BC921CE76A7B00347716 /* ResponseSerializer.swift */,
+				DE3DC3B31CF4D61400AF5909 /* ManagedObjectResponseSerializer.swift */,
+				DE39BC941CE76A8F00347716 /* JSONResponseSerializer.swift */,
+				DE3896D51DE9E60200860BB9 /* LoginResponseSerializer.swift */,
+				DE7D56771CFB49BF00A2B504 /* ChannelResponseSerializer.swift */,
+				DE39BCB01CE77C4C00347716 /* VideoshopResponseSerializer.swift */,
+				DE39BCA31CE770A400347716 /* TokenResponseSerializer.swift */,
+				DE39BCAE1CE77C1700347716 /* CatchupResponseSerializer.swift */,
+			);
+			name = Serializers;
+			sourceTree = "<group>";
+		};
+		DE39BC9E1CE76DA100347716 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				DE39BC8C1CE76A2A00347716 /* JSONParsingType.swift */,
+				DEB4599B1CE8C7EA0057259C /* JSONCoreDataParsingType.swift */,
+				DE3DC3B71CF4E17100AF5909 /* Fetchable.swift */,
+				DEC427711CF9F89D00AE8C31 /* StringIdentifiable.swift */,
+				DEC427731CF9F8D400AE8C31 /* NumberIdentifiable.swift */,
+				DEC592201E5F6E2A00880C05 /* AuthenticatedResource.swift */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
+		DE39BCA51CE770C700347716 /* Parsers */ = {
+			isa = PBXGroup;
+			children = (
+				DE39BCAC1CE778B400347716 /* JSON.swift */,
+				DE39BC901CE76A6F00347716 /* UserParser.swift */,
+				DE39BCA61CE770D000347716 /* TokenParser.swift */,
+				DE39BCAA1CE7777E00347716 /* SportParser.swift */,
+				DE39BCB61CE784B500347716 /* CatchupParser.swift */,
+				DE39BCBA1CE786A400347716 /* CatchupStreamParser.swift */,
+				DE1753D21CFC75580083DE2E /* LiveStreamParser.swift */,
+				DE7D56791CFB49FA00A2B504 /* ChannelParser.swift */,
+				DE1753CC1CFC6D090083DE2E /* ScheduledProgrammeParser.swift */,
+				DE20D35F1E3FD5ED009143A3 /* DateParser.swift */,
+			);
+			name = Parsers;
+			sourceTree = "<group>";
+		};
+		DE969D661CD50B1300A8A313 = {
+			isa = PBXGroup;
+			children = (
+				DE969D8A1CD51EA300A8A313 /* EurosportPlayerTV */,
+				DE39BC681CE764F700347716 /* EurosportKit */,
+				DE39BC761CE764F700347716 /* EurosportKitTests */,
+				DE969D701CD50B1300A8A313 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DE969D701CD50B1300A8A313 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DE969D891CD51EA300A8A313 /* EurosportPlayerTV.app */,
+				DE39BC671CE764F700347716 /* EurosportKit.framework */,
+				DE39BC701CE764F700347716 /* EurosportKitTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DE969D8A1CD51EA300A8A313 /* EurosportPlayerTV */ = {
+			isa = PBXGroup;
+			children = (
+				DE9B25D91E8D19EF0009BE1C /* Other Sources */,
+				DE9B25D81E8D19D90009BE1C /* Resources */,
+				DE9B25A71E8D19C80009BE1C /* Controllers */,
+				DE9B25B21E8D19C80009BE1C /* Models */,
+				DE9B25B81E8D19C80009BE1C /* Protocols */,
+				DE9B25BB1E8D19C80009BE1C /* Views */,
+			);
+			path = EurosportPlayerTV;
+			sourceTree = "<group>";
+		};
+		DE9B25A71E8D19C80009BE1C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DE9B25A81E8D19C80009BE1C /* CatchupsCollectionViewController.swift */,
+				DE9B25A91E8D19C80009BE1C /* ChannelsCollectionViewController.swift */,
+				DE9B25AE1E8D19C80009BE1C /* SportsCollectionViewController.swift */,
+				DE9B25AA1E8D19C80009BE1C /* FetchedResultsCollectionViewController.swift */,
+				DE9B25AB1E8D19C80009BE1C /* LoadingViewController.swift */,
+				DE9B25AC1E8D19C80009BE1C /* LoginViewController.swift */,
+				DE9B25AF1E8D19C80009BE1C /* UIViewController+Alert.swift */,
+				DE9B25B01E8D19C80009BE1C /* UIViewController+Loading.swift */,
+				DE9B25B11E8D19C80009BE1C /* UIViewController+Video.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		DE9B25B21E8D19C80009BE1C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DE9B25B31E8D19C80009BE1C /* KeychainConfiguration.swift */,
+				DE9B25B41E8D19C80009BE1C /* KeychainPasswordItem.swift */,
+				DE9B25B51E8D19C80009BE1C /* Theme.swift */,
+				DE9B25B61E8D19C80009BE1C /* UIImageEffects.h */,
+				DE9B25B71E8D19C80009BE1C /* UIImageEffects.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		DE9B25B81E8D19C80009BE1C /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				DE9B25B91E8D19C80009BE1C /* FetchedResultsControllerBackedType.swift */,
+				DE9B25BA1E8D19C80009BE1C /* PersistentContainerSettable.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		DE9B25BB1E8D19C80009BE1C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DE9B25BC1E8D19C80009BE1C /* DoubleLabelCollectionViewCell.swift */,
+				DE9B25BD1E8D19C80009BE1C /* ImageCollectionViewCell.swift */,
+				DE9B25BE1E8D19C80009BE1C /* LiveStreamCollectionViewCell.swift */,
+				DE9B25BF1E8D19C80009BE1C /* LogoutFooterCollectionReusableView.swift */,
+				DE9B25C01E8D19C80009BE1C /* UICollectionView+Extensions.swift */,
+				DE9B25C11E8D19C80009BE1C /* WebImageView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		DE9B25D81E8D19D90009BE1C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				DEC4275F1CF9D8C000AE8C31 /* Localizable.strings */,
+				DE3900671DEB2AE10070C48D /* EurosportPlayerTV.entitlements */,
+				DE969D961CD51EA300A8A313 /* Info.plist */,
+				DE3896CE1DE9CD1A00860BB9 /* Main.storyboard */,
+				DE969D941CD51EA300A8A313 /* Assets.xcassets */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		DE9B25D91E8D19EF0009BE1C /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				DE969D8B1CD51EA300A8A313 /* AppDelegate.swift */,
+				DE8FAA301CFB0C2B00E60A41 /* EurosportPlayerTV-Bridging-Header.h */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		DEA051AA1E3FF65B003A50C3 /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				DEA0518E1E3FF5F0003A50C3 /* Catchup+CoreDataClass.swift */,
+				DEA0518F1E3FF5F0003A50C3 /* Catchup+CoreDataProperties.swift */,
+				DEA051901E3FF5F0003A50C3 /* LiveStream+CoreDataClass.swift */,
+				DEA051911E3FF5F0003A50C3 /* LiveStream+CoreDataProperties.swift */,
+				DEA051921E3FF5F0003A50C3 /* CatchupStream+CoreDataClass.swift */,
+				DEA051931E3FF5F0003A50C3 /* CatchupStream+CoreDataProperties.swift */,
+				DEA051941E3FF5F0003A50C3 /* Channel+CoreDataClass.swift */,
+				DEA051951E3FF5F0003A50C3 /* Channel+CoreDataProperties.swift */,
+				DEA051961E3FF5F0003A50C3 /* Sport+CoreDataClass.swift */,
+				DEA051971E3FF5F0003A50C3 /* Sport+CoreDataProperties.swift */,
+				DEA051981E3FF5F0003A50C3 /* User+CoreDataClass.swift */,
+				DEA051991E3FF5F0003A50C3 /* User+CoreDataProperties.swift */,
+				DEA0519A1E3FF5F0003A50C3 /* ScheduledProgramme+CoreDataClass.swift */,
+				DEA0519B1E3FF5F0003A50C3 /* ScheduledProgramme+CoreDataProperties.swift */,
+			);
+			name = Generated;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		DE39BC641CE764F700347716 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE39BC6A1CE764F700347716 /* EurosportKit.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		DE39BC661CE764F700347716 /* EurosportKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DE39BC821CE764F700347716 /* Build configuration list for PBXNativeTarget "EurosportKit" */;
+			buildPhases = (
+				DE39BC621CE764F700347716 /* Sources */,
+				DE39BC631CE764F700347716 /* Frameworks */,
+				DE39BC641CE764F700347716 /* Headers */,
+				DE39BC651CE764F700347716 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EurosportKit;
+			productName = EurosportKit;
+			productReference = DE39BC671CE764F700347716 /* EurosportKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		DE39BC6F1CE764F700347716 /* EurosportKitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DE39BC841CE764F700347716 /* Build configuration list for PBXNativeTarget "EurosportKitTests" */;
+			buildPhases = (
+				DE39BC6C1CE764F700347716 /* Sources */,
+				DE39BC6D1CE764F700347716 /* Frameworks */,
+				DE39BC6E1CE764F700347716 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DE39BC731CE764F700347716 /* PBXTargetDependency */,
+			);
+			name = EurosportKitTests;
+			productName = EurosportKitTests;
+			productReference = DE39BC701CE764F700347716 /* EurosportKitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		DE969D881CD51EA300A8A313 /* EurosportPlayerTV */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DE969D971CD51EA300A8A313 /* Build configuration list for PBXNativeTarget "EurosportPlayerTV" */;
+			buildPhases = (
+				DE6019641E84426900E0AF3B /* ShellScript */,
+				DE969D851CD51EA300A8A313 /* Sources */,
+				DE969D861CD51EA300A8A313 /* Frameworks */,
+				DE969D871CD51EA300A8A313 /* Resources */,
+				DEFC4CAE1D06EE43000C0711 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DEFC4CAD1D06EE43000C0711 /* PBXTargetDependency */,
+			);
+			name = EurosportPlayerTV;
+			productName = EurosportPlayerTV;
+			productReference = DE969D891CD51EA300A8A313 /* EurosportPlayerTV.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DE969D671CD50B1300A8A313 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = "Alexander Edge";
+				TargetAttributes = {
+					DE39BC661CE764F700347716 = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = V8TM8C6P7Y;
+						LastSwiftMigration = 0820;
+					};
+					DE39BC6F1CE764F700347716 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = DE969D6E1CD50B1300A8A313;
+					};
+					DE969D881CD51EA300A8A313 = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = V8TM8C6P7Y;
+						LastSwiftMigration = 0800;
+						SystemCapabilities = {
+							com.apple.BackgroundModes.appletvos = {
+								enabled = 0;
+							};
+							com.apple.Keychain = {
+								enabled = 0;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = DE969D6A1CD50B1300A8A313 /* Build configuration list for PBXProject "EurosportPlayer" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				fr,
+				French,
+				de,
+				it,
+				es,
+			);
+			mainGroup = DE969D661CD50B1300A8A313;
+			productRefGroup = DE969D701CD50B1300A8A313 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DE969D881CD51EA300A8A313 /* EurosportPlayerTV */,
+				DE39BC661CE764F700347716 /* EurosportKit */,
+				DE39BC6F1CE764F700347716 /* EurosportKitTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DE39BC651CE764F700347716 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DE39BC6E1CE764F700347716 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DE969D871CD51EA300A8A313 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE3896D01DE9CD1A00860BB9 /* Main.storyboard in Resources */,
+				DE969D951CD51EA300A8A313 /* Assets.xcassets in Resources */,
+				DEC4275D1CF9D8C000AE8C31 /* Localizable.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		DE6019641E84426900E0AF3B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\necho \"hi\"\n#swiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DE39BC621CE764F700347716 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE39BCAB1CE7777E00347716 /* SportParser.swift in Sources */,
+				DEA0518B1E3FEB15003A50C3 /* Channel.swift in Sources */,
+				DEA051A91E3FF5F1003A50C3 /* ScheduledProgramme+CoreDataProperties.swift in Sources */,
+				DE39BCBB1CE786A400347716 /* CatchupStreamParser.swift in Sources */,
+				DEB4599C1CE8C7EA0057259C /* JSONCoreDataParsingType.swift in Sources */,
+				DE39BC8D1CE76A2A00347716 /* JSONParsingType.swift in Sources */,
+				DEA051A81E3FF5F1003A50C3 /* ScheduledProgramme+CoreDataClass.swift in Sources */,
+				DEB459A71CE8C91C0057259C /* Catchup.swift in Sources */,
+				DE39BC911CE76A6F00347716 /* UserParser.swift in Sources */,
+				DEA051A61E3FF5F1003A50C3 /* User+CoreDataClass.swift in Sources */,
+				DE39BCAF1CE77C1700347716 /* CatchupResponseSerializer.swift in Sources */,
+				DEA051A71E3FF5F1003A50C3 /* User+CoreDataProperties.swift in Sources */,
+				DEA0519F1E3FF5F0003A50C3 /* LiveStream+CoreDataProperties.swift in Sources */,
+				DE3DC3B81CF4E17100AF5909 /* Fetchable.swift in Sources */,
+				DE7D56701CFB40FB00A2B504 /* Channel+Networking.swift in Sources */,
+				DEA051851E3FEACB003A50C3 /* CatchupStream.swift in Sources */,
+				DEA051871E3FEAE4003A50C3 /* LiveStream.swift in Sources */,
+				DEA051A31E3FF5F0003A50C3 /* Channel+CoreDataProperties.swift in Sources */,
+				DE7D56781CFB49BF00A2B504 /* ChannelResponseSerializer.swift in Sources */,
+				DEA051A01E3FF5F0003A50C3 /* CatchupStream+CoreDataClass.swift in Sources */,
+				DEA0518D1E3FEB22003A50C3 /* ScheduledProgramme.swift in Sources */,
+				DE39BC951CE76A8F00347716 /* JSONResponseSerializer.swift in Sources */,
+				DE39BCB71CE784B500347716 /* CatchupParser.swift in Sources */,
+				DE39BCB11CE77C4C00347716 /* VideoshopResponseSerializer.swift in Sources */,
+				DE3896D61DE9E60200860BB9 /* LoginResponseSerializer.swift in Sources */,
+				DEA051A51E3FF5F1003A50C3 /* Sport+CoreDataProperties.swift in Sources */,
+				DEC592211E5F6E2A00880C05 /* AuthenticatedResource.swift in Sources */,
+				DE39BCAD1CE778B400347716 /* JSON.swift in Sources */,
+				DE39BC931CE76A7B00347716 /* ResponseSerializer.swift in Sources */,
+				DEA051A41E3FF5F0003A50C3 /* Sport+CoreDataClass.swift in Sources */,
+				DEA051A21E3FF5F0003A50C3 /* Channel+CoreDataClass.swift in Sources */,
+				DE39BCB51CE7847800347716 /* Catchup+Networking.swift in Sources */,
+				DE39BC991CE76BBC00347716 /* User+Networking.swift in Sources */,
+				DEC427721CF9F89D00AE8C31 /* StringIdentifiable.swift in Sources */,
+				DEA0519E1E3FF5F0003A50C3 /* LiveStream+CoreDataClass.swift in Sources */,
+				DE1753CD1CFC6D090083DE2E /* ScheduledProgrammeParser.swift in Sources */,
+				DE3DC3B41CF4D61400AF5909 /* ManagedObjectResponseSerializer.swift in Sources */,
+				DE39BCA71CE770D000347716 /* TokenParser.swift in Sources */,
+				DEA051891E3FEAFE003A50C3 /* User.swift in Sources */,
+				DE39BCA01CE76E5000347716 /* Token.swift in Sources */,
+				DE7D567A1CFB49FA00A2B504 /* ChannelParser.swift in Sources */,
+				DEA0519D1E3FF5F0003A50C3 /* Catchup+CoreDataProperties.swift in Sources */,
+				DE39BC971CE76AAD00347716 /* Result.swift in Sources */,
+				DEB459A81CE8C91D0057259C /* Sport.swift in Sources */,
+				DE39BCA21CE7705300347716 /* Token+Networking.swift in Sources */,
+				DEB4599A1CE8C6EE0057259C /* Eurosport.xcdatamodeld in Sources */,
+				DE39BC861CE7650A00347716 /* Router.swift in Sources */,
+				DEA0519C1E3FF5F0003A50C3 /* Catchup+CoreDataClass.swift in Sources */,
+				DE39BCA41CE770A400347716 /* TokenResponseSerializer.swift in Sources */,
+				DEC427741CF9F8D400AE8C31 /* NumberIdentifiable.swift in Sources */,
+				DE20D3601E3FD5ED009143A3 /* DateParser.swift in Sources */,
+				DEA051A11E3FF5F0003A50C3 /* CatchupStream+CoreDataProperties.swift in Sources */,
+				DE1753D31CFC75580083DE2E /* LiveStreamParser.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DE39BC6C1CE764F700347716 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE39BC781CE764F700347716 /* EurosportKitTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DE969D851CD51EA300A8A313 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE9B25C91E8D19C80009BE1C /* UIViewController+Alert.swift in Sources */,
+				DE9B25C61E8D19C80009BE1C /* LoginViewController.swift in Sources */,
+				DE9B25D51E8D19C80009BE1C /* LogoutFooterCollectionReusableView.swift in Sources */,
+				DE969D8C1CD51EA300A8A313 /* AppDelegate.swift in Sources */,
+				DE9B25D61E8D19C80009BE1C /* UICollectionView+Extensions.swift in Sources */,
+				DE9B25CA1E8D19C80009BE1C /* UIViewController+Loading.swift in Sources */,
+				DE9B25C21E8D19C80009BE1C /* CatchupsCollectionViewController.swift in Sources */,
+				DE9B25CB1E8D19C80009BE1C /* UIViewController+Video.swift in Sources */,
+				DE9B25D21E8D19C80009BE1C /* DoubleLabelCollectionViewCell.swift in Sources */,
+				DE9B25CC1E8D19C80009BE1C /* KeychainConfiguration.swift in Sources */,
+				DE9B25C51E8D19C80009BE1C /* LoadingViewController.swift in Sources */,
+				DE9B25D01E8D19C80009BE1C /* FetchedResultsControllerBackedType.swift in Sources */,
+				DE9B25CF1E8D19C80009BE1C /* UIImageEffects.m in Sources */,
+				DE9B25D11E8D19C80009BE1C /* PersistentContainerSettable.swift in Sources */,
+				DE9B25D41E8D19C80009BE1C /* LiveStreamCollectionViewCell.swift in Sources */,
+				DE9B25C81E8D19C80009BE1C /* SportsCollectionViewController.swift in Sources */,
+				DE9B25C31E8D19C80009BE1C /* ChannelsCollectionViewController.swift in Sources */,
+				DE9B25D71E8D19C80009BE1C /* WebImageView.swift in Sources */,
+				DE9B25C41E8D19C80009BE1C /* FetchedResultsCollectionViewController.swift in Sources */,
+				DE9B25CD1E8D19C80009BE1C /* KeychainPasswordItem.swift in Sources */,
+				DE9B25CE1E8D19C80009BE1C /* Theme.swift in Sources */,
+				DE9B25D31E8D19C80009BE1C /* ImageCollectionViewCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DE39BC731CE764F700347716 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DE39BC661CE764F700347716 /* EurosportKit */;
+			targetProxy = DE39BC721CE764F700347716 /* PBXContainerItemProxy */;
+		};
+		DEFC4CAD1D06EE43000C0711 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DE39BC661CE764F700347716 /* EurosportKit */;
+			targetProxy = DEFC4CAC1D06EE43000C0711 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		DE3896CE1DE9CD1A00860BB9 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DE3896CF1DE9CD1A00860BB9 /* Base */,
+				DED8A93F1E093D2D00CD47FC /* fr */,
+				DED8A94E1E09427500CD47FC /* de */,
+				DED8A9501E0942D500CD47FC /* it */,
+				DED8A9521E0942DB00CD47FC /* es */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		DEC4275F1CF9D8C000AE8C31 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DEC4275E1CF9D8C000AE8C31 /* Base */,
+				DED8A9401E093D2D00CD47FC /* fr */,
+				DED8A94F1E09427500CD47FC /* de */,
+				DED8A9511E0942D500CD47FC /* it */,
+				DED8A9531E0942DB00CD47FC /* es */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		DE39BC7E1CE764F700347716 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				CURRENT_PROJECT_VERSION = 37;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 37;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = EurosportKit/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = uk.co.alexedge.EurosportKit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		DE39BC7F1CE764F700347716 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				CURRENT_PROJECT_VERSION = 37;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 37;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = EurosportKit/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = uk.co.alexedge.EurosportKit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		DE39BC801CE764F700347716 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = EurosportKitTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = uk.co.alexedge.EurosportKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EurosportPlayer.app/EurosportPlayer";
+			};
+			name = Debug;
+		};
+		DE39BC811CE764F700347716 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = EurosportKitTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = uk.co.alexedge.EurosportKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EurosportPlayer.app/EurosportPlayer";
+			};
+			name = Release;
+		};
+		DE969D7F1CD50B1300A8A313 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TVOS_DEPLOYMENT_TARGET = 10.0;
+				WARNING_CFLAGS = "-Weverything";
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
+			};
+			name = Debug;
+		};
+		DE969D801CD50B1300A8A313 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TVOS_DEPLOYMENT_TARGET = 10.0;
+				VALIDATE_PRODUCT = YES;
+				WARNING_CFLAGS = "-Weverything";
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
+			};
+			name = Release;
+		};
+		DE969D981CD51EA300A8A313 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 37;
+				INFOPLIST_FILE = EurosportPlayerTV/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = uk.co.alexedge.EurosportPlayer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = appletvos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "EurosportPlayerTV/EurosportPlayerTV-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 3;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		DE969D991CD51EA300A8A313 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 37;
+				INFOPLIST_FILE = EurosportPlayerTV/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = uk.co.alexedge.EurosportPlayer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = appletvos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "EurosportPlayerTV/EurosportPlayerTV-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = 3;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DE39BC821CE764F700347716 /* Build configuration list for PBXNativeTarget "EurosportKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DE39BC7E1CE764F700347716 /* Debug */,
+				DE39BC7F1CE764F700347716 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DE39BC841CE764F700347716 /* Build configuration list for PBXNativeTarget "EurosportKitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DE39BC801CE764F700347716 /* Debug */,
+				DE39BC811CE764F700347716 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DE969D6A1CD50B1300A8A313 /* Build configuration list for PBXProject "EurosportPlayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DE969D7F1CD50B1300A8A313 /* Debug */,
+				DE969D801CD50B1300A8A313 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DE969D971CD51EA300A8A313 /* Build configuration list for PBXNativeTarget "EurosportPlayerTV" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DE969D981CD51EA300A8A313 /* Debug */,
+				DE969D991CD51EA300A8A313 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		DEB459981CE8C6EE0057259C /* Eurosport.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				DEB459991CE8C6EE0057259C /* Eurosport.xcdatamodel */,
+			);
+			currentVersion = DEB459991CE8C6EE0057259C /* Eurosport.xcdatamodel */;
+			path = Eurosport.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = DE969D671CD50B1300A8A313 /* Project object */;
+}

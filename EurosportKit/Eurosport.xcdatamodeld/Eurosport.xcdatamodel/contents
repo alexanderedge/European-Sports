@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="16D32" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Catchup" representedClassName="Catchup" syncable="YES">
+        <attribute name="catchupDescription" attributeType="String" syncable="YES"/>
+        <attribute name="duration" attributeType="Double" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="expirationDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="identifier" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" indexed="YES" syncable="YES"/>
+        <attribute name="imageURL" attributeType="Transformable" customClassName="NSURL" syncable="YES"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="title" attributeType="String" syncable="YES"/>
+        <relationship name="sport" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Sport" inverseName="catchups" inverseEntity="Sport" syncable="YES"/>
+        <relationship name="streams" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="CatchupStream" inverseName="catchup" inverseEntity="CatchupStream" syncable="YES"/>
+    </entity>
+    <entity name="CatchupStream" representedClassName="CatchupStream" syncable="YES">
+        <attribute name="identifier" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" indexed="YES" syncable="YES"/>
+        <attribute name="url" attributeType="Transformable" customClassName="NSURL" syncable="YES"/>
+        <relationship name="catchup" maxCount="1" deletionRule="Nullify" destinationEntity="Catchup" inverseName="streams" inverseEntity="Catchup" syncable="YES"/>
+    </entity>
+    <entity name="Channel" representedClassName="Channel" syncable="YES">
+        <attribute name="identifier" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" indexed="YES" syncable="YES"/>
+        <attribute name="logoURL" optional="YES" attributeType="Transformable" customClassName="NSURL" syncable="YES"/>
+        <attribute name="subtitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="liveStreams" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="LiveStream" inverseName="channel" inverseEntity="LiveStream" syncable="YES"/>
+        <relationship name="scheduledProgrammes" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="ScheduledProgramme" inverseName="product" inverseEntity="ScheduledProgramme" syncable="YES"/>
+    </entity>
+    <entity name="LiveStream" representedClassName="LiveStream" syncable="YES">
+        <attribute name="identifier" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" indexed="YES" syncable="YES"/>
+        <attribute name="url" attributeType="Transformable" customClassName="NSURL" syncable="YES"/>
+        <relationship name="channel" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Channel" inverseName="liveStreams" inverseEntity="Channel" syncable="YES"/>
+    </entity>
+    <entity name="ScheduledProgramme" representedClassName="ScheduledProgramme" syncable="YES">
+        <attribute name="competitionName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="endDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="eventName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="identifier" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="imageURL" optional="YES" attributeType="Transformable" customClassName="NSURL" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="programmeDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="shortName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="product" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Channel" inverseName="scheduledProgrammes" inverseEntity="Channel" syncable="YES"/>
+        <relationship name="sport" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Sport" inverseName="scheduledProgrammes" inverseEntity="Sport" syncable="YES"/>
+    </entity>
+    <entity name="Sport" representedClassName="Sport" syncable="YES">
+        <attribute name="identifier" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" indexed="YES" syncable="YES"/>
+        <attribute name="imageURL" optional="YES" attributeType="Transformable" customClassName="NSURL" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="catchups" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Catchup" inverseName="sport" inverseEntity="Catchup" syncable="YES"/>
+        <relationship name="scheduledProgrammes" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ScheduledProgramme" inverseName="sport" inverseEntity="ScheduledProgramme" syncable="YES"/>
+    </entity>
+    <entity name="User" representedClassName="User" syncable="YES">
+        <attribute name="email" attributeType="String" syncable="YES"/>
+        <attribute name="hkey" attributeType="String" syncable="YES"/>
+        <attribute name="identifier" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Catchup" positionX="-9" positionY="36" width="128" height="180"/>
+        <element name="CatchupStream" positionX="9" positionY="72" width="128" height="90"/>
+        <element name="Channel" positionX="0" positionY="108" width="128" height="135"/>
+        <element name="LiveStream" positionX="9" positionY="162" width="128" height="90"/>
+        <element name="ScheduledProgramme" positionX="9" positionY="117" width="128" height="210"/>
+        <element name="Sport" positionX="-9" positionY="36" width="128" height="120"/>
+        <element name="User" positionX="0" positionY="108" width="128" height="90"/>
+    </elements>
+</model>

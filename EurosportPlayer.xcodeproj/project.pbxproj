@@ -7,37 +7,62 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DE1753CD1CFC6D090083DE2E /* ScheduledProgrammeParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1753CC1CFC6D090083DE2E /* ScheduledProgrammeParser.swift */; };
-		DE1753D31CFC75580083DE2E /* LiveStreamParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1753D21CFC75580083DE2E /* LiveStreamParser.swift */; };
-		DE20D3601E3FD5ED009143A3 /* DateParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE20D35F1E3FD5ED009143A3 /* DateParser.swift */; };
+		DE1D18431E8D292200E2D673 /* AuthenticatedResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1D180B1E8D292200E2D673 /* AuthenticatedResource.swift */; };
+		DE1D18441E8D292200E2D673 /* Catchup+Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1D180C1E8D292200E2D673 /* Catchup+Networking.swift */; };
+		DE1D18451E8D292200E2D673 /* Catchup.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1D180D1E8D292200E2D673 /* Catchup.swift */; };
+		DE1D18461E8D292200E2D673 /* CatchupStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1D180E1E8D292200E2D673 /* CatchupStream.swift */; };
+		DE1D18471E8D292200E2D673 /* Channel+Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1D180F1E8D292200E2D673 /* Channel+Networking.swift */; };
+		DE1D18481E8D292200E2D673 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1D18101E8D292200E2D673 /* Channel.swift */; };
+		DE1D18491E8D292200E2D673 /* Catchup+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1D18121E8D292200E2D673 /* Catchup+CoreDataClass.swift */; };
+		DE1D184A1E8D292200E2D673 /* Catchup+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1D18131E8D292200E2D673 /* Catchup+CoreDataProperties.swift */; };
+		DE1D184B1E8D292200E2D673 /* CatchupStream+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1D18141E8D292200E2D673 /* CatchupStream+CoreDataClass.swift */; };
+		DE1D184C1E8D292200E2D673 /* CatchupStream+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1D18151E8D292200E2D673 /* CatchupStream+CoreDataProperties.swift */; };
+		DE1D184D1E8D292200E2D673 /* Channel+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1D18161E8D292200E2D673 /* Channel+CoreDataClass.swift */; };
+		DE1D184E1E8D292200E2D673 /* Channel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1D18171E8D292200E2D673 /* Channel+CoreDataProperties.swift */; };
+		DE1D184F1E8D292200E2D673 /* LiveStream+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1D18181E8D292200E2D673 /* LiveStream+CoreDataClass.swift */; };
+		DE1D18501E8D292200E2D673 /* LiveStream+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1D18191E8D292200E2D673 /* LiveStream+CoreDataProperties.swift */; };
+		DE1D18511E8D292200E2D673 /* ScheduledProgramme+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1D181A1E8D292200E2D673 /* ScheduledProgramme+CoreDataClass.swift */; };
+		DE1D18521E8D292200E2D673 /* ScheduledProgramme+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1D181B1E8D292200E2D673 /* ScheduledProgramme+CoreDataProperties.swift */; };
+		DE1D18531E8D292200E2D673 /* Sport+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1D181C1E8D292200E2D673 /* Sport+CoreDataClass.swift */; };
+		DE1D18541E8D292200E2D673 /* Sport+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1D181D1E8D292200E2D673 /* Sport+CoreDataProperties.swift */; };
+		DE1D18551E8D292200E2D673 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1D181E1E8D292200E2D673 /* User+CoreDataClass.swift */; };
+		DE1D18561E8D292200E2D673 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1D181F1E8D292200E2D673 /* User+CoreDataProperties.swift */; };
+		DE1D18571E8D292200E2D673 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1D18201E8D292200E2D673 /* JSON.swift */; };
+		DE1D18581E8D292200E2D673 /* LiveStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1D18211E8D292200E2D673 /* LiveStream.swift */; };
+		DE1D18591E8D292200E2D673 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1D18221E8D292200E2D673 /* Result.swift */; };
+		DE1D185A1E8D292200E2D673 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1D18231E8D292200E2D673 /* Router.swift */; };
+		DE1D185B1E8D292200E2D673 /* ScheduledProgramme.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1D18241E8D292200E2D673 /* ScheduledProgramme.swift */; };
+		DE1D185C1E8D292200E2D673 /* Sport.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1D18251E8D292200E2D673 /* Sport.swift */; };
+		DE1D185D1E8D292200E2D673 /* Token+Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1D18261E8D292200E2D673 /* Token+Networking.swift */; };
+		DE1D185E1E8D292200E2D673 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1D18271E8D292200E2D673 /* Token.swift */; };
+		DE1D185F1E8D292200E2D673 /* User+Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1D18281E8D292200E2D673 /* User+Networking.swift */; };
+		DE1D18601E8D292200E2D673 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1D18291E8D292200E2D673 /* User.swift */; };
+		DE1D18611E8D292200E2D673 /* CatchupParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1D182B1E8D292200E2D673 /* CatchupParser.swift */; };
+		DE1D18621E8D292200E2D673 /* CatchupStreamParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1D182C1E8D292200E2D673 /* CatchupStreamParser.swift */; };
+		DE1D18631E8D292200E2D673 /* ChannelParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1D182D1E8D292200E2D673 /* ChannelParser.swift */; };
+		DE1D18641E8D292200E2D673 /* DateParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1D182E1E8D292200E2D673 /* DateParser.swift */; };
+		DE1D18651E8D292200E2D673 /* LiveStreamParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1D182F1E8D292200E2D673 /* LiveStreamParser.swift */; };
+		DE1D18661E8D292200E2D673 /* ScheduledProgrammeParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1D18301E8D292200E2D673 /* ScheduledProgrammeParser.swift */; };
+		DE1D18671E8D292200E2D673 /* SportParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1D18311E8D292200E2D673 /* SportParser.swift */; };
+		DE1D18681E8D292200E2D673 /* TokenParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1D18321E8D292200E2D673 /* TokenParser.swift */; };
+		DE1D18691E8D292200E2D673 /* UserParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1D18331E8D292200E2D673 /* UserParser.swift */; };
+		DE1D186A1E8D292200E2D673 /* Fetchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1D18351E8D292200E2D673 /* Fetchable.swift */; };
+		DE1D186B1E8D292200E2D673 /* JSONCoreDataParsingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1D18361E8D292200E2D673 /* JSONCoreDataParsingType.swift */; };
+		DE1D186C1E8D292200E2D673 /* JSONParsingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1D18371E8D292200E2D673 /* JSONParsingType.swift */; };
+		DE1D186D1E8D292200E2D673 /* NumberIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1D18381E8D292200E2D673 /* NumberIdentifiable.swift */; };
+		DE1D186E1E8D292200E2D673 /* StringIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1D18391E8D292200E2D673 /* StringIdentifiable.swift */; };
+		DE1D186F1E8D292200E2D673 /* CatchupResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1D183B1E8D292200E2D673 /* CatchupResponseSerializer.swift */; };
+		DE1D18701E8D292200E2D673 /* ChannelResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1D183C1E8D292200E2D673 /* ChannelResponseSerializer.swift */; };
+		DE1D18711E8D292200E2D673 /* JSONResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1D183D1E8D292200E2D673 /* JSONResponseSerializer.swift */; };
+		DE1D18721E8D292200E2D673 /* LoginResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1D183E1E8D292200E2D673 /* LoginResponseSerializer.swift */; };
+		DE1D18731E8D292200E2D673 /* ManagedObjectResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1D183F1E8D292200E2D673 /* ManagedObjectResponseSerializer.swift */; };
+		DE1D18741E8D292200E2D673 /* ResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1D18401E8D292200E2D673 /* ResponseSerializer.swift */; };
+		DE1D18751E8D292200E2D673 /* TokenResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1D18411E8D292200E2D673 /* TokenResponseSerializer.swift */; };
+		DE1D18761E8D292200E2D673 /* VideoshopResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1D18421E8D292200E2D673 /* VideoshopResponseSerializer.swift */; };
 		DE3896D01DE9CD1A00860BB9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE3896CE1DE9CD1A00860BB9 /* Main.storyboard */; };
-		DE3896D61DE9E60200860BB9 /* LoginResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3896D51DE9E60200860BB9 /* LoginResponseSerializer.swift */; };
 		DE39BC6A1CE764F700347716 /* EurosportKit.h in Headers */ = {isa = PBXBuildFile; fileRef = DE39BC691CE764F700347716 /* EurosportKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DE39BC711CE764F700347716 /* EurosportKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE39BC671CE764F700347716 /* EurosportKit.framework */; };
 		DE39BC781CE764F700347716 /* EurosportKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39BC771CE764F700347716 /* EurosportKitTests.swift */; };
-		DE39BC861CE7650A00347716 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39BC851CE7650A00347716 /* Router.swift */; };
-		DE39BC8D1CE76A2A00347716 /* JSONParsingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39BC8C1CE76A2A00347716 /* JSONParsingType.swift */; };
-		DE39BC911CE76A6F00347716 /* UserParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39BC901CE76A6F00347716 /* UserParser.swift */; };
-		DE39BC931CE76A7B00347716 /* ResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39BC921CE76A7B00347716 /* ResponseSerializer.swift */; };
-		DE39BC951CE76A8F00347716 /* JSONResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39BC941CE76A8F00347716 /* JSONResponseSerializer.swift */; };
-		DE39BC971CE76AAD00347716 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39BC961CE76AAD00347716 /* Result.swift */; };
-		DE39BC991CE76BBC00347716 /* User+Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39BC981CE76BBC00347716 /* User+Networking.swift */; };
-		DE39BCA01CE76E5000347716 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39BC9F1CE76E5000347716 /* Token.swift */; };
-		DE39BCA21CE7705300347716 /* Token+Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39BCA11CE7705300347716 /* Token+Networking.swift */; };
-		DE39BCA41CE770A400347716 /* TokenResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39BCA31CE770A400347716 /* TokenResponseSerializer.swift */; };
-		DE39BCA71CE770D000347716 /* TokenParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39BCA61CE770D000347716 /* TokenParser.swift */; };
-		DE39BCAB1CE7777E00347716 /* SportParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39BCAA1CE7777E00347716 /* SportParser.swift */; };
-		DE39BCAD1CE778B400347716 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39BCAC1CE778B400347716 /* JSON.swift */; };
-		DE39BCAF1CE77C1700347716 /* CatchupResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39BCAE1CE77C1700347716 /* CatchupResponseSerializer.swift */; };
-		DE39BCB11CE77C4C00347716 /* VideoshopResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39BCB01CE77C4C00347716 /* VideoshopResponseSerializer.swift */; };
-		DE39BCB51CE7847800347716 /* Catchup+Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39BCB41CE7847800347716 /* Catchup+Networking.swift */; };
-		DE39BCB71CE784B500347716 /* CatchupParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39BCB61CE784B500347716 /* CatchupParser.swift */; };
-		DE39BCBB1CE786A400347716 /* CatchupStreamParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39BCBA1CE786A400347716 /* CatchupStreamParser.swift */; };
-		DE3DC3B41CF4D61400AF5909 /* ManagedObjectResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3DC3B31CF4D61400AF5909 /* ManagedObjectResponseSerializer.swift */; };
-		DE3DC3B81CF4E17100AF5909 /* Fetchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3DC3B71CF4E17100AF5909 /* Fetchable.swift */; };
-		DE7D56701CFB40FB00A2B504 /* Channel+Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7D566F1CFB40FB00A2B504 /* Channel+Networking.swift */; };
-		DE7D56781CFB49BF00A2B504 /* ChannelResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7D56771CFB49BF00A2B504 /* ChannelResponseSerializer.swift */; };
-		DE7D567A1CFB49FA00A2B504 /* ChannelParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7D56791CFB49FA00A2B504 /* ChannelParser.swift */; };
 		DE969D8C1CD51EA300A8A313 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE969D8B1CD51EA300A8A313 /* AppDelegate.swift */; };
 		DE969D951CD51EA300A8A313 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE969D941CD51EA300A8A313 /* Assets.xcassets */; };
 		DE9B25C21E8D19C80009BE1C /* CatchupsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9B25A81E8D19C80009BE1C /* CatchupsCollectionViewController.swift */; };
@@ -61,33 +86,7 @@
 		DE9B25D51E8D19C80009BE1C /* LogoutFooterCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9B25BF1E8D19C80009BE1C /* LogoutFooterCollectionReusableView.swift */; };
 		DE9B25D61E8D19C80009BE1C /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9B25C01E8D19C80009BE1C /* UICollectionView+Extensions.swift */; };
 		DE9B25D71E8D19C80009BE1C /* WebImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9B25C11E8D19C80009BE1C /* WebImageView.swift */; };
-		DEA051851E3FEACB003A50C3 /* CatchupStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA051841E3FEACB003A50C3 /* CatchupStream.swift */; };
-		DEA051871E3FEAE4003A50C3 /* LiveStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA051861E3FEAE4003A50C3 /* LiveStream.swift */; };
-		DEA051891E3FEAFE003A50C3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA051881E3FEAFE003A50C3 /* User.swift */; };
-		DEA0518B1E3FEB15003A50C3 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA0518A1E3FEB15003A50C3 /* Channel.swift */; };
-		DEA0518D1E3FEB22003A50C3 /* ScheduledProgramme.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA0518C1E3FEB22003A50C3 /* ScheduledProgramme.swift */; };
-		DEA0519C1E3FF5F0003A50C3 /* Catchup+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA0518E1E3FF5F0003A50C3 /* Catchup+CoreDataClass.swift */; };
-		DEA0519D1E3FF5F0003A50C3 /* Catchup+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA0518F1E3FF5F0003A50C3 /* Catchup+CoreDataProperties.swift */; };
-		DEA0519E1E3FF5F0003A50C3 /* LiveStream+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA051901E3FF5F0003A50C3 /* LiveStream+CoreDataClass.swift */; };
-		DEA0519F1E3FF5F0003A50C3 /* LiveStream+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA051911E3FF5F0003A50C3 /* LiveStream+CoreDataProperties.swift */; };
-		DEA051A01E3FF5F0003A50C3 /* CatchupStream+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA051921E3FF5F0003A50C3 /* CatchupStream+CoreDataClass.swift */; };
-		DEA051A11E3FF5F0003A50C3 /* CatchupStream+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA051931E3FF5F0003A50C3 /* CatchupStream+CoreDataProperties.swift */; };
-		DEA051A21E3FF5F0003A50C3 /* Channel+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA051941E3FF5F0003A50C3 /* Channel+CoreDataClass.swift */; };
-		DEA051A31E3FF5F0003A50C3 /* Channel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA051951E3FF5F0003A50C3 /* Channel+CoreDataProperties.swift */; };
-		DEA051A41E3FF5F0003A50C3 /* Sport+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA051961E3FF5F0003A50C3 /* Sport+CoreDataClass.swift */; };
-		DEA051A51E3FF5F1003A50C3 /* Sport+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA051971E3FF5F0003A50C3 /* Sport+CoreDataProperties.swift */; };
-		DEA051A61E3FF5F1003A50C3 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA051981E3FF5F0003A50C3 /* User+CoreDataClass.swift */; };
-		DEA051A71E3FF5F1003A50C3 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA051991E3FF5F0003A50C3 /* User+CoreDataProperties.swift */; };
-		DEA051A81E3FF5F1003A50C3 /* ScheduledProgramme+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA0519A1E3FF5F0003A50C3 /* ScheduledProgramme+CoreDataClass.swift */; };
-		DEA051A91E3FF5F1003A50C3 /* ScheduledProgramme+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA0519B1E3FF5F0003A50C3 /* ScheduledProgramme+CoreDataProperties.swift */; };
-		DEB4599A1CE8C6EE0057259C /* Eurosport.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DEB459981CE8C6EE0057259C /* Eurosport.xcdatamodeld */; };
-		DEB4599C1CE8C7EA0057259C /* JSONCoreDataParsingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB4599B1CE8C7EA0057259C /* JSONCoreDataParsingType.swift */; };
-		DEB459A71CE8C91C0057259C /* Catchup.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB459A11CE8C91C0057259C /* Catchup.swift */; };
-		DEB459A81CE8C91D0057259C /* Sport.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB459A21CE8C91C0057259C /* Sport.swift */; };
 		DEC4275D1CF9D8C000AE8C31 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DEC4275F1CF9D8C000AE8C31 /* Localizable.strings */; };
-		DEC427721CF9F89D00AE8C31 /* StringIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC427711CF9F89D00AE8C31 /* StringIdentifiable.swift */; };
-		DEC427741CF9F8D400AE8C31 /* NumberIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC427731CF9F8D400AE8C31 /* NumberIdentifiable.swift */; };
-		DEC592211E5F6E2A00880C05 /* AuthenticatedResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC592201E5F6E2A00880C05 /* AuthenticatedResource.swift */; };
 		DEFC4CAB1D06EE43000C0711 /* EurosportKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DE39BC671CE764F700347716 /* EurosportKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
@@ -123,11 +122,59 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		DE1753CC1CFC6D090083DE2E /* ScheduledProgrammeParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduledProgrammeParser.swift; sourceTree = "<group>"; };
-		DE1753D21CFC75580083DE2E /* LiveStreamParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveStreamParser.swift; sourceTree = "<group>"; };
-		DE20D35F1E3FD5ED009143A3 /* DateParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateParser.swift; sourceTree = "<group>"; };
+		DE1D180B1E8D292200E2D673 /* AuthenticatedResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticatedResource.swift; sourceTree = "<group>"; };
+		DE1D180C1E8D292200E2D673 /* Catchup+Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Catchup+Networking.swift"; sourceTree = "<group>"; };
+		DE1D180D1E8D292200E2D673 /* Catchup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Catchup.swift; sourceTree = "<group>"; };
+		DE1D180E1E8D292200E2D673 /* CatchupStream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatchupStream.swift; sourceTree = "<group>"; };
+		DE1D180F1E8D292200E2D673 /* Channel+Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Channel+Networking.swift"; sourceTree = "<group>"; };
+		DE1D18101E8D292200E2D673 /* Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
+		DE1D18121E8D292200E2D673 /* Catchup+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Catchup+CoreDataClass.swift"; sourceTree = "<group>"; };
+		DE1D18131E8D292200E2D673 /* Catchup+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Catchup+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		DE1D18141E8D292200E2D673 /* CatchupStream+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CatchupStream+CoreDataClass.swift"; sourceTree = "<group>"; };
+		DE1D18151E8D292200E2D673 /* CatchupStream+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CatchupStream+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		DE1D18161E8D292200E2D673 /* Channel+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Channel+CoreDataClass.swift"; sourceTree = "<group>"; };
+		DE1D18171E8D292200E2D673 /* Channel+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Channel+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		DE1D18181E8D292200E2D673 /* LiveStream+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LiveStream+CoreDataClass.swift"; sourceTree = "<group>"; };
+		DE1D18191E8D292200E2D673 /* LiveStream+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LiveStream+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		DE1D181A1E8D292200E2D673 /* ScheduledProgramme+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ScheduledProgramme+CoreDataClass.swift"; sourceTree = "<group>"; };
+		DE1D181B1E8D292200E2D673 /* ScheduledProgramme+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ScheduledProgramme+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		DE1D181C1E8D292200E2D673 /* Sport+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Sport+CoreDataClass.swift"; sourceTree = "<group>"; };
+		DE1D181D1E8D292200E2D673 /* Sport+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Sport+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		DE1D181E1E8D292200E2D673 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
+		DE1D181F1E8D292200E2D673 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		DE1D18201E8D292200E2D673 /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
+		DE1D18211E8D292200E2D673 /* LiveStream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveStream.swift; sourceTree = "<group>"; };
+		DE1D18221E8D292200E2D673 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		DE1D18231E8D292200E2D673 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		DE1D18241E8D292200E2D673 /* ScheduledProgramme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduledProgramme.swift; sourceTree = "<group>"; };
+		DE1D18251E8D292200E2D673 /* Sport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sport.swift; sourceTree = "<group>"; };
+		DE1D18261E8D292200E2D673 /* Token+Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Token+Networking.swift"; sourceTree = "<group>"; };
+		DE1D18271E8D292200E2D673 /* Token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
+		DE1D18281E8D292200E2D673 /* User+Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+Networking.swift"; sourceTree = "<group>"; };
+		DE1D18291E8D292200E2D673 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		DE1D182B1E8D292200E2D673 /* CatchupParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatchupParser.swift; sourceTree = "<group>"; };
+		DE1D182C1E8D292200E2D673 /* CatchupStreamParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatchupStreamParser.swift; sourceTree = "<group>"; };
+		DE1D182D1E8D292200E2D673 /* ChannelParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelParser.swift; sourceTree = "<group>"; };
+		DE1D182E1E8D292200E2D673 /* DateParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateParser.swift; sourceTree = "<group>"; };
+		DE1D182F1E8D292200E2D673 /* LiveStreamParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveStreamParser.swift; sourceTree = "<group>"; };
+		DE1D18301E8D292200E2D673 /* ScheduledProgrammeParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduledProgrammeParser.swift; sourceTree = "<group>"; };
+		DE1D18311E8D292200E2D673 /* SportParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SportParser.swift; sourceTree = "<group>"; };
+		DE1D18321E8D292200E2D673 /* TokenParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenParser.swift; sourceTree = "<group>"; };
+		DE1D18331E8D292200E2D673 /* UserParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserParser.swift; sourceTree = "<group>"; };
+		DE1D18351E8D292200E2D673 /* Fetchable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fetchable.swift; sourceTree = "<group>"; };
+		DE1D18361E8D292200E2D673 /* JSONCoreDataParsingType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONCoreDataParsingType.swift; sourceTree = "<group>"; };
+		DE1D18371E8D292200E2D673 /* JSONParsingType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONParsingType.swift; sourceTree = "<group>"; };
+		DE1D18381E8D292200E2D673 /* NumberIdentifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberIdentifiable.swift; sourceTree = "<group>"; };
+		DE1D18391E8D292200E2D673 /* StringIdentifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringIdentifiable.swift; sourceTree = "<group>"; };
+		DE1D183B1E8D292200E2D673 /* CatchupResponseSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatchupResponseSerializer.swift; sourceTree = "<group>"; };
+		DE1D183C1E8D292200E2D673 /* ChannelResponseSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelResponseSerializer.swift; sourceTree = "<group>"; };
+		DE1D183D1E8D292200E2D673 /* JSONResponseSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONResponseSerializer.swift; sourceTree = "<group>"; };
+		DE1D183E1E8D292200E2D673 /* LoginResponseSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginResponseSerializer.swift; sourceTree = "<group>"; };
+		DE1D183F1E8D292200E2D673 /* ManagedObjectResponseSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectResponseSerializer.swift; sourceTree = "<group>"; };
+		DE1D18401E8D292200E2D673 /* ResponseSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseSerializer.swift; sourceTree = "<group>"; };
+		DE1D18411E8D292200E2D673 /* TokenResponseSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenResponseSerializer.swift; sourceTree = "<group>"; };
+		DE1D18421E8D292200E2D673 /* VideoshopResponseSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoshopResponseSerializer.swift; sourceTree = "<group>"; };
 		DE3896CF1DE9CD1A00860BB9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		DE3896D51DE9E60200860BB9 /* LoginResponseSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginResponseSerializer.swift; sourceTree = "<group>"; };
 		DE3900671DEB2AE10070C48D /* EurosportPlayerTV.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EurosportPlayerTV.entitlements; sourceTree = "<group>"; };
 		DE39BC671CE764F700347716 /* EurosportKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EurosportKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE39BC691CE764F700347716 /* EurosportKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EurosportKit.h; sourceTree = "<group>"; };
@@ -135,29 +182,6 @@
 		DE39BC701CE764F700347716 /* EurosportKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EurosportKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE39BC771CE764F700347716 /* EurosportKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EurosportKitTests.swift; sourceTree = "<group>"; };
 		DE39BC791CE764F700347716 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DE39BC851CE7650A00347716 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
-		DE39BC8C1CE76A2A00347716 /* JSONParsingType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONParsingType.swift; sourceTree = "<group>"; };
-		DE39BC901CE76A6F00347716 /* UserParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserParser.swift; sourceTree = "<group>"; };
-		DE39BC921CE76A7B00347716 /* ResponseSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseSerializer.swift; sourceTree = "<group>"; };
-		DE39BC941CE76A8F00347716 /* JSONResponseSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONResponseSerializer.swift; sourceTree = "<group>"; };
-		DE39BC961CE76AAD00347716 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
-		DE39BC981CE76BBC00347716 /* User+Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+Networking.swift"; sourceTree = "<group>"; };
-		DE39BC9F1CE76E5000347716 /* Token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
-		DE39BCA11CE7705300347716 /* Token+Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Token+Networking.swift"; sourceTree = "<group>"; };
-		DE39BCA31CE770A400347716 /* TokenResponseSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenResponseSerializer.swift; sourceTree = "<group>"; };
-		DE39BCA61CE770D000347716 /* TokenParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenParser.swift; sourceTree = "<group>"; };
-		DE39BCAA1CE7777E00347716 /* SportParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SportParser.swift; sourceTree = "<group>"; };
-		DE39BCAC1CE778B400347716 /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
-		DE39BCAE1CE77C1700347716 /* CatchupResponseSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatchupResponseSerializer.swift; sourceTree = "<group>"; };
-		DE39BCB01CE77C4C00347716 /* VideoshopResponseSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoshopResponseSerializer.swift; sourceTree = "<group>"; };
-		DE39BCB41CE7847800347716 /* Catchup+Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Catchup+Networking.swift"; sourceTree = "<group>"; };
-		DE39BCB61CE784B500347716 /* CatchupParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatchupParser.swift; sourceTree = "<group>"; };
-		DE39BCBA1CE786A400347716 /* CatchupStreamParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatchupStreamParser.swift; sourceTree = "<group>"; };
-		DE3DC3B31CF4D61400AF5909 /* ManagedObjectResponseSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectResponseSerializer.swift; sourceTree = "<group>"; };
-		DE3DC3B71CF4E17100AF5909 /* Fetchable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fetchable.swift; sourceTree = "<group>"; };
-		DE7D566F1CFB40FB00A2B504 /* Channel+Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Channel+Networking.swift"; sourceTree = "<group>"; };
-		DE7D56771CFB49BF00A2B504 /* ChannelResponseSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelResponseSerializer.swift; sourceTree = "<group>"; };
-		DE7D56791CFB49FA00A2B504 /* ChannelParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelParser.swift; sourceTree = "<group>"; };
 		DE8FAA301CFB0C2B00E60A41 /* EurosportPlayerTV-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EurosportPlayerTV-Bridging-Header.h"; sourceTree = "<group>"; };
 		DE969D891CD51EA300A8A313 /* EurosportPlayerTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EurosportPlayerTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE969D8B1CD51EA300A8A313 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -185,33 +209,7 @@
 		DE9B25BF1E8D19C80009BE1C /* LogoutFooterCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoutFooterCollectionReusableView.swift; sourceTree = "<group>"; };
 		DE9B25C01E8D19C80009BE1C /* UICollectionView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extensions.swift"; sourceTree = "<group>"; };
 		DE9B25C11E8D19C80009BE1C /* WebImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebImageView.swift; sourceTree = "<group>"; };
-		DEA051841E3FEACB003A50C3 /* CatchupStream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatchupStream.swift; sourceTree = "<group>"; };
-		DEA051861E3FEAE4003A50C3 /* LiveStream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveStream.swift; sourceTree = "<group>"; };
-		DEA051881E3FEAFE003A50C3 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		DEA0518A1E3FEB15003A50C3 /* Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
-		DEA0518C1E3FEB22003A50C3 /* ScheduledProgramme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduledProgramme.swift; sourceTree = "<group>"; };
-		DEA0518E1E3FF5F0003A50C3 /* Catchup+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Catchup+CoreDataClass.swift"; sourceTree = "<group>"; };
-		DEA0518F1E3FF5F0003A50C3 /* Catchup+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Catchup+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		DEA051901E3FF5F0003A50C3 /* LiveStream+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LiveStream+CoreDataClass.swift"; sourceTree = "<group>"; };
-		DEA051911E3FF5F0003A50C3 /* LiveStream+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LiveStream+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		DEA051921E3FF5F0003A50C3 /* CatchupStream+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CatchupStream+CoreDataClass.swift"; sourceTree = "<group>"; };
-		DEA051931E3FF5F0003A50C3 /* CatchupStream+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CatchupStream+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		DEA051941E3FF5F0003A50C3 /* Channel+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Channel+CoreDataClass.swift"; sourceTree = "<group>"; };
-		DEA051951E3FF5F0003A50C3 /* Channel+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Channel+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		DEA051961E3FF5F0003A50C3 /* Sport+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Sport+CoreDataClass.swift"; sourceTree = "<group>"; };
-		DEA051971E3FF5F0003A50C3 /* Sport+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Sport+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		DEA051981E3FF5F0003A50C3 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
-		DEA051991E3FF5F0003A50C3 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		DEA0519A1E3FF5F0003A50C3 /* ScheduledProgramme+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ScheduledProgramme+CoreDataClass.swift"; sourceTree = "<group>"; };
-		DEA0519B1E3FF5F0003A50C3 /* ScheduledProgramme+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ScheduledProgramme+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		DEB459991CE8C6EE0057259C /* Eurosport.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Eurosport.xcdatamodel; sourceTree = "<group>"; };
-		DEB4599B1CE8C7EA0057259C /* JSONCoreDataParsingType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONCoreDataParsingType.swift; sourceTree = "<group>"; };
-		DEB459A11CE8C91C0057259C /* Catchup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Catchup.swift; sourceTree = "<group>"; };
-		DEB459A21CE8C91C0057259C /* Sport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sport.swift; sourceTree = "<group>"; };
 		DEC4275E1CF9D8C000AE8C31 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
-		DEC427711CF9F89D00AE8C31 /* StringIdentifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringIdentifiable.swift; sourceTree = "<group>"; };
-		DEC427731CF9F8D400AE8C31 /* NumberIdentifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberIdentifiable.swift; sourceTree = "<group>"; };
-		DEC592201E5F6E2A00880C05 /* AuthenticatedResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticatedResource.swift; sourceTree = "<group>"; };
 		DED8A93F1E093D2D00CD47FC /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		DED8A9401E093D2D00CD47FC /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		DED8A94E1E09427500CD47FC /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
@@ -248,16 +246,103 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DE1D180A1E8D292200E2D673 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DE1D180B1E8D292200E2D673 /* AuthenticatedResource.swift */,
+				DE1D180C1E8D292200E2D673 /* Catchup+Networking.swift */,
+				DE1D180D1E8D292200E2D673 /* Catchup.swift */,
+				DE1D180E1E8D292200E2D673 /* CatchupStream.swift */,
+				DE1D180F1E8D292200E2D673 /* Channel+Networking.swift */,
+				DE1D18101E8D292200E2D673 /* Channel.swift */,
+				DE1D18111E8D292200E2D673 /* Generated */,
+				DE1D18201E8D292200E2D673 /* JSON.swift */,
+				DE1D18211E8D292200E2D673 /* LiveStream.swift */,
+				DE1D18221E8D292200E2D673 /* Result.swift */,
+				DE1D18231E8D292200E2D673 /* Router.swift */,
+				DE1D18241E8D292200E2D673 /* ScheduledProgramme.swift */,
+				DE1D18251E8D292200E2D673 /* Sport.swift */,
+				DE1D18261E8D292200E2D673 /* Token+Networking.swift */,
+				DE1D18271E8D292200E2D673 /* Token.swift */,
+				DE1D18281E8D292200E2D673 /* User+Networking.swift */,
+				DE1D18291E8D292200E2D673 /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		DE1D18111E8D292200E2D673 /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				DE1D18121E8D292200E2D673 /* Catchup+CoreDataClass.swift */,
+				DE1D18131E8D292200E2D673 /* Catchup+CoreDataProperties.swift */,
+				DE1D18141E8D292200E2D673 /* CatchupStream+CoreDataClass.swift */,
+				DE1D18151E8D292200E2D673 /* CatchupStream+CoreDataProperties.swift */,
+				DE1D18161E8D292200E2D673 /* Channel+CoreDataClass.swift */,
+				DE1D18171E8D292200E2D673 /* Channel+CoreDataProperties.swift */,
+				DE1D18181E8D292200E2D673 /* LiveStream+CoreDataClass.swift */,
+				DE1D18191E8D292200E2D673 /* LiveStream+CoreDataProperties.swift */,
+				DE1D181A1E8D292200E2D673 /* ScheduledProgramme+CoreDataClass.swift */,
+				DE1D181B1E8D292200E2D673 /* ScheduledProgramme+CoreDataProperties.swift */,
+				DE1D181C1E8D292200E2D673 /* Sport+CoreDataClass.swift */,
+				DE1D181D1E8D292200E2D673 /* Sport+CoreDataProperties.swift */,
+				DE1D181E1E8D292200E2D673 /* User+CoreDataClass.swift */,
+				DE1D181F1E8D292200E2D673 /* User+CoreDataProperties.swift */,
+			);
+			path = Generated;
+			sourceTree = "<group>";
+		};
+		DE1D182A1E8D292200E2D673 /* Parsers */ = {
+			isa = PBXGroup;
+			children = (
+				DE1D182B1E8D292200E2D673 /* CatchupParser.swift */,
+				DE1D182C1E8D292200E2D673 /* CatchupStreamParser.swift */,
+				DE1D182D1E8D292200E2D673 /* ChannelParser.swift */,
+				DE1D182E1E8D292200E2D673 /* DateParser.swift */,
+				DE1D182F1E8D292200E2D673 /* LiveStreamParser.swift */,
+				DE1D18301E8D292200E2D673 /* ScheduledProgrammeParser.swift */,
+				DE1D18311E8D292200E2D673 /* SportParser.swift */,
+				DE1D18321E8D292200E2D673 /* TokenParser.swift */,
+				DE1D18331E8D292200E2D673 /* UserParser.swift */,
+			);
+			path = Parsers;
+			sourceTree = "<group>";
+		};
+		DE1D18341E8D292200E2D673 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				DE1D18351E8D292200E2D673 /* Fetchable.swift */,
+				DE1D18361E8D292200E2D673 /* JSONCoreDataParsingType.swift */,
+				DE1D18371E8D292200E2D673 /* JSONParsingType.swift */,
+				DE1D18381E8D292200E2D673 /* NumberIdentifiable.swift */,
+				DE1D18391E8D292200E2D673 /* StringIdentifiable.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		DE1D183A1E8D292200E2D673 /* Serialisers */ = {
+			isa = PBXGroup;
+			children = (
+				DE1D183B1E8D292200E2D673 /* CatchupResponseSerializer.swift */,
+				DE1D183C1E8D292200E2D673 /* ChannelResponseSerializer.swift */,
+				DE1D183D1E8D292200E2D673 /* JSONResponseSerializer.swift */,
+				DE1D183E1E8D292200E2D673 /* LoginResponseSerializer.swift */,
+				DE1D183F1E8D292200E2D673 /* ManagedObjectResponseSerializer.swift */,
+				DE1D18401E8D292200E2D673 /* ResponseSerializer.swift */,
+				DE1D18411E8D292200E2D673 /* TokenResponseSerializer.swift */,
+				DE1D18421E8D292200E2D673 /* VideoshopResponseSerializer.swift */,
+			);
+			path = Serialisers;
+			sourceTree = "<group>";
+		};
 		DE39BC681CE764F700347716 /* EurosportKit */ = {
 			isa = PBXGroup;
 			children = (
-				DE39BCA51CE770C700347716 /* Parsers */,
-				DE39BC9E1CE76DA100347716 /* Protocols */,
-				DE39BC9D1CE76D9600347716 /* Serializers */,
-				DE39BC9C1CE76D8800347716 /* Model */,
+				DE1D180A1E8D292200E2D673 /* Models */,
+				DE1D182A1E8D292200E2D673 /* Parsers */,
+				DE1D18341E8D292200E2D673 /* Protocols */,
+				DE1D183A1E8D292200E2D673 /* Serialisers */,
 				DE39BC691CE764F700347716 /* EurosportKit.h */,
 				DE39BC6B1CE764F700347716 /* Info.plist */,
-				DE39BC851CE7650A00347716 /* Router.swift */,
 			);
 			path = EurosportKit;
 			sourceTree = "<group>";
@@ -269,73 +354,6 @@
 				DE39BC791CE764F700347716 /* Info.plist */,
 			);
 			path = EurosportKitTests;
-			sourceTree = "<group>";
-		};
-		DE39BC9C1CE76D8800347716 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				DEA051AA1E3FF65B003A50C3 /* Generated */,
-				DEB459A11CE8C91C0057259C /* Catchup.swift */,
-				DE39BCB41CE7847800347716 /* Catchup+Networking.swift */,
-				DEB459A21CE8C91C0057259C /* Sport.swift */,
-				DEA051841E3FEACB003A50C3 /* CatchupStream.swift */,
-				DEA051861E3FEAE4003A50C3 /* LiveStream.swift */,
-				DEA051881E3FEAFE003A50C3 /* User.swift */,
-				DE39BC981CE76BBC00347716 /* User+Networking.swift */,
-				DE39BC9F1CE76E5000347716 /* Token.swift */,
-				DE39BCA11CE7705300347716 /* Token+Networking.swift */,
-				DEA0518A1E3FEB15003A50C3 /* Channel.swift */,
-				DE7D566F1CFB40FB00A2B504 /* Channel+Networking.swift */,
-				DEA0518C1E3FEB22003A50C3 /* ScheduledProgramme.swift */,
-				DE39BC961CE76AAD00347716 /* Result.swift */,
-				DEB459981CE8C6EE0057259C /* Eurosport.xcdatamodeld */,
-			);
-			name = Model;
-			sourceTree = "<group>";
-		};
-		DE39BC9D1CE76D9600347716 /* Serializers */ = {
-			isa = PBXGroup;
-			children = (
-				DE39BC921CE76A7B00347716 /* ResponseSerializer.swift */,
-				DE3DC3B31CF4D61400AF5909 /* ManagedObjectResponseSerializer.swift */,
-				DE39BC941CE76A8F00347716 /* JSONResponseSerializer.swift */,
-				DE3896D51DE9E60200860BB9 /* LoginResponseSerializer.swift */,
-				DE7D56771CFB49BF00A2B504 /* ChannelResponseSerializer.swift */,
-				DE39BCB01CE77C4C00347716 /* VideoshopResponseSerializer.swift */,
-				DE39BCA31CE770A400347716 /* TokenResponseSerializer.swift */,
-				DE39BCAE1CE77C1700347716 /* CatchupResponseSerializer.swift */,
-			);
-			name = Serializers;
-			sourceTree = "<group>";
-		};
-		DE39BC9E1CE76DA100347716 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				DE39BC8C1CE76A2A00347716 /* JSONParsingType.swift */,
-				DEB4599B1CE8C7EA0057259C /* JSONCoreDataParsingType.swift */,
-				DE3DC3B71CF4E17100AF5909 /* Fetchable.swift */,
-				DEC427711CF9F89D00AE8C31 /* StringIdentifiable.swift */,
-				DEC427731CF9F8D400AE8C31 /* NumberIdentifiable.swift */,
-				DEC592201E5F6E2A00880C05 /* AuthenticatedResource.swift */,
-			);
-			name = Protocols;
-			sourceTree = "<group>";
-		};
-		DE39BCA51CE770C700347716 /* Parsers */ = {
-			isa = PBXGroup;
-			children = (
-				DE39BCAC1CE778B400347716 /* JSON.swift */,
-				DE39BC901CE76A6F00347716 /* UserParser.swift */,
-				DE39BCA61CE770D000347716 /* TokenParser.swift */,
-				DE39BCAA1CE7777E00347716 /* SportParser.swift */,
-				DE39BCB61CE784B500347716 /* CatchupParser.swift */,
-				DE39BCBA1CE786A400347716 /* CatchupStreamParser.swift */,
-				DE1753D21CFC75580083DE2E /* LiveStreamParser.swift */,
-				DE7D56791CFB49FA00A2B504 /* ChannelParser.swift */,
-				DE1753CC1CFC6D090083DE2E /* ScheduledProgrammeParser.swift */,
-				DE20D35F1E3FD5ED009143A3 /* DateParser.swift */,
-			);
-			name = Parsers;
 			sourceTree = "<group>";
 		};
 		DE969D661CD50B1300A8A313 = {
@@ -440,27 +458,6 @@
 				DE8FAA301CFB0C2B00E60A41 /* EurosportPlayerTV-Bridging-Header.h */,
 			);
 			name = "Other Sources";
-			sourceTree = "<group>";
-		};
-		DEA051AA1E3FF65B003A50C3 /* Generated */ = {
-			isa = PBXGroup;
-			children = (
-				DEA0518E1E3FF5F0003A50C3 /* Catchup+CoreDataClass.swift */,
-				DEA0518F1E3FF5F0003A50C3 /* Catchup+CoreDataProperties.swift */,
-				DEA051901E3FF5F0003A50C3 /* LiveStream+CoreDataClass.swift */,
-				DEA051911E3FF5F0003A50C3 /* LiveStream+CoreDataProperties.swift */,
-				DEA051921E3FF5F0003A50C3 /* CatchupStream+CoreDataClass.swift */,
-				DEA051931E3FF5F0003A50C3 /* CatchupStream+CoreDataProperties.swift */,
-				DEA051941E3FF5F0003A50C3 /* Channel+CoreDataClass.swift */,
-				DEA051951E3FF5F0003A50C3 /* Channel+CoreDataProperties.swift */,
-				DEA051961E3FF5F0003A50C3 /* Sport+CoreDataClass.swift */,
-				DEA051971E3FF5F0003A50C3 /* Sport+CoreDataProperties.swift */,
-				DEA051981E3FF5F0003A50C3 /* User+CoreDataClass.swift */,
-				DEA051991E3FF5F0003A50C3 /* User+CoreDataProperties.swift */,
-				DEA0519A1E3FF5F0003A50C3 /* ScheduledProgramme+CoreDataClass.swift */,
-				DEA0519B1E3FF5F0003A50C3 /* ScheduledProgramme+CoreDataProperties.swift */,
-			);
-			name = Generated;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -640,59 +637,58 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DE39BCAB1CE7777E00347716 /* SportParser.swift in Sources */,
-				DEA0518B1E3FEB15003A50C3 /* Channel.swift in Sources */,
-				DEA051A91E3FF5F1003A50C3 /* ScheduledProgramme+CoreDataProperties.swift in Sources */,
-				DE39BCBB1CE786A400347716 /* CatchupStreamParser.swift in Sources */,
-				DEB4599C1CE8C7EA0057259C /* JSONCoreDataParsingType.swift in Sources */,
-				DE39BC8D1CE76A2A00347716 /* JSONParsingType.swift in Sources */,
-				DEA051A81E3FF5F1003A50C3 /* ScheduledProgramme+CoreDataClass.swift in Sources */,
-				DEB459A71CE8C91C0057259C /* Catchup.swift in Sources */,
-				DE39BC911CE76A6F00347716 /* UserParser.swift in Sources */,
-				DEA051A61E3FF5F1003A50C3 /* User+CoreDataClass.swift in Sources */,
-				DE39BCAF1CE77C1700347716 /* CatchupResponseSerializer.swift in Sources */,
-				DEA051A71E3FF5F1003A50C3 /* User+CoreDataProperties.swift in Sources */,
-				DEA0519F1E3FF5F0003A50C3 /* LiveStream+CoreDataProperties.swift in Sources */,
-				DE3DC3B81CF4E17100AF5909 /* Fetchable.swift in Sources */,
-				DE7D56701CFB40FB00A2B504 /* Channel+Networking.swift in Sources */,
-				DEA051851E3FEACB003A50C3 /* CatchupStream.swift in Sources */,
-				DEA051871E3FEAE4003A50C3 /* LiveStream.swift in Sources */,
-				DEA051A31E3FF5F0003A50C3 /* Channel+CoreDataProperties.swift in Sources */,
-				DE7D56781CFB49BF00A2B504 /* ChannelResponseSerializer.swift in Sources */,
-				DEA051A01E3FF5F0003A50C3 /* CatchupStream+CoreDataClass.swift in Sources */,
-				DEA0518D1E3FEB22003A50C3 /* ScheduledProgramme.swift in Sources */,
-				DE39BC951CE76A8F00347716 /* JSONResponseSerializer.swift in Sources */,
-				DE39BCB71CE784B500347716 /* CatchupParser.swift in Sources */,
-				DE39BCB11CE77C4C00347716 /* VideoshopResponseSerializer.swift in Sources */,
-				DE3896D61DE9E60200860BB9 /* LoginResponseSerializer.swift in Sources */,
-				DEA051A51E3FF5F1003A50C3 /* Sport+CoreDataProperties.swift in Sources */,
-				DEC592211E5F6E2A00880C05 /* AuthenticatedResource.swift in Sources */,
-				DE39BCAD1CE778B400347716 /* JSON.swift in Sources */,
-				DE39BC931CE76A7B00347716 /* ResponseSerializer.swift in Sources */,
-				DEA051A41E3FF5F0003A50C3 /* Sport+CoreDataClass.swift in Sources */,
-				DEA051A21E3FF5F0003A50C3 /* Channel+CoreDataClass.swift in Sources */,
-				DE39BCB51CE7847800347716 /* Catchup+Networking.swift in Sources */,
-				DE39BC991CE76BBC00347716 /* User+Networking.swift in Sources */,
-				DEC427721CF9F89D00AE8C31 /* StringIdentifiable.swift in Sources */,
-				DEA0519E1E3FF5F0003A50C3 /* LiveStream+CoreDataClass.swift in Sources */,
-				DE1753CD1CFC6D090083DE2E /* ScheduledProgrammeParser.swift in Sources */,
-				DE3DC3B41CF4D61400AF5909 /* ManagedObjectResponseSerializer.swift in Sources */,
-				DE39BCA71CE770D000347716 /* TokenParser.swift in Sources */,
-				DEA051891E3FEAFE003A50C3 /* User.swift in Sources */,
-				DE39BCA01CE76E5000347716 /* Token.swift in Sources */,
-				DE7D567A1CFB49FA00A2B504 /* ChannelParser.swift in Sources */,
-				DEA0519D1E3FF5F0003A50C3 /* Catchup+CoreDataProperties.swift in Sources */,
-				DE39BC971CE76AAD00347716 /* Result.swift in Sources */,
-				DEB459A81CE8C91D0057259C /* Sport.swift in Sources */,
-				DE39BCA21CE7705300347716 /* Token+Networking.swift in Sources */,
-				DEB4599A1CE8C6EE0057259C /* Eurosport.xcdatamodeld in Sources */,
-				DE39BC861CE7650A00347716 /* Router.swift in Sources */,
-				DEA0519C1E3FF5F0003A50C3 /* Catchup+CoreDataClass.swift in Sources */,
-				DE39BCA41CE770A400347716 /* TokenResponseSerializer.swift in Sources */,
-				DEC427741CF9F8D400AE8C31 /* NumberIdentifiable.swift in Sources */,
-				DE20D3601E3FD5ED009143A3 /* DateParser.swift in Sources */,
-				DEA051A11E3FF5F0003A50C3 /* CatchupStream+CoreDataProperties.swift in Sources */,
-				DE1753D31CFC75580083DE2E /* LiveStreamParser.swift in Sources */,
+				DE1D186D1E8D292200E2D673 /* NumberIdentifiable.swift in Sources */,
+				DE1D186F1E8D292200E2D673 /* CatchupResponseSerializer.swift in Sources */,
+				DE1D18531E8D292200E2D673 /* Sport+CoreDataClass.swift in Sources */,
+				DE1D18571E8D292200E2D673 /* JSON.swift in Sources */,
+				DE1D185A1E8D292200E2D673 /* Router.swift in Sources */,
+				DE1D18611E8D292200E2D673 /* CatchupParser.swift in Sources */,
+				DE1D18621E8D292200E2D673 /* CatchupStreamParser.swift in Sources */,
+				DE1D18731E8D292200E2D673 /* ManagedObjectResponseSerializer.swift in Sources */,
+				DE1D186B1E8D292200E2D673 /* JSONCoreDataParsingType.swift in Sources */,
+				DE1D18511E8D292200E2D673 /* ScheduledProgramme+CoreDataClass.swift in Sources */,
+				DE1D18601E8D292200E2D673 /* User.swift in Sources */,
+				DE1D18521E8D292200E2D673 /* ScheduledProgramme+CoreDataProperties.swift in Sources */,
+				DE1D184B1E8D292200E2D673 /* CatchupStream+CoreDataClass.swift in Sources */,
+				DE1D18481E8D292200E2D673 /* Channel.swift in Sources */,
+				DE1D18741E8D292200E2D673 /* ResponseSerializer.swift in Sources */,
+				DE1D18591E8D292200E2D673 /* Result.swift in Sources */,
+				DE1D18721E8D292200E2D673 /* LoginResponseSerializer.swift in Sources */,
+				DE1D18701E8D292200E2D673 /* ChannelResponseSerializer.swift in Sources */,
+				DE1D18581E8D292200E2D673 /* LiveStream.swift in Sources */,
+				DE1D18451E8D292200E2D673 /* Catchup.swift in Sources */,
+				DE1D186E1E8D292200E2D673 /* StringIdentifiable.swift in Sources */,
+				DE1D185F1E8D292200E2D673 /* User+Networking.swift in Sources */,
+				DE1D186C1E8D292200E2D673 /* JSONParsingType.swift in Sources */,
+				DE1D185B1E8D292200E2D673 /* ScheduledProgramme.swift in Sources */,
+				DE1D18671E8D292200E2D673 /* SportParser.swift in Sources */,
+				DE1D18661E8D292200E2D673 /* ScheduledProgrammeParser.swift in Sources */,
+				DE1D18751E8D292200E2D673 /* TokenResponseSerializer.swift in Sources */,
+				DE1D18541E8D292200E2D673 /* Sport+CoreDataProperties.swift in Sources */,
+				DE1D18491E8D292200E2D673 /* Catchup+CoreDataClass.swift in Sources */,
+				DE1D18681E8D292200E2D673 /* TokenParser.swift in Sources */,
+				DE1D184A1E8D292200E2D673 /* Catchup+CoreDataProperties.swift in Sources */,
+				DE1D185E1E8D292200E2D673 /* Token.swift in Sources */,
+				DE1D184F1E8D292200E2D673 /* LiveStream+CoreDataClass.swift in Sources */,
+				DE1D18461E8D292200E2D673 /* CatchupStream.swift in Sources */,
+				DE1D184C1E8D292200E2D673 /* CatchupStream+CoreDataProperties.swift in Sources */,
+				DE1D18641E8D292200E2D673 /* DateParser.swift in Sources */,
+				DE1D18471E8D292200E2D673 /* Channel+Networking.swift in Sources */,
+				DE1D185C1E8D292200E2D673 /* Sport.swift in Sources */,
+				DE1D18651E8D292200E2D673 /* LiveStreamParser.swift in Sources */,
+				DE1D18551E8D292200E2D673 /* User+CoreDataClass.swift in Sources */,
+				DE1D18691E8D292200E2D673 /* UserParser.swift in Sources */,
+				DE1D186A1E8D292200E2D673 /* Fetchable.swift in Sources */,
+				DE1D18431E8D292200E2D673 /* AuthenticatedResource.swift in Sources */,
+				DE1D18441E8D292200E2D673 /* Catchup+Networking.swift in Sources */,
+				DE1D18561E8D292200E2D673 /* User+CoreDataProperties.swift in Sources */,
+				DE1D18711E8D292200E2D673 /* JSONResponseSerializer.swift in Sources */,
+				DE1D184D1E8D292200E2D673 /* Channel+CoreDataClass.swift in Sources */,
+				DE1D18631E8D292200E2D673 /* ChannelParser.swift in Sources */,
+				DE1D185D1E8D292200E2D673 /* Token+Networking.swift in Sources */,
+				DE1D18761E8D292200E2D673 /* VideoshopResponseSerializer.swift in Sources */,
+				DE1D184E1E8D292200E2D673 /* Channel+CoreDataProperties.swift in Sources */,
+				DE1D18501E8D292200E2D673 /* LiveStream+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1026,19 +1022,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		DEB459981CE8C6EE0057259C /* Eurosport.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				DEB459991CE8C6EE0057259C /* Eurosport.xcdatamodel */,
-			);
-			currentVersion = DEB459991CE8C6EE0057259C /* Eurosport.xcdatamodel */;
-			path = Eurosport.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = DE969D671CD50B1300A8A313 /* Project object */;
 }

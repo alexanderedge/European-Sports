@@ -1,7 +1,14 @@
-copyright-header --add-path . \
-                 --license MIT \
-                 --copyright-holder 'Alexander Edge' \
-                 --copyright-software 'European Sports' \
-                 --copyright-year 2017 \
-                 --output-dir /tmp \
-                 --dry-run
+# European Sports
+
+A Eurosport Player client for tvOS
+
+![Screenshot](https://raw.githubusercontent.com/alexanderedge/European-Sports/master/screenshot.jpg)
+
+## Requirements
+
+Xcode 8.3 or later
+tvOS 10.0 or later
+
+## License
+
+European Sports is available under the MIT license. See the LICENSE file for more info.

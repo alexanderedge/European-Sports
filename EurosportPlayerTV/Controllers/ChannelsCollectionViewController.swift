@@ -36,9 +36,7 @@ class ChannelsCollectionViewController: FetchedResultsCollectionViewController, 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         title = NSLocalizedString("live-title", comment: "title for the products screen")
-
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -49,11 +47,6 @@ class ChannelsCollectionViewController: FetchedResultsCollectionViewController, 
             collectionView?.reloadItems(at: indexPaths)
         }
 
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: UICollectionViewDataSource

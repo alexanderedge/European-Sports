@@ -61,11 +61,6 @@ class SportsCollectionViewController: FetchedResultsCollectionViewController, Fe
 
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     // MARK: Actions
 
     func applicationDidBecomeActive(_ notification: Notification) {

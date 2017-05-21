@@ -36,4 +36,3 @@ func createPersistentStoreCoordinatorWithInMemoryStore() -> NSPersistentStoreCoo
     try! psc.addPersistentStore(ofType: NSInMemoryStoreType, configurationName: nil, at: nil, options: nil)
     return psc
 }
-

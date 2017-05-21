@@ -4,7 +4,6 @@
 //
 //  Created by Alexander Edge on 30/01/2017.
 
-
 import Foundation
 import CoreData
 
@@ -20,7 +19,7 @@ extension User {
 
     public static func currentUser(_ context: NSManagedObjectContext) -> User? {
         do {
-            return try singleObject(in: context, predicate: nil, sortedBy: nil, ascending: true)
+            return try singleObject(in: context)
         } catch {
             return nil
         }

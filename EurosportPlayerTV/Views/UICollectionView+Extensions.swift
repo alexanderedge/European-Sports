@@ -4,7 +4,6 @@
 //
 //  Created by Alexander Edge on 23/03/2017.
 
-
 import Foundation
 
 extension UICollectionView {
@@ -22,5 +21,5 @@ extension UICollectionView {
         }
         return view
     }
-    
+
 }

@@ -4,7 +4,6 @@
 //
 //  Created by Alexander Edge on 25/05/2016.
 
-
 import UIKit
 
 class DoubleLabelCollectionViewCell: ImageCollectionViewCell {

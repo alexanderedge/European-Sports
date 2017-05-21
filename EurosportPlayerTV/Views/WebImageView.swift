@@ -4,7 +4,6 @@
 //
 //  Created by Alexander Edge on 28/05/2016.
 
-
 import UIKit
 
 fileprivate struct DarkenFilter {

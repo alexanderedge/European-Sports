@@ -4,7 +4,6 @@
 //
 //  Created by Alexander Edge on 26/11/2016.
 
-
 import UIKit
 
 class LoadingViewController: UIViewController {

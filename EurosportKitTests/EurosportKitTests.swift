@@ -4,7 +4,6 @@
 //
 //  Created by Alexander Edge on 14/05/2016.
 
-
 import XCTest
 @testable import EurosportKit
 

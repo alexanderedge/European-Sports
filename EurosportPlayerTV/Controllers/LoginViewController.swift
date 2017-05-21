@@ -4,12 +4,11 @@
 //
 //  Created by Alexander Edge on 26/11/2016.
 
-
 import UIKit
 import EurosportKit
 import CoreData
 
-protocol LoginViewControllerDelegate {
+protocol LoginViewControllerDelegate: class {
 
     func loginViewController(didLogin controller: LoginViewController, user: User)
 

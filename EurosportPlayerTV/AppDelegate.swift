@@ -4,7 +4,6 @@
 //
 //  Created by Alexander Edge on 30/04/2016.
 
-
 import UIKit
 import CoreData
 import EurosportKit

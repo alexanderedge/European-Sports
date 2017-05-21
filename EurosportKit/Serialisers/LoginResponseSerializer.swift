@@ -4,8 +4,9 @@
 //
 //  Created by Alexander Edge on 26/11/2016.
 
+import CoreData
 
-struct LoginResponseSerializer {
+class LoginResponseSerializer: ManagedObjectResponseSerializer<User> {
 
     typealias T = User
 
@@ -21,18 +22,15 @@ struct LoginResponseSerializer {
 
     }
 
-    static func serializer() -> ManagedObjectResponseSerializer <T> {
-        return ManagedObjectResponseSerializer { context, data, _, response, error in
-            let json = try JSONResponseSerializer<JSONObject>.serializer().serializeResponse(data, response: response, error: error)
-            let responseDict: JSONObject = try json.extract("Response")
-            let status: Int = try responseDict.extract("Success")
-            if status == 1 {
-                return try UserParser.parse(json, context: context)
-            } else {
-                let message: String = try responseDict.extract("Message")
-                throw LoginError.failure(message: message)
-            }
-
+    override func serializeResponse(_ context: NSManagedObjectContext, data: Data?, removeExisting: Bool, response: URLResponse?, error: Error?) throws -> User {
+        let json = try JSONResponseSerializer<JSONObject>().serializeResponse(data, response: response, error: error)
+        let responseDict: JSONObject = try json.extract("Response")
+        let status: Int = try responseDict.extract("Success")
+        if status == 1 {
+            return try UserParser.parse(json, context: context)
+        } else {
+            let message: String = try responseDict.extract("Message")
+            throw LoginError.failure(message: message)
         }
     }
 

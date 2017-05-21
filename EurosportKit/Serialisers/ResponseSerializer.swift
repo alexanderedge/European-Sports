@@ -12,18 +12,10 @@ internal protocol ResponseSerializerType {
 
 }
 
-internal struct ResponseSerializer<T>: ResponseSerializerType {
-
-    typealias SerializationBlock = (Data?, URLResponse?, Error?) throws -> T
-
-    let serializationBlock: SerializationBlock
-
-    init(serializationBlock: @escaping SerializationBlock) {
-        self.serializationBlock = serializationBlock
-    }
+internal class ResponseSerializer<T>: ResponseSerializerType {
 
     func serializeResponse(_ data: Data?, response: URLResponse?, error: Error?) throws -> T {
-        return try serializationBlock(data, response, error)
+        fatalError("should be implemented by a subclass")
     }
 
 }

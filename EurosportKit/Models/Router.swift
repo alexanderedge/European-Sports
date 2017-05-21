@@ -4,16 +4,11 @@
 //
 //  Created by Alexander Edge on 14/05/2016.
 
-
 import Foundation
 import CoreData
 
 public protocol URLRequestConvertible {
     var request: URLRequest { get }
-}
-
-enum Method: String {
-    case GET
 }
 
 struct Router {
@@ -197,45 +192,4 @@ struct Router {
 
     }
 
-}
-
-protocol URLQueryParameterStringConvertible {
-    var queryParameters: String {get}
-}
-
-extension Dictionary : URLQueryParameterStringConvertible {
-    /**
-     This computed property returns a query parameters string from the given NSDictionary. For
-     example, if the input is @{@"day":@"Tuesday", @"month":@"January"}, the output
-     string will be @"day=Tuesday&month=January".
-     @return The computed parameters string.
-     */
-    var queryParameters: String {
-        var parts: [String] = []
-        for (key, value) in self {
-            let part = NSString(format: "%@=%@",
-                                (key as! String).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!,
-                                (value as! String).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)
-            parts.append(part as String)
-        }
-        return parts.joined(separator: "&")
-    }
-
-}
-
-extension URL {
-    /**
-     Creates a new URL by adding the given query parameters.
-     @param parametersDictionary The query parameter dictionary to add.
-     @return A new NSURL.
-     */
-    func URLByAppendingQueryParameters(_ parametersDictionary: [String: String]) -> URL {
-        guard let components = URLComponents(url: self, resolvingAgainstBaseURL: false), let queryItems = components.queryItems, !queryItems.isEmpty else {
-            return URL(string:self.absoluteString.appendingFormat("?%@", parametersDictionary.queryParameters))!
-        }
-        guard let url = components.url else {
-            return self
-        }
-        return URL(string:url.absoluteString.appendingFormat("&%@", parametersDictionary.queryParameters))!
-    }
 }

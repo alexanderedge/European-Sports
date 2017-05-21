@@ -4,7 +4,6 @@
 //
 //  Created by Alexander Edge on 29/05/2016.
 
-
 import Foundation
 import CoreData
 
@@ -14,7 +13,7 @@ extension Channel {
                              completionHandler: @escaping (Result<([Channel])>) -> Void) -> URLSessionDataTask {
         return URLSession.shared.dataTaskWithRequest(Router.Channel.fetch.request,
                                                      persistentContainer: persistentContainer,
-                                                     responseSerializer: ChannelResponseSerializer.serializer(),
+                                                     responseSerializer: ChannelResponseSerializer(),
                                                      completionHandler: completionHandler)
     }
 

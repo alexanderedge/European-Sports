@@ -13,18 +13,10 @@ internal protocol ManagedObjectResponseSerializerType {
 
 }
 
-internal struct ManagedObjectResponseSerializer<T>: ManagedObjectResponseSerializerType {
-
-    typealias ManagedObjectSerializationBlock = (NSManagedObjectContext, Data?, Bool, URLResponse?, Error?) throws -> T
-
-    let serializationBlock: ManagedObjectSerializationBlock
-
-    init(serializationBlock: @escaping ManagedObjectSerializationBlock) {
-        self.serializationBlock = serializationBlock
-    }
+internal class ManagedObjectResponseSerializer<T>: ManagedObjectResponseSerializerType {
 
     func serializeResponse(_ context: NSManagedObjectContext, data: Data?, removeExisting: Bool, response: URLResponse?, error: Error?) throws -> T {
-        return try serializationBlock(context, data, removeExisting, response, error)
+        fatalError("should be implemented by subclass")
     }
 
 }

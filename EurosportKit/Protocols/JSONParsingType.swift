@@ -8,7 +8,6 @@ import Foundation
 internal protocol JSONParsingType {
     associatedtype T
     static func parse(_ json: JSONObject) throws -> T
-    static func parse(_ json: JSONArray) -> [T]
 }
 
 extension JSONParsingType {
